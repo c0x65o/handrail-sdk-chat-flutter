@@ -1,6 +1,6 @@
 name: handrail_chat
 description: Flutter and Dart SDK for embedding Handrail Chat in applications.
-version: 0.1.20
+version: 0.1.21
 
 environment:
   sdk: ">=3.3.0 <4.0.0"

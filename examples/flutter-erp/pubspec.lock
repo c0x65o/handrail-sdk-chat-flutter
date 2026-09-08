@@ -70,10 +70,12 @@ packages:
   handrail_chat:
     dependency: "direct main"
     description:
-      path: "../../flutter/handrail_chat"
-      relative: true
-    source: path
-    version: "0.1.19"
+      path: "."
+      ref: "51bc3e1411858ce38980f5beded683dee957d1a3"
+      resolved-ref: "51bc3e1411858ce38980f5beded683dee957d1a3"
+      url: "https://github.com/c0x65o/handrail-sdk-chat-flutter.git"
+    source: git
+    version: "0.1.20"
   leak_tracker:
     dependency: transitive
     description:

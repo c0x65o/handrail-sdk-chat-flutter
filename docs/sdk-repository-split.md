@@ -1,6 +1,6 @@
 # SDK repository split
 
-Status: extraction in progress; the old repository is not ready for deletion.
+Status: source extracted; consumer and runtime cutover validation is in progress.
 
 ## Ownership
 
@@ -40,43 +40,35 @@ This is a test-tool checkout location, not a package dependency override.
 against both SDKs, and matching Dart/TypeScript fixture outcomes.
 
 Paired CI checks out the Flutter revision frozen in `sdk-compatibility.json`.
-Its revision is deliberately unset until an actual extracted SDK commit exists.
-The gate fails explicitly for an unset revision rather than testing an empty
-scaffold or an arbitrary branch.
+All consumers use public HTTPS Git dependencies at full committed SHAs with
+matching npm/pub lockfiles. The Flutter demo is a Git subdirectory package;
+Pub resolves its relative SDK dependency within that same Git revision.
 
-## Consumer cutover still required
+## Consumer revisions
 
-The new repositories currently have only scaffold commits remotely. Their
-uncommitted extracted SDK source cannot be installed using the required public
-HTTPS Git dependency pinned to a full committed SHA. No SDK revision is invented.
+- JS: `90bff33529df06720ff89ccd821360ac65eaf0d0`
+- Flutter: `51bc3e1411858ce38980f5beded683dee957d1a3`
 
-After the owner authorizes the needed commits and pushes:
+The JS examples, Flutter lab, native example, and Mobile Preview have matching
+Git pins. Normal npm install/ci runs the SDK prepare build. Do not disable
+install scripts. npm may canonicalize a GitHub lock entry to SSH when updating
+it; retain the same SHA and use the manifest's public HTTPS URL in `resolved`,
+then verify with `npm ci` (which preserves the lockfile).
 
-1. Resolve the committed SDK revisions and fill `sdk-compatibility.json`.
-2. Replace inherited local SDK dependencies in the JS examples, Flutter lab,
-   native example, and Mobile Preview host with the new public HTTPS Git URLs
-   and full SHAs. Generate and verify matching npm/pub lockfiles. Retain SDK
-   compilation in normal install/build commands.
-3. Validate consumer builds and tests against those exact revisions.
-4. Move the Handrail chat-lab service to the JS repo. The existing Flutter
-   check and three Flutter tasks have already moved to the Flutter repo, and
-   the PostgreSQL acceptance task now targets the JS repo. The Mobile Preview service stays on the
-   existing preview host repo. Validate its authorized proxied browser route.
-5. Confirm no active check, task, service, or consumer still needs the old repo
-   before the owner deletes it. Keep the original repo attached until then.
+The original repository stays attached until the owner retires it. Historical
+logs and screenshots can contain old paths; those are evidence, not active
+checkout dependencies. Two historical hand-written scripts found under the
+original `build/` directory are preserved in the JS repository's
+`docs/sdk-split-archive/`.
 
-Do not commit, push, delete/detach the original, rewrite Git history, or open a
-PR without explicit owner authorization.
+See `sdk-extraction-validation.md` for checks and outstanding retirement steps.
 
-## Flutter lab source selection
+## Chat Lab setup
 
-The JS conformance and browser workflows use the same frozen Flutter peer revision.
-Set `HANDRAIL_CHAT_FLUTTER_ROOT` to select a non-sibling checkout, including CI's
-`.sdk-peers/flutter` path. The lab build, serving path, and storage browser test
-use that same selection.
-
-The lab build resolves its existing lockfile before compilation and builds with
-`--no-pub`. Its source fingerprint reads the `handrail_chat` package selected by
-Dart's package configuration, not an adjacent uncompiled SDK checkout. Diagnostics
-include the lab revision and resolved SDK revision. A missing resolved SDK is an
-error; there is no fallback to the old monorepo.
+From the JS repository, run `npm ci --include=dev` followed by
+`npm run setup:lab`. This installs the locked JS consumer and compiles the
+Flutter lab using its Git-installed SDK. The normal service start command is
+`npm run build && npm --prefix examples/drop-in-react run dev:lab`.
+Handrail also has a dev task named **Prepare Chat Lab dependencies and Flutter
+assets** for this setup. Compile before startup because Handrail requires a
+listener within 30 seconds and a clean Flutter build takes longer.

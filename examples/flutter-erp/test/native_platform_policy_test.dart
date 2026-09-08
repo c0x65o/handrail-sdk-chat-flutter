@@ -9,14 +9,16 @@ void main() {
     return File('${projectRoot.path}/$path').readAsStringSync();
   }
 
-  test('uses the in-repository handrail_chat package', () {
+  test('uses the public Git handrail_chat package at a full revision', () {
     final pubspec = readProjectFile('pubspec.yaml');
 
     expect(
       pubspec,
       matches(
         RegExp(
-          r'^  handrail_chat:\s*\n    path: ../../flutter/handrail_chat\s*$',
+          r'^  handrail_chat:\s*\n    git:\s*\n'
+          r'      url: https://github\.com/c0x65o/handrail-sdk-chat-flutter\.git\s*\n'
+          r'      ref: [a-f0-9]{40}\s*$',
           multiLine: true,
         ),
       ),

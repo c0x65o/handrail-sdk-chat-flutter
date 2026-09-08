@@ -8,8 +8,9 @@ contracts, and deterministic testing helpers.
 
 The package now lives at the root of `handrail-sdk-chat-flutter`. Install from
 `https://github.com/c0x65o/handrail-sdk-chat-flutter.git` at a full committed SDK
-SHA with a matching `pubspec.lock`. The extracted source is awaiting its first
-committed revision; do not pin the initial empty scaffold or use a path dependency.
+SHA with a matching `pubspec.lock`. The current migration uses
+`51bc3e1411858ce38980f5beded683dee957d1a3`. The timeline lab and native example
+both install that Git revision; they need no old monorepo checkout.
 See [migration status](docs/sdk-repository-split.md) for the remaining cutover.
 
 Import only the surfaces the host needs. All five are libraries in the same
