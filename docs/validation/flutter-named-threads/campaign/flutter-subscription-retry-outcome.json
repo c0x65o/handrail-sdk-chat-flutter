@@ -1,0 +1,140 @@
+{
+  "snapshot": "- heading \"Flutter Chat Lab · shared backend\" [level=2]\n- button \"Bob\"\n- text: \"Managed realtime: connected\"\n- button \"Disconnect\"\n- button \"Capture state\"\n- button \"Export evidence\"\n- text: Thread\n- button \"Open workspace settings\"\n- button \"Close panel\"\n- banner \"QA 298e20b4 Flutter named thread\":\n  - button \"Thread subscriptions\"\n  - button \"Close panel\"\n  - text: Thread preferences unavailable. Retry loading subscriptions.\n- text: Thread open Thread lifecycle access denied. Your draft is retained. Shared thread controls are unavailable on this server. Thread root message In Launch planning Friday Empty conversation No messages yet\n- group \"Message composer The message composer could not be loaded.\":\n  - textbox \"Message input\" [disabled]\n  - textbox \"The message composer could not be loaded.\" [disabled]\n  - button \"Add attachment\" [disabled]\n  - group:\n    - button \"Bold\":\n      - button \"Bold\" [disabled]\n    - button \"Italic\":\n      - button \"Italic\" [disabled]\n    - button \"Link\":\n      - button \"Link\" [disabled]\n    - button \"Bulleted list\":\n      - button \"Bulleted list\" [disabled]\n    - button \"Numbered list\":\n      - button \"Numbered list\" [disabled]\n    - button \"Inline code\":\n      - button \"Inline code\" [disabled]\n    - button \"Code block\":\n      - button \"Code block\" [disabled]\n  - button \"Send message\" [disabled]",
+  "state": {
+    "mode": "shared-backend",
+    "actor": "bob",
+    "instanceId": "09cc43d02b2911e0ff91788be8ae55ae",
+    "seedProfile": "reply-styles",
+    "availableActors": {
+      "alice": "Alice",
+      "bob": "Bob"
+    },
+    "endpoint": "http://127.0.0.1:4167/api/chat",
+    "identity": {
+      "tenantId": "chat-lab",
+      "userId": "bob",
+      "deviceId": "device-a0497479-84f4-4e24-900d-0f34d685caf9-165"
+    },
+    "realtime": "connected",
+    "clientLifecycle": "ready",
+    "clientDiagnostic": null,
+    "listError": null,
+    "error": null,
+    "selectedConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+    "conversationIds": [
+      "14d069be-fbde-4a1b-b3f5-628f843fc1ae"
+    ],
+    "hydratedTimelineIds": [
+      "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "cbd12df4-cae6-460d-bc79-1a84c2eef246"
+    ],
+    "cursor": null,
+    "timelineReplayCursor": {
+      "eventId": "b53cda88-31c7-4004-8a0f-0f077d41627c"
+    },
+    "durableStreams": {
+      "user:bob": {
+        "lastEventId": "aa654141-3249-417f-a6ed-07136443c6ab",
+        "lastOccurredAt": "2026-09-07T17:57:48.821Z"
+      }
+    },
+    "messages": [
+      {
+        "id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+        "canonicalSummary": {
+          "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+          "replyCount": 3,
+          "participantIds": [
+            "bob"
+          ],
+          "unreadCount": 1,
+          "lastReplyAt": "2026-09-07T17:56:54.729Z"
+        },
+        "projectedSummary": {
+          "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+          "replyCount": 3,
+          "participantIds": [
+            "bob"
+          ],
+          "unreadCount": 1,
+          "lastReplyAt": "2026-09-07T17:56:54.729Z"
+        }
+      },
+      {
+        "id": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+        "canonicalSummary": {
+          "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        },
+        "projectedSummary": {
+          "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        }
+      },
+      {
+        "id": "6e96cf41-702e-4ed7-a10e-2a4c18a8e1f2",
+        "canonicalSummary": null,
+        "projectedSummary": null
+      }
+    ],
+    "diagnostics": [
+      "conversation.list:completed",
+      "reply.style.preference:completed",
+      "message.timeline:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "durable_event_recovery",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "connection_lost",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "reply.style.preference:completed",
+      "durable_event_recovery",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "connection_lost",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "durable_event_recovery",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "connection_lost",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "durable_event_recovery",
+      "conversation.detail:response_malformed",
+      "message.timeline:completed",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "conversation.detail:response_malformed",
+      "snapshot_hydration_failed",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "conversation.detail:response_malformed",
+      "conversation.detail:completed",
+      "conversation.detail:response_malformed"
+    ],
+    "provenance": {
+      "sourceRevision": "43b47b93a69523fee5376dfcc1745297b58c6857",
+      "sourceDigest": "f5c932a70abde412965137aa0ed4872624273bfb913aa179f86ec7ceefa308a1",
+      "builtAt": "2026-09-07T17:01:10.989Z",
+      "packageVersion": "0.1.19"
+    }
+  }
+}

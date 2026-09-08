@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "method": "PATCH",
+  "path": "/conversations/{threadId}/follow",
+  "operation": "set_thread_follow",
+  "identifierMaxUtf8Bytes": 255,
+  "idempotencyKeyMaxUtf8Bytes": 255,
+  "initialFollowRevision": 0,
+  "intents": ["follow", "unfollow"],
+  "target": {
+    "type": "thread",
+    "fields": [
+      { "name": "type", "type": "literal", "value": "thread" },
+      { "name": "id", "type": "ConversationId" }
+    ]
+  },
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "explicitIntent" },
+    { "name": "target", "type": "threadTarget" },
+    { "name": "expectedFollowRevision", "type": "advanceableNonnegativeSafeInteger" },
+    { "name": "idempotencyKey", "type": "boundedNonblankString" }
+  ],
+  "followSources": [
+    { "name": "manual", "origin": "explicitUserIntent" },
+    { "name": "reply", "origin": "serverDerivedParticipation" },
+    { "name": "mention", "origin": "serverDerivedParticipation" }
+  ],
+  "canonicalStates": [
+    { "name": "manual_follow", "isFollowing": true, "source": "manual" },
+    { "name": "manual_unfollow", "isFollowing": false, "source": "manual", "preservedAgainstAutoFollow": true },
+    { "name": "reply_auto_follow", "isFollowing": true, "source": "reply", "serverDerived": true },
+    { "name": "mention_auto_follow", "isFollowing": true, "source": "mention", "serverDerived": true }
+  ],
+  "canonicalFollowFields": [
+    { "name": "target", "type": "threadTarget" },
+    { "name": "isFollowing", "type": "boolean" },
+    { "name": "source", "type": "followSource", "source": "server" },
+    { "name": "updatedAt", "type": "IsoTimestamp", "source": "server" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "explicitIntent", "correlation": "exactRequestEcho" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "target", "type": "threadTarget", "correlation": "exactRequestEcho" },
+    { "name": "expectedFollowRevision", "type": "nonnegativeSafeInteger", "correlation": "exactRequestEcho" },
+    { "name": "idempotencyKey", "type": "boundedNonblankString", "correlation": "exactRequestEcho" },
+    { "name": "followRevision", "type": "nonnegativeSafeInteger" },
+    { "name": "follow", "type": "canonicalPrivateFollowState", "delivery": "affectedUserOnly" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "authoritativeState": "requestedManualState", "revisionRule": "expectedPlusOne" },
+    { "name": "replayed", "authoritativeState": "requestedManualState", "revisionRule": "expectedPlusOne" },
+    { "name": "already_requested_state", "authoritativeState": "requestedManualState", "revisionRule": "equalsExpected" },
+    { "name": "follow_revision_conflict", "authoritativeState": "currentPrivateFollowState", "revisionRule": "differentFromExpected" }
+  ],
+  "autoFollowPolicy": {
+    "origin": "server_policy",
+    "sources": ["reply", "mention"],
+    "whenExplicitlyUnfollowed": "preserve_explicit_unfollow",
+    "callerAuthored": false
+  },
+  "trustedContextAliases": [
+    "tenant", "tenantId", "organization", "organizationId", "actor", "actorId",
+    "actorContext", "actorRole", "actorRoles", "actorUserId", "currentActor",
+    "currentActorId", "currentUser", "currentUserId", "user", "userId",
+    "principal", "principalId", "subject", "subjectId", "authenticatedUser",
+    "authenticatedUserId", "identity", "session", "sessionId", "auth",
+    "authentication", "authorization", "role", "roles", "capability",
+    "capabilities", "permission", "permissions"
+  ],
+  "parentTargetAliases": [
+    "parent", "parentId", "parentConversation", "parentConversationId",
+    "channel", "channelId", "parentChannel", "parentChannelId"
+  ],
+  "callerAuthoredSourceAliases": [
+    "source", "followSource", "autoFollowSource", "participationSource",
+    "participationCause"
+  ],
+  "coherenceRules": {
+    "rejectUnknownFields": true,
+    "rejectNormalizedTrustedAliasesRecursively": true,
+    "rejectNormalizedParentTargetsRecursively": true,
+    "rejectCallerAuthoredSourcesRecursively": true,
+    "rejectToggleInputs": true,
+    "requestEchoesMustMatch": true,
+    "canonicalTargetMustMatchRequest": true,
+    "settledStateMustMatchManualIntent": true,
+    "conflictStateMustDifferFromIntent": true,
+    "statusSpecificRevisionRules": true,
+    "manualUnfollowCannotCarryAutoSource": true,
+    "timestampsMustBeFiniteIso8601": true
+  }
+}

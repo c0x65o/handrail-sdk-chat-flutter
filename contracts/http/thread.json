@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "method": "POST",
+  "path": "/messages/:rootMessageId/thread",
+  "operation": "create_thread",
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "parentConversationId", "type": "ConversationId" },
+    { "name": "rootMessageId", "type": "MessageId" },
+    { "name": "name", "type": "ThreadConversationName", "optional": true },
+    { "name": "initialFollow", "type": "boolean", "optional": true },
+    { "name": "idempotencyKey", "type": "nonBlankString" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    {
+      "name": "reconciliationStatus",
+      "type": "reconciliationStatus"
+    },
+    {
+      "name": "parentConversationId",
+      "type": "ConversationId",
+      "source": "requestEcho"
+    },
+    {
+      "name": "rootMessageId",
+      "type": "MessageId",
+      "source": "requestEcho"
+    },
+    {
+      "name": "conversation",
+      "type": "ConversationDetailSnapshot",
+      "constraint": "thread"
+    },
+    {
+      "name": "rootThreadSummary",
+      "type": "ThreadSummary",
+      "source": "server"
+    }
+  ],
+  "reconciliationStatuses": [
+    {
+      "name": "created",
+      "canonicalState": "newThreadConversation"
+    },
+    {
+      "name": "existing_for_root",
+      "canonicalState": "existingRootThreadConversation"
+    },
+    {
+      "name": "replayed",
+      "canonicalState": "storedAuthoritativeResult"
+    }
+  ],
+  "coherenceRules": {
+    "resultIdentifiersMatchRequest": true,
+    "conversationType": "thread",
+    "conversationParentMatchesResult": true,
+    "conversationRootMatchesResult": true,
+    "rootThreadSummaryThreadIdMatchesConversation": true
+  },
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "role",
+    "roles",
+    "capability",
+    "capabilities",
+    "permissions"
+  ]
+}

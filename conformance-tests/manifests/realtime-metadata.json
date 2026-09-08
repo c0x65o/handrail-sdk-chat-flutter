@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "realtime-metadata",
+  "typescript": {
+    "command": [
+      "node",
+      "--test",
+      "test/realtime-metadata-conformance.test.mjs"
+    ]
+  },
+  "dart": {
+    "command": [
+      "flutter",
+      "test",
+      "--concurrency=2",
+      "--no-pub",
+      "test/realtime_metadata_conformance_test.dart"
+    ],
+    "cwd": ".",
+    "repository": "flutter"
+  },
+  "generator": {
+    "command": [
+      "node",
+      "scripts/generate-handshake.mjs",
+      "--check"
+    ],
+    "regenerateScript": "generate:handshake"
+  }
+}

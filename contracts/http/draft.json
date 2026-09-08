@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "method": "PATCH",
+  "path": "/conversations/:conversationId/draft",
+  "operation": "synchronize_draft",
+  "intents": [
+    {
+      "name": "replace",
+      "requiresContent": true,
+      "canonicalKind": "replaced"
+    },
+    {
+      "name": "clear",
+      "requiresContent": false,
+      "canonicalKind": "clear_tombstone"
+    }
+  ],
+  "content": {
+    "formats": ["plain", "markdown"],
+    "maximumTextUtf8Bytes": 65536,
+    "replyReference": {
+      "field": "replyTo",
+      "model": "MessageReplyReference",
+      "presence": "optional",
+      "sendField": "replyTo"
+    },
+    "mentionReferenceModel": "MessageMention",
+    "mentionReferenceTypes": ["user", "conversation", "entity"],
+    "maximumMentionReferences": 64,
+    "uniqueMentionReferences": true,
+    "attachmentReferenceField": "attachmentId",
+    "maximumAttachmentReferences": 32,
+    "uniqueAttachmentReferences": true
+  },
+  "identifiers": {
+    "maximumUtf8Bytes": 255,
+    "nonBlank": true,
+    "trimmed": true,
+    "nfcNormalized": true,
+    "safeUnicode": true
+  },
+  "baseRevision": {
+    "minimum": 0,
+    "mustBeSafeInteger": true,
+    "mustBeAdvanceable": true
+  },
+  "deviceMutationId": {
+    "required": true,
+    "source": "client"
+  },
+  "idempotencyKey": {
+    "required": true,
+    "nonBlank": true,
+    "maximumUtf8Bytes": 255
+  },
+  "inputFields": [
+    {"name": "operation", "source": "client"},
+    {"name": "intent", "source": "client"},
+    {"name": "conversationId", "source": "path_and_client_echo"},
+    {"name": "baseRevision", "source": "client"},
+    {"name": "deviceMutationId", "source": "client"},
+    {"name": "idempotencyKey", "source": "client"},
+    {"name": "content", "source": "client_replace_only"}
+  ],
+  "canonicalStates": [
+    {"name": "replaced", "content": "DraftContent"},
+    {"name": "clear_tombstone", "content": null}
+  ],
+  "reconciliationStatuses": [
+    {"name": "applied", "requestedStateMustMatch": true},
+    {"name": "replayed", "requestedStateMustMatch": true},
+    {"name": "stale_base", "canonicalRevisionMustExceedBase": true}
+  ],
+  "resultFields": [
+    {"name": "operation", "echo": "exact"},
+    {"name": "intent", "echo": "exact"},
+    {"name": "reconciliationStatus", "source": "server"},
+    {"name": "conversationId", "echo": "exact"},
+    {"name": "baseRevision", "echo": "exact"},
+    {"name": "deviceMutationId", "echo": "exact"},
+    {"name": "idempotencyKey", "echo": "exact"},
+    {"name": "canonicalRevision", "source": "server"},
+    {"name": "canonicalUpdatedAt", "source": "server"},
+    {"name": "draft", "source": "server"}
+  ],
+  "event": {
+    "type": "conversation.draft.updated",
+    "durability": "durable",
+    "visibility": "private_user_stream",
+    "streamId": "user:${actorUserId}",
+    "payloadFields": [
+      {"name": "actorUserId", "source": "server"},
+      {"name": "input", "source": "validated_request"},
+      {"name": "result", "source": "validated_result"}
+    ]
+  },
+  "trustedContextAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "role",
+    "roles",
+    "capability",
+    "capabilities",
+    "permission",
+    "permissions"
+  ]
+}

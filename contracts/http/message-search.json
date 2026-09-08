@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "method": "POST",
+  "path": "/messages/search",
+  "request": {
+    "fields": ["query", "filters", "pageSize", "cursor"],
+    "queryNormalization": ["nfc", "trim", "collapse_whitespace"],
+    "queryMustBeNonBlank": true,
+    "filters": {
+      "fields": ["conversationIds", "authorUserIds", "sentAfter", "sentBefore"],
+      "identifiersMustBeUnique": true,
+      "sentRange": "sentAfter_strictly_before_sentBefore"
+    },
+    "pageSize": { "minimum": 1, "maximum": 100 },
+    "cursor": { "opaque": true, "nonBlank": true, "maximumLength": 2048 }
+  },
+  "response": {
+    "fields": ["hits", "nextCursor"],
+    "order": "server_relevance_order",
+    "hitIdentityMustBeUnique": true,
+    "cursor": { "opaque": true, "nonBlank": true, "maximumLength": 2048 }
+  },
+  "hits": [
+    {
+      "type": "conversation",
+      "fields": ["type", "conversationId", "title", "snippet"],
+      "identity": ["type", "conversationId"]
+    },
+    {
+      "type": "message",
+      "fields": [
+        "type",
+        "conversationId",
+        "messageId",
+        "title",
+        "snippet",
+        "authorUserId",
+        "authorDisplayName",
+        "sentAt"
+      ],
+      "identity": ["type", "messageId"]
+    }
+  ],
+  "text": {
+    "snippetFormat": "plain_text",
+    "titleMaximumLength": 512,
+    "snippetMaximumLength": 4096,
+    "authorDisplayNameMaximumLength": 256
+  },
+  "authorization": {
+    "identityComesFromTrustedContext": true,
+    "filterConversationIdsMustBeAuthorized": true,
+    "hitConversationIdsMustBeAuthorized": true
+  },
+  "identifiers": { "maximumLength": 255 },
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "role",
+    "roles",
+    "capability",
+    "capabilities",
+    "permission",
+    "permissions"
+  ]
+}

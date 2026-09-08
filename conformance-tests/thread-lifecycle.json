@@ -1,0 +1,197 @@
+{
+  "valid": [
+    {
+      "revision": 1,
+      "locked": false
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 9007199254740991,
+      "locked": true,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": "user-closer"
+    }
+  ],
+  "invalid": [
+    null,
+    false,
+    1,
+    "open",
+    [],
+    {},
+    {
+      "locked": false
+    },
+    {
+      "revision": 1
+    },
+    {
+      "revision": null,
+      "locked": false
+    },
+    {
+      "revision": "1",
+      "locked": false
+    },
+    {
+      "revision": true,
+      "locked": false
+    },
+    {
+      "revision": 0,
+      "locked": false
+    },
+    {
+      "revision": -1,
+      "locked": false
+    },
+    {
+      "revision": 1.5,
+      "locked": false
+    },
+    {
+      "revision": 9007199254740992,
+      "locked": false
+    },
+    {
+      "revision": 1,
+      "locked": null
+    },
+    {
+      "revision": 1,
+      "locked": 0
+    },
+    {
+      "revision": 1,
+      "locked": "false"
+    },
+    {
+      "revision": 1,
+      "locked": []
+    },
+    {
+      "revision": 1,
+      "locked": {}
+    },
+    {
+      "revision": 1,
+      "locked": true
+    },
+    {
+      "revision": 1,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z"
+    },
+    {
+      "revision": 1,
+      "locked": false,
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": null,
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": null
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": false,
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": false
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": 42,
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": 42
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": [],
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": []
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": {},
+      "closedByUserId": "user-closer"
+    },
+    {
+      "revision": 2,
+      "locked": false,
+      "closedAt": "2026-09-06T12:00:00.000Z",
+      "closedByUserId": {}
+    },
+    {
+      "revision": 1,
+      "locked": false,
+      "hidden": true
+    },
+    {
+      "revision": 1,
+      "locked": false,
+      "archivedAt": true
+    },
+    {
+      "revision": 1,
+      "locked": false,
+      "isFollowing": true
+    },
+    {
+      "revision": 1,
+      "locked": false,
+      "currentPreference": true
+    }
+  ],
+  "invalidRevisions": [
+    null,
+    "1",
+    true,
+    0,
+    -1,
+    1.5,
+    9007199254740992
+  ],
+  "privateExtras": {
+    "actorUserId": "user-1",
+    "currentMember": {},
+    "currentReadState": {},
+    "currentPreference": {},
+    "currentThreadFollow": {},
+    "memberUserIds": [
+      "user-1"
+    ],
+    "isFollowing": true,
+    "notificationPreference": "all"
+  }
+}

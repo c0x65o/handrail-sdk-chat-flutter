@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "method": "PATCH",
+  "path": "/conversations/:conversationId/membership",
+  "operation": "mutate_conversation_membership",
+  "idempotencyKey": { "minimumUtf8Bytes": 1, "maximumUtf8Bytes": 255 },
+  "intents": [
+    { "name": "join", "targetUserId": "forbidden", "requestedRole": "forbidden", "affectedUser": "trustedActor" },
+    { "name": "leave", "targetUserId": "forbidden", "requestedRole": "forbidden", "affectedUser": "trustedActor" },
+    { "name": "add_member", "targetUserId": "required", "requestedRole": "required", "affectedUser": "targetUserId" },
+    { "name": "remove_member", "targetUserId": "required", "requestedRole": "forbidden", "affectedUser": "targetUserId" },
+    { "name": "change_member_role", "targetUserId": "required", "requestedRole": "required", "affectedUser": "targetUserId" }
+  ],
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "membershipIntent" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "targetUserId", "type": "UserId", "intentSpecific": true },
+    { "name": "requestedRole", "type": "conversationMemberRole", "intentSpecific": true },
+    { "name": "expectedMemberListRevision", "type": "positiveSafeInteger", "correlation": "exactResultEcho" },
+    { "name": "idempotencyKey", "type": "boundedNonBlankUtf8String" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "membershipIntent", "correlation": "exactRequestEcho" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "conversationId", "type": "ConversationId", "correlation": "exactRequestEcho" },
+    { "name": "expectedMemberListRevision", "type": "positiveSafeInteger", "correlation": "exactRequestEcho" },
+    { "name": "memberListRevision", "type": "positiveSafeInteger" },
+    { "name": "memberUserId", "type": "UserId" },
+    { "name": "members", "type": "canonicalCompleteMemberRows" },
+    { "name": "targetUserId", "type": "UserId", "intentSpecific": true, "correlation": "exactRequestEcho" },
+    { "name": "requestedRole", "type": "conversationMemberRole", "intentSpecific": true, "correlation": "exactRequestEcho" },
+    { "name": "safetyError", "type": "membershipSafetyError", "status": "safety_rejected" }
+  ],
+  "memberRow": {
+    "fields": [
+      { "name": "userId", "type": "UserId" },
+      { "name": "role", "type": "conversationMemberRole" },
+      { "name": "state", "type": "conversationMemberState" },
+      { "name": "joinedAt", "type": "IsoTimestamp" },
+      { "name": "updatedAt", "type": "IsoTimestamp" }
+    ],
+    "roles": ["owner", "moderator", "member"],
+    "states": ["active", "left", "removed"],
+    "complete": true,
+    "uniqueBy": "userId",
+    "canonicalOrder": "ascendingUtf16CodeUnits",
+    "nonEmpty": true
+  },
+  "reconciliationStatuses": [
+    { "name": "applied", "revisionRule": "expectedPlusOne" },
+    { "name": "replayed", "revisionRule": "expectedPlusOne" },
+    { "name": "already_requested_state", "revisionRule": "expectedUnchanged" },
+    { "name": "member_list_conflict", "revisionRule": "differentFromExpected" },
+    { "name": "safety_rejected", "revisionRule": "expectedUnchanged" }
+  ],
+  "safetyErrors": [
+    { "code": "last_owner", "intents": ["leave", "remove_member", "change_member_role"], "affectedMemberState": "active", "affectedMemberRole": "owner", "activeOwnerCount": 1 },
+    { "code": "last_active_member", "intents": ["leave", "remove_member"], "affectedMemberState": "active", "activeMemberCount": 1 }
+  ],
+  "coherenceRules": {
+    "resultIntentMatchesRequest": true,
+    "resultConversationMatchesRequest": true,
+    "resultExpectedRevisionMatchesRequest": true,
+    "targetAndRoleShapeMatchesIntent": true,
+    "targetedMemberUserIdMatchesTargetUserId": true,
+    "resultTargetAndRoleMatchRequest": true,
+    "settledAffectedMemberMatchesRequestedStateAndRole": true,
+    "conflictMayOmitAffectedMember": true,
+    "safetyResultPreservesAffectedActiveMember": true
+  },
+  "trustedContextAliases": [
+    "tenant", "tenantId", "organization", "organizationId", "actor", "actorId",
+    "actorContext", "actorRole", "actorRoles", "actorUserId", "currentActor",
+    "currentActorId", "currentUser", "currentUserId", "user", "userId",
+    "principal", "principalId", "subject", "subjectId", "authenticatedUser",
+    "authenticatedUserId", "identity", "session", "sessionId", "auth",
+    "authorization", "role", "roles", "capability", "capabilities",
+    "permission", "permissions", "visibility", "visibilityAuthorization",
+    "entity", "entityId", "entityType", "hostEntity", "hostEntityId",
+    "hostEntityType", "hostEntityAuthorization"
+  ]
+}

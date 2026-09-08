@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "endpoint": {
+    "method": "GET",
+    "path": "/conversations/:parentConversationId/threads"
+  },
+  "request": {
+    "required": [
+      "parentConversationId"
+    ],
+    "optional": [
+      "view",
+      "limit",
+      "cursor"
+    ],
+    "views": [
+      "active",
+      "all"
+    ],
+    "defaultView": "active",
+    "defaultLimit": 50,
+    "minimumLimit": 1,
+    "maximumLimit": 100,
+    "maxIdentifierUtf8Bytes": 255,
+    "identifiers": "nonempty_unpadded_control_free_valid_unicode",
+    "query": "view, limit (canonical decimal integer), cursor; no body or trusted identity fields",
+    "parent": "server validates an authorized unarchived channel in the trusted tenant"
+  },
+  "cursor": {
+    "prefix": "handrail-threads.v1.",
+    "maximumLength": 4096,
+    "encoding": "unpadded base64url of UTF-8 JSON with fields in the order below; reject noncanonical encodings",
+    "fields": [
+      "parentConversationId",
+      "view",
+      "createdAt",
+      "threadId"
+    ],
+    "scope": "parentConversationId and resolved view; limit may change; tenant/actor/access are always reauthorized from the session, never from a cursor",
+    "order": "thread.createdAt normalized/truncated to UTC milliseconds descending, thread.id ascending by UTF-8 bytes (database C collation); exclusive continuation using the same normalized keys",
+    "consistency": "immutable creation keys avoid activity reordering; live pages recheck access/archive/lifecycle and current policy/time, not a frozen snapshot",
+    "invalid": "reject malformed, oversized, unknown-version, wrong-parent or wrong-view cursors; never silently restart"
+  },
+  "response": {
+    "required": [
+      "parentConversationId",
+      "view",
+      "evaluatedAt",
+      "lifecycleSupported",
+      "items"
+    ],
+    "optional": [
+      "inactivityPolicy",
+      "nextCursor"
+    ],
+    "itemFields": [
+      "thread",
+      "currentThreadFollow",
+      "lastActivityAt",
+      "hideAt"
+    ],
+    "thread": "ThreadConversationSnapshotSummary from conversation-snapshot-runtime.ts / ConversationSnapshotSummary containing canonical ThreadConversation in Dart",
+    "follow": "NonNullable<ConversationDetailSnapshotConversation['currentThreadFollow']>; canonical follow state, null only at revision zero",
+    "lifecycle": "canonical optional ThreadLifecycle from contracts/models/conversation.json; absent means legacy open/unlocked",
+    "timestamps": "discovery evaluatedAt, lastActivityAt and cursor/summary createdAt use canonical four-digit-year UTC ISO with exactly millisecond precision",
+    "hideAt": "null when policy absent/false; otherwise finite Unix milliseconds = lastActivityAt epoch milliseconds + hideAfterMs (fractional positive durations supported without rounding)",
+    "validation": "reject unknown envelope/item/thread fields, invalid canonical summaries/follows, parent mismatch, archived threads, duplicate IDs, unsorted or non-advancing pages, excess items, invalid expiry or empty-thread activity, active hidden/closed entries; nextCursor must describe the last item of a nonempty full page"
+  },
+  "inactivity": {
+    "resolvedPolicy": "false | { hideAfterMs: positive finite number }; absent is disabled",
+    "source": "src/server/thread-list-handler-options.ts ChatThreadListHandlerOptions.resolveInactivityPolicy",
+    "resolution": "only after trusted tenant and parent authorization; invalid configuration/results and resolver errors disable hiding",
+    "activity": "latest actual persisted thread message created_at, falling back to thread created_at only for an empty thread; never conversation.updated_at; summary.activityAt equals lastActivityAt",
+    "doesNotRefresh": [
+      "reads",
+      "follows",
+      "preferences",
+      "renames",
+      "reactions",
+      "edits",
+      "lifecycle operations",
+      "failed sends",
+      "idempotent retries"
+    ],
+    "boundary": "hidden when elapsed inactivity (evaluatedAt - lastActivityAt) >= hideAfterMs; hideAt is the derived IEEE-754 Unix-millisecond projection, so use elapsed time for comparison to avoid rounding very small positive durations to zero",
+    "behavior": "computed discovery only; no stored hidden flag, lifecycle transition, worker, scheduler or write; a user reply-style preference never enables shared hiding"
+  },
+  "eligibility": {
+    "active": "authorized, parent/thread unarchived, open (absent lifecycle is open/unlocked), and before enabled hideAt",
+    "all": "includes authorized hidden/closed discoverable history; never bypass parent/thread archive, tenant, entity or access policy",
+    "independence": "follow, unread, notification preference, membership and access are independent; no follow or invitation-only private-thread requirement; private parent access remains required; reads must not materialize membership/follow/read/preference rows",
+    "capability": "lifecycleSupported is server authority, not caller input; false rejects lifecycle metadata and preserves legacy eligibility; advertise lifecycle-dependent discovery/controls only once shared persistence, hydration and enforcement support the semantics; do not infer support from user style or a model parser"
+  },
+  "transport": {
+    "success": 200,
+    "invalidInput": 400,
+    "unavailableParent": "existing non-disclosing access/not-found error policy",
+    "failures": "transport failures stay errors; malformed responses throw, never become an empty page",
+    "implementation": "contract only; SQL, routing, client/UI and handshake rollout belong to later items"
+  }
+}

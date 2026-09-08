@@ -1,0 +1,18 @@
+{
+  "id": "valid-current-protocol",
+  "expected": "accept",
+  "expectedClientState": "ready",
+  "metadata": {
+    "packageVersion": "0.1.3",
+    "protocolVersion": 4,
+    "schemaVersion": 1,
+    "enabledFeatures": {
+      "threads": true,
+      "huddles": false
+    },
+    "supportedProtocolRange": {
+      "minimumVersion": 3,
+      "maximumVersion": 4
+    }
+  }
+}

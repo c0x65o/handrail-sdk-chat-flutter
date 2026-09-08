@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "feature": { "name": "message_timeline", "version": 1 },
+  "endpoint": {
+    "method": "GET",
+    "path": "/conversations/:conversationId/messages"
+  },
+  "request": {
+    "directions": ["backward", "forward"],
+    "cursor": {
+      "type": "MessageSequence",
+      "scope": "conversation",
+      "exclusive": true,
+      "minimum": 0
+    },
+    "limit": { "minimum": 1, "maximum": 100 }
+  },
+  "response": {
+    "name": "MessageTimelinePage",
+    "conversationField": "conversationId",
+    "messagesField": "messages",
+    "order": "sequence_ascending",
+    "orderIndependentOfRequestDirection": true
+  },
+  "message": {
+    "baseType": "Message",
+    "replyReference": {
+      "field": "replyTo",
+      "type": "MessageReplyReference",
+      "presence": "optional",
+      "validation": "canonical_message_model",
+      "preservedOnDeletedMessages": true,
+      "infersThreadRoot": false,
+      "synthesizesForwardSnapshot": false
+    },
+    "threadRoot": {
+      "discriminator": "isThreadRoot",
+      "summaryField": "threadSummary",
+      "summaryRequiredWhenRoot": true,
+      "summaryForbiddenWhenNotRoot": true,
+      "threadConversationMustDiffer": true
+    },
+    "reactions": {
+      "field": "reactions",
+      "aggregateType": "MessageReactionAggregate",
+      "keyField": "reactionKey",
+      "countMinimum": 1,
+      "uniqueBy": "reactionKey",
+      "currentUserField": "reactedByCurrentUser"
+    },
+    "attachments": {
+      "referenceField": "content.attachments",
+      "metadataField": "attachmentMetadata",
+      "metadataType": "MessageAttachmentMetadata",
+      "identityField": "attachmentId",
+      "alignment": "reference_order_exact",
+      "fields": [
+        { "name": "attachmentId", "type": "AttachmentId", "presence": "required" },
+        { "name": "fileName", "type": "string", "presence": "required" },
+        { "name": "contentType", "type": "string", "presence": "required" },
+        { "name": "sizeBytes", "type": "integer", "presence": "required", "minimum": 0 },
+        { "name": "downloadUrl", "type": "string", "presence": "required" },
+        { "name": "previewUrl", "type": "string", "presence": "optional" },
+        { "name": "width", "type": "integer", "presence": "optional", "minimum": 1 },
+        { "name": "height", "type": "integer", "presence": "optional", "minimum": 1 },
+        { "name": "altText", "type": "string", "presence": "optional" }
+      ]
+    }
+  },
+  "pagination": {
+    "olderField": "older",
+    "newerField": "newer",
+    "availableField": "available",
+    "cursorField": "cursor",
+    "cursorExclusive": true,
+    "olderCursorEqualsFirstSequence": true,
+    "newerCursorEqualsLastSequence": true,
+    "emptyPageHasNoBoundaries": true
+  },
+  "replay": {
+    "field": "replay",
+    "resumeField": "resumeFrom",
+    "cursorType": "EventCursor",
+    "semantics": "strictly_after_snapshot"
+  },
+  "invariants": [
+    "conversation_match",
+    "message_count_at_most_request_limit",
+    "unique_sequences",
+    "exclusive_request_cursor",
+    "ascending_response_order",
+    "canonical_optional_reply_reference",
+    "reply_reference_independent_of_thread_and_forward",
+    "consistent_thread_enrichment",
+    "unique_reaction_aggregates",
+    "attachment_metadata_matches_references",
+    "valid_page_boundaries",
+    "valid_replay_cursor"
+  ]
+}

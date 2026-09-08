@@ -1,0 +1,297 @@
+{
+  "snapshot": "- menu \"Popup menu\":\n  - group:\n    - menuitem \"Join\" [disabled]\n    - 'menuitem \"Notifications: all\" [disabled]'\n    - 'menuitem \"Notifications: mentions\" [disabled]'\n    - 'menuitem \"Notifications: none\" [disabled]'\n    - menuitem \"Unmute\" [disabled]\n    - menuitem \"Mute indefinitely\" [disabled]\n    - menuitem \"Mute for 1 hour\" [disabled]\n    - menuitem \"Retry loading subscriptions\"",
+  "state": {
+    "mode": "shared-backend",
+    "actor": "bob",
+    "instanceId": "09cc43d02b2911e0ff91788be8ae55ae",
+    "seedProfile": "reply-styles",
+    "availableActors": {
+      "alice": "Alice",
+      "bob": "Bob"
+    },
+    "endpoint": "http://127.0.0.1:4167/api/chat",
+    "identity": {
+      "tenantId": "chat-lab",
+      "userId": "bob",
+      "deviceId": "device-a0497479-84f4-4e24-900d-0f34d685caf9-165"
+    },
+    "realtime": "connected",
+    "clientLifecycle": "ready",
+    "clientDiagnostic": null,
+    "listError": null,
+    "error": null,
+    "selectedConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+    "conversationIds": [
+      "14d069be-fbde-4a1b-b3f5-628f843fc1ae"
+    ],
+    "hydratedTimelineIds": [
+      "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "cbd12df4-cae6-460d-bc79-1a84c2eef246"
+    ],
+    "cursor": null,
+    "timelineReplayCursor": {
+      "eventId": "b53cda88-31c7-4004-8a0f-0f077d41627c"
+    },
+    "durableStreams": {
+      "user:bob": {
+        "lastEventId": "aa654141-3249-417f-a6ed-07136443c6ab",
+        "lastOccurredAt": "2026-09-07T17:57:48.821Z"
+      }
+    },
+    "messages": [
+      {
+        "id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+        "canonicalSummary": {
+          "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+          "replyCount": 3,
+          "participantIds": [
+            "bob"
+          ],
+          "unreadCount": 1,
+          "lastReplyAt": "2026-09-07T17:56:54.729Z"
+        },
+        "projectedSummary": {
+          "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+          "replyCount": 3,
+          "participantIds": [
+            "bob"
+          ],
+          "unreadCount": 1,
+          "lastReplyAt": "2026-09-07T17:56:54.729Z"
+        }
+      },
+      {
+        "id": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+        "canonicalSummary": {
+          "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        },
+        "projectedSummary": {
+          "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        }
+      },
+      {
+        "id": "6e96cf41-702e-4ed7-a10e-2a4c18a8e1f2",
+        "canonicalSummary": null,
+        "projectedSummary": null
+      }
+    ],
+    "diagnostics": [
+      "conversation.list:completed",
+      "reply.style.preference:completed",
+      "message.timeline:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "durable_event_recovery",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "connection_lost",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "reply.style.preference:completed",
+      "durable_event_recovery",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "connection_lost",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "durable_event_recovery",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "connection_lost",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "conversation.detail:completed",
+      "durable_event_recovery",
+      "conversation.detail:response_malformed",
+      "message.timeline:completed",
+      "message_reminder.list:completed",
+      "conversation.list:completed",
+      "conversation.detail:completed",
+      "message.timeline:completed",
+      "conversation.detail:response_malformed",
+      "snapshot_hydration_failed",
+      "reply.style.preference:completed",
+      "conversation.detail:completed",
+      "conversation.detail:response_malformed",
+      "conversation.detail:completed"
+    ],
+    "provenance": {
+      "sourceRevision": "43b47b93a69523fee5376dfcc1745297b58c6857",
+      "sourceDigest": "f5c932a70abde412965137aa0ed4872624273bfb913aa179f86ec7ceefa308a1",
+      "builtAt": "2026-09-07T17:01:10.989Z",
+      "packageVersion": "0.1.19"
+    }
+  },
+  "requests": [
+    {
+      "surface": "flutter",
+      "at": "2026-09-07T17:50:13.044Z",
+      "path": "/api/chat/conversations/14d069be-fbde-4a1b-b3f5-628f843fc1ae/messages",
+      "method": "POST",
+      "status": 201,
+      "request": {
+        "operation": "send",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "content": {
+          "format": "plain",
+          "text": "Friday",
+          "attachments": []
+        },
+        "replyTo": {
+          "messageId": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+          "notifyAuthor": true
+        },
+        "clientMessageId": "message:5eafb32e0f9bf6db041e6bc688154a41",
+        "idempotencyKey": "command:e1f47742c4b077b9f4909460ba6be34f"
+      },
+      "body": {
+        "operation": "send",
+        "reconciliationStatus": "applied",
+        "clientMessageId": "message:5eafb32e0f9bf6db041e6bc688154a41",
+        "message": {
+          "id": "6e96cf41-702e-4ed7-a10e-2a4c18a8e1f2",
+          "tenantId": "chat-lab",
+          "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+          "author": {
+            "type": "user",
+            "userId": "bob"
+          },
+          "sequence": 3,
+          "createdAt": "2026-09-07T17:50:12.966Z",
+          "updatedAt": "2026-09-07T17:50:12.966Z",
+          "revision": {
+            "revision": 1
+          },
+          "content": {
+            "format": "plain",
+            "text": "Friday",
+            "attachments": []
+          },
+          "replyTo": {
+            "messageId": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+            "notifyAuthor": true
+          }
+        },
+        "canonicalRevision": 1
+      }
+    },
+    {
+      "surface": "flutter",
+      "at": "2026-09-07T17:58:41.853Z",
+      "path": "/api/chat/messages/30876de8-24e3-4d0d-bb31-4b4e89dffb9f/thread",
+      "method": "POST",
+      "status": 201,
+      "request": {
+        "operation": "create_thread",
+        "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "rootMessageId": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+        "name": "QA 298e20b4 Flutter named thread",
+        "initialFollow": true,
+        "idempotencyKey": "command:9abee940a712da1995416db7e6f68c3e"
+      },
+      "body": {
+        "operation": "create_thread",
+        "reconciliationStatus": "created",
+        "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "rootMessageId": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+        "conversation": {
+          "kind": "conversation_detail",
+          "conversation": {
+            "id": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+            "tenantId": "chat-lab",
+            "type": "thread",
+            "visibility": "public",
+            "name": "QA 298e20b4 Flutter named thread",
+            "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+            "rootMessageId": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+            "createdAt": "2026-09-07T17:58:41.823Z",
+            "updatedAt": "2026-09-07T17:58:41.823Z",
+            "latestSequence": 0,
+            "activityAt": "2026-09-07T17:58:41.823Z",
+            "unreadMentionCount": 0,
+            "currentMember": {
+              "tenantId": "chat-lab",
+              "conversationId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+              "userId": "bob",
+              "role": "owner",
+              "state": "active",
+              "joinedAt": "2026-09-07T17:58:41.823Z",
+              "updatedAt": "2026-09-07T17:58:41.823Z"
+            },
+            "currentReadState": {
+              "conversationId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+              "userId": "bob",
+              "lastReadSequence": 0,
+              "updatedAt": "2026-09-07T17:58:41.823Z"
+            },
+            "activeMemberUserIds": [
+              "bob"
+            ],
+            "memberUserIds": [
+              "bob"
+            ],
+            "currentPreference": {
+              "preferenceRevision": 1,
+              "conversationId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+              "userId": "bob",
+              "isStarred": false,
+              "notificationPreference": "all",
+              "mute": {
+                "muted": false
+              },
+              "updatedAt": "2026-09-07T17:58:41.823Z"
+            }
+          },
+          "_meta": {
+            "packageVersion": "1.0.17",
+            "protocolVersion": 4,
+            "schemaVersion": 43,
+            "enabledFeatures": {
+              "inlineReplies": true,
+              "namedThreads": true,
+              "reply_style_preference_v1": true,
+              "threadLifecycle": true,
+              "threadDiscovery": true,
+              "threadInactivity": false,
+              "attachments": true,
+              "notifications": true,
+              "audit": false,
+              "realtime": true,
+              "media": true,
+              "typing": true,
+              "presence": true
+            },
+            "supportedProtocolRange": {
+              "minimumVersion": 3,
+              "maximumVersion": 4
+            },
+            "feature": {
+              "name": "conversation_snapshots",
+              "version": 1
+            }
+          }
+        },
+        "rootThreadSummary": {
+          "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        }
+      }
+    }
+  ]
+}

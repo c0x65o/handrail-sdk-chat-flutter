@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "path": "/preferences/reply-style",
+  "methods": ["GET", "PATCH"],
+  "operation": "update_reply_style_preference",
+  "scope": "trustedSessionTenantAndUser",
+  "delivery": "affectedUserOnly",
+  "feature": { "name": "reply_style_preference_v1", "missing": false, "advertiseRuntime": true, "defaultEnabled": false, "requires": "hostOptInAndPersistenceReadiness" },
+  "styles": ["current", "discord"],
+  "fallbackStyle": "current",
+  "maxSafeRevision": 9007199254740991,
+  "idempotencyKeyMaxUtf8Bytes": 255,
+  "get": {
+    "inputFields": [],
+    "transport": "No body, query parameters, or caller identity; empty parser input represents GET.",
+    "result": "preferenceState"
+  },
+  "preferenceStates": [
+    { "state": "absent", "fields": ["state", "revision"], "revision": 0, "style": "forbidden" },
+    { "state": "saved", "fields": ["state", "revision", "style"], "revision": "positiveSafeInteger", "style": "rawStringIncludingUnknown" }
+  ],
+  "readPolicy": "Preserve every saved string exactly, including unknown or malformed style strings, and its positive canonical revision. Resolve unsupported saved strings to current without rewriting, normalizing, deleting, or treating them as absent. Non-string styles are malformed wire data, not absence. Resolution is a value fallback only; host precedence and loading state are separate runtime work.",
+  "inputFields": ["operation", "style", "baseRevision", "idempotencyKey"],
+  "inputRules": {
+    "style": "supportedLiteralOnly",
+    "baseRevision": "integerFromZeroThroughMaxSafeRevisionMinusOne",
+    "idempotencyKey": "NFC, nonblank, no surrounding whitespace, no C0/C1 controls or unpaired surrogates, at most idempotencyKeyMaxUtf8Bytes; preserve exact bytes"
+  },
+  "resultFields": ["operation", "reconciliationStatus", "baseRevision", "idempotencyKey", "requestedStyle", "preference"],
+  "reconciliationStatuses": [
+    { "name": "applied", "revisionRule": "basePlusOne", "stateRule": "savedRequestedStyle" },
+    { "name": "replayed", "revisionRule": "basePlusOne", "stateRule": "savedRequestedStyle" },
+    { "name": "already_requested_state", "revisionRule": "equalsBase", "stateRule": "savedRequestedStyle" },
+    { "name": "preference_revision_conflict", "revisionRule": "differentFromBase", "stateRule": "authoritativeAbsentOrSavedIncludingUnknown" }
+  ],
+  "mutationPolicy": "Exact operation/baseRevision/idempotencyKey/desired-style echoes correlate every result to the request in the trusted session. CAS mismatch is a conflict even if styles match. An absent preference is never already_requested_state, including when saving current at base 0: first explicit save advances to 1. A matching existing saved choice at matching revision is a no-op. Applied increments by exactly one. Replay returns the original applied snapshot/revision, not a newer current snapshot; clients must avoid regressing newer confirmed state. Retrying a no-op or conflict returns its original status/result. Idempotency is scoped to trusted tenant+user+operation; a key is bound to the exact request, and reuse with a different payload is rejected, never replayed as success. No deletion/reset operation is defined.",
+  "httpResults": { "applied": 200, "replayed": 200, "already_requested_state": 200, "preference_revision_conflict": 409, "malformedRequest": 400, "idempotencyKeyReuse": 409 },
+  "trustedContextAliases": [
+    "tenant", "tenantId", "organization", "organizationId", "actor", "actorId",
+    "actorContext", "actorRole", "actorRoles", "actorUserId", "currentActor", "currentActorId",
+    "currentUser", "currentUserId", "user", "userId", "otherUser", "otherUserId",
+    "arbitraryUser", "arbitraryUserId", "targetUser", "targetUserId", "principal", "principalId",
+    "subject", "subjectId", "authenticatedUser", "authenticatedUserId", "identity", "session",
+    "sessionId", "auth", "authentication", "authorization", "role", "roles", "capability",
+    "capabilities", "permission", "permissions"
+  ],
+  "coherenceRules": {
+    "rejectUnknownFields": true,
+    "rejectNormalizedTrustedAliasesRecursively": true,
+    "requestEchoesMustMatch": true,
+    "statusSpecificRevisionRules": true,
+    "preserveUnknownSavedValues": true
+  }
+}

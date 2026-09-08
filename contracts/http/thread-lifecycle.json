@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "operation": "update_thread_lifecycle",
+  "endpoint": {
+    "method": "PATCH",
+    "path": "/conversations/:threadId/lifecycle",
+    "transport": "threadId comes from the path; JSON body contains the other inputFields only; no query parameters. The normalized input combines the path and body. Only existing thread conversations are eligible."
+  },
+  "feature": {
+    "name": "thread_lifecycle_v1",
+    "missing": false,
+    "advertiseRuntime": false,
+    "gate": "Require explicit true server feature support before exposing controls or sending requests. This descriptor reserves the feature only; do not register a route or change the handshake. Support requires shared persistence, hydration, authorization and send enforcement."
+  },
+  "model": {
+    "source": "contracts/models/conversation.json#threadLifecycle",
+    "typescript": "ThreadLifecycle / validateThreadLifecycle",
+    "dart": "ThreadLifecycle.fromJson",
+    "legacy": "Missing conversation metadata means open/unlocked; the enabled server materializes revision 1 as the baseline when evaluating a write. Administrative archive is never cleared. Responses always contain explicit canonical metadata."
+  },
+  "maxSafeRevision": 9007199254740991,
+  "inputFields": [
+    "operation",
+    "intent",
+    "threadId",
+    "expectedLifecycleRevision",
+    "idempotencyKey"
+  ],
+  "resultFields": [
+    "operation",
+    "intent",
+    "threadId",
+    "expectedLifecycleRevision",
+    "idempotencyKey",
+    "reconciliationStatus",
+    "previousLifecycle",
+    "threadLifecycle"
+  ],
+  "scalarRules": "Identifiers and idempotency keys are nonblank strings, preserved exactly. Revisions are positive safe integers. Reject unknown/missing fields and any trusted context aliases, recursively and independent of punctuation/case. No toggles or caller state.",
+  "intents": [
+    "close",
+    "reopen",
+    "lock",
+    "unlock"
+  ],
+  "transitions": {
+    "open": {
+      "close": "closed",
+      "reopen": "open",
+      "lock": "locked",
+      "unlock": "open"
+    },
+    "closed": {
+      "close": "closed",
+      "reopen": "open",
+      "lock": "locked",
+      "unlock": "closed"
+    },
+    "locked": {
+      "close": "locked",
+      "reopen": null,
+      "lock": "locked",
+      "unlock": "closed"
+    }
+  },
+  "stateRules": "open has no closure pair and locked=false; closed has a closure pair and locked=false; locked has a closure pair and locked=true. Reuse the canonical validators. An applied transition to open removes both closure fields. When both before and after are closed, preserve closedAt and closedByUserId exactly. Closing an open thread obtains both values from trusted server context. Unlock of an already open/unlocked thread is a no-op and cannot close it.",
+  "reconciliationStatuses": [
+    {
+      "name": "applied",
+      "revisionRule": "previousEqualsExpected; resultEqualsExpectedPlusOne",
+      "stateRule": "changedAccordingToTransitionMatrix"
+    },
+    {
+      "name": "replayed",
+      "revisionRule": "originalAppliedSnapshot",
+      "stateRule": "sameRulesAsApplied"
+    },
+    {
+      "name": "already_requested_state",
+      "revisionRule": "previousAndResultEqualExpected",
+      "stateRule": "unchangedAndMatrixTargetEqualsPrevious"
+    },
+    {
+      "name": "lifecycle_conflict",
+      "revisionRule": "previousEqualsResult",
+      "stateRule": "unchangedAndEitherRevisionMismatchOrReopenLocked"
+    }
+  ],
+  "ordering": "After current access/archive/authority checks and idempotency lookup, compare revisions first. Any revision mismatch is a lifecycle_conflict even when desired state already matches (including a future expected revision). At matching revision, locked reopen conflicts; unchanged target is already_requested_state; otherwise apply exactly one revision increment. A mutation at maxSafeRevision is rejected as revision_exhausted without writing; no-op/conflict at the boundary remain valid. Never wrap or round revisions.",
+  "idempotency": "Scope keys to trusted tenant+actor+operation; bind the exact threadId, intent, expectedLifecycleRevision and idempotencyKey. Different payload reuse is an idempotency_key_reuse transport error, never an applied/no-op/replay. An exact retry of an applied result returns replayed with its original before/after canonical snapshot, even if newer state now exists. Exact retries of no-op/conflict return the original status and snapshot. Access, archive and operation authority must be rechecked on all retries; idempotency grants no access. Clients must not regress a newer confirmed revision when receiving historical reconciliation. Parsers check every echo against the expected input; storage binding and snapshot authenticity remain server responsibilities.",
+  "guards": {
+    "all": "Current trusted tenant, parent and entity access; existing thread and parent both unarchived. Preserve private-parent access rules; child membership/follow is not an access grant. Serialize with sends and concurrent lifecycle/archive/access changes; only committed results are authoritative.",
+    "reopen": "Existing send authority (message.send fallback), and unlocked thread.",
+    "closeLockUnlock": "Manage authority (thread owner/moderator or explicit host thread.manage), in addition to all access guards."
+  },
+  "preservation": "Hidden is computed discovery policy and archive is independent. No transition changes IDs, history, follows, preferences, unread state, message activity or saved reply style. A style preference never changes shared lifecycle. No persistence, command, route, client controller, discovery, inactivity or authorization implementation is included here.",
+  "httpResults": {
+    "applied": 200,
+    "replayed": 200,
+    "already_requested_state": 200,
+    "lifecycle_conflict": 409,
+    "malformedRequest": 400,
+    "idempotency_key_reuse": 409,
+    "revision_exhausted": 409,
+    "denied": "existing non-disclosing authorization/not-found policy; no canonical result disclosed"
+  },
+  "trustedContextAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "role",
+    "roles",
+    "capability",
+    "capabilities",
+    "permission",
+    "permissions",
+    "entity",
+    "entityId",
+    "entityType",
+    "hostEntity",
+    "hostEntityId",
+    "hostEntityType",
+    "hostEntityAuthorization",
+    "authentication",
+    "closedAt",
+    "closedByUserId",
+    "locked",
+    "revision",
+    "lifecycleRevision",
+    "previousLifecycle",
+    "threadLifecycle",
+    "lifecycle",
+    "canonicalState",
+    "archiveState",
+    "archivedAt",
+    "archivedByUserId"
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "enums": [
+    {
+      "name": "ConversationType",
+      "values": ["channel", "direct", "group_direct", "thread"]
+    },
+    {
+      "name": "ConversationVisibility",
+      "values": ["public", "private"]
+    }
+  ],
+  "hostEntityReference": {
+    "name": "HostEntityReference",
+    "description": "An opaque reference to an entity owned and authorized by the host application.",
+    "fields": [
+      { "name": "type", "type": "string" },
+      { "name": "id", "type": "string" }
+    ]
+  },
+  "sharedFields": [
+    { "name": "id", "type": "ConversationId" },
+    { "name": "tenantId", "type": "TenantId" },
+    { "name": "createdAt", "type": "IsoTimestamp" },
+    { "name": "updatedAt", "type": "IsoTimestamp" }
+  ],
+  "archiveState": {
+    "active": [
+      { "name": "archivedAt", "type": "IsoTimestamp", "presence": "never" },
+      {
+        "name": "archivedByUserId",
+        "type": "UserId",
+        "presence": "never"
+      }
+    ],
+    "archived": [
+      {
+        "name": "archivedAt",
+        "type": "IsoTimestamp",
+        "presence": "required"
+      },
+      {
+        "name": "archivedByUserId",
+        "type": "UserId",
+        "presence": "required"
+      }
+    ]
+  },
+  "threadLifecycle": {
+    "name": "ThreadLifecycle",
+    "description": "Shared thread close/lock metadata. Absence means legacy open/unlocked and never clears administrative archive. Unlocking leaves the closure pair intact. Hiding is computed discovery policy, not stored state.",
+    "fields": [
+      {
+        "name": "revision",
+        "type": "positiveSafeInteger",
+        "presence": "required"
+      },
+      {
+        "name": "locked",
+        "type": "boolean",
+        "presence": "required"
+      }
+    ],
+    "revisionValidation": {
+      "minimum": 1,
+      "maximum": 9007199254740991,
+      "mustBeSafeInteger": true
+    },
+    "closureState": {
+      "open": [
+        {
+          "name": "closedAt",
+          "type": "IsoTimestamp",
+          "presence": "never"
+        },
+        {
+          "name": "closedByUserId",
+          "type": "UserId",
+          "presence": "never"
+        }
+      ],
+      "closed": [
+        {
+          "name": "closedAt",
+          "type": "IsoTimestamp",
+          "presence": "required"
+        },
+        {
+          "name": "closedByUserId",
+          "type": "UserId",
+          "presence": "required"
+        }
+      ]
+    },
+    "rules": {
+      "openLocked": false,
+      "closedLocked": "boolean",
+      "unknownFields": "reject",
+      "nullFields": "reject",
+      "archiveIndependent": true,
+      "legacyAbsence": "open_unlocked"
+    }
+  },
+  "variants": [
+    {
+      "name": "ChannelConversation",
+      "wireType": "channel",
+      "description": "A named public or private channel, optionally attached to a host entity.",
+      "fields": [
+        { "name": "threadLifecycle", "type": "ThreadLifecycle", "presence": "never" },
+        { "name": "name", "type": "string", "presence": "required" },
+        {
+          "name": "visibility",
+          "type": "ConversationVisibility",
+          "presence": "required"
+        },
+        {
+          "name": "entity",
+          "type": "HostEntityReference",
+          "presence": "optional"
+        },
+        {
+          "name": "parentConversationId",
+          "type": "ConversationId",
+          "presence": "never"
+        },
+        {
+          "name": "rootMessageId",
+          "type": "MessageId",
+          "presence": "never"
+        }
+      ]
+    },
+    {
+      "name": "DirectConversation",
+      "wireType": "direct",
+      "description": "A private one-to-one conversation. Membership is modeled separately.",
+      "fields": [
+        { "name": "threadLifecycle", "type": "ThreadLifecycle", "presence": "never" },
+        {
+          "name": "visibility",
+          "type": "ConversationVisibility",
+          "presence": "required",
+          "allowedValues": ["private"]
+        },
+        { "name": "name", "type": "string", "presence": "never" },
+        {
+          "name": "entity",
+          "type": "HostEntityReference",
+          "presence": "never"
+        },
+        {
+          "name": "parentConversationId",
+          "type": "ConversationId",
+          "presence": "never"
+        },
+        {
+          "name": "rootMessageId",
+          "type": "MessageId",
+          "presence": "never"
+        }
+      ]
+    },
+    {
+      "name": "GroupDirectConversation",
+      "wireType": "group_direct",
+      "description": "A private multi-person direct conversation. Membership is modeled separately.",
+      "fields": [
+        { "name": "threadLifecycle", "type": "ThreadLifecycle", "presence": "never" },
+        {
+          "name": "visibility",
+          "type": "ConversationVisibility",
+          "presence": "required",
+          "allowedValues": ["private"]
+        },
+        { "name": "name", "type": "string", "presence": "never" },
+        {
+          "name": "entity",
+          "type": "HostEntityReference",
+          "presence": "never"
+        },
+        {
+          "name": "parentConversationId",
+          "type": "ConversationId",
+          "presence": "never"
+        },
+        {
+          "name": "rootMessageId",
+          "type": "MessageId",
+          "presence": "never"
+        }
+      ]
+    },
+    {
+      "name": "ThreadConversation",
+      "wireType": "thread",
+      "description": "A standalone reply stream rooted in a message from its parent conversation.",
+      "fields": [
+        { "name": "threadLifecycle", "type": "ThreadLifecycle", "presence": "optional" },
+        {
+          "name": "visibility",
+          "type": "ConversationVisibility",
+          "presence": "required"
+        },
+        {
+          "name": "parentConversationId",
+          "type": "ConversationId",
+          "presence": "required"
+        },
+        {
+          "name": "rootMessageId",
+          "type": "MessageId",
+          "presence": "required"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "presence": "optional",
+          "validation": {
+            "minLength": 1,
+            "maxLength": 100,
+            "lengthUnit": "unicode_scalar_values",
+            "normalization": "reject_untrimmed",
+            "malformedUnicode": "reject",
+            "whitespaceCodePoints": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              32,
+              133,
+              160,
+              5760,
+              8192,
+              8193,
+              8194,
+              8195,
+              8196,
+              8197,
+              8198,
+              8199,
+              8200,
+              8201,
+              8202,
+              8232,
+              8233,
+              8239,
+              8287,
+              12288,
+              65279
+            ]
+          }
+        },
+        {
+          "name": "entity",
+          "type": "HostEntityReference",
+          "presence": "never"
+        }
+      ]
+    }
+  ],
+  "union": {
+    "name": "Conversation",
+    "variants": [
+      "ChannelConversation",
+      "DirectConversation",
+      "GroupDirectConversation",
+      "ThreadConversation"
+    ]
+  }
+}

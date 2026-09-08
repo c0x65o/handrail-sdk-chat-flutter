@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "statuses": [
+    "supported",
+    "host_composed",
+    "not_applicable",
+    "product_decision_required"
+  ],
+  "surfaces": [
+    "server",
+    "typescript_client",
+    "react_ui",
+    "flutter_client",
+    "flutter_widgets"
+  ],
+  "capabilities": [
+    {
+      "id": "conversation_creation",
+      "description": "Create channels and resolve or create direct and group-direct conversations.",
+      "surfaces": {
+        "server": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/server/index.ts",
+              "source": "src/server/create-conversation-command.ts",
+              "symbol": "createConversation"
+            }
+          ]
+        },
+        "typescript_client": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/client/index.ts",
+              "source": "src/client/create-chat-client.ts",
+              "symbol": "createChannel"
+            }
+          ]
+        },
+        "react_ui": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/ui/index.ts",
+              "source": "src/ui/chat-workspace.ts",
+              "symbol": "ChatWorkspace"
+            }
+          ]
+        },
+        "flutter_client": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "flutter/lib/core.dart",
+              "source": "flutter/lib/src/core/conversation_creation_command.dart",
+              "symbol": "createChannel"
+            }
+          ]
+        },
+        "flutter_widgets": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "flutter/lib/ui.dart",
+              "source": "flutter/lib/src/handrail_chat_workspace.dart",
+              "symbol": "HandrailChatWorkspace"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "conversation_archive_restore",
+      "description": "Archive or restore a conversation through its revisioned lifecycle command.",
+      "surfaces": {
+        "server": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/server/index.ts",
+              "source": "src/server/archive-conversation-command.ts",
+              "symbol": "archiveConversation"
+            }
+          ]
+        },
+        "typescript_client": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/client/index.ts",
+              "source": "src/client/create-chat-client.ts",
+              "symbol": "archiveConversation"
+            }
+          ]
+        },
+        "react_ui": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/ui/index.ts",
+              "source": "src/ui/slots.ts",
+              "symbol": "ChatChannelHeaderActions"
+            }
+          ]
+        },
+        "flutter_client": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "flutter/lib/core.dart",
+              "source": "flutter/lib/src/core/conversation_archive_command.dart",
+              "symbol": "archiveConversation"
+            }
+          ]
+        },
+        "flutter_widgets": {
+          "status": "product_decision_required",
+          "reason": "No public Flutter widget currently owns archive or restore controls, and pilot documentation assigns that control only to the React ChannelHeader surface."
+        }
+      }
+    },
+    {
+      "id": "directory_search",
+      "description": "Search the host-authorized user directory for conversation composition and membership workflows.",
+      "surfaces": {
+        "server": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/server/index.ts",
+              "source": "src/server/create-chat-server.ts",
+              "symbol": "HOST_DIRECTORY_SEARCH_ROUTE"
+            }
+          ]
+        },
+        "typescript_client": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/client/index.ts",
+              "source": "src/client/create-chat-client.ts",
+              "symbol": "searchDirectoryUsers"
+            }
+          ]
+        },
+        "react_ui": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/react/index.ts",
+              "source": "src/react/query-hooks.ts",
+              "symbol": "useDirectorySearch"
+            }
+          ]
+        },
+        "flutter_client": {
+          "status": "host_composed",
+          "reason": "Flutter directory search is intentionally supplied by the host through HandrailMemberDirectorySearchDelegate instead of HandrailChatClient."
+        },
+        "flutter_widgets": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "flutter/lib/ui.dart",
+              "source": "flutter/lib/src/handrail_member_picker.dart",
+              "symbol": "HandrailMemberPicker"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "saved_messages",
+      "description": "List the current actor's saved messages and explicitly save or unsave a message.",
+      "surfaces": {
+        "server": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/server/index.ts",
+              "source": "src/server/saved-message-list-query.ts",
+              "symbol": "querySavedMessageList"
+            },
+            {
+              "entryPoint": "src/server/index.ts",
+              "source": "src/server/set-saved-message-command.ts",
+              "symbol": "setSavedMessage"
+            }
+          ]
+        },
+        "typescript_client": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/client/index.ts",
+              "source": "src/client/create-chat-client.ts",
+              "symbol": "listSavedMessages"
+            },
+            {
+              "entryPoint": "src/client/index.ts",
+              "source": "src/client/create-chat-client.ts",
+              "symbol": "saveMessage"
+            }
+          ]
+        },
+        "react_ui": {
+          "status": "supported",
+          "citations": [
+            {
+              "entryPoint": "src/react/index.ts",
+              "source": "src/react/query-hooks.ts",
+              "symbol": "useSavedMessages"
+            },
+            {
+              "entryPoint": "src/ui/index.ts",
+              "source": "src/ui/message-timeline.ts",
+              "symbol": "MessageTimeline"
+            }
+          ]
+        },
+        "flutter_client": {
+          "status": "product_decision_required",
+          "reason": "Flutter reduces saved-message events into normalized state but exposes no public list, save, or unsave client operation. Generated event contracts alone are not client support."
+        },
+        "flutter_widgets": {
+          "status": "product_decision_required",
+          "reason": "No public Flutter widget exposes saved-message mutation or listing, and ownership of a Flutter saved-items experience is not documented."
+        }
+      }
+    },
+    {
+      "id": "attachments",
+      "description": "Prepare, upload, finalize, abort, download, compose, and render message attachments.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/prepare-attachment-command.ts", "symbol": "prepareAttachment" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "uploadAttachment" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useAttachmentUpload" }, { "entryPoint": "src/ui/index.ts", "source": "src/ui/message-composer.ts", "symbol": "MessageComposer" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "uploadAttachment" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_attachment_preview.dart", "symbol": "HandrailAttachmentPreview" }, { "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_message_composer.dart", "symbol": "HandrailMessageComposer" }] }
+      }
+    },
+    {
+      "id": "conversation_browsing",
+      "description": "List conversations, load conversation detail, and render the selected conversation workspace.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/conversation-list-query.ts", "symbol": "queryConversationList" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "listConversations" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useConversations" }, { "entryPoint": "src/ui/index.ts", "source": "src/ui/chat-workspace.ts", "symbol": "ChatWorkspace" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "listConversations" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_channel_list.dart", "symbol": "HandrailChannelList" }] }
+      }
+    },
+    {
+      "id": "conversation_membership",
+      "description": "Join or leave conversations and add, remove, or change the role of conversation members.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/conversation-membership-command.ts", "symbol": "mutateConversationMembership" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "addConversationMember" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/ui/index.ts", "source": "src/ui/member-management.ts", "symbol": "MemberManagement" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/core/conversation_membership_command.dart", "symbol": "addConversationMember" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_chat_workspace.dart", "symbol": "HandrailWorkspaceMemberConfiguration" }] }
+      }
+    },
+    {
+      "id": "conversation_preferences",
+      "description": "Update per-conversation starred, notification, and mute preferences.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/update-conversation-preference-command.ts", "symbol": "updateConversationPreference" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "updateConversationPreference" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/action-hooks.ts", "symbol": "updateConversationPreference" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/core/conversation_preference_command.dart", "symbol": "updateConversationPreference" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_channel_header.dart", "symbol": "HandrailChannelHeader" }] }
+      }
+    },
+    {
+      "id": "deep_links",
+      "description": "Parse, authorize, hydrate, and hand off links to conversations, messages, and threads.",
+      "surfaces": {
+        "server": { "status": "not_applicable", "reason": "Chat deep-link parsing and navigation are host application concerns; the server exposes the underlying authorized conversation and timeline queries instead." },
+        "typescript_client": { "status": "host_composed", "reason": "Browser hosts currently own URL parsing and routing around the TypeScript client's public conversation and message queries." },
+        "react_ui": { "status": "host_composed", "reason": "React hosts currently connect their router to ChatWorkspace and ThreadPanel; no public React deep-link resolver is exported." },
+        "flutter_client": { "status": "host_composed", "reason": "The pure-Dart core entry point intentionally excludes application routing; Flutter application bindings own deep-link resolution." },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/chat_deep_link.dart", "symbol": "ChatDeepLinkResolver" }] }
+      }
+    },
+    {
+      "id": "device_push_registration",
+      "description": "Register, refresh, rotate, and unregister provider push tokens for a trusted device.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/device-push-token-command.ts", "symbol": "updateDevicePushToken" }] },
+        "typescript_client": { "status": "product_decision_required", "reason": "The TypeScript client exposes no device push-token registration operation, so browser push registration policy and API ownership require a product decision." },
+        "react_ui": { "status": "product_decision_required", "reason": "No React provider or UI contract registers browser push subscriptions, so permission prompting and registration ownership require a product decision." },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "registerPushToken" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/chat_scope.dart", "symbol": "ChatScope" }, { "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/chat_push_token.dart", "symbol": "ChatPushTokenDelegate" }] }
+      }
+    },
+    {
+      "id": "drafts",
+      "description": "Hydrate, edit, synchronize, clear, recover, and render actor-private conversation drafts.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/synchronize-draft-command.ts", "symbol": "synchronizeDraft" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "replaceConversationDraft" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useDraft" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "synchronizeDraft" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_message_composer.dart", "symbol": "HandrailMessageComposer" }] }
+      }
+    },
+    {
+      "id": "huddles",
+      "description": "Hydrate, start, join, leave, screen-share, end, and render realtime huddle sessions.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/start-huddle-command.ts", "symbol": "startHuddle" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "startHuddle" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/ui/index.ts", "source": "src/ui/huddle-controls.ts", "symbol": "HuddleControls" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/core/huddle_controller.dart", "symbol": "ChatHuddleController" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_huddle_panel.dart", "symbol": "HandrailHuddlePanel" }] }
+      }
+    },
+    {
+      "id": "message_reminders",
+      "description": "List, schedule, replace, cancel, recover, and render actor-private message reminders.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/set-message-reminder-command.ts", "symbol": "setMessageReminder" }, { "entryPoint": "src/server/index.ts", "source": "src/server/message-reminder-list-query.ts", "symbol": "queryMessageReminderList" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "setMessageReminder" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useMessageReminders" }, { "entryPoint": "src/ui/index.ts", "source": "src/ui/message-timeline.ts", "symbol": "MessageTimeline" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/core/message_reminder_command.dart", "symbol": "setMessageReminder" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_message_timeline.dart", "symbol": "HandrailMessageTimeline" }] }
+      }
+    },
+    {
+      "id": "message_search",
+      "description": "Search authorized conversations and messages with filters, pagination, and result navigation.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/message-search-query.ts", "symbol": "queryMessageSearch" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "searchMessages" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useMessageSearch" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "searchMessages" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_message_search.dart", "symbol": "HandrailMessageSearch" }] }
+      }
+    },
+    {
+      "id": "messages",
+      "description": "Load timelines and send, retry, forward, edit, delete, compose, and render messages.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/send-message-command.ts", "symbol": "sendMessage" }, { "entryPoint": "src/server/index.ts", "source": "src/server/message-timeline-query.ts", "symbol": "queryMessageTimeline" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "sendMessage" }, { "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "getMessageTimeline" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useMessages" }, { "entryPoint": "src/ui/index.ts", "source": "src/ui/message-timeline.ts", "symbol": "MessageTimeline" }, { "entryPoint": "src/ui/index.ts", "source": "src/ui/message-composer.ts", "symbol": "MessageComposer" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "sendMessage" }, { "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "getMessageTimeline" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_message_timeline.dart", "symbol": "HandrailMessageTimeline" }, { "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_message_composer.dart", "symbol": "HandrailMessageComposer" }] }
+      }
+    },
+    {
+      "id": "notifications",
+      "description": "Dispatch durable chat notifications while letting hosts own provider delivery and platform presentation.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/notification-dispatcher.ts", "symbol": "createChatNotificationDispatcher" }] },
+        "typescript_client": { "status": "host_composed", "reason": "Browser notification permission, service-worker registration, and presentation are owned by the host; the TypeScript client exposes no notification-delivery API." },
+        "react_ui": { "status": "host_composed", "reason": "React hosts own notification permission and presentation; the SDK UI only exposes per-conversation notification preferences." },
+        "flutter_client": { "status": "host_composed", "reason": "Flutter hosts own provider SDK setup and received-notification presentation; core only registers the host-supplied device token." },
+        "flutter_widgets": { "status": "host_composed", "reason": "Flutter application code owns OS permission prompts and notification routing outside the SDK widget tree." }
+      }
+    },
+    {
+      "id": "presence",
+      "description": "Publish, reduce, and observe ephemeral online, away, and offline presence signals.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/websocket-ephemeral-signals.ts", "symbol": "createChatEphemeralSignalController" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "setPresence" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "usePresence" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "setPresence" }] },
+        "flutter_widgets": { "status": "product_decision_required", "reason": "Flutter exports presence state and client commands but no public widget presents or changes presence, so that widget experience requires a product decision." }
+      }
+    },
+    {
+      "id": "reactions",
+      "description": "Add or remove message reactions and render aggregate reaction state.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/set-reaction-command.ts", "symbol": "setReaction" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "setReaction" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/ui/index.ts", "source": "src/ui/reaction-picker.ts", "symbol": "ReactionPicker" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "setReaction" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_reaction_picker.dart", "symbol": "HandrailReactionPicker" }] }
+      }
+    },
+    {
+      "id": "read_state",
+      "description": "Track unread boundaries and receipts and explicitly mark conversation sequences read or unread.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/update-read-cursor-command.ts", "symbol": "updateReadCursor" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "markRead" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useReadState" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "markRead" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/chat_read_tracker.dart", "symbol": "ChatReadTracker" }] }
+      }
+    },
+    {
+      "id": "realtime",
+      "description": "Negotiate, connect, subscribe, replay, recover, revalidate, and close realtime chat sessions.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/websocket-subscriptions.ts", "symbol": "authorizeChatWebSocketStream" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/realtime-session.ts", "symbol": "createChatRealtimeSession" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/index.ts", "symbol": "ChatProvider" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/realtime_session_transport.dart", "symbol": "ChatRealtimeSessionTransport" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/chat_scope.dart", "symbol": "ChatScope" }] }
+      }
+    },
+    {
+      "id": "thread_following",
+      "description": "Follow or unfollow a thread and reconcile actor-private thread-follow state.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/set-thread-follow-command.ts", "symbol": "setThreadFollow" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "followThread" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/ui/index.ts", "source": "src/ui/thread-panel.ts", "symbol": "ThreadPanel" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/core/thread_follow_command.dart", "symbol": "followThread" }] },
+        "flutter_widgets": { "status": "product_decision_required", "reason": "Flutter exports thread-follow state and commands but HandrailThreadView exposes no follow or unfollow control, so that widget experience requires a product decision." }
+      }
+    },
+    {
+      "id": "threads",
+      "description": "Create or resolve a thread from a root message and render its replies as a conversation.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/create-thread-command.ts", "symbol": "createThread" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "openThread" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/ui/index.ts", "source": "src/ui/thread-panel.ts", "symbol": "ThreadPanel" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/core/thread_opening_controller.dart", "symbol": "ChatThreadOpeningController" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_thread_view.dart", "symbol": "HandrailThreadView" }] }
+      }
+    },
+    {
+      "id": "typing",
+      "description": "Publish, reduce, observe, and render ephemeral per-conversation typing signals.",
+      "surfaces": {
+        "server": { "status": "supported", "citations": [{ "entryPoint": "src/server/index.ts", "source": "src/server/websocket-ephemeral-signals.ts", "symbol": "createChatEphemeralSignalController" }] },
+        "typescript_client": { "status": "supported", "citations": [{ "entryPoint": "src/client/index.ts", "source": "src/client/create-chat-client.ts", "symbol": "startTyping" }] },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/react/index.ts", "source": "src/react/query-hooks.ts", "symbol": "useTyping" }] },
+        "flutter_client": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/core.dart", "source": "flutter/lib/src/handrail_chat_client.dart", "symbol": "startTyping" }] },
+        "flutter_widgets": { "status": "supported", "citations": [{ "entryPoint": "flutter/lib/ui.dart", "source": "flutter/lib/src/handrail_typing_indicator.dart", "symbol": "HandrailTypingIndicator" }] }
+      }
+    },
+    {
+      "id": "user_status",
+      "description": "Display and author a directory user's availability, custom status, emoji, and expiry.",
+      "surfaces": {
+        "server": { "status": "host_composed", "reason": "User profile status is sourced and persisted by the host directory adapter; the chat server exposes no status mutation command." },
+        "typescript_client": { "status": "host_composed", "reason": "The TypeScript client hydrates host directory status but exposes no operation that persists a user's custom status." },
+        "react_ui": { "status": "supported", "citations": [{ "entryPoint": "src/ui/index.ts", "source": "src/ui/user-status-selector.ts", "symbol": "UserStatusSelector" }] },
+        "flutter_client": { "status": "host_composed", "reason": "Flutter hosts supply directory rows and own custom-status persistence; HandrailChatClient has no user-status mutation operation." },
+        "flutter_widgets": { "status": "product_decision_required", "reason": "No public Flutter widget authors custom user status, so parity with the React UserStatusSelector requires a product decision." }
+      }
+    }
+  ]
+}

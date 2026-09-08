@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "durability": "ephemeral",
+  "eventEnvelope": {
+    "fields": [
+      "eventId",
+      "protocolVersion",
+      "tenantId",
+      "streamId",
+      "type",
+      "occurredAt",
+      "payload"
+    ],
+    "occurredAtMatches": "payload.sentAt"
+  },
+  "provenanceFields": [
+    "actorUserId",
+    "deviceId",
+    "sessionId"
+  ],
+  "timestampFields": [
+    "sentAt",
+    "expiresAt"
+  ],
+  "sequence": {
+    "minimum": 1,
+    "maximum": 9007199254740991,
+    "scope": "actor-device-session"
+  },
+  "features": {
+    "typing": {
+      "eventType": "typing.signal",
+      "states": [
+        "start",
+        "stop"
+      ],
+      "maximumTtlMs": 15000,
+      "stream": "conversation",
+      "scopes": [
+        {
+          "type": "conversation",
+          "visibility": "private",
+          "audience": "members"
+        },
+        {
+          "type": "conversation",
+          "visibility": "public",
+          "audience": "active_participants"
+        }
+      ]
+    },
+    "presence": {
+      "eventType": "presence.signal",
+      "states": [
+        "online",
+        "away",
+        "offline"
+      ],
+      "maximumTtlMs": 120000,
+      "stream": "user_private",
+      "scope": {
+        "type": "user_private",
+        "streamPrefix": "user:"
+      }
+    }
+  }
+}

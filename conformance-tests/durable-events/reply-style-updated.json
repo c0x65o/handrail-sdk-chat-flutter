@@ -1,0 +1,485 @@
+{
+  "valid": [
+    {
+      "name": "correlated current revision 1",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z",
+        "mutation": {
+          "operation": "update_reply_style_preference",
+          "style": "current",
+          "baseRevision": 0,
+          "idempotencyKey": "style:2"
+        }
+      }
+    },
+    {
+      "name": "correlated discord revision 9007199254740991",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 9007199254740991,
+          "style": "discord"
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z",
+        "mutation": {
+          "operation": "update_reply_style_preference",
+          "style": "discord",
+          "baseRevision": 9007199254740990,
+          "idempotencyKey": "style:2"
+        }
+      }
+    },
+    {
+      "name": "uncorrelated saved 'current'",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "current"
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "uncorrelated saved 'discord'",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "discord"
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "uncorrelated saved 'future-style-v2'",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "future-style-v2"
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "uncorrelated saved ''",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": ""
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "uncorrelated saved ' Discord '",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": " Discord "
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z"
+      }
+    },
+    {
+      "name": "uncorrelated saved 'garbage\\\\value'",
+      "payload": {
+        "actorUserId": "user-1",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "garbage\\value"
+        },
+        "updatedAt": "2026-09-06T12:00:00.000Z"
+      }
+    }
+  ],
+  "rejections": [
+    {
+      "path": "streamId",
+      "value": "conversation-1",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "streamId",
+      "value": "thread-1",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "streamId",
+      "value": "user-1",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "streamId",
+      "value": "user:user-2",
+      "code": "private_stream_mismatch"
+    },
+    {
+      "path": "tenantId",
+      "value": "tenant-2",
+      "code": "tenant_mismatch"
+    },
+    {
+      "path": "payload.actorUserId",
+      "value": "user-2",
+      "code": "private_stream_mismatch"
+    },
+    {
+      "path": "payload.actorUserId",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.actorUserId",
+      "value": 7,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.actorUserId",
+      "value": "",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": 0,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": -1,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": 1.5,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": "2",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "value": 9007199254740992,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "value": {},
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "value": [],
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "value": false,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "value": 2,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference",
+      "value": {},
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference",
+      "value": [],
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference",
+      "value": {
+        "state": "absent",
+        "revision": 0
+      },
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference",
+      "value": {
+        "state": "saved",
+        "revision": 1,
+        "style": "current",
+        "tenantId": "tenant-2"
+      },
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": 3,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "not-a-date",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "2026-02-30T12:00:00.000Z",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "2026-09-06",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "2026-09-06T25:00:00.000Z",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "2026-09-06T12:00:00Z",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "2026-09-06T12:00:00.000+00:00",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "value": "2026-09-06T12:00:00.000Z ",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation",
+      "value": {},
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation",
+      "value": [],
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation",
+      "value": false,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": -1,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": 0,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": 2,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": 1.5,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": "1",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": 9007199254740991,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "value": 9007199254740992,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.style",
+      "value": "current",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.style",
+      "value": "future-style-v2",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.style",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.style",
+      "value": 2,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "value": "",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "value": " key ",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "value": "e\u0301",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "value": "key\n",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "value": null,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.operation",
+      "value": "wrong",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.tenantId",
+      "value": "tenant-2",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.conversationId",
+      "value": "conversation-1",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.replyTo",
+      "value": {
+        "messageId": "source",
+        "notifyAuthor": true
+      },
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "value": "future-style-v2",
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.actorUserId",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.updatedAt",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.style",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.preference.revision",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.operation",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.baseRevision",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.style",
+      "remove": true,
+      "code": "incoherent_payload"
+    },
+    {
+      "path": "payload.mutation.idempotencyKey",
+      "remove": true,
+      "code": "incoherent_payload"
+    }
+  ]
+}

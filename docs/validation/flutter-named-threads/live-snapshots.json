@@ -1,0 +1,393 @@
+{
+  "parent": {
+    "kind": "conversation_detail",
+    "conversation": {
+      "id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "tenantId": "chat-lab",
+      "visibility": "public",
+      "createdAt": "2026-09-07T17:01:11.512Z",
+      "updatedAt": "2026-09-07T18:50:47.775Z",
+      "latestSequence": 4,
+      "activityAt": "2026-09-07T18:50:47.775889Z",
+      "unreadMentionCount": 0,
+      "activeMemberUserIds": [
+        "alice",
+        "bob"
+      ],
+      "currentMember": {
+        "tenantId": "chat-lab",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "userId": "alice",
+        "role": "owner",
+        "state": "active",
+        "joinedAt": "2026-09-07T17:01:11.512Z",
+        "updatedAt": "2026-09-07T17:01:11.512Z"
+      },
+      "currentReadState": {
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "userId": "alice",
+        "lastReadSequence": 4,
+        "updatedAt": "2026-09-07T18:52:47.139Z"
+      },
+      "currentPreference": {
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "userId": "alice",
+        "isStarred": false,
+        "notificationPreference": "all",
+        "mute": {
+          "muted": false
+        },
+        "updatedAt": "2026-09-07T17:01:11.512Z"
+      },
+      "type": "channel",
+      "name": "Launch planning",
+      "memberUserIds": [
+        "alice",
+        "bob"
+      ],
+      "memberListRevision": 2
+    },
+    "_meta": {
+      "packageVersion": "1.0.17",
+      "protocolVersion": 4,
+      "schemaVersion": 43,
+      "enabledFeatures": {
+        "inlineReplies": true,
+        "namedThreads": true,
+        "reply_style_preference_v1": true,
+        "threadLifecycle": true,
+        "threadDiscovery": true,
+        "threadInactivity": false,
+        "attachments": true,
+        "notifications": true,
+        "audit": false,
+        "realtime": true,
+        "media": true,
+        "typing": true,
+        "presence": true
+      },
+      "supportedProtocolRange": {
+        "minimumVersion": 3,
+        "maximumVersion": 4
+      },
+      "feature": {
+        "name": "conversation_snapshots",
+        "version": 1
+      }
+    }
+  },
+  "parentTimeline": {
+    "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+    "messages": [
+      {
+        "id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+        "tenantId": "chat-lab",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "author": {
+          "type": "user",
+          "userId": "alice"
+        },
+        "sequence": 1,
+        "createdAt": "2026-09-07T17:01:11.589Z",
+        "updatedAt": "2026-09-07T17:01:11.589Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "Which launch date?",
+          "format": "plain"
+        },
+        "isThreadRoot": true,
+        "threadSummary": {
+          "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+          "replyCount": 3,
+          "participantIds": [
+            "bob"
+          ],
+          "unreadCount": 0,
+          "lastReplyAt": "2026-09-07T17:56:54.729Z"
+        }
+      },
+      {
+        "id": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+        "tenantId": "chat-lab",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "author": {
+          "type": "user",
+          "userId": "bob"
+        },
+        "replyTo": {
+          "messageId": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+          "notifyAuthor": true
+        },
+        "sequence": 2,
+        "createdAt": "2026-09-07T17:46:11.301Z",
+        "updatedAt": "2026-09-07T17:46:11.301Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "Friday",
+          "format": "plain"
+        },
+        "isThreadRoot": true,
+        "threadSummary": {
+          "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        }
+      },
+      {
+        "id": "6e96cf41-702e-4ed7-a10e-2a4c18a8e1f2",
+        "tenantId": "chat-lab",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "author": {
+          "type": "user",
+          "userId": "bob"
+        },
+        "replyTo": {
+          "messageId": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+          "notifyAuthor": true
+        },
+        "sequence": 3,
+        "createdAt": "2026-09-07T17:50:12.966Z",
+        "updatedAt": "2026-09-07T17:50:12.966Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "Friday",
+          "format": "plain",
+          "attachments": []
+        },
+        "isThreadRoot": false
+      },
+      {
+        "id": "adf0af86-06c7-4c06-a8bb-b3e7207414e4",
+        "tenantId": "chat-lab",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "author": {
+          "type": "user",
+          "userId": "bob"
+        },
+        "sequence": 4,
+        "createdAt": "2026-09-07T18:50:47.775Z",
+        "updatedAt": "2026-09-07T18:50:47.775Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "Flutter named-thread regression 1788807043639",
+          "format": "plain",
+          "attachments": []
+        },
+        "isThreadRoot": false
+      }
+    ],
+    "pagination": {
+      "older": {
+        "available": false
+      },
+      "newer": {
+        "available": false
+      }
+    },
+    "replay": {
+      "resumeFrom": {
+        "eventId": "4f1059da-eccb-452a-bea2-6c5ee0d7e734"
+      }
+    }
+  },
+  "thread": {
+    "kind": "conversation_detail",
+    "conversation": {
+      "id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "tenantId": "chat-lab",
+      "visibility": "public",
+      "createdAt": "2026-09-07T17:47:26.284Z",
+      "updatedAt": "2026-09-07T17:56:54.729Z",
+      "latestSequence": 3,
+      "activityAt": "2026-09-07T17:56:54.729359Z",
+      "unreadMentionCount": 0,
+      "activeMemberUserIds": [
+        "alice",
+        "bob"
+      ],
+      "currentMember": {
+        "tenantId": "chat-lab",
+        "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+        "userId": "alice",
+        "role": "member",
+        "state": "active",
+        "joinedAt": "2026-09-07T17:49:47.147Z",
+        "updatedAt": "2026-09-07T18:46:38.560Z"
+      },
+      "currentReadState": {
+        "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+        "userId": "alice",
+        "lastReadSequence": 3,
+        "updatedAt": "2026-09-07T18:04:45.556Z"
+      },
+      "currentPreference": {
+        "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+        "userId": "alice",
+        "isStarred": false,
+        "notificationPreference": "all",
+        "mute": {
+          "muted": false
+        },
+        "updatedAt": "2026-09-07T17:49:47.147Z"
+      },
+      "type": "thread",
+      "name": "QA 298e20b4 Launch date decision",
+      "threadLifecycle": {
+        "revision": 6,
+        "locked": false
+      },
+      "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "rootMessageId": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+      "memberUserIds": [
+        "alice",
+        "bob"
+      ],
+      "currentThreadFollow": {
+        "followRevision": 1,
+        "follow": {
+          "target": {
+            "type": "thread",
+            "id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6"
+          },
+          "isFollowing": true,
+          "source": "manual",
+          "updatedAt": "2026-09-07T17:49:47.147Z"
+        }
+      },
+      "memberListRevision": 1
+    },
+    "_meta": {
+      "packageVersion": "1.0.17",
+      "protocolVersion": 4,
+      "schemaVersion": 43,
+      "enabledFeatures": {
+        "inlineReplies": true,
+        "namedThreads": true,
+        "reply_style_preference_v1": true,
+        "threadLifecycle": true,
+        "threadDiscovery": true,
+        "threadInactivity": false,
+        "attachments": true,
+        "notifications": true,
+        "audit": false,
+        "realtime": true,
+        "media": true,
+        "typing": true,
+        "presence": true
+      },
+      "supportedProtocolRange": {
+        "minimumVersion": 3,
+        "maximumVersion": 4
+      },
+      "feature": {
+        "name": "conversation_snapshots",
+        "version": 1
+      }
+    }
+  },
+  "threadTimeline": {
+    "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+    "messages": [
+      {
+        "id": "2e7691d0-88ff-47a6-9f40-a5b665011547",
+        "tenantId": "chat-lab",
+        "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+        "author": {
+          "type": "user",
+          "userId": "bob"
+        },
+        "sequence": 1,
+        "createdAt": "2026-09-07T17:47:48.738Z",
+        "updatedAt": "2026-09-07T17:47:48.738Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "QA 298e20b4 retained thread history",
+          "format": "plain"
+        },
+        "isThreadRoot": false
+      },
+      {
+        "id": "65096399-8605-443d-98fc-9382affffd95",
+        "tenantId": "chat-lab",
+        "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+        "author": {
+          "type": "user",
+          "userId": "bob"
+        },
+        "replyTo": {
+          "messageId": "2e7691d0-88ff-47a6-9f40-a5b665011547",
+          "notifyAuthor": true
+        },
+        "sequence": 2,
+        "createdAt": "2026-09-07T17:53:33.557Z",
+        "updatedAt": "2026-09-07T17:53:33.557Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "QA 298e20b4 inline reply inside thread",
+          "format": "plain"
+        },
+        "isThreadRoot": false
+      },
+      {
+        "id": "4ddad2dd-d7f1-46cd-bdf7-8e64b3c5a842",
+        "tenantId": "chat-lab",
+        "conversationId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+        "author": {
+          "type": "user",
+          "userId": "bob"
+        },
+        "sequence": 3,
+        "createdAt": "2026-09-07T17:56:54.729Z",
+        "updatedAt": "2026-09-07T17:56:54.729Z",
+        "revision": {
+          "revision": 1
+        },
+        "reactions": [],
+        "attachmentMetadata": [],
+        "content": {
+          "text": "QA 298e20b4 authorized send reopens",
+          "format": "plain"
+        },
+        "isThreadRoot": false
+      }
+    ],
+    "pagination": {
+      "older": {
+        "available": false
+      },
+      "newer": {
+        "available": false
+      }
+    },
+    "replay": {
+      "resumeFrom": {
+        "eventId": "4f1059da-eccb-452a-bea2-6c5ee0d7e734"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "identifiers": [
+    {
+      "name": "TenantScopedId",
+      "category": "tenantScopedBase",
+      "wireType": "string",
+      "description": "A nominal identifier whose value is scoped to one Handrail Chat tenant."
+    },
+    {
+      "name": "TenantId",
+      "category": "tenant",
+      "wireType": "string",
+      "description": "An opaque host-application tenant identifier."
+    },
+    {
+      "name": "ConversationId",
+      "category": "tenantScoped",
+      "wireType": "string",
+      "scope": "conversation",
+      "description": "A tenant-scoped conversation identifier."
+    },
+    {
+      "name": "MessageId",
+      "category": "tenantScoped",
+      "wireType": "string",
+      "scope": "message",
+      "description": "A tenant-scoped message identifier."
+    },
+    {
+      "name": "UserId",
+      "category": "tenantScoped",
+      "wireType": "string",
+      "scope": "user",
+      "description": "A tenant-scoped user identifier."
+    },
+    {
+      "name": "AttachmentId",
+      "category": "tenantScoped",
+      "wireType": "string",
+      "scope": "attachment",
+      "description": "A tenant-scoped attachment identifier."
+    },
+    {
+      "name": "DeviceId",
+      "category": "tenantScoped",
+      "wireType": "string",
+      "scope": "device",
+      "description": "A tenant-scoped device identifier."
+    },
+    {
+      "name": "SessionId",
+      "category": "tenantScoped",
+      "wireType": "string",
+      "scope": "session",
+      "description": "A tenant-scoped session identifier."
+    },
+    {
+      "name": "IsoTimestamp",
+      "category": "scalar",
+      "wireType": "string",
+      "description": "An ISO-8601 timestamp supplied by the server."
+    },
+    {
+      "name": "MessageSequence",
+      "category": "scalar",
+      "wireType": "number",
+      "description": "A conversation-local, monotonically increasing message position."
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "valid": [
+    {
+      "name": "register_apns_sandbox",
+      "currentTokenRevision": 0,
+      "input": {
+        "operation": "register",
+        "deviceId": "device-ios-1",
+        "platform": "ios",
+        "provider": "apns",
+        "environment": "sandbox",
+        "token": "SECRET_APNS_DEVICE_TOKEN",
+        "tokenRevision": 1,
+        "idempotencyKey": "push-register-1"
+      },
+      "result": {
+        "operation": "register",
+        "reconciliationStatus": "applied",
+        "idempotencyKey": "push-register-1",
+        "devicePushToken": {
+          "deviceId": "device-ios-1",
+          "status": "active",
+          "platform": "ios",
+          "provider": "apns",
+          "environment": "sandbox",
+          "tokenRevision": 1,
+          "updatedAt": "2026-08-26T19:00:00.000Z"
+        }
+      }
+    },
+    {
+      "name": "refresh_fcm_production",
+      "currentTokenRevision": 1,
+      "input": {
+        "operation": "refresh",
+        "deviceId": "device-android-1",
+        "platform": "android",
+        "provider": "fcm",
+        "environment": "production",
+        "token": "SECRET_FCM_REGISTRATION_TOKEN",
+        "tokenRevision": 2,
+        "idempotencyKey": "push-refresh-2"
+      },
+      "result": {
+        "operation": "refresh",
+        "reconciliationStatus": "replayed",
+        "idempotencyKey": "push-refresh-2",
+        "devicePushToken": {
+          "deviceId": "device-android-1",
+          "status": "active",
+          "platform": "android",
+          "provider": "fcm",
+          "environment": "production",
+          "tokenRevision": 2,
+          "updatedAt": "2026-08-26T19:01:00.000Z"
+        }
+      }
+    },
+    {
+      "name": "unregister_device_token",
+      "currentTokenRevision": 2,
+      "input": {
+        "operation": "unregister",
+        "intent": "unregister",
+        "deviceId": "device-android-1",
+        "tokenRevision": 3,
+        "idempotencyKey": "push-unregister-3"
+      },
+      "result": {
+        "operation": "unregister",
+        "reconciliationStatus": "applied",
+        "idempotencyKey": "push-unregister-3",
+        "devicePushToken": {
+          "deviceId": "device-android-1",
+          "status": "unregistered",
+          "platform": "android",
+          "provider": "fcm",
+          "environment": "production",
+          "tokenRevision": 3,
+          "updatedAt": "2026-08-26T19:02:00.000Z"
+        }
+      }
+    }
+  ],
+  "invalidInputs": [
+    {
+      "name": "apns_on_android",
+      "input": {
+        "operation": "register", "deviceId": "device-1", "platform": "android", "provider": "apns", "environment": "production", "token": "secret", "tokenRevision": 1, "idempotencyKey": "key-1"
+      }
+    },
+    {
+      "name": "fcm_on_ios",
+      "input": {
+        "operation": "register", "deviceId": "device-1", "platform": "ios", "provider": "fcm", "environment": "production", "token": "secret", "tokenRevision": 1, "idempotencyKey": "key-1"
+      }
+    },
+    {
+      "name": "fcm_sandbox",
+      "input": {
+        "operation": "refresh", "deviceId": "device-1", "platform": "android", "provider": "fcm", "environment": "sandbox", "token": "secret", "tokenRevision": 2, "idempotencyKey": "key-2"
+      }
+    },
+    {
+      "name": "revision_below_minimum",
+      "input": {
+        "operation": "register", "deviceId": "device-1", "platform": "ios", "provider": "apns", "environment": "sandbox", "token": "secret", "tokenRevision": 0, "idempotencyKey": "key-1"
+      }
+    },
+    {
+      "name": "revision_above_maximum",
+      "input": {
+        "operation": "register", "deviceId": "device-1", "platform": "ios", "provider": "apns", "environment": "sandbox", "token": "secret", "tokenRevision": 2147483648, "idempotencyKey": "key-1"
+      }
+    },
+    {
+      "name": "revision_not_monotonic",
+      "currentTokenRevision": 2,
+      "input": {
+        "operation": "refresh", "deviceId": "device-1", "platform": "ios", "provider": "apns", "environment": "production", "token": "secret", "tokenRevision": 2, "idempotencyKey": "key-2"
+      }
+    },
+    {
+      "name": "blank_idempotency_key",
+      "input": {
+        "operation": "register", "deviceId": "device-1", "platform": "ios", "provider": "apns", "environment": "sandbox", "token": "secret", "tokenRevision": 1, "idempotencyKey": "  "
+      }
+    },
+    {
+      "name": "recursive_trusted_identity",
+      "input": {
+        "operation": "register", "deviceId": "device-1", "platform": "ios", "provider": "apns", "environment": "sandbox", "token": "secret", "tokenRevision": 1, "idempotencyKey": "key-1", "metadata": { "Actor_User_ID": "spoofed-user" }
+      }
+    },
+    {
+      "name": "unknown_field",
+      "input": {
+        "operation": "unregister", "intent": "unregister", "deviceId": "device-1", "tokenRevision": 3, "idempotencyKey": "key-3", "unexpected": true
+      }
+    }
+  ]
+}

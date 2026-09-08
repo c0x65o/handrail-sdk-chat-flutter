@@ -1,0 +1,246 @@
+{
+  "observedAt": "2026-09-07T18:09:12.105Z",
+  "method": "PostgreSQL transaction READ ONLY; runtime schema resolved by exact browser-observed root id",
+  "schema": "handrail_chat_lab_2e5e34f14bd448df942c6529eb70f8f0",
+  "conversations": [
+    {
+      "id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "type": "channel",
+      "name": "Launch planning",
+      "parent_conversation_id": null,
+      "root_message_id": null,
+      "current_message_sequence": "3",
+      "closed_at": null,
+      "closed_by_user_id": null,
+      "locked": false,
+      "archived_at": null,
+      "lifecycle_revision": "1"
+    },
+    {
+      "id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "type": "thread",
+      "name": "QA 298e20b4 Launch date decision",
+      "parent_conversation_id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "root_message_id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+      "current_message_sequence": "3",
+      "closed_at": null,
+      "closed_by_user_id": null,
+      "locked": false,
+      "archived_at": null,
+      "lifecycle_revision": "6"
+    },
+    {
+      "id": "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+      "type": "direct",
+      "name": null,
+      "parent_conversation_id": null,
+      "root_message_id": null,
+      "current_message_sequence": "4",
+      "closed_at": null,
+      "closed_by_user_id": null,
+      "locked": false,
+      "archived_at": null,
+      "lifecycle_revision": "1"
+    },
+    {
+      "id": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+      "type": "thread",
+      "name": "QA 298e20b4 Flutter named thread",
+      "parent_conversation_id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "root_message_id": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+      "current_message_sequence": "0",
+      "closed_at": null,
+      "closed_by_user_id": null,
+      "locked": false,
+      "archived_at": null,
+      "lifecycle_revision": "1"
+    }
+  ],
+  "messages": [
+    {
+      "id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+      "conversation_id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "sequence": "1",
+      "author_user_id": "alice",
+      "content": {
+        "text": "Which launch date?",
+        "format": "plain"
+      },
+      "reply_to_message_id": null,
+      "reply_notify_author": false,
+      "created_at": "2026-09-07T17:01:11.589Z"
+    },
+    {
+      "id": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+      "conversation_id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "sequence": "2",
+      "author_user_id": "bob",
+      "content": {
+        "text": "Friday",
+        "format": "plain"
+      },
+      "reply_to_message_id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+      "reply_notify_author": true,
+      "created_at": "2026-09-07T17:46:11.301Z"
+    },
+    {
+      "id": "2e7691d0-88ff-47a6-9f40-a5b665011547",
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "sequence": "1",
+      "author_user_id": "bob",
+      "content": {
+        "text": "QA 298e20b4 retained thread history",
+        "format": "plain"
+      },
+      "reply_to_message_id": null,
+      "reply_notify_author": false,
+      "created_at": "2026-09-07T17:47:48.738Z"
+    },
+    {
+      "id": "6e96cf41-702e-4ed7-a10e-2a4c18a8e1f2",
+      "conversation_id": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "sequence": "3",
+      "author_user_id": "bob",
+      "content": {
+        "text": "Friday",
+        "format": "plain",
+        "attachments": []
+      },
+      "reply_to_message_id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+      "reply_notify_author": true,
+      "created_at": "2026-09-07T17:50:12.966Z"
+    },
+    {
+      "id": "65096399-8605-443d-98fc-9382affffd95",
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "sequence": "2",
+      "author_user_id": "bob",
+      "content": {
+        "text": "QA 298e20b4 inline reply inside thread",
+        "format": "plain"
+      },
+      "reply_to_message_id": "2e7691d0-88ff-47a6-9f40-a5b665011547",
+      "reply_notify_author": true,
+      "created_at": "2026-09-07T17:53:33.557Z"
+    },
+    {
+      "id": "4ddad2dd-d7f1-46cd-bdf7-8e64b3c5a842",
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "sequence": "3",
+      "author_user_id": "bob",
+      "content": {
+        "text": "QA 298e20b4 authorized send reopens",
+        "format": "plain"
+      },
+      "reply_to_message_id": null,
+      "reply_notify_author": false,
+      "created_at": "2026-09-07T17:56:54.729Z"
+    },
+    {
+      "id": "6d78afb3-5200-447e-a3a9-07e7f3bec4ab",
+      "conversation_id": "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+      "sequence": "1",
+      "author_user_id": "bob",
+      "content": {
+        "text": "QA 298e20b4 DM source",
+        "format": "plain"
+      },
+      "reply_to_message_id": null,
+      "reply_notify_author": false,
+      "created_at": "2026-09-07T17:57:48.253Z"
+    },
+    {
+      "id": "36db2a30-391c-43eb-b65b-c273aa6c3954",
+      "conversation_id": "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+      "sequence": "2",
+      "author_user_id": "bob",
+      "content": {
+        "text": "QA 298e20b4 DM reply",
+        "format": "plain"
+      },
+      "reply_to_message_id": "6d78afb3-5200-447e-a3a9-07e7f3bec4ab",
+      "reply_notify_author": true,
+      "created_at": "2026-09-07T17:57:48.756Z"
+    },
+    {
+      "id": "20d9be8f-50f1-4a20-9e1e-fa5842ef772a",
+      "conversation_id": "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+      "sequence": "3",
+      "author_user_id": "bob",
+      "content": {
+        "text": "QA 298e20b4 Flutter DM reply",
+        "format": "plain",
+        "attachments": []
+      },
+      "reply_to_message_id": "6d78afb3-5200-447e-a3a9-07e7f3bec4ab",
+      "reply_notify_author": true,
+      "created_at": "2026-09-07T18:00:38.084Z"
+    },
+    {
+      "id": "c3376c1c-841b-4ad9-8156-ed7fde4d7aec",
+      "conversation_id": "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+      "sequence": "4",
+      "author_user_id": "alice",
+      "content": {
+        "text": "QA 298e20b4 Alice Flutter acknowledgement",
+        "format": "plain",
+        "attachments": []
+      },
+      "reply_to_message_id": null,
+      "reply_notify_author": false,
+      "created_at": "2026-09-07T18:02:11.417Z"
+    }
+  ],
+  "follows": [
+    {
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "user_id": "alice",
+      "is_following": true,
+      "follow_revision": "1"
+    },
+    {
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "user_id": "bob",
+      "is_following": false,
+      "follow_revision": "4"
+    }
+  ],
+  "preferences": [
+    {
+      "user_id": "alice",
+      "style": "current",
+      "revision": "3"
+    },
+    {
+      "user_id": "bob",
+      "style": "discord",
+      "revision": "7"
+    }
+  ],
+  "notifications": [
+    {
+      "tenant_id": "chat-lab",
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "user_id": "alice",
+      "notification_level": "all",
+      "muted": false,
+      "muted_until": null,
+      "created_at": "2026-09-07T17:49:47.147Z",
+      "updated_at": "2026-09-07T17:49:47.147Z",
+      "preference_revision": "1",
+      "is_starred": false
+    },
+    {
+      "tenant_id": "chat-lab",
+      "conversation_id": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+      "user_id": "bob",
+      "notification_level": "mentions",
+      "muted": true,
+      "muted_until": null,
+      "created_at": "2026-09-07T17:47:26.284Z",
+      "updated_at": "2026-09-07T17:53:19.469Z",
+      "preference_revision": "2",
+      "is_starred": false
+    }
+  ]
+}

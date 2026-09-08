@@ -1,0 +1,875 @@
+{
+  "request": {
+    "parentConversationId": "parent-1"
+  },
+  "base": {
+    "parentConversationId": "parent-1",
+    "view": "active",
+    "evaluatedAt": "2026-09-06T12:00:00.000Z",
+    "lifecycleSupported": false,
+    "items": [
+      {
+        "thread": {
+          "id": "thread-a",
+          "tenantId": "tenant-1",
+          "type": "thread",
+          "visibility": "public",
+          "parentConversationId": "parent-1",
+          "rootMessageId": "root-1",
+          "createdAt": "2026-09-06T11:00:00.000Z",
+          "updatedAt": "2026-09-06T12:00:00.000Z",
+          "name": "Launch dates",
+          "latestSequence": 4,
+          "activityAt": "2026-09-06T12:00:00.000Z",
+          "unreadMentionCount": 0,
+          "activeMemberUserIds": [],
+          "currentMember": {
+            "tenantId": "tenant-1",
+            "conversationId": "thread-a",
+            "userId": "alice",
+            "role": "member",
+            "state": "left",
+            "joinedAt": "2026-09-06T11:00:00.000Z",
+            "updatedAt": "2026-09-06T12:00:00.000Z"
+          },
+          "currentReadState": {
+            "conversationId": "thread-a",
+            "userId": "alice",
+            "lastReadSequence": 0,
+            "updatedAt": "2026-09-06T12:00:00.000Z"
+          },
+          "currentPreference": {
+            "conversationId": "thread-a",
+            "userId": "alice",
+            "isStarred": false,
+            "notificationPreference": "none",
+            "mute": {
+              "muted": false
+            },
+            "updatedAt": "2026-09-06T12:00:00.000Z"
+          }
+        },
+        "currentThreadFollow": {
+          "followRevision": 1,
+          "follow": {
+            "target": {
+              "type": "thread",
+              "id": "thread-a"
+            },
+            "isFollowing": false,
+            "source": "manual",
+            "updatedAt": "2026-09-06T12:00:00.000Z"
+          }
+        },
+        "lastActivityAt": "2026-09-06T12:00:00.000Z",
+        "hideAt": null
+      }
+    ]
+  },
+  "valid": [
+    {
+      "name": "named legacy thread",
+      "changes": [],
+      "remove": []
+    },
+    {
+      "name": "unnamed legacy thread",
+      "changes": [],
+      "remove": [
+        "items.0.thread.name"
+      ]
+    },
+    {
+      "name": "following True read sequence 0",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.isFollowing",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.currentReadState.lastReadSequence",
+          "value": 0
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "following True read sequence 4",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.isFollowing",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.currentReadState.lastReadSequence",
+          "value": 4
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "following False read sequence 0",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.isFollowing",
+          "value": false
+        },
+        {
+          "path": "items.0.thread.currentReadState.lastReadSequence",
+          "value": 0
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "following False read sequence 4",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.isFollowing",
+          "value": false
+        },
+        {
+          "path": "items.0.thread.currentReadState.lastReadSequence",
+          "value": 4
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "absent follow authority",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow",
+          "value": {
+            "followRevision": 0,
+            "follow": null
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "disabled host policy",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": false
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "enabled fractional host policy",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 0.5
+          }
+        },
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696000000.5
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "one millisecond before hideAt",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 1000
+          }
+        },
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696001000
+        },
+        {
+          "path": "evaluatedAt",
+          "value": "2026-09-06T12:00:00.999Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "open lifecycle",
+      "changes": [
+        {
+          "path": "lifecycleSupported",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.threadLifecycle",
+          "value": {
+            "revision": 3,
+            "locked": false
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "all includes closed locked history",
+      "changes": [
+        {
+          "path": "view",
+          "value": "all"
+        },
+        {
+          "path": "lifecycleSupported",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.threadLifecycle",
+          "value": {
+            "revision": 4,
+            "locked": true,
+            "closedAt": "2026-09-06T12:00:00.000Z",
+            "closedByUserId": "moderator"
+          }
+        }
+      ],
+      "remove": [],
+      "request": {
+        "parentConversationId": "parent-1",
+        "view": "all"
+      }
+    },
+    {
+      "name": "all includes history exactly at hideAt",
+      "changes": [
+        {
+          "path": "view",
+          "value": "all"
+        },
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 1000
+          }
+        },
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696001000
+        },
+        {
+          "path": "evaluatedAt",
+          "value": "2026-09-06T12:00:01.000Z"
+        }
+      ],
+      "remove": [],
+      "request": {
+        "parentConversationId": "parent-1",
+        "view": "all"
+      }
+    },
+    {
+      "name": "empty thread activity falls back to creation",
+      "changes": [
+        {
+          "path": "items.0.thread.latestSequence",
+          "value": 0
+        },
+        {
+          "path": "items.0.thread.activityAt",
+          "value": "2026-09-06T11:00:00.000Z"
+        },
+        {
+          "path": "items.0.lastActivityAt",
+          "value": "2026-09-06T11:00:00.000Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "tiny positive duration does not hide at zero elapsed time",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 1e-09
+          }
+        },
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696000000
+        }
+      ],
+      "remove": []
+    }
+  ],
+  "invalid": [
+    {
+      "name": "response parent mismatch",
+      "changes": [
+        {
+          "path": "parentConversationId",
+          "value": "other"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "response view mismatch",
+      "changes": [
+        {
+          "path": "view",
+          "value": "all"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid selector",
+      "changes": [
+        {
+          "path": "view",
+          "value": "hidden"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "thread parent mismatch",
+      "changes": [
+        {
+          "path": "items.0.thread.parentConversationId",
+          "value": "other"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid root",
+      "changes": [
+        {
+          "path": "items.0.thread.rootMessageId",
+          "value": ""
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid name",
+      "changes": [
+        {
+          "path": "items.0.thread.name",
+          "value": " "
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "capability absent",
+      "changes": [
+        {
+          "path": "items.0.thread.threadLifecycle",
+          "value": {
+            "revision": 1,
+            "locked": false
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid capability",
+      "changes": [
+        {
+          "path": "lifecycleSupported",
+          "value": "true"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "read identity mismatch",
+      "changes": [
+        {
+          "path": "items.0.thread.currentReadState.conversationId",
+          "value": "other"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "preference actor mismatch",
+      "changes": [
+        {
+          "path": "items.0.thread.currentPreference.userId",
+          "value": "bob"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "follow identity mismatch",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.target.id",
+          "value": "other"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid follow flag",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.isFollowing",
+          "value": "false"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "stored follow revision zero",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.followRevision",
+          "value": 0
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "missing follow nonzero revision",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow",
+          "value": {
+            "followRevision": 1,
+            "follow": null
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "manual unfollow source",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.follow.source",
+          "value": "reply"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid sequence",
+      "changes": [
+        {
+          "path": "items.0.thread.latestSequence",
+          "value": -1
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "activity in future",
+      "changes": [
+        {
+          "path": "items.0.lastActivityAt",
+          "value": "2026-09-06T12:00:01.000Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "summary activity mismatch",
+      "changes": [
+        {
+          "path": "items.0.lastActivityAt",
+          "value": "2026-09-06T11:00:00.000Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "expiry without policy",
+      "changes": [
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696001000
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "null policy",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": null
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "boolean enabled policy",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": true
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "zero duration",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 0
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "negative duration",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": -1
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "string duration",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": "1000"
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "stored hidden flag",
+      "changes": [
+        {
+          "path": "items.0.hidden",
+          "value": true
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "unknown follow field",
+      "changes": [
+        {
+          "path": "items.0.currentThreadFollow.extra",
+          "value": true
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "unknown envelope field",
+      "changes": [
+        {
+          "path": "extra",
+          "value": true
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "nonarray items",
+      "changes": [
+        {
+          "path": "items",
+          "value": {}
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "malformed next cursor",
+      "changes": [
+        {
+          "path": "nextCursor",
+          "value": "garbage"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "impossible timestamp",
+      "changes": [
+        {
+          "path": "evaluatedAt",
+          "value": "2026-02-30T12:00:00.000Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "invalid thread id",
+      "changes": [
+        {
+          "path": "items.0.thread.id",
+          "value": " "
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "missing item field",
+      "changes": [],
+      "remove": [
+        "items.0.hideAt"
+      ]
+    },
+    {
+      "name": "archived history excluded in all",
+      "changes": [
+        {
+          "path": "view",
+          "value": "all"
+        },
+        {
+          "path": "items.0.thread.archivedAt",
+          "value": "2026-09-06T12:00:00.000Z"
+        },
+        {
+          "path": "items.0.thread.archivedByUserId",
+          "value": "moderator"
+        }
+      ],
+      "remove": [],
+      "request": {
+        "parentConversationId": "parent-1",
+        "view": "all"
+      }
+    },
+    {
+      "name": "active excludes closed",
+      "changes": [
+        {
+          "path": "lifecycleSupported",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.threadLifecycle",
+          "value": {
+            "revision": 4,
+            "locked": true,
+            "closedAt": "2026-09-06T12:00:00.000Z",
+            "closedByUserId": "moderator"
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "malformed canonical lifecycle",
+      "changes": [
+        {
+          "path": "lifecycleSupported",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.threadLifecycle",
+          "value": {
+            "revision": 0,
+            "locked": false
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "unpaired lifecycle closure",
+      "changes": [
+        {
+          "path": "lifecycleSupported",
+          "value": true
+        },
+        {
+          "path": "items.0.thread.threadLifecycle",
+          "value": {
+            "revision": 1,
+            "locked": false,
+            "closedAt": "2026-09-06T12:00:00.000Z"
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "active excludes exact hideAt",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 1000
+          }
+        },
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696001000
+        },
+        {
+          "path": "evaluatedAt",
+          "value": "2026-09-06T12:00:01.000Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "active excludes after hideAt",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 1000
+          }
+        },
+        {
+          "path": "items.0.hideAt",
+          "value": 1788696001000
+        },
+        {
+          "path": "evaluatedAt",
+          "value": "2026-09-06T12:00:01.001Z"
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "enabled policy missing computed expiry",
+      "changes": [
+        {
+          "path": "inactivityPolicy",
+          "value": {
+            "hideAfterMs": 1000
+          }
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "stored hidden field on canonical thread",
+      "changes": [
+        {
+          "path": "items.0.thread.hidden",
+          "value": true
+        }
+      ],
+      "remove": []
+    },
+    {
+      "name": "empty thread cannot claim message activity",
+      "changes": [
+        {
+          "path": "items.0.thread.latestSequence",
+          "value": 0
+        }
+      ],
+      "remove": []
+    }
+  ],
+  "invalidRequests": [
+    {
+      "parentConversationId": ""
+    },
+    {
+      "parentConversationId": " x"
+    },
+    {
+      "parentConversationId": "x\n"
+    },
+    {
+      "parentConversationId": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+    },
+    {
+      "parentConversationId": null
+    },
+    {
+      "parentConversationId": "parent-1",
+      "view": "hidden"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "view": "ACTIVE"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "view": null
+    },
+    {
+      "parentConversationId": "parent-1",
+      "limit": 0
+    },
+    {
+      "parentConversationId": "parent-1",
+      "limit": 101
+    },
+    {
+      "parentConversationId": "parent-1",
+      "limit": 1.5
+    },
+    {
+      "parentConversationId": "parent-1",
+      "limit": "50"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "limit": null
+    },
+    {
+      "parentConversationId": "parent-1",
+      "cursor": ""
+    },
+    {
+      "parentConversationId": "parent-1",
+      "cursor": "handrail-threads.v1.eyJwYXJlbnRDb252ZXJzYXRpb25JZCI6InBhcmVudC0xIiwidmlldyI6ImFjdGl2ZSIsImNyZWF0ZWRBdCI6IjIwMjYtMDktMDZUMTE6MDA6MDAuMDAwWiIsInRocmVhZElkIjoidGhyZWFkLWEifQ="
+    },
+    {
+      "parentConversationId": "parent-1",
+      "cursor": "handrail-threads.v2.eyJwYXJlbnRDb252ZXJzYXRpb25JZCI6InBhcmVudC0xIiwidmlldyI6ImFjdGl2ZSIsImNyZWF0ZWRBdCI6IjIwMjYtMDktMDZUMTE6MDA6MDAuMDAwWiIsInRocmVhZElkIjoidGhyZWFkLWEifQ"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "cursor": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "cursor": null
+    },
+    {
+      "parentConversationId": "other",
+      "cursor": "handrail-threads.v1.eyJwYXJlbnRDb252ZXJzYXRpb25JZCI6InBhcmVudC0xIiwidmlldyI6ImFjdGl2ZSIsImNyZWF0ZWRBdCI6IjIwMjYtMDktMDZUMTE6MDA6MDAuMDAwWiIsInRocmVhZElkIjoidGhyZWFkLWEifQ"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "view": "all",
+      "cursor": "handrail-threads.v1.eyJwYXJlbnRDb252ZXJzYXRpb25JZCI6InBhcmVudC0xIiwidmlldyI6ImFjdGl2ZSIsImNyZWF0ZWRBdCI6IjIwMjYtMDktMDZUMTE6MDA6MDAuMDAwWiIsInRocmVhZElkIjoidGhyZWFkLWEifQ"
+    },
+    {
+      "parentConversationId": "parent-1",
+      "userId": "alice"
+    },
+    {}
+  ],
+  "cursor": {
+    "position": {
+      "parentConversationId": "parent-1",
+      "view": "active",
+      "createdAt": "2026-09-06T11:00:00.000Z",
+      "threadId": "thread-a"
+    },
+    "token": "handrail-threads.v1.eyJwYXJlbnRDb252ZXJzYXRpb25JZCI6InBhcmVudC0xIiwidmlldyI6ImFjdGl2ZSIsImNyZWF0ZWRBdCI6IjIwMjYtMDktMDZUMTE6MDA6MDAuMDAwWiIsInRocmVhZElkIjoidGhyZWFkLWEifQ"
+  }
+}

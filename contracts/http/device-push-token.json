@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "method": "PUT",
+  "path": "/devices/:deviceId/push-token",
+  "description": "Provider-neutral register, refresh, and unregister intents for one device push token. Authentication identity is always server-derived.",
+  "operations": {
+    "register": {
+      "inputFields": ["operation", "deviceId", "platform", "provider", "environment", "token", "tokenRevision", "idempotencyKey"],
+      "resultStatus": "active"
+    },
+    "refresh": {
+      "inputFields": ["operation", "deviceId", "platform", "provider", "environment", "token", "tokenRevision", "idempotencyKey"],
+      "resultStatus": "active"
+    },
+    "unregister": {
+      "inputFields": ["operation", "intent", "deviceId", "tokenRevision", "idempotencyKey"],
+      "intent": "unregister",
+      "resultStatus": "unregistered"
+    }
+  },
+  "providers": ["apns", "fcm"],
+  "platforms": ["ios", "android"],
+  "environments": ["sandbox", "production"],
+  "coherentProviderTargets": [
+    { "platform": "ios", "provider": "apns", "environments": ["sandbox", "production"] },
+    { "platform": "android", "provider": "fcm", "environments": ["production"] }
+  ],
+  "bounds": {
+    "opaqueTokenMaxUtf8Bytes": 4096,
+    "tokenRevisionMinimum": 1,
+    "tokenRevisionMaximum": 2147483647,
+    "idempotencyKeyMaxUtf8Bytes": 255
+  },
+  "revisionPolicy": {
+    "integer": true,
+    "strictlyGreaterThanCurrent": true
+  },
+  "reconciliationStatuses": ["applied", "replayed"],
+  "canonicalResult": {
+    "serverAuthored": true,
+    "fields": ["operation", "reconciliationStatus", "idempotencyKey", "devicePushToken"],
+    "stateFields": ["deviceId", "status", "platform", "provider", "environment", "tokenRevision", "updatedAt"],
+    "statuses": ["active", "unregistered"],
+    "containsOpaqueToken": false
+  },
+  "redaction": {
+    "replacement": "[REDACTED]",
+    "recursiveTokenAliases": ["token", "pushToken", "deviceToken", "registrationToken", "opaqueToken"],
+    "diagnosticSafeRepresentations": true
+  },
+  "forbiddenPublicFields": {
+    "trustedIdentity": [
+      "tenant", "tenantId", "organization", "organizationId", "org", "orgId", "actor", "actorId", "actorContext",
+      "actorUserId", "currentActor", "currentActorId", "currentUser", "currentUserId", "user", "userId", "member",
+      "memberId", "principal", "principalId", "subject", "subjectId", "authenticatedUser", "authenticatedUserId",
+      "identity", "session", "sessionId", "auth", "authentication", "authorization", "role", "roles", "permission",
+      "permissions", "capability", "capabilities"
+    ]
+  },
+  "coherenceRules": {
+    "rejectUnknownFields": true,
+    "rejectForbiddenFieldsRecursively": true,
+    "platformProviderEnvironmentMustMatch": true,
+    "resultMustMatchInput": true,
+    "replayMustPreserveCanonicalState": true,
+    "opaqueTokenNeverReturnedInCanonicalState": true
+  }
+}

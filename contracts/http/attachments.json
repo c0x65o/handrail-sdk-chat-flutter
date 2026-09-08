@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "description": "Provider-neutral attachment metadata, lifecycle, and opaque transfer contracts. Bytes and provider internals are outside this contract.",
+  "bounds": {
+    "identifierMaxUtf8Bytes": 255,
+    "idempotencyKeyMaxUtf8Bytes": 255,
+    "fileNameMaxUtf8Bytes": 255,
+    "contentTypeMaxUtf8Bytes": 127,
+    "sizeMaxBytes": 104857600,
+    "opaqueDescriptorMaxUtf8Bytes": 4096,
+    "uploadDescriptorTtlMaxMs": 900000,
+    "downloadDescriptorTtlMaxMs": 300000,
+    "pendingTtlMaxMs": 86400000
+  },
+  "metadata": {
+    "fields": ["fileName", "contentType", "sizeBytes"],
+    "checksum": { "algorithm": "sha256", "encoding": "lowercase_hex", "hexLength": 64 },
+    "contentTypes": {
+      "application/pdf": ["pdf"],
+      "audio/mpeg": ["mp3"],
+      "audio/ogg": ["oga", "ogg"],
+      "image/gif": ["gif"],
+      "image/jpeg": ["jpeg", "jpg"],
+      "image/png": ["png"],
+      "image/webp": ["webp"],
+      "text/plain": ["log", "md", "text", "txt"],
+      "video/mp4": ["m4v", "mp4"],
+      "video/webm": ["webm"]
+    }
+  },
+  "lifecycle": {
+    "states": {
+      "pending": ["status", "attachmentId", "metadata", "createdAt", "expiresAt"],
+      "finalized": ["status", "attachmentId", "metadata", "createdAt", "expiresAt", "checksum", "finalizedAt"],
+      "rejected": ["status", "attachmentId", "metadata", "createdAt", "expiresAt", "rejectionReason", "rejectedAt"],
+      "attached": ["status", "attachmentId", "metadata", "createdAt", "expiresAt", "messageId", "checksum", "attachedAt"],
+      "abandoned": ["status", "attachmentId", "metadata", "createdAt", "expiresAt", "abandonedAt"]
+    },
+    "rejectionReasons": [
+      "missing_object",
+      "size_mismatch",
+      "checksum_mismatch",
+      "content_type_mismatch",
+      "unsafe",
+      "scan_failed",
+      "invalid_metadata"
+    ],
+    "allowedTransitions": [
+      { "from": null, "to": "pending", "operation": "prepare_attachment" },
+      { "from": "pending", "to": "finalized", "operation": "finalize_attachment" },
+      { "from": "pending", "to": "rejected", "operation": "finalize_attachment" },
+      { "from": "pending", "to": "abandoned", "operation": "abort_attachment" },
+      { "from": "finalized", "to": "attached", "operation": "message_claim" }
+    ]
+  },
+  "descriptors": {
+    "upload": { "kind": "opaque_attachment_upload", "fields": ["kind", "descriptor", "expiresAt"] },
+    "download": { "kind": "opaque_attachment_download", "fields": ["kind", "descriptor", "expiresAt"] },
+    "opaque": true,
+    "providerNeutral": true
+  },
+  "operations": {
+    "prepare_attachment": {
+      "inputFields": ["operation", "metadata", "idempotencyKey"],
+      "resultFields": ["operation", "reconciliationStatus", "idempotencyKey", "attachment", "upload"],
+      "resultState": "pending"
+    },
+    "finalize_attachment": {
+      "inputFields": ["operation", "attachmentId", "idempotencyKey"],
+      "resultFields": ["operation", "reconciliationStatus", "idempotencyKey", "attachmentId", "outcome", "attachment"],
+      "resultStates": ["finalized", "rejected"]
+    },
+    "abort_attachment": {
+      "inputFields": ["operation", "attachmentId", "idempotencyKey"],
+      "resultFields": ["operation", "reconciliationStatus", "idempotencyKey", "attachmentId", "attachment"],
+      "resultState": "abandoned"
+    },
+    "get_attachment_download": {
+      "inputFields": ["operation", "attachmentId", "messageId"],
+      "resultFields": ["operation", "attachmentId", "messageId", "attachment", "download"],
+      "resultState": "attached"
+    }
+  },
+  "reconciliationStatuses": ["applied", "replayed"],
+  "forbiddenPublicFields": {
+    "trustedIdentity": [
+      "tenant", "tenantId", "organization", "organizationId", "actor", "actorId", "actorContext", "actorUserId",
+      "currentActor", "currentActorId", "currentUser", "currentUserId", "user", "userId", "uploader", "uploaderId",
+      "uploaderUserId", "owner", "ownerId", "principal", "principalId", "subject", "subjectId", "session", "sessionId",
+      "auth", "authentication", "authorization", "role", "roles", "capability", "capabilities", "permission", "permissions"
+    ],
+    "providerInternals": [
+      "provider", "providerId", "providerName", "storageProvider", "storageProviderId", "objectKey", "storageKey", "bucket",
+      "bucketId", "region", "endpoint", "providerConfiguration", "storageConfiguration", "providerResponse", "internalResponse",
+      "rawResponse", "rawProviderResponse", "requestId", "statusCode", "etag"
+    ],
+    "secretBearing": [
+      "authorizationHeader", "authorization", "headers", "header", "credential", "credentials", "apiKey", "secret",
+      "clientSecret", "password", "token", "accessToken", "refreshToken", "uploadToken", "downloadToken", "signature",
+      "signedUrl", "cookie", "setCookie"
+    ]
+  },
+  "coherenceRules": {
+    "rejectUnknownFields": true,
+    "rejectForbiddenFieldsRecursively": true,
+    "rejectForbiddenFieldsInsideJsonDescriptors": true,
+    "metadataImmutableAcrossTransitions": true,
+    "resultMustMatchInput": true,
+    "descriptorMustBeUnexpired": true,
+    "replayMustPreserveCanonicalState": true
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "content": {
+    "name": "MessageContent",
+    "formats": ["plain", "markdown"],
+    "fields": [
+      { "name": "text", "type": "string", "presence": "required" },
+      { "name": "mentions", "type": "MessageMention[]", "presence": "optional" },
+      { "name": "attachments", "type": "MessageAttachmentReference[]", "presence": "optional" },
+      { "name": "blocks", "type": "MessageBlock[]", "presence": "optional" },
+      { "name": "forwarded", "type": "ForwardedMessageSnapshot", "presence": "optional" }
+    ]
+  },
+  "forwardedAuthor": {
+    "name": "ForwardedMessageAuthorAttribution",
+    "description": "Non-secret original-author display attribution frozen when the forward is created.",
+    "fields": [
+      { "name": "userId", "type": "UserId", "presence": "required" },
+      { "name": "displayName", "type": "string", "presence": "required", "maximumLength": 256 }
+    ]
+  },
+  "forwardedSnapshot": {
+    "name": "ForwardedMessageSnapshot",
+    "description": "Renderer-safe source attribution attached to an immutable copy of the source display content; it is never resolved as a live rendering reference.",
+    "fields": [
+      { "name": "sourceMessageId", "type": "MessageId", "presence": "required" },
+      { "name": "originalAuthor", "type": "ForwardedMessageAuthorAttribution", "presence": "required" },
+      { "name": "originalCreatedAt", "type": "IsoTimestamp", "presence": "required" }
+    ],
+    "snapshotSemantics": "immutable_display_copy",
+    "rawHtml": "forbidden",
+    "trustedOrPrivateData": "forbidden"
+  },
+  "replyReference": {
+    "name": "MessageReplyReference",
+    "description": "Immutable same-conversation source reference; source display and actor attribution are resolved by the server.",
+    "fields": [
+      { "name": "messageId", "type": "MessageId", "presence": "required", "maximumUtf8Bytes": 255, "validation": "safe_identifier" },
+      { "name": "notifyAuthor", "type": "boolean", "presence": "required" }
+    ],
+    "forbiddenFields": ["tenantId", "actor", "actorId", "userId", "author", "authorId", "sourceMessageId", "originalAuthor", "originalCreatedAt", "displayName", "sourceDisplay", "source", "content"]
+  },
+  "mentions": {
+    "name": "MessageMention",
+    "variants": [
+      { "name": "UserMention", "wireType": "user", "field": { "name": "userId", "type": "UserId" } },
+      { "name": "ConversationMention", "wireType": "conversation", "field": { "name": "conversationId", "type": "ConversationId" } },
+      { "name": "EntityMention", "wireType": "entity", "field": { "name": "entity", "type": "HostEntityReference" } }
+    ]
+  },
+  "attachmentReference": {
+    "name": "MessageAttachmentReference",
+    "field": { "name": "attachmentId", "type": "AttachmentId" }
+  },
+  "block": {
+    "name": "MessageBlock",
+    "description": "A host-defined, renderer-dispatched structured block.",
+    "fields": [
+      { "name": "type", "type": "string" },
+      { "name": "data", "type": "json" }
+    ]
+  },
+  "author": {
+    "name": "MessageAuthorIdentity",
+    "wireType": "user",
+    "field": { "name": "userId", "type": "UserId" }
+  },
+  "revision": {
+    "name": "MessageRevisionMetadata",
+    "fields": [
+      { "name": "revision", "type": "integer", "presence": "required", "minimum": 1 },
+      { "name": "editedAt", "type": "IsoTimestamp", "presence": "optional" },
+      { "name": "editedByUserId", "type": "UserId", "presence": "optional" }
+    ]
+  },
+  "threadSummaryFacts": {
+    "name": "ThreadSummaryFacts",
+    "fields": [
+      { "name": "threadId", "type": "ConversationId", "presence": "required" },
+      { "name": "replyCount", "type": "integer", "presence": "required", "minimum": 0 },
+      { "name": "participantIds", "type": "UserId[]", "presence": "required" },
+      { "name": "lastReplyAt", "type": "IsoTimestamp", "presence": "optional" }
+    ]
+  },
+  "threadSummary": {
+    "name": "ThreadSummary",
+    "fields": [
+      { "name": "threadId", "type": "ConversationId", "presence": "required" },
+      { "name": "replyCount", "type": "integer", "presence": "required", "minimum": 0 },
+      { "name": "participantIds", "type": "UserId[]", "presence": "required" },
+      { "name": "unreadCount", "type": "integer", "presence": "required", "minimum": 0 },
+      { "name": "lastReplyAt", "type": "IsoTimestamp", "presence": "optional" }
+    ]
+  },
+  "normalizedThreadSummary": {
+    "name": "NormalizedThreadSummary",
+    "description": "Derived viewer summary; null unreadCount means unknown or invalidated. The unreadCount key is required.",
+    "fields": [
+      { "name": "threadId", "type": "ConversationId", "presence": "required" },
+      { "name": "replyCount", "type": "integer", "presence": "required", "minimum": 0 },
+      { "name": "participantIds", "type": "UserId[]", "presence": "required" },
+      { "name": "unreadCount", "type": "integer", "presence": "required_nullable", "minimum": 0 },
+      { "name": "lastReplyAt", "type": "IsoTimestamp", "presence": "optional" }
+    ]
+  },
+  "message": {
+    "name": "Message",
+    "sharedFields": [
+      { "name": "id", "type": "MessageId" },
+      { "name": "tenantId", "type": "TenantId" },
+      { "name": "conversationId", "type": "ConversationId" },
+      { "name": "author", "type": "MessageAuthorIdentity" },
+      { "name": "sequence", "type": "MessageSequence" },
+      { "name": "createdAt", "type": "IsoTimestamp" },
+      { "name": "updatedAt", "type": "IsoTimestamp" },
+      { "name": "revision", "type": "MessageRevisionMetadata" },
+      { "name": "replyTo", "type": "MessageReplyReference", "presence": "optional" },
+      { "name": "threadSummary", "type": "ThreadSummary", "presence": "optional" }
+    ],
+    "states": [
+      {
+        "name": "active",
+        "content": "required",
+        "deletionFields": "forbidden"
+      },
+      {
+        "name": "deleted",
+        "content": "required_nullable",
+        "deletionFields": "required_paired"
+      }
+    ],
+    "deletionFields": [
+      { "name": "deletedAt", "type": "IsoTimestamp" },
+      { "name": "deletedByUserId", "type": "UserId" }
+    ]
+  },
+  "composition": {
+    "name": "MessageComposition",
+    "fields": [
+      { "name": "content", "type": "MessageContent", "presence": "required" },
+      { "name": "replyTo", "type": "MessageReplyReference", "presence": "optional" }
+    ],
+    "serverOwnedFields": ["tenantId", "actor", "actorId", "userId", "author", "authorId"]
+  }
+}

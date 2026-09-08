@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "states": ["inactive", "starting", "active", "ended"],
+  "participantStatuses": ["joined", "left"],
+  "screenShareIntents": ["set", "clear"],
+  "reconciliationStatuses": ["applied", "replayed"],
+  "operations": {
+    "start_huddle": { "inputTarget": "conversation", "successState": "starting", "mediaJoin": true, "featureDisabled": true },
+    "join_huddle": { "inputTarget": "session", "successState": "active", "mediaJoin": true, "featureDisabled": true },
+    "leave_huddle": { "inputTarget": "session", "successState": "active", "mediaJoin": false, "featureDisabled": false },
+    "set_huddle_screen_share": { "inputTarget": "session", "successState": "active", "mediaJoin": false, "featureDisabled": false },
+    "end_huddle": { "inputTarget": "session", "successState": "ended", "mediaJoin": false, "featureDisabled": false }
+  },
+  "allowedTransitions": [
+    ["inactive", "inactive"],
+    ["inactive", "starting"],
+    ["starting", "starting"],
+    ["starting", "active"],
+    ["starting", "ended"],
+    ["active", "active"],
+    ["active", "ended"],
+    ["ended", "ended"]
+  ],
+  "mediaJoinDescriptor": {
+    "kind": "opaque_media_join",
+    "opaque": true,
+    "providerNeutral": true,
+    "maxUtf8Bytes": 4096,
+    "maxTtlMs": 300000
+  },
+  "bounds": {
+    "identifierMaxUtf8Bytes": 255,
+    "idempotencyKeyMaxUtf8Bytes": 255
+  },
+  "featureDisabled": {
+    "feature": "huddles",
+    "reason": "media_unavailable",
+    "statePreserving": true
+  },
+  "coherenceRules": {
+    "uniqueParticipants": true,
+    "timestampsMonotonic": true,
+    "screenShareOwnerJoined": true,
+    "endedParticipantsLeft": true,
+    "operationStateMatches": true,
+    "replayCanonicalMatch": true
+  },
+  "forbiddenPublicFields": {
+    "trustedIdentity": [
+      "tenant", "tenantId", "organization", "organizationId", "actor", "actorId", "actorContext", "actorUserId",
+      "currentActor", "currentActorId", "currentUser", "currentUserId", "user", "userId", "principal", "principalId",
+      "subject", "subjectId", "identity", "session", "auth", "authorization", "role", "roles", "capability",
+      "capabilities", "permission", "permissions"
+    ],
+    "providerInternals": [
+      "provider", "providerId", "providerName", "mediaProvider", "mediaProviderId", "mediaProviderName", "endpoint",
+      "providerConfiguration", "mediaConfiguration", "rawProviderConfiguration"
+    ],
+    "credentials": [
+      "credential", "credentials", "apiKey", "secret", "clientSecret", "roomId", "roomToken", "token",
+      "accessToken", "refreshToken"
+    ]
+  }
+}

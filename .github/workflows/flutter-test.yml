@@ -1,0 +1,35 @@
+name: Flutter test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: flutter-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: "3.41.7"
+          cache: true
+          pub-cache: true
+      - name: Resolve Flutter dependencies
+        run: flutter pub get --no-example
+        working-directory: .
+      - name: Test Flutter SDK
+        run: flutter test --no-pub --concurrency=2
+        working-directory: .

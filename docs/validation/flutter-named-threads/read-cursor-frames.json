@@ -1,0 +1,24 @@
+[
+  {
+    "eventId": "888ca69d-e09e-4de3-857e-76053bfc16b1",
+    "protocolVersion": 4,
+    "tenantId": "chat-lab",
+    "streamId": "user:alice",
+    "type": "conversation.read_cursor_updated",
+    "occurredAt": "2026-09-07T19:13:09.972Z",
+    "payload": {
+      "kind": "conversation_read_cursor",
+      "operation": "mark_read",
+      "readState": {
+        "userId": "alice",
+        "updatedAt": "2026-09-07T19:10:59.480Z",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "lastReadSequence": 6
+      },
+      "actorUserId": "alice",
+      "unreadCount": 0,
+      "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "latestSequence": 6
+    }
+  }
+]

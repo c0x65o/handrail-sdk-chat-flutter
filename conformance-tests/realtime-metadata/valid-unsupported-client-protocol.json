@@ -1,0 +1,18 @@
+{
+  "id": "valid-unsupported-client-protocol",
+  "expected": "accept",
+  "expectedClientState": "refresh_required",
+  "metadata": {
+    "packageVersion": "0.2.0",
+    "protocolVersion": 6,
+    "schemaVersion": 1,
+    "enabledFeatures": {
+      "threads": true,
+      "huddles": true
+    },
+    "supportedProtocolRange": {
+      "minimumVersion": 5,
+      "maximumVersion": 6
+    }
+  }
+}

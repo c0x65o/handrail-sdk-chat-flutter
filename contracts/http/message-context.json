@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "endpoint": {
+    "method": "GET",
+    "path": "/conversations/:conversationId/messages/:messageId/context"
+  },
+  "request": {
+    "fields": ["conversationId", "messageId"],
+    "identifiers": "canonical_types_nonempty_unpadded_control_free",
+    "maxIdentifierUtf8Bytes": 255,
+    "queryFields": [],
+    "body": "none"
+  },
+  "response": {
+    "name": "MessageContextResult",
+    "discriminant": "status",
+    "identityFields": ["conversationId", "messageId"],
+    "maxMessages": 1,
+    "statuses": [
+      { "status": "available", "fields": ["status", "conversationId", "messageId", "sequence", "message"], "message": "canonical_active_message" },
+      { "status": "deleted", "fields": ["status", "conversationId", "messageId", "sequence", "message"], "message": "canonical_deleted_message_with_null_content" },
+      { "status": "unavailable", "fields": ["status", "conversationId", "messageId"], "message": "forbidden" }
+    ],
+    "rejectUnknownFields": true,
+    "requestIdentityMustMatch": true,
+    "messageIdentityMustMatch": true,
+    "sequence": { "type": "MessageSequence", "minimum": 1, "maximum": 9007199254740991, "equals": "message.sequence", "scope": "conversation", "timelineCursorExclusive": true }
+  },
+  "authorization": {
+    "authority": "trusted_session_tenant_actor_and_current_server_access_checks",
+    "identifiersGrantAccess": false,
+    "crossConversationLookup": false,
+    "absentAndInaccessible": "identical_unavailable_result_echoing_only_requested_identity",
+    "deletedRequiresAccess": true
+  },
+  "transport": {
+    "resultHttpStatus": 200,
+    "unavailableIsTransportFailure": false,
+    "retryableFailures": "network_timeout_rate_limit_and_transient_server_errors_remain_transport_errors",
+    "malformedResponses": "throw_parse_error_never_coerce_to_unavailable",
+    "execution": "out_of_scope"
+  },
+  "pagination": {
+    "descriptor": "contracts/http/message-timeline.json",
+    "older": "before_target_sequence_exclusive",
+    "newer": "after_target_sequence_exclusive",
+    "targetReturnedSeparately": true,
+    "changesExistingRoutes": false
+  }
+}

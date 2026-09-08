@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "contract": "conversationSnapshots",
+  "feature": {
+    "name": "conversation_snapshots",
+    "version": 1
+  },
+  "endpoints": [
+    {
+      "name": "listConversations",
+      "method": "GET",
+      "path": "/conversations",
+      "input": "ConversationListSnapshotInput",
+      "response": "ConversationListSnapshot"
+    },
+    {
+      "name": "getConversation",
+      "method": "GET",
+      "path": "/conversations/:id",
+      "input": "ConversationDetailSnapshotInput",
+      "response": "ConversationDetailSnapshot"
+    }
+  ],
+  "trustedIdentityFields": [
+    "tenant",
+    "tenantId",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "user",
+    "userId",
+    "currentUserId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "auth",
+    "role",
+    "roles"
+  ],
+  "scopes": [
+    {
+      "name": "OrganizationConversationSnapshotScope",
+      "wireType": "organization",
+      "fields": []
+    },
+    {
+      "name": "EntityConversationSnapshotScope",
+      "wireType": "entity",
+      "fields": [
+        {
+          "name": "entity",
+          "type": "HostEntityReference",
+          "presence": "required",
+          "description": "Opaque host-owned entity type and ID; authorization remains server-side."
+        }
+      ]
+    }
+  ],
+  "cursor": {
+    "name": "ConversationSnapshotCursor",
+    "opaque": true,
+    "envelopePrefix": "handrail-conversations.v",
+    "version": 3,
+    "navigationRanks": [
+      { "value": 0, "conversationType": "direct" },
+      { "value": 1, "conversationType": "channel", "visibility": "public" },
+      { "value": 2, "conversationType": "channel", "visibility": "private" },
+      { "value": 3, "conversationType": "group_direct" }
+    ],
+    "position": [
+      { "name": "isStarred", "type": "boolean" },
+      { "name": "navigationRank", "type": "integer", "minimum": 0, "maximum": 3 },
+      { "name": "activityAt", "type": "IsoTimestamp" },
+      { "name": "conversationId", "type": "ConversationId" }
+    ],
+    "legacyVersions": [
+      {
+        "version": 2,
+        "semantics": "starred-first ordering for the full legacy pagination path",
+        "position": [
+          { "name": "isStarred", "type": "boolean" },
+          { "name": "activityAt", "type": "IsoTimestamp" },
+          { "name": "conversationId", "type": "ConversationId" }
+        ]
+      },
+      {
+        "version": 1,
+        "semantics": "activity-only ordering for the full legacy pagination path",
+        "position": [
+          { "name": "activityAt", "type": "IsoTimestamp" },
+          { "name": "conversationId", "type": "ConversationId" }
+        ]
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "name": "ConversationListSnapshotInput",
+      "fields": [
+        { "name": "scope", "type": "ConversationSnapshotScope", "presence": "required" },
+        { "name": "cursor", "type": "ConversationSnapshotCursor", "presence": "optional" },
+        { "name": "limit", "type": "integer", "presence": "optional", "minimum": 1, "maximum": 100 }
+      ]
+    },
+    {
+      "name": "ConversationDetailSnapshotInput",
+      "fields": [
+        { "name": "conversationId", "type": "ConversationId", "presence": "required" }
+      ]
+    }
+  ],
+  "summaryEnrichment": [
+    { "name": "latestSequence", "type": "MessageSequence" },
+    { "name": "activityAt", "type": "IsoTimestamp" },
+    { "name": "unreadMentionCount", "type": "integer", "minimum": 0 },
+    { "name": "currentMember", "type": "ConversationMember" },
+    { "name": "currentReadState", "type": "ConversationReadState" },
+    { "name": "activeMemberUserIds", "type": "readonly UserId[]", "maximumItems": 100 }
+  ],
+  "detailEnrichment": [
+    { "name": "currentThreadFollow", "type": "{ followRevision: integer; follow: CanonicalThreadFollowState | null }", "presence": "optional", "scope": "thread detail, authenticated actor only" },
+    { "name": "memberUserIds", "type": "readonly UserId[]" },
+    { "name": "memberListRevision", "type": "integer", "presence": "optional", "minimum": 1 },
+    { "name": "currentPreference", "type": "ConversationMemberPreference" }
+  ],
+  "member": {
+    "roles": ["owner", "moderator", "member"],
+    "states": ["active", "left", "removed"]
+  },
+  "preference": {
+    "revision": {
+      "field": "preferenceRevision",
+      "type": "nonnegative_safe_integer",
+      "presence": "optional",
+      "description": "Authoritative revision: zero when no preference row exists; omitted by legacy servers."
+    },
+    "notifications": ["all", "mentions", "none"],
+    "starred": {
+      "field": "isStarred",
+      "type": "boolean",
+      "presence": "required"
+    },
+    "mute": {
+      "indefiniteAllowed": true,
+      "timestampField": "mutedUntil"
+    }
+  },
+  "responses": [
+    {
+      "name": "ConversationListSnapshot",
+      "wireKind": "conversation_list",
+      "fields": [
+        { "name": "scope", "type": "ConversationSnapshotScope", "presence": "required" },
+        { "name": "items", "type": "readonly ConversationSnapshotSummary[]", "presence": "required" },
+        { "name": "page", "type": "ConversationSnapshotPage", "presence": "required" },
+        { "name": "_meta", "type": "ConversationSnapshotMetadata", "presence": "required" }
+      ]
+    },
+    {
+      "name": "ConversationDetailSnapshot",
+      "wireKind": "conversation_detail",
+      "fields": [
+        { "name": "conversation", "type": "ConversationDetailSnapshotConversation", "presence": "required" },
+        { "name": "_meta", "type": "ConversationSnapshotMetadata", "presence": "required" }
+      ]
+    }
+  ],
+  "page": {
+    "name": "ConversationSnapshotPage",
+    "fields": [
+      { "name": "nextCursor", "type": "ConversationSnapshotCursor", "presence": "optional" }
+    ]
+  },
+  "metadata": {
+    "name": "ConversationSnapshotMetadata",
+    "handshakeType": "ServerHandshakeMetadata",
+    "featureField": "feature"
+  },
+  "conversationVariants": ["channel", "direct", "group_direct", "thread"]
+}

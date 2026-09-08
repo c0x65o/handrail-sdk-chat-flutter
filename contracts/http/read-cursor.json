@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "method": "PATCH",
+  "path": "/conversations/:conversationId/read-cursor",
+  "operations": [
+    {
+      "name": "mark_read",
+      "sequenceField": "throughSequence",
+      "minimum": 0,
+      "mustNotExceed": "latestSequence",
+      "mustNotPrecede": "currentReadState.lastReadSequence",
+      "clearsManualUnread": true
+    },
+    {
+      "name": "mark_unread",
+      "sequenceField": "fromSequence",
+      "minimum": 1,
+      "mustNotExceed": "min(currentReadState.lastReadSequence, latestSequence)",
+      "preservesMonotonicCursor": true
+    }
+  ],
+  "idempotencyKey": {
+    "required": true,
+    "nonBlank": true,
+    "maximumUtf8Bytes": 255
+  },
+  "inputFields": [
+    { "name": "operation", "type": "operation" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "sequence", "type": "operationSequence" },
+    { "name": "idempotencyKey", "type": "boundedNonBlankString" }
+  ],
+  "readStateFields": [
+    { "name": "conversationId", "type": "ConversationId", "source": "server" },
+    { "name": "userId", "type": "UserId", "source": "server" },
+    { "name": "lastReadSequence", "type": "nonNegativeSafeInteger", "source": "server" },
+    { "name": "manualUnreadFromSequence", "type": "positiveSafeInteger", "source": "server", "optional": true },
+    { "name": "updatedAt", "type": "IsoTimestamp", "source": "server" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "operation" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "idempotencyKey", "type": "boundedNonBlankString", "source": "requestEcho" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "readState", "type": "canonicalReadState" },
+    { "name": "latestSequence", "type": "nonNegativeSafeInteger" },
+    { "name": "unreadCount", "type": "derivedUnreadCount" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "canonicalState": "committed" },
+    { "name": "replayed", "canonicalState": "storedAppliedResult" }
+  ],
+  "event": {
+    "type": "conversation.read_cursor_updated",
+    "kind": "conversation_read_cursor",
+    "durability": "durable",
+    "visibility": "private_user_stream",
+    "streamId": "user:${actorUserId}",
+    "fields": [
+      { "name": "kind", "type": "literal" },
+      { "name": "actorUserId", "type": "UserId", "source": "server" },
+      { "name": "operation", "type": "operation" },
+      { "name": "conversationId", "type": "ConversationId" },
+      { "name": "readState", "type": "canonicalReadState" },
+      { "name": "latestSequence", "type": "nonNegativeSafeInteger" },
+      { "name": "unreadCount", "type": "derivedUnreadCount" }
+    ]
+  },
+  "trustedContextAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "roles"
+  ],
+  "serverDerivedIdentity": [
+    "tenantId",
+    "userId",
+    "actorUserId",
+    "sessionId",
+    "authorization"
+  ]
+}

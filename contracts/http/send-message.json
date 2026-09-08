@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "method": "POST",
+  "path": "/conversations/:conversationId/messages",
+  "operation": "send",
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "content", "type": "MessageContent" },
+    { "name": "replyTo", "type": "MessageReplyReference", "presence": "optional" },
+    { "name": "clientMessageId", "type": "nonBlankString" },
+    { "name": "idempotencyKey", "type": "nonBlankString" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "clientMessageId", "type": "nonBlankString", "source": "input" },
+    { "name": "message", "type": "Message", "source": "server" },
+    { "name": "canonicalRevision", "type": "positiveSafeInteger", "source": "server" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied" },
+    { "name": "replayed" }
+  ],
+  "canonicalRevisionRule": "createdMessageRevisionOne",
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "author",
+    "authorId",
+    "authorUserId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authentication",
+    "authorization",
+    "role",
+    "roles"
+  ]
+}

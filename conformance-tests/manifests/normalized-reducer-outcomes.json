@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "normalized-reducer-outcomes",
+  "typescript": {
+    "command": [
+      "npm",
+      "run",
+      "test:normalized-reducer-outcomes-typescript"
+    ]
+  },
+  "dart": {
+    "command": [
+      "flutter",
+      "test",
+      "--concurrency=2",
+      "--no-pub",
+      "test/normalized_reducer_outcomes_test.dart"
+    ],
+    "cwd": ".",
+    "repository": "flutter"
+  }
+}

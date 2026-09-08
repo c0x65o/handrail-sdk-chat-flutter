@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "method": "PATCH",
+  "path": "/messages/:messageId",
+  "operation": "edit",
+  "replyTo": {
+    "request": "forbidden",
+    "result": "preserveCanonicalMessage"
+  },
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "messageId", "type": "MessageId" },
+    { "name": "expectedRevision", "type": "positiveSafeInteger" },
+    { "name": "content", "type": "MessageContent", "intent": "replacement" },
+    { "name": "idempotencyKey", "type": "nonBlankString" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "expectedRevision", "type": "positiveSafeInteger", "source": "requestEcho" },
+    { "name": "message", "type": "Message", "source": "server" },
+    { "name": "canonicalRevision", "type": "positiveSafeInteger", "source": "server" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "canonicalState": "committedReplacement", "revisionRule": "expectedPlusOne" },
+    { "name": "replayed", "canonicalState": "storedAppliedResult", "revisionRule": "expectedPlusOne" },
+    { "name": "revision_conflict", "canonicalState": "currentServerMessage", "revisionRule": "differentFromExpected" }
+  ],
+  "canonicalRevisionRule": "equalsMessageRevision",
+  "staleRevisionConflict": {
+    "status": "revision_conflict",
+    "carries": ["message", "canonicalRevision"],
+    "canonicalRevisionRule": "differentFromExpectedRevision"
+  },
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "author",
+    "authorId",
+    "authorUserId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authentication",
+    "authorization",
+    "role",
+    "roles"
+  ]
+}

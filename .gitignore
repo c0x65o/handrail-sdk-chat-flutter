@@ -4,3 +4,7 @@
 *.env.*
 !.env.example
 !*.env.example
+.dart_tool/
+build/
+*.log
+.flutter-plugins-dependencies

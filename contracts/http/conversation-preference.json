@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "method": "PATCH",
+  "path": "/conversations/{conversationId}/preference",
+  "operation": "update_conversation_preference",
+  "identifierMaxUtf8Bytes": 255,
+  "idempotencyKeyMaxUtf8Bytes": 255,
+  "initialPreferenceRevision": 0,
+  "notificationPreferences": ["all", "mentions", "none"],
+  "muteStates": [
+    { "name": "unmuted", "muted": false, "mutedUntil": "forbidden" },
+    { "name": "indefinite", "muted": true, "mutedUntil": "absent" },
+    { "name": "until", "muted": true, "mutedUntil": "IsoTimestamp" }
+  ],
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "expectedPreferenceRevision", "type": "advanceableNonnegativeSafeInteger" },
+    { "name": "idempotencyKey", "type": "boundedNonblankString" },
+    { "name": "notificationPreference", "type": "notificationPreference" },
+    { "name": "isStarred", "type": "boolean" },
+    { "name": "mute", "type": "explicitMuteState" }
+  ],
+  "canonicalPreferenceFields": [
+    { "name": "notificationPreference", "type": "notificationPreference" },
+    { "name": "isStarred", "type": "boolean" },
+    { "name": "mute", "type": "explicitMuteState" },
+    { "name": "updatedAt", "type": "IsoTimestamp", "source": "server" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "conversationId", "type": "ConversationId", "correlation": "exactRequestEcho" },
+    { "name": "expectedPreferenceRevision", "type": "nonnegativeSafeInteger", "correlation": "exactRequestEcho" },
+    { "name": "idempotencyKey", "type": "boundedNonblankString", "correlation": "exactRequestEcho" },
+    { "name": "requestedPreference", "type": "desiredPreference", "correlation": "exactRequestEcho" },
+    { "name": "preferenceRevision", "type": "nonnegativeSafeInteger" },
+    { "name": "preference", "type": "canonicalPrivatePreference", "delivery": "affectedUserOnly" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "authoritativeState": "requested", "revisionRule": "expectedPlusOne" },
+    { "name": "replayed", "authoritativeState": "requested", "revisionRule": "expectedPlusOne" },
+    { "name": "already_requested_state", "authoritativeState": "requested", "revisionRule": "equalsExpected" },
+    { "name": "preference_revision_conflict", "authoritativeState": "currentPrivatePreference", "revisionRule": "differentFromExpected" }
+  ],
+  "trustedContextAliases": [
+    "tenant", "tenantId", "organization", "organizationId", "actor", "actorId",
+    "actorContext", "actorUserId", "currentActor", "currentActorId", "currentUser",
+    "currentUserId", "user", "userId", "principal", "principalId", "subject",
+    "subjectId", "authenticatedUser", "authenticatedUserId", "identity", "session",
+    "sessionId", "auth", "authentication", "authorization", "role", "roles",
+    "capability", "capabilities", "permission", "permissions"
+  ],
+  "coherenceRules": {
+    "rejectUnknownFields": true,
+    "rejectNormalizedTrustedAliasesRecursively": true,
+    "rejectToggleInputs": true,
+    "requestEchoesMustMatch": true,
+    "settledPreferenceMustMatchRequest": true,
+    "statusSpecificRevisionRules": true,
+    "timestampsMustBeFiniteIso8601": true
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "operation": "set_conversation_archive",
+  "intents": [
+    {
+      "name": "archive",
+      "expectedState": "active",
+      "requestedState": "archived"
+    },
+    {
+      "name": "restore",
+      "expectedState": "archived",
+      "requestedState": "active"
+    }
+  ],
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "intent" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "expectedLifecycleRevision", "type": "positiveSafeInteger" },
+    { "name": "idempotencyKey", "type": "nonBlankString" }
+  ],
+  "archiveStates": [
+    {
+      "name": "active",
+      "fields": [{ "name": "status", "type": "literal" }]
+    },
+    {
+      "name": "archived",
+      "fields": [
+        { "name": "status", "type": "literal" },
+        { "name": "archivedAt", "type": "IsoTimestamp" },
+        {
+          "name": "archivedByUserId",
+          "type": "UserId",
+          "source": "server"
+        }
+      ]
+    }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "intent" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "expectedLifecycleRevision", "type": "positiveSafeInteger" },
+    { "name": "lifecycleRevision", "type": "positiveSafeInteger" },
+    { "name": "archiveState", "type": "archiveState" }
+  ],
+  "reconciliationStatuses": [
+    {
+      "name": "applied",
+      "authoritativeState": "requested",
+      "revisionRule": "expectedPlusOne"
+    },
+    {
+      "name": "replayed",
+      "authoritativeState": "requested",
+      "revisionRule": "authoritative"
+    },
+    {
+      "name": "already_requested_state",
+      "authoritativeState": "requested",
+      "revisionRule": "authoritative"
+    },
+    {
+      "name": "lifecycle_conflict",
+      "authoritativeState": "expected",
+      "revisionRule": "differentFromExpected"
+    }
+  ],
+  "trustedContextAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "role",
+    "roles",
+    "capability",
+    "capabilities",
+    "permission",
+    "permissions",
+    "entity",
+    "entityId",
+    "entityType",
+    "hostEntity",
+    "hostEntityId",
+    "hostEntityType",
+    "hostEntityAuthorization"
+  ]
+}

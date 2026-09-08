@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "method": "PATCH",
+  "path": "/messages/:messageId/reactions/:reactionKey",
+  "operations": [
+    { "name": "add_reaction", "reactedByCurrentUser": true },
+    { "name": "remove_reaction", "reactedByCurrentUser": false }
+  ],
+  "reactionKey": {
+    "required": true,
+    "nonBlank": true,
+    "normalization": "NFC",
+    "allowLeadingOrTrailingWhitespace": false,
+    "maximumUtf8Bytes": 64
+  },
+  "idempotencyKey": {
+    "required": true,
+    "nonBlank": true,
+    "maximumUtf8Bytes": 255
+  },
+  "inputFields": [
+    { "name": "operation", "type": "operation" },
+    { "name": "messageId", "type": "MessageId" },
+    { "name": "reactionKey", "type": "normalizedReactionKey" },
+    { "name": "idempotencyKey", "type": "boundedNonBlankString" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "operation" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "messageId", "type": "MessageId", "source": "requestEcho" },
+    { "name": "reactionKey", "type": "normalizedReactionKey", "source": "requestEcho" },
+    { "name": "count", "type": "nonNegativeSafeInteger", "source": "server" },
+    { "name": "reactedByCurrentUser", "type": "operationState", "source": "server" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "canonicalState": "committedAggregate" },
+    { "name": "replayed", "canonicalState": "storedAppliedAggregate" }
+  ],
+  "aggregateRules": {
+    "count": "nonNegativeSafeInteger",
+    "addRequiresPositiveCount": true,
+    "reactedByCurrentUserMatchesOperation": true
+  },
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "author",
+    "authorId",
+    "authorUserId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authentication",
+    "authorization",
+    "role",
+    "roles"
+  ]
+}

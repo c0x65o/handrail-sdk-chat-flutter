@@ -1,0 +1,1135 @@
+{
+  "request": {
+    "operation": "update_reply_style_preference",
+    "style": "current",
+    "baseRevision": 0,
+    "idempotencyKey": "style:1"
+  },
+  "reads": [
+    {
+      "name": "absence",
+      "wire": {
+        "state": "absent",
+        "revision": 0
+      },
+      "resolved": "current",
+      "supported": false
+    },
+    {
+      "name": "current",
+      "wire": {
+        "state": "saved",
+        "revision": 1,
+        "style": "current"
+      },
+      "resolved": "current",
+      "supported": true
+    },
+    {
+      "name": "discord",
+      "wire": {
+        "state": "saved",
+        "revision": 4,
+        "style": "discord"
+      },
+      "resolved": "discord",
+      "supported": true
+    },
+    {
+      "name": "future",
+      "wire": {
+        "state": "saved",
+        "revision": 9007199254740991,
+        "style": "future-style-v2"
+      },
+      "resolved": "current",
+      "supported": false
+    },
+    {
+      "name": "empty",
+      "wire": {
+        "state": "saved",
+        "revision": 9007199254740991,
+        "style": ""
+      },
+      "resolved": "current",
+      "supported": false
+    },
+    {
+      "name": "malformed-string",
+      "wire": {
+        "state": "saved",
+        "revision": 9007199254740991,
+        "style": " Discord "
+      },
+      "resolved": "current",
+      "supported": false
+    },
+    {
+      "name": "raw-unicode",
+      "wire": {
+        "state": "saved",
+        "revision": 9007199254740991,
+        "style": "e\u0301"
+      },
+      "resolved": "current",
+      "supported": false
+    }
+  ],
+  "invalidReads": [
+    {
+      "name": "absent-positive",
+      "wire": {
+        "state": "absent",
+        "revision": 1
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "absent-style",
+      "wire": {
+        "state": "absent",
+        "revision": 0,
+        "style": "current"
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "saved-zero",
+      "wire": {
+        "state": "saved",
+        "revision": 0,
+        "style": "current"
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "saved-null",
+      "wire": {
+        "state": "saved",
+        "revision": 1,
+        "style": null
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "saved-object",
+      "wire": {
+        "state": "saved",
+        "revision": 1,
+        "style": {}
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "missing-style",
+      "wire": {
+        "state": "saved",
+        "revision": 1
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "unknown-state",
+      "wire": {
+        "state": "loading",
+        "revision": 0
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "negative",
+      "wire": {
+        "state": "absent",
+        "revision": -1
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "unsafe",
+      "wire": {
+        "state": "saved",
+        "revision": 9007199254740992,
+        "style": "discord"
+      },
+      "code": "malformed_revision"
+    }
+  ],
+  "invalidWrites": [
+    {
+      "name": "style-0",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "future",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "style-1",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "Discord",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "style-2",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": " current ",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "style-3",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": null,
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "style-4",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": true,
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "style-5",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": {},
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "style-6",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": 1,
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "baseRevision-0",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": -1,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "baseRevision-1",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0.5,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "baseRevision-2",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": "0",
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "baseRevision-3",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": null,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "baseRevision-4",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": true,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "baseRevision-5",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 9007199254740991,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "baseRevision-6",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 9007199254740992,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_revision"
+    },
+    {
+      "name": "idempotencyKey-0",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": ""
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-1",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": " "
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-2",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": " padded"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-3",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "padded "
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-4",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": null
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-5",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": 1
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-6",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-7",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-8",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00\ud83d\ude00"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-9",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "a\nkey"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-10",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "a\u007fkey"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-11",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "a\u0085key"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-12",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "e\u0301"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-13",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "\ud800"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "idempotencyKey-14",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "\udfff"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "missing-operation",
+      "wire": {
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "missing-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "missing-baseRevision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "missing-idempotencyKey",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "toggle",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "toggle": true
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "operation",
+      "wire": {
+        "operation": "toggle_reply_style",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "conversation",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "conversationId": "c"
+      },
+      "code": "malformed_input"
+    },
+    {
+      "name": "null",
+      "wire": null,
+      "code": "malformed_input"
+    },
+    {
+      "name": "array",
+      "wire": [],
+      "code": "malformed_input"
+    }
+  ],
+  "results": [
+    {
+      "name": "current-applied",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "current-replayed",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "replayed",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "current-no-op",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 8,
+          "style": "current"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "discord-applied",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "discord",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "discord"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "discord",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "discord-replayed",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "replayed",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "discord",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "discord"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "discord",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "discord-no-op",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "discord",
+        "preference": {
+          "state": "saved",
+          "revision": 8,
+          "style": "discord"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "discord",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "conflict-discord",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 9,
+          "style": "discord"
+        }
+      }
+    },
+    {
+      "name": "conflict-future-v2",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 9,
+          "style": "future-v2"
+        }
+      }
+    },
+    {
+      "name": "conflict-current",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 9,
+          "style": "current"
+        }
+      }
+    },
+    {
+      "name": "conflict-absent",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "absent",
+          "revision": 0
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "conflict-lower",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "current"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "max-applied",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 9007199254740990,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 9007199254740991,
+          "style": "current"
+        }
+      },
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 9007199254740990,
+        "idempotencyKey": "style:1"
+      }
+    },
+    {
+      "name": "bad-echo-operation",
+      "wire": {
+        "operation": "other",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "bad-echo-reconciliationStatus",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "success",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "bad-echo-baseRevision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 1,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "bad-echo-idempotencyKey",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "other",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "bad-echo-requestedStyle",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "discord",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "bad-echo-requestedStyle",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "future",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "malformed_style"
+    },
+    {
+      "name": "bad-echo-extra",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        },
+        "extra": true
+      },
+      "code": "malformed_result"
+    },
+    {
+      "name": "bad-echo-actorUserId",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        },
+        "actorUserId": "spoof"
+      },
+      "code": "trusted_identity_field"
+    },
+    {
+      "name": "applied-wrong-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "discord"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "applied-unknown-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "future"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "applied-wrong-revision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "applied-absent",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "applied",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "absent",
+          "revision": 0
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "replayed-wrong-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "replayed",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "discord"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "replayed-unknown-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "replayed",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "future"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "replayed-wrong-revision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "replayed",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "replayed-absent",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "replayed",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "absent",
+          "revision": 0
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "already_requested_state-wrong-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "discord"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "already_requested_state-unknown-style",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "future"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "already_requested_state-wrong-revision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 2,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "already_requested_state-absent",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "absent",
+          "revision": 0
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "no-op-first-save",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "already_requested_state",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 1,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "conflict-same-revision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 0,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "absent",
+          "revision": 0
+        }
+      },
+      "code": "incoherent_result"
+    },
+    {
+      "name": "conflict-saved-same-revision",
+      "wire": {
+        "operation": "update_reply_style_preference",
+        "reconciliationStatus": "preference_revision_conflict",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1",
+        "requestedStyle": "current",
+        "preference": {
+          "state": "saved",
+          "revision": 8,
+          "style": "current"
+        }
+      },
+      "code": "incoherent_result",
+      "request": {
+        "operation": "update_reply_style_preference",
+        "style": "current",
+        "baseRevision": 8,
+        "idempotencyKey": "style:1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,889 @@
+{
+  "title": "Flutter named-thread regression 1788809841370",
+  "writes": [
+    {
+      "path": "/api/chat/conversations/14d069be-fbde-4a1b-b3f5-628f843fc1ae/read-cursor",
+      "status": 200,
+      "request": {
+        "operation": "mark_read",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "throughSequence": 10,
+        "idempotencyKey": "command:ef9be398824cc29cf1ed1a6bae41b24a"
+      },
+      "response": {
+        "operation": "mark_read",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "readState": {
+          "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+          "userId": "bob",
+          "lastReadSequence": 10,
+          "updatedAt": "2026-09-07T19:31:04.269Z"
+        },
+        "latestSequence": 10,
+        "unreadCount": 0
+      }
+    },
+    {
+      "path": "/api/chat/conversations/14d069be-fbde-4a1b-b3f5-628f843fc1ae/draft",
+      "status": 409,
+      "request": {
+        "operation": "synchronize_draft",
+        "intent": "replace",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "baseRevision": 0,
+        "deviceMutationId": "draft:23a4643aff6ce8a1cfbe035bd5fe725b",
+        "idempotencyKey": "command:b7e5eaae8b3f968ceec943e5802187a4",
+        "content": {
+          "format": "plain",
+          "text": "Flutter named-thread regression 1788809841370",
+          "attachments": []
+        }
+      },
+      "response": {
+        "operation": "synchronize_draft",
+        "intent": "replace",
+        "reconciliationStatus": "stale_base",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "baseRevision": 0,
+        "deviceMutationId": "draft:23a4643aff6ce8a1cfbe035bd5fe725b",
+        "idempotencyKey": "command:b7e5eaae8b3f968ceec943e5802187a4",
+        "canonicalRevision": 3,
+        "canonicalUpdatedAt": "2026-09-07T17:46:52.105Z",
+        "draft": {
+          "kind": "replaced",
+          "content": {
+            "format": "plain",
+            "text": "QA 298e20b4 retained channel draft",
+            "replyTo": {
+              "messageId": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+              "notifyAuthor": true
+            },
+            "attachments": []
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/14d069be-fbde-4a1b-b3f5-628f843fc1ae/messages",
+      "status": 201,
+      "request": {
+        "operation": "send",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "content": {
+          "format": "plain",
+          "text": "Flutter named-thread regression 1788809841370",
+          "attachments": []
+        },
+        "clientMessageId": "message:444089bac974ed7cfc4e956bf5b71bfd",
+        "idempotencyKey": "command:85c140fc43aa5961605eab2a5c33bfae"
+      },
+      "response": {
+        "operation": "send",
+        "reconciliationStatus": "applied",
+        "clientMessageId": "message:444089bac974ed7cfc4e956bf5b71bfd",
+        "message": {
+          "id": "d8fa8d1e-1dfe-4d4b-889b-889678be7ee0",
+          "tenantId": "chat-lab",
+          "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+          "author": {
+            "type": "user",
+            "userId": "bob"
+          },
+          "sequence": 11,
+          "createdAt": "2026-09-07T19:37:25.164Z",
+          "updatedAt": "2026-09-07T19:37:25.164Z",
+          "revision": {
+            "revision": 1
+          },
+          "content": {
+            "format": "plain",
+            "text": "Flutter named-thread regression 1788809841370",
+            "attachments": []
+          }
+        },
+        "canonicalRevision": 1
+      }
+    },
+    {
+      "path": "/api/chat/conversations/14d069be-fbde-4a1b-b3f5-628f843fc1ae/read-cursor",
+      "status": 200,
+      "request": {
+        "operation": "mark_read",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "throughSequence": 11,
+        "idempotencyKey": "command:fff9a68672fe307f30df09b881f8cfb5"
+      },
+      "response": {
+        "operation": "mark_read",
+        "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "readState": {
+          "conversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+          "userId": "bob",
+          "lastReadSequence": 11,
+          "updatedAt": "2026-09-07T19:37:26.005Z"
+        },
+        "latestSequence": 11,
+        "unreadCount": 0
+      }
+    },
+    {
+      "path": "/api/chat/messages/d8fa8d1e-1dfe-4d4b-889b-889678be7ee0/thread",
+      "status": 201,
+      "request": {
+        "operation": "create_thread",
+        "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "rootMessageId": "d8fa8d1e-1dfe-4d4b-889b-889678be7ee0",
+        "name": "Flutter named-thread regression 1788809841370",
+        "initialFollow": true,
+        "idempotencyKey": "command:50ac0e3919d919f9e954df55e26273ac"
+      },
+      "response": {
+        "operation": "create_thread",
+        "reconciliationStatus": "created",
+        "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "rootMessageId": "d8fa8d1e-1dfe-4d4b-889b-889678be7ee0",
+        "conversation": {
+          "kind": "conversation_detail",
+          "conversation": {
+            "id": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+            "tenantId": "chat-lab",
+            "type": "thread",
+            "visibility": "public",
+            "name": "Flutter named-thread regression 1788809841370",
+            "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+            "rootMessageId": "d8fa8d1e-1dfe-4d4b-889b-889678be7ee0",
+            "createdAt": "2026-09-07T19:37:26.315Z",
+            "updatedAt": "2026-09-07T19:37:26.315Z",
+            "latestSequence": 0,
+            "activityAt": "2026-09-07T19:37:26.315Z",
+            "unreadMentionCount": 0,
+            "currentMember": {
+              "tenantId": "chat-lab",
+              "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+              "userId": "bob",
+              "role": "owner",
+              "state": "active",
+              "joinedAt": "2026-09-07T19:37:26.315Z",
+              "updatedAt": "2026-09-07T19:37:26.315Z"
+            },
+            "currentReadState": {
+              "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+              "userId": "bob",
+              "lastReadSequence": 0,
+              "updatedAt": "2026-09-07T19:37:26.315Z"
+            },
+            "activeMemberUserIds": [
+              "bob"
+            ],
+            "memberUserIds": [
+              "bob"
+            ],
+            "currentPreference": {
+              "preferenceRevision": 1,
+              "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+              "userId": "bob",
+              "isStarred": false,
+              "notificationPreference": "all",
+              "mute": {
+                "muted": false
+              },
+              "updatedAt": "2026-09-07T19:37:26.315Z"
+            }
+          },
+          "_meta": {
+            "packageVersion": "1.0.17",
+            "protocolVersion": 4,
+            "schemaVersion": 43,
+            "enabledFeatures": {
+              "inlineReplies": true,
+              "namedThreads": true,
+              "reply_style_preference_v1": true,
+              "threadLifecycle": true,
+              "threadDiscovery": true,
+              "threadInactivity": false,
+              "attachments": true,
+              "notifications": true,
+              "audit": false,
+              "realtime": true,
+              "media": true,
+              "typing": true,
+              "presence": true
+            },
+            "supportedProtocolRange": {
+              "minimumVersion": 3,
+              "maximumVersion": 4
+            },
+            "feature": {
+              "name": "conversation_snapshots",
+              "version": 1
+            }
+          }
+        },
+        "rootThreadSummary": {
+          "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+          "replyCount": 0,
+          "participantIds": [],
+          "unreadCount": 0
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/draft",
+      "status": 200,
+      "request": {
+        "operation": "synchronize_draft",
+        "intent": "replace",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "baseRevision": 0,
+        "deviceMutationId": "draft:4ed510b152a1c5e816150f1caab37ee7",
+        "idempotencyKey": "command:f1693107ae472964d2e208cdd467f0d6",
+        "content": {
+          "format": "plain",
+          "text": "Friday",
+          "attachments": []
+        }
+      },
+      "response": {
+        "operation": "synchronize_draft",
+        "intent": "replace",
+        "reconciliationStatus": "applied",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "baseRevision": 0,
+        "deviceMutationId": "draft:4ed510b152a1c5e816150f1caab37ee7",
+        "idempotencyKey": "command:f1693107ae472964d2e208cdd467f0d6",
+        "canonicalRevision": 1,
+        "canonicalUpdatedAt": "2026-09-07T19:37:27.352Z",
+        "draft": {
+          "kind": "replaced",
+          "content": {
+            "format": "plain",
+            "text": "Friday",
+            "attachments": []
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/messages",
+      "status": 201,
+      "request": {
+        "operation": "send",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "content": {
+          "format": "plain",
+          "text": "Friday",
+          "attachments": []
+        },
+        "clientMessageId": "message:6a43a14b7cc880e27c24a3da0ad0abc3",
+        "idempotencyKey": "command:a82af5b01e699e6e1325f986ac937a47"
+      },
+      "response": {
+        "operation": "send",
+        "reconciliationStatus": "applied",
+        "clientMessageId": "message:6a43a14b7cc880e27c24a3da0ad0abc3",
+        "message": {
+          "id": "b6b2ef7b-f8c4-4132-860a-41bf1fc32f66",
+          "tenantId": "chat-lab",
+          "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+          "author": {
+            "type": "user",
+            "userId": "bob"
+          },
+          "sequence": 1,
+          "createdAt": "2026-09-07T19:37:27.487Z",
+          "updatedAt": "2026-09-07T19:37:27.487Z",
+          "revision": {
+            "revision": 1
+          },
+          "content": {
+            "format": "plain",
+            "text": "Friday",
+            "attachments": []
+          }
+        },
+        "canonicalRevision": 1
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/draft",
+      "status": 200,
+      "request": {
+        "operation": "synchronize_draft",
+        "intent": "clear",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "baseRevision": 1,
+        "deviceMutationId": "draft:b9bfd22a59afb4894184cc99ac566e9b",
+        "idempotencyKey": "command:938d84ecb022a02a95b919bb19af923d"
+      },
+      "response": {
+        "operation": "synchronize_draft",
+        "intent": "clear",
+        "reconciliationStatus": "applied",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "baseRevision": 1,
+        "deviceMutationId": "draft:b9bfd22a59afb4894184cc99ac566e9b",
+        "idempotencyKey": "command:938d84ecb022a02a95b919bb19af923d",
+        "canonicalRevision": 2,
+        "canonicalUpdatedAt": "2026-09-07T19:37:27.735Z",
+        "draft": {
+          "kind": "clear_tombstone",
+          "content": null
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/follow",
+      "status": 200,
+      "request": {
+        "operation": "set_thread_follow",
+        "intent": "unfollow",
+        "target": {
+          "type": "thread",
+          "id": "f6fc402a-2373-4346-a807-c4d38b83efbf"
+        },
+        "expectedFollowRevision": 1,
+        "idempotencyKey": "command:17ea96a9b85070ebaa7273cd6c5c8eb5"
+      },
+      "response": {
+        "operation": "set_thread_follow",
+        "intent": "unfollow",
+        "reconciliationStatus": "applied",
+        "target": {
+          "type": "thread",
+          "id": "f6fc402a-2373-4346-a807-c4d38b83efbf"
+        },
+        "expectedFollowRevision": 1,
+        "idempotencyKey": "command:17ea96a9b85070ebaa7273cd6c5c8eb5",
+        "followRevision": 2,
+        "follow": {
+          "target": {
+            "type": "thread",
+            "id": "f6fc402a-2373-4346-a807-c4d38b83efbf"
+          },
+          "isFollowing": false,
+          "source": "manual",
+          "updatedAt": "2026-09-07T19:37:28.448Z"
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/read-cursor",
+      "status": 200,
+      "request": {
+        "operation": "mark_read",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "throughSequence": 1,
+        "idempotencyKey": "command:d7571220892640785bb39b55dd113e23"
+      },
+      "response": {
+        "operation": "mark_read",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "readState": {
+          "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+          "userId": "bob",
+          "lastReadSequence": 1,
+          "updatedAt": "2026-09-07T19:37:28.453Z"
+        },
+        "latestSequence": 1,
+        "unreadCount": 0
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/follow",
+      "status": 200,
+      "request": {
+        "operation": "set_thread_follow",
+        "intent": "follow",
+        "target": {
+          "type": "thread",
+          "id": "f6fc402a-2373-4346-a807-c4d38b83efbf"
+        },
+        "expectedFollowRevision": 2,
+        "idempotencyKey": "command:24131bbaab351c18f02a0df066347ad6"
+      },
+      "response": {
+        "operation": "set_thread_follow",
+        "intent": "follow",
+        "reconciliationStatus": "applied",
+        "target": {
+          "type": "thread",
+          "id": "f6fc402a-2373-4346-a807-c4d38b83efbf"
+        },
+        "expectedFollowRevision": 2,
+        "idempotencyKey": "command:24131bbaab351c18f02a0df066347ad6",
+        "followRevision": 3,
+        "follow": {
+          "target": {
+            "type": "thread",
+            "id": "f6fc402a-2373-4346-a807-c4d38b83efbf"
+          },
+          "isFollowing": true,
+          "source": "manual",
+          "updatedAt": "2026-09-07T19:37:29.158Z"
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/lifecycle",
+      "status": 200,
+      "request": {
+        "operation": "update_thread_lifecycle",
+        "intent": "close",
+        "expectedLifecycleRevision": 1,
+        "idempotencyKey": "command:0e34c7da798459ddf492a3116f71aaf1"
+      },
+      "response": {
+        "operation": "update_thread_lifecycle",
+        "intent": "close",
+        "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "expectedLifecycleRevision": 1,
+        "idempotencyKey": "command:0e34c7da798459ddf492a3116f71aaf1",
+        "reconciliationStatus": "applied",
+        "previousLifecycle": {
+          "revision": 1,
+          "locked": false
+        },
+        "threadLifecycle": {
+          "revision": 2,
+          "locked": false,
+          "closedAt": "2026-09-07T19:37:29.848Z",
+          "closedByUserId": "bob"
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/lifecycle",
+      "status": 200,
+      "request": {
+        "operation": "update_thread_lifecycle",
+        "intent": "reopen",
+        "expectedLifecycleRevision": 2,
+        "idempotencyKey": "command:6d21d718828624edc39c18dfa19d7aef"
+      },
+      "response": {
+        "operation": "update_thread_lifecycle",
+        "intent": "reopen",
+        "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "expectedLifecycleRevision": 2,
+        "idempotencyKey": "command:6d21d718828624edc39c18dfa19d7aef",
+        "reconciliationStatus": "applied",
+        "previousLifecycle": {
+          "revision": 2,
+          "locked": false,
+          "closedAt": "2026-09-07T19:37:29.848Z",
+          "closedByUserId": "bob"
+        },
+        "threadLifecycle": {
+          "revision": 3,
+          "locked": false
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/read-cursor",
+      "status": 200,
+      "request": {
+        "operation": "mark_read",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "throughSequence": 1,
+        "idempotencyKey": "command:d7571220892640785bb39b55dd113e23"
+      },
+      "response": {
+        "operation": "mark_read",
+        "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "readState": {
+          "conversationId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+          "userId": "bob",
+          "lastReadSequence": 1,
+          "updatedAt": "2026-09-07T19:37:28.453Z"
+        },
+        "latestSequence": 1,
+        "unreadCount": 0
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/lifecycle",
+      "status": 200,
+      "request": {
+        "operation": "update_thread_lifecycle",
+        "intent": "lock",
+        "expectedLifecycleRevision": 3,
+        "idempotencyKey": "command:24d3e8b449d8f97f59f7581e790467db"
+      },
+      "response": {
+        "operation": "update_thread_lifecycle",
+        "intent": "lock",
+        "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "expectedLifecycleRevision": 3,
+        "idempotencyKey": "command:24d3e8b449d8f97f59f7581e790467db",
+        "reconciliationStatus": "applied",
+        "previousLifecycle": {
+          "revision": 3,
+          "locked": false
+        },
+        "threadLifecycle": {
+          "revision": 4,
+          "locked": true,
+          "closedAt": "2026-09-07T19:37:31.162Z",
+          "closedByUserId": "bob"
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/lifecycle",
+      "status": 200,
+      "request": {
+        "operation": "update_thread_lifecycle",
+        "intent": "unlock",
+        "expectedLifecycleRevision": 4,
+        "idempotencyKey": "command:b4275962de8b7e13ebb1b9513406a717"
+      },
+      "response": {
+        "operation": "update_thread_lifecycle",
+        "intent": "unlock",
+        "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "expectedLifecycleRevision": 4,
+        "idempotencyKey": "command:b4275962de8b7e13ebb1b9513406a717",
+        "reconciliationStatus": "applied",
+        "previousLifecycle": {
+          "revision": 4,
+          "locked": true,
+          "closedAt": "2026-09-07T19:37:31.162Z",
+          "closedByUserId": "bob"
+        },
+        "threadLifecycle": {
+          "revision": 5,
+          "locked": false,
+          "closedAt": "2026-09-07T19:37:31.162Z",
+          "closedByUserId": "bob"
+        }
+      }
+    },
+    {
+      "path": "/api/chat/conversations/f6fc402a-2373-4346-a807-c4d38b83efbf/lifecycle",
+      "status": 200,
+      "request": {
+        "operation": "update_thread_lifecycle",
+        "intent": "reopen",
+        "expectedLifecycleRevision": 5,
+        "idempotencyKey": "command:434c10d562e608954d3a57da2d3ac330"
+      },
+      "response": {
+        "operation": "update_thread_lifecycle",
+        "intent": "reopen",
+        "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+        "expectedLifecycleRevision": 5,
+        "idempotencyKey": "command:434c10d562e608954d3a57da2d3ac330",
+        "reconciliationStatus": "applied",
+        "previousLifecycle": {
+          "revision": 5,
+          "locked": false,
+          "closedAt": "2026-09-07T19:37:31.162Z",
+          "closedByUserId": "bob"
+        },
+        "threadLifecycle": {
+          "revision": 6,
+          "locked": false
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "eventId": "a322a085-469d-46aa-8b3a-e6fc5e66a964",
+      "protocolVersion": 4,
+      "tenantId": "chat-lab",
+      "streamId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+      "type": "thread.created",
+      "occurredAt": "2026-09-07T19:37:26.315Z",
+      "payload": {
+        "conversation": {
+          "id": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+          "name": "Flutter named-thread regression 1788809841370",
+          "type": "thread",
+          "tenantId": "chat-lab",
+          "createdAt": "2026-09-07T19:37:26.315Z",
+          "updatedAt": "2026-09-07T19:37:26.315Z",
+          "visibility": "public",
+          "memberUserIds": [
+            "bob"
+          ],
+          "rootMessageId": "d8fa8d1e-1dfe-4d4b-889b-889678be7ee0",
+          "parentConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae"
+        },
+        "rootThreadSummary": {
+          "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+          "replyCount": 0,
+          "unreadCount": 0,
+          "participantIds": []
+        }
+      }
+    }
+  ],
+  "semantics": "- heading \"Flutter Chat Lab · shared backend\" [level=2]\n- button \"Bob\"\n- text: \"Managed realtime: connected\"\n- button \"Disconnect\"\n- button \"Capture state\"\n- button \"Export evidence\"\n- text: Thread\n- button \"Open workspace settings\"\n- button \"Close panel\"\n- banner \"Flutter named-thread regression 1788809841370\":\n  - button \"Thread subscriptions\"\n  - button \"Shared thread controls\"\n  - button \"Close panel\"\n  - text: Thread subscription saved. History and preferences are retained.\n- text: Thread open Thread root message In Launch planning Flutter named-thread regression 1788809841370\n- group \"Message timeline\":\n  - group:\n    - text: Unread messages New messages\n    - group \"Message 1 from bob Friday\":\n      - button \"Copy\"\n      - button \"Mark unread from message 1\":\n        - button\n      - button \"Remind me\"\n      - button \"Reply\"\n- group \"Message composer\":\n  - textbox \"Message input\"\n  - textbox \"Write a message\"\n  - button \"Add attachment\"\n  - group:\n    - button \"Bold\":\n      - button \"Bold\" [disabled]\n    - button \"Italic\":\n      - button \"Italic\" [disabled]\n    - button \"Link\":\n      - button \"Link\" [disabled]\n    - button \"Bulleted list\":\n      - button \"Bulleted list\" [disabled]\n    - button \"Numbered list\":\n      - button \"Numbered list\" [disabled]\n    - button \"Inline code\":\n      - button \"Inline code\" [disabled]\n    - button \"Code block\":\n      - button \"Code block\" [disabled]\n  - button \"Send message\" [disabled]",
+  "exported": {
+    "captures": [
+      {
+        "label": "before-parent-hydration",
+        "capturedAt": "2026-09-07T19:37:22.558Z",
+        "mode": "shared-backend",
+        "actor": "bob",
+        "instanceId": "09cc43d02b2911e0ff91788be8ae55ae",
+        "seedProfile": "reply-styles",
+        "availableActors": {
+          "alice": "Alice",
+          "bob": "Bob"
+        },
+        "endpoint": "http://127.0.0.1:4167/api/chat",
+        "identity": null,
+        "realtime": "idle",
+        "clientLifecycle": "ready",
+        "clientDiagnostic": null,
+        "listError": null,
+        "error": null,
+        "selectedConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "conversationIds": [
+          "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+          "14d069be-fbde-4a1b-b3f5-628f843fc1ae"
+        ],
+        "hydratedTimelineIds": [],
+        "cursor": null,
+        "timelineReplayCursor": null,
+        "durableStreams": {},
+        "messages": [],
+        "diagnostics": [
+          "conversation.list:completed"
+        ],
+        "provenance": {
+          "sourceRevision": "c82abe8d19a81ec599a9771e0c449ee0605c3242",
+          "sourceDigest": "a39f4b842673ecba7b8250a7c6b5433688dd39e24344099e478ba2ee048387c8",
+          "builtAt": "2026-09-07T19:34:17.422Z",
+          "packageVersion": "0.1.19"
+        }
+      }
+    ],
+    "current": {
+      "mode": "shared-backend",
+      "actor": "bob",
+      "instanceId": "09cc43d02b2911e0ff91788be8ae55ae",
+      "seedProfile": "reply-styles",
+      "availableActors": {
+        "alice": "Alice",
+        "bob": "Bob"
+      },
+      "endpoint": "http://127.0.0.1:4167/api/chat",
+      "identity": {
+        "tenantId": "chat-lab",
+        "userId": "bob",
+        "deviceId": "device-aafdb104-3379-4a70-916f-a80fc74a23f5-636"
+      },
+      "realtime": "connected",
+      "clientLifecycle": "ready",
+      "clientDiagnostic": null,
+      "listError": null,
+      "error": null,
+      "selectedConversationId": "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+      "conversationIds": [
+        "a184c0ce-84d7-4cde-a610-4d3558e7ebe2",
+        "14d069be-fbde-4a1b-b3f5-628f843fc1ae"
+      ],
+      "hydratedTimelineIds": [
+        "14d069be-fbde-4a1b-b3f5-628f843fc1ae",
+        "f6fc402a-2373-4346-a807-c4d38b83efbf"
+      ],
+      "cursor": {
+        "eventId": "b3009e18-fbd7-438c-830b-5ec0de4edef6"
+      },
+      "timelineReplayCursor": {
+        "eventId": "7785248b-f4a5-41e2-ada2-4eb1295a1d29"
+      },
+      "durableStreams": {
+        "user:bob": {
+          "lastEventId": "be6481ad-d740-40d6-bdab-00c8ba6347ed",
+          "lastOccurredAt": "2026-09-07T19:37:29.158Z"
+        },
+        "14d069be-fbde-4a1b-b3f5-628f843fc1ae": {
+          "lastEventId": "b3009e18-fbd7-438c-830b-5ec0de4edef6",
+          "lastOccurredAt": "2026-09-07T19:37:32.545Z"
+        },
+        "f6fc402a-2373-4346-a807-c4d38b83efbf": {
+          "lastEventId": "b7e9573e-2558-478e-aa6f-fac63d818343",
+          "lastOccurredAt": "2026-09-07T19:37:32.545Z"
+        }
+      },
+      "messages": [
+        {
+          "id": "832e136b-5ddc-41db-a2e4-9b3190f778a6",
+          "canonicalSummary": {
+            "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+            "replyCount": 3,
+            "participantIds": [
+              "bob"
+            ],
+            "unreadCount": 0,
+            "lastReplyAt": "2026-09-07T17:56:54.729Z"
+          },
+          "projectedSummary": {
+            "threadId": "e35ac80a-52f1-472a-b8f0-f35aa7eb9ef6",
+            "replyCount": 3,
+            "participantIds": [
+              "bob"
+            ],
+            "unreadCount": 0,
+            "lastReplyAt": "2026-09-07T17:56:54.729Z"
+          }
+        },
+        {
+          "id": "30876de8-24e3-4d0d-bb31-4b4e89dffb9f",
+          "canonicalSummary": {
+            "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          },
+          "projectedSummary": {
+            "threadId": "cbd12df4-cae6-460d-bc79-1a84c2eef246",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          }
+        },
+        {
+          "id": "6e96cf41-702e-4ed7-a10e-2a4c18a8e1f2",
+          "canonicalSummary": null,
+          "projectedSummary": null
+        },
+        {
+          "id": "adf0af86-06c7-4c06-a8bb-b3e7207414e4",
+          "canonicalSummary": null,
+          "projectedSummary": null
+        },
+        {
+          "id": "8ff105ef-172c-46b9-97f7-067b09931def",
+          "canonicalSummary": {
+            "threadId": "7fa47b2e-2724-4632-b24a-050347ebfa76",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          },
+          "projectedSummary": {
+            "threadId": "7fa47b2e-2724-4632-b24a-050347ebfa76",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          }
+        },
+        {
+          "id": "e38c9916-678e-4c60-ba94-3228b254a32e",
+          "canonicalSummary": {
+            "threadId": "0d27e81e-3226-47e7-b6f5-552c4c5654ff",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          },
+          "projectedSummary": {
+            "threadId": "0d27e81e-3226-47e7-b6f5-552c4c5654ff",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          }
+        },
+        {
+          "id": "78e8fcc8-0ef9-4935-ab87-16ac5579b382",
+          "canonicalSummary": null,
+          "projectedSummary": null
+        },
+        {
+          "id": "500e9cfb-c8ae-4485-bd67-d589a9893a5b",
+          "canonicalSummary": null,
+          "projectedSummary": null
+        },
+        {
+          "id": "1d61bd7b-2ff7-4a6b-972f-68aa8b70d972",
+          "canonicalSummary": {
+            "threadId": "43838c9d-6a7a-4ce1-bbed-3ad5209485e9",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          },
+          "projectedSummary": {
+            "threadId": "43838c9d-6a7a-4ce1-bbed-3ad5209485e9",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          }
+        },
+        {
+          "id": "1efef28c-873a-470c-9edc-d4b12bb8808b",
+          "canonicalSummary": {
+            "threadId": "d89d9888-930f-4c14-be87-8e808f0657c9",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          },
+          "projectedSummary": {
+            "threadId": "d89d9888-930f-4c14-be87-8e808f0657c9",
+            "replyCount": 0,
+            "participantIds": [],
+            "unreadCount": 0
+          }
+        },
+        {
+          "id": "d8fa8d1e-1dfe-4d4b-889b-889678be7ee0",
+          "canonicalSummary": {
+            "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+            "replyCount": 1,
+            "participantIds": [
+              "bob"
+            ],
+            "unreadCount": 0,
+            "lastReplyAt": "2026-09-07T19:37:27.487Z"
+          },
+          "projectedSummary": {
+            "threadId": "f6fc402a-2373-4346-a807-c4d38b83efbf",
+            "replyCount": 1,
+            "participantIds": [
+              "bob"
+            ],
+            "unreadCount": 0,
+            "lastReplyAt": "2026-09-07T19:37:27.487Z"
+          }
+        }
+      ],
+      "diagnostics": [
+        "conversation.list:completed",
+        "reply.style.preference:completed",
+        "message.timeline:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "message.context:aborted",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "message.context:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "message.timeline:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed",
+        "conversation.detail:completed"
+      ],
+      "provenance": {
+        "sourceRevision": "c82abe8d19a81ec599a9771e0c449ee0605c3242",
+        "sourceDigest": "a39f4b842673ecba7b8250a7c6b5433688dd39e24344099e478ba2ee048387c8",
+        "builtAt": "2026-09-07T19:34:17.422Z",
+        "packageVersion": "0.1.19"
+      }
+    }
+  }
+}

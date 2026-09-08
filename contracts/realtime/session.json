@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "subprotocols": {
+    "stable": "handrail-chat.v1",
+    "bearerPrefix": "handrail-chat.bearer."
+  },
+  "messages": {
+    "refreshRequired": "Chat was updated; refresh to continue."
+  },
+  "messageTypes": {
+    "sessionAccepted": "chat.session.accepted",
+    "sessionRefreshRequired": "chat.session.refresh_required",
+    "sessionSnapshotRequired": "chat.session.snapshot_required",
+    "subscribe": "chat.subscribe",
+    "unsubscribe": "chat.unsubscribe",
+    "subscriptionAccepted": "chat.subscription.accepted",
+    "subscriptionRemoved": "chat.subscription.removed",
+    "subscriptionRejected": "chat.subscription.rejected",
+    "subscriptionRevoked": "chat.subscription.revoked"
+  },
+  "sessionStates": {
+    "accepted": "accepted",
+    "refreshRequired": "refresh_required",
+    "snapshotRequired": "snapshot_required"
+  },
+  "refreshReasons": [
+    "unsupported_protocol"
+  ],
+  "snapshotRequiredReasons": [
+    "replay_expired",
+    "replay_unavailable",
+    "replay_incompatible",
+    "replay_overflow"
+  ],
+  "replayCursorStatuses": [
+    "available",
+    "expired",
+    "unavailable",
+    "incompatible",
+    "overflow"
+  ],
+  "subscriptionErrorCodes": {
+    "malformedRequest": "malformed_request",
+    "identitySpoofing": "identity_spoofing",
+    "invalidStream": "invalid_stream",
+    "accessDenied": "access_denied",
+    "accessRevoked": "access_revoked"
+  },
+  "types": [
+    {
+      "name": "EventCursor",
+      "fields": [
+        { "name": "eventId", "type": "string" }
+      ]
+    },
+    {
+      "name": "ClientHandshakeInput",
+      "fields": [
+        { "name": "clientPackageVersion", "type": "string" },
+        { "name": "protocolVersion", "type": "integer" },
+        { "name": "resumeFrom", "type": "EventCursor", "presence": "optional" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSessionAcceptedMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.sessionAccepted" },
+        { "name": "metadata", "type": "ServerHandshakeMetadata" },
+        { "name": "tenantId", "type": "TenantId" },
+        { "name": "actorStreamId", "type": "ChatRealtimeUserStreamId" },
+        { "name": "deviceId", "type": "DeviceId" },
+        { "name": "sessionId", "type": "SessionId" },
+        { "name": "resumeFrom", "type": "EventCursor", "presence": "optional" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeRefreshRequiredMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.sessionRefreshRequired" },
+        { "name": "state", "type": "string", "const": "sessionStates.refreshRequired" },
+        { "name": "reason", "type": "string", "const": "refreshReasons[0]" },
+        { "name": "message", "type": "string", "const": "messages.refreshRequired" },
+        { "name": "requestedProtocolVersion", "type": "integer" },
+        { "name": "metadata", "type": "ServerHandshakeMetadata" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSnapshotRequiredMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.sessionSnapshotRequired" },
+        { "name": "state", "type": "string", "const": "sessionStates.snapshotRequired" },
+        { "name": "reason", "type": "SnapshotRequiredReason" },
+        { "name": "metadata", "type": "ServerHandshakeMetadata" },
+        { "name": "resumeFrom", "type": "EventCursor" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSubscribeRequest",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.subscribe" },
+        { "name": "requestId", "type": "string" },
+        { "name": "streamId", "type": "string" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeUnsubscribeRequest",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.unsubscribe" },
+        { "name": "requestId", "type": "string" },
+        { "name": "streamId", "type": "string" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSubscriptionAcceptedMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.subscriptionAccepted" },
+        { "name": "requestId", "type": "string" },
+        { "name": "streamId", "type": "ChatRealtimeStreamId" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSubscriptionRemovedMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.subscriptionRemoved" },
+        { "name": "requestId", "type": "string" },
+        { "name": "streamId", "type": "ChatRealtimeStreamId" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSubscriptionRejectedMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.subscriptionRejected" },
+        { "name": "code", "type": "ChatRealtimeSubscriptionRejectCode" },
+        { "name": "requestId", "type": "string", "presence": "optional" }
+      ]
+    },
+    {
+      "name": "ChatRealtimeSubscriptionRevokedMessage",
+      "fields": [
+        { "name": "type", "type": "string", "const": "messageTypes.subscriptionRevoked" },
+        { "name": "code", "type": "string", "const": "subscriptionErrorCodes.accessRevoked" },
+        { "name": "streamId", "type": "ChatRealtimeStreamId" }
+      ]
+    },
+    {
+      "name": "ChatEvent",
+      "fields": [
+        { "name": "eventId", "type": "string" },
+        { "name": "protocolVersion", "type": "integer" },
+        { "name": "tenantId", "type": "TenantId" },
+        { "name": "streamId", "type": "string" },
+        { "name": "type", "type": "string" },
+        { "name": "occurredAt", "type": "IsoTimestamp" },
+        { "name": "payload", "type": "json" }
+      ]
+    }
+  ]
+}

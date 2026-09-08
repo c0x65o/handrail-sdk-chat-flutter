@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "method": "POST",
+  "path": "/conversations",
+  "operation": "create_conversation",
+  "variants": [
+    {
+      "type": "channel",
+      "visibility": ["public", "private"],
+      "inputFields": [
+        "operation",
+        "type",
+        "name",
+        "visibility",
+        "entity",
+        "idempotencyKey",
+        "clientRequestId"
+      ],
+      "participantCardinality": null,
+      "resultStatuses": ["created", "replayed"],
+      "exposesParticipantIdentity": false
+    },
+    {
+      "type": "direct",
+      "visibility": ["private"],
+      "inputFields": [
+        "operation",
+        "type",
+        "visibility",
+        "intendedMemberUserIds",
+        "idempotencyKey",
+        "clientRequestId"
+      ],
+      "participantCardinality": {
+        "intendedMinimum": 1,
+        "intendedMaximum": 1,
+        "completeMinimum": 2,
+        "completeMaximum": 2
+      },
+      "resultStatuses": ["created", "existing_equivalent", "replayed"],
+      "exposesParticipantIdentity": true
+    },
+    {
+      "type": "group_direct",
+      "visibility": ["private"],
+      "inputFields": [
+        "operation",
+        "type",
+        "visibility",
+        "intendedMemberUserIds",
+        "idempotencyKey",
+        "clientRequestId"
+      ],
+      "participantCardinality": {
+        "intendedMinimum": 2,
+        "intendedMaximum": null,
+        "completeMinimum": 3,
+        "completeMaximum": null
+      },
+      "resultStatuses": ["created", "existing_equivalent", "replayed"],
+      "exposesParticipantIdentity": true
+    }
+  ],
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "type", "type": "conversationCreationType" },
+    { "name": "name", "type": "nonBlankString", "variant": "channel" },
+    { "name": "visibility", "type": "ConversationVisibility" },
+    { "name": "entity", "type": "HostEntityReference", "variant": "channel", "optional": true },
+    { "name": "intendedMemberUserIds", "type": "uniqueNonBlankUserIds", "variant": "participantIdentity" },
+    { "name": "idempotencyKey", "type": "nonBlankString" },
+    { "name": "clientRequestId", "type": "nonBlankString", "correlation": "exactResultEcho" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "type", "type": "conversationCreationType", "correlation": "requestType" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "clientRequestId", "type": "nonBlankString", "correlation": "exactRequestEcho" },
+    { "name": "conversation", "type": "ConversationDetailSnapshot", "correlation": "requestType" },
+    { "name": "participantIdentity", "type": "CanonicalParticipantIdentity", "variant": "participantIdentity" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "created", "canonicalState": "newConversation" },
+    { "name": "existing_equivalent", "canonicalState": "existingParticipantIdentity" },
+    { "name": "replayed", "canonicalState": "storedAuthoritativeResult" }
+  ],
+  "participantIdentity": {
+    "keyPrefix": "handrail-participants.v1.",
+    "completeSetIncludesTrustedActor": true,
+    "intendedMembersExcludeTrustedActor": true,
+    "memberIdsMustBeUnique": true,
+    "canonicalOrder": "ascendingUtf16CodeUnits",
+    "encoding": "uriEncodedJsonArray"
+  },
+  "coherenceRules": {
+    "resultTypeMatchesRequest": true,
+    "resultTypeMatchesConversation": true,
+    "clientRequestIdMatchesRequest": true,
+    "participantIdentityMatchesIntendedMembersAndTrustedActor": true,
+    "participantIdentityIncludesSnapshotCurrentActor": true,
+    "channelOmitsParticipantIdentity": true,
+    "channelRejectsExistingEquivalent": true
+  },
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authorization",
+    "role",
+    "roles",
+    "capability",
+    "capabilities",
+    "permissions"
+  ],
+  "forbiddenConversationKinds": ["thread"],
+  "serverDerivedFields": [
+    "tenantIdentity",
+    "actorIdentity",
+    "sessionIdentity",
+    "authorization",
+    "roles",
+    "capabilities",
+    "initialChannelMembership"
+  ]
+}

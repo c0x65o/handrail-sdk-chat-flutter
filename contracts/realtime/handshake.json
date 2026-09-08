@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "types": [
+    {
+      "name": "EnabledFeatures",
+      "kind": "map",
+      "description": "Feature names are deployment-defined and forward compatible.",
+      "typeParameters": [
+        {
+          "name": "Feature",
+          "constraint": "string",
+          "default": "string"
+        }
+      ],
+      "keyType": "Feature",
+      "valueType": "boolean"
+    },
+    {
+      "name": "SupportedProtocolRange",
+      "kind": "object",
+      "description": "Both endpoints are included when checking protocol compatibility.",
+      "fields": [
+        {
+          "name": "minimumVersion",
+          "type": "integer"
+        },
+        {
+          "name": "maximumVersion",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "ServerHandshakeMetadata",
+      "kind": "object",
+      "description": "Metadata advertised by a Handrail Chat server.",
+      "typeParameters": [
+        {
+          "name": "Feature",
+          "constraint": "string",
+          "default": "string"
+        }
+      ],
+      "fields": [
+        {
+          "name": "packageVersion",
+          "type": "string"
+        },
+        {
+          "name": "protocolVersion",
+          "type": "integer"
+        },
+        {
+          "name": "schemaVersion",
+          "type": "integer"
+        },
+        {
+          "name": "enabledFeatures",
+          "type": "EnabledFeatures",
+          "typeArgument": "Feature"
+        },
+        {
+          "name": "supportedProtocolRange",
+          "type": "SupportedProtocolRange"
+        }
+      ]
+    },
+    {
+      "name": "ServerHandshakeMetadataInput",
+      "kind": "object",
+      "description": "Input used to create server handshake metadata.",
+      "typeParameters": [
+        {
+          "name": "Feature",
+          "constraint": "string",
+          "default": "string"
+        }
+      ],
+      "fields": [
+        {
+          "name": "packageVersion",
+          "type": "string"
+        },
+        {
+          "name": "protocolVersion",
+          "type": "integer"
+        },
+        {
+          "name": "schemaVersion",
+          "type": "integer"
+        },
+        {
+          "name": "enabledFeatures",
+          "type": "EnabledFeatures",
+          "typeArgument": "Feature"
+        }
+      ]
+    }
+  ],
+  "reservedFeatures": {
+    "inlineReplies": "inlineReplies",
+    "namedThreads": "namedThreads",
+    "savedReplyStyle": "reply_style_preference_v1",
+    "threadLifecycle": "threadLifecycle",
+    "threadDiscovery": "threadDiscovery",
+    "threadInactivity": "threadInactivity"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "method": "DELETE",
+  "path": "/messages/:messageId",
+  "operation": "soft_delete",
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "messageId", "type": "MessageId" },
+    { "name": "expectedRevision", "type": "positiveSafeInteger" },
+    { "name": "idempotencyKey", "type": "nonBlankString" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "expectedRevision", "type": "positiveSafeInteger", "source": "requestEcho" },
+    { "name": "message", "type": "Message", "source": "server" },
+    { "name": "canonicalRevision", "type": "positiveSafeInteger", "source": "server" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "canonicalState": "committedDeletionShell", "revisionRule": "expectedPlusOne" },
+    { "name": "replayed", "canonicalState": "storedAppliedDeletionShell", "revisionRule": "expectedPlusOne" },
+    { "name": "revision_conflict", "canonicalState": "currentServerMessage", "revisionRule": "differentFromExpected" }
+  ],
+  "canonicalRevisionRule": "equalsMessageRevision",
+  "successfulMessageRule": "deletedMessageShell",
+  "deletedMessageShell": {
+    "model": "Message",
+    "content": "null",
+    "deletionMetadata": "requiredPaired"
+  },
+  "staleRevisionConflict": {
+    "status": "revision_conflict",
+    "carries": ["message", "canonicalRevision"],
+    "canonicalRevisionRule": "differentFromExpectedRevision"
+  },
+  "trustedIdentityAliases": [
+    "tenant",
+    "tenantId",
+    "organization",
+    "organizationId",
+    "actor",
+    "actorId",
+    "actorContext",
+    "actorUserId",
+    "currentActor",
+    "currentActorId",
+    "currentUser",
+    "currentUserId",
+    "user",
+    "userId",
+    "author",
+    "authorId",
+    "authorUserId",
+    "principal",
+    "principalId",
+    "subject",
+    "subjectId",
+    "authenticatedUser",
+    "authenticatedUserId",
+    "identity",
+    "session",
+    "sessionId",
+    "auth",
+    "authentication",
+    "authorization",
+    "role",
+    "roles"
+  ]
+}

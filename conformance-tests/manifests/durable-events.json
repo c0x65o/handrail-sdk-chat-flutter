@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "durable-events",
+  "typescript": {
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "test/durable-events.test.mjs"
+    ]
+  },
+  "dart": {
+    "command": [
+      "flutter",
+      "test",
+      "--concurrency=2",
+      "--no-pub",
+      "test/generated_durable_events_test.dart"
+    ],
+    "cwd": ".",
+    "repository": "flutter"
+  },
+  "generator": {
+    "command": [
+      "node",
+      "scripts/generate-durable-events.mjs",
+      "--check"
+    ],
+    "regenerateScript": "generate:durable-events"
+  }
+}

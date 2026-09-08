@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "device-push-token",
+  "typescript": {
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "test/device-push-token.test.mjs"
+    ]
+  },
+  "dart": {
+    "command": [
+      "flutter",
+      "test",
+      "--concurrency=2",
+      "--no-pub",
+      "test/generated_device_push_token_test.dart"
+    ],
+    "cwd": ".",
+    "repository": "flutter"
+  },
+  "generator": {
+    "command": [
+      "node",
+      "scripts/generate-device-push-token.mjs",
+      "--check"
+    ],
+    "regenerateScript": "generate:device-push-token"
+  }
+}

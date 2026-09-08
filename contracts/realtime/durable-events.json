@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "durability": "durable",
+  "genericEnvelope": "contracts/realtime/session.json#ChatEvent",
+  "strictParserErrorCategories": [
+    "unknown_event_type",
+    "tenant_mismatch",
+    "private_stream_mismatch",
+    "incoherent_payload"
+  ],
+  "streamScopes": {
+    "conversation": {
+      "description": "The stream id is the payload conversation entity id."
+    },
+    "user_private": {
+      "prefix": "user:",
+      "description": "The stream id is derived from the trusted authenticated user id."
+    }
+  },
+  "events": [
+    {
+      "key": "conversationCreated",
+      "type": "conversation.created",
+      "payloadClass": "ConversationCreatedPayload",
+      "payloadModel": "Conversation plus optional memberUserIds and clientRequestId",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["conversation"],
+      "optionalFields": ["clientRequestId"],
+      "entityPath": "conversation.id",
+      "tenantPath": "conversation.tenantId"
+    },
+    {
+      "key": "conversationArchived",
+      "type": "conversation.archived",
+      "payloadClass": "ConversationLifecyclePayload",
+      "payloadModel": "Canonical conversation archive transition",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["conversationId", "intent", "previousState", "currentState", "previousLifecycleRevision", "currentLifecycleRevision"],
+      "optionalFields": [],
+      "entityPath": "conversationId",
+      "literalFields": {"intent": "archive", "previousState": "active", "currentState": "archived"},
+      "incrementPair": ["previousLifecycleRevision", "currentLifecycleRevision"]
+    },
+    {
+      "key": "conversationRestored",
+      "type": "conversation.restored",
+      "payloadClass": "ConversationLifecyclePayload",
+      "payloadModel": "Canonical conversation restore transition",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["conversationId", "intent", "previousState", "currentState", "previousLifecycleRevision", "currentLifecycleRevision"],
+      "optionalFields": [],
+      "entityPath": "conversationId",
+      "literalFields": {"intent": "restore", "previousState": "archived", "currentState": "active"},
+      "incrementPair": ["previousLifecycleRevision", "currentLifecycleRevision"]
+    },
+    {
+      "key": "threadLifecycleUpdated",
+      "type": "thread.lifecycle.updated",
+      "payloadClass": "ThreadLifecycleUpdatedPayload",
+      "payloadModel": "Authoritative shared thread lifecycle on the child conversation stream",
+      "canonicalContract": "contracts/models/conversation.json#threadLifecycle",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["threadId", "parentConversationId", "threadLifecycle"],
+      "optionalFields": [],
+      "entityPath": "threadId"
+    },
+    {
+      "key": "threadLifecycleChanged",
+      "type": "thread.lifecycle.changed",
+      "payloadClass": "ThreadLifecycleChangedPayload",
+      "payloadModel": "Parent discovery invalidation only; no actor-private membership or preferences",
+      "canonicalContract": "contracts/models/conversation.json#threadLifecycle",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["threadId", "parentConversationId", "revision"],
+      "optionalFields": [],
+      "entityPath": "parentConversationId"
+    },
+    {
+      "key": "threadCreated",
+      "type": "thread.created",
+      "payloadClass": "ThreadCreatedPayload",
+      "payloadModel": "ThreadConversation plus ThreadSummary",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["conversation", "rootThreadSummary"],
+      "optionalFields": [],
+      "entityPath": "conversation.id",
+      "tenantPath": "conversation.tenantId",
+      "literalFields": {"conversation.type": "thread"}
+    },
+    {
+      "key": "membershipUpdated",
+      "type": "conversation.membership.updated",
+      "payloadClass": "ConversationMembershipUpdatedPayload",
+      "payloadModel": "ConversationMembershipMutationInput and ConversationMembershipMutationResult",
+      "streamScopes": ["conversation", "user_private"],
+      "requiredFields": ["input", "result"],
+      "optionalFields": [],
+      "entityPath": "result.conversationId",
+      "privateUserPath": "result.memberUserId",
+      "equalPaths": [["input.conversationId", "result.conversationId"]]
+    },
+    {
+      "key": "messageCreated",
+      "type": "message.created",
+      "payloadClass": "MessageCreatedPayload",
+      "payloadModel": "SendMessageResult.message plus clientMessageId",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["message", "clientMessageId"],
+      "optionalFields": [],
+      "entityPath": "message.conversationId",
+      "tenantPath": "message.tenantId"
+    },
+    {
+      "key": "messageUpdated",
+      "type": "message.updated",
+      "payloadClass": "MessageRevisionPayload",
+      "payloadModel": "EditMessageResult.message",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["message"],
+      "optionalFields": [],
+      "entityPath": "message.conversationId",
+      "tenantPath": "message.tenantId"
+    },
+    {
+      "key": "messageDeleted",
+      "type": "message.deleted",
+      "payloadClass": "MessageRevisionPayload",
+      "payloadModel": "SoftDeleteMessageResult.message",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["message"],
+      "optionalFields": [],
+      "entityPath": "message.conversationId",
+      "tenantPath": "message.tenantId"
+    },
+    {
+      "key": "threadSummaryUpdated",
+      "type": "message.thread_summary.updated",
+      "payloadClass": "ThreadSummaryUpdatedPayload",
+      "payloadModel": "ThreadSummary update for a parent message",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["parentConversationId", "rootMessageId", "rootThreadSummary"],
+      "optionalFields": [],
+      "entityPath": "parentConversationId"
+    },
+    {
+      "key": "reactionUpdated",
+      "type": "reaction.updated",
+      "payloadClass": "ReactionUpdatedPayload",
+      "payloadModel": "ReactionMutationResult plus conversationId",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["conversationId", "operation", "reconciliationStatus", "messageId", "reactionKey", "count", "reactedByCurrentUser"],
+      "optionalFields": [],
+      "entityPath": "conversationId"
+    },
+    {
+      "key": "readCursorUpdated",
+      "type": "conversation.read_cursor_updated",
+      "payloadClass": "DurableReadCursorUpdatedPayload",
+      "payloadModel": "ReadCursorUpdatedPayload",
+      "streamScopes": ["user_private"],
+      "requiredFields": ["kind", "actorUserId", "operation", "conversationId", "readState", "latestSequence", "unreadCount"],
+      "optionalFields": ["reconciliationStatus"],
+      "entityPath": "conversationId",
+      "actorPath": "actorUserId",
+      "literalFields": {"kind": "conversation_read_cursor"},
+      "equalPaths": [["conversationId", "readState.conversationId"]]
+    },
+    {
+      "key": "preferenceUpdated",
+      "type": "conversation.preference.updated",
+      "payloadClass": "ConversationPreferenceUpdatedPayload",
+      "payloadModel": "UpdateConversationPreferenceInput and UpdateConversationPreferenceResult",
+      "streamScopes": ["user_private"],
+      "requiredFields": ["actorUserId", "input", "result"],
+      "optionalFields": [],
+      "entityPath": "result.conversationId",
+      "actorPath": "actorUserId",
+      "equalPaths": [["input.conversationId", "result.conversationId"]]
+    },
+    {
+      "key": "replyStyleUpdated",
+      "type": "reply.style.updated",
+      "payloadClass": "ReplyStyleUpdatedPayload",
+      "payloadModel": "Saved ReplyStylePreferenceState plus updatedAt and optional originating UpdateReplyStylePreferenceInput",
+      "streamScopes": [
+        "user_private"
+      ],
+      "requiredFields": [
+        "actorUserId",
+        "preference",
+        "updatedAt"
+      ],
+      "optionalFields": [
+        "mutation"
+      ],
+      "actorPath": "actorUserId",
+      "canonicalContract": "contracts/http/reply-style-preference.json",
+      "timestampFormat": "UTC ISO 8601 with exactly millisecond precision (YYYY-MM-DDTHH:mm:ss.sssZ)",
+      "mutationCorrelation": "When present, mutation is the exact originating canonical PATCH input; preference must satisfy the canonical applied result rules (saved requested style at baseRevision + 1). PATCH emissions must include mutation. Omit only for authoritative saved-state updates with no originating PATCH; unknown saved strings remain valid in that case. No absent/reset state or no-op/conflict emission."
+    },
+    {
+      "key": "threadFollowUpdated",
+      "type": "thread.follow.updated",
+      "payloadClass": "ThreadFollowUpdatedPayload",
+      "payloadModel": "CanonicalThreadFollowState plus followRevision",
+      "streamScopes": ["user_private"],
+      "requiredFields": ["operation", "target", "followRevision", "follow"],
+      "optionalFields": [],
+      "entityPath": "target.id",
+      "literalFields": {"operation": "set_thread_follow", "target.type": "thread", "follow.target.type": "thread"},
+      "equalPaths": [["target.id", "follow.target.id"]]
+    },
+    {
+      "key": "savedMessageUpdated",
+      "type": "saved_message.updated",
+      "payloadClass": "SavedMessageUpdatedPayload",
+      "payloadModel": "CanonicalActorPrivateSavedMessageState plus savedMessageRevision",
+      "streamScopes": ["user_private"],
+      "requiredFields": ["operation", "messageId", "savedMessageRevision", "savedMessage"],
+      "optionalFields": [],
+      "entityPath": "messageId",
+      "literalFields": {"operation": "set_saved_message"},
+      "equalPaths": [["messageId", "savedMessage.messageId"]]
+    },
+    {
+      "key": "messageReminderUpdated",
+      "type": "message_reminder.updated",
+      "payloadClass": "MessageReminderUpdatedPayload",
+      "payloadModel": "CanonicalMessageReminder plus reminderRevision",
+      "streamScopes": ["user_private"],
+      "requiredFields": ["operation", "conversationId", "messageId", "reminderRevision", "reminder"],
+      "optionalFields": [],
+      "entityPath": "messageId",
+      "literalFields": {"operation": "message_reminder.v1"}
+    },
+    {
+      "key": "draftUpdated",
+      "type": "conversation.draft.updated",
+      "payloadClass": "DurableConversationDraftUpdatedPayload",
+      "payloadModel": "ConversationDraftUpdatedPayload",
+      "streamScopes": ["user_private"],
+      "requiredFields": ["actorUserId", "input", "result"],
+      "optionalFields": [],
+      "entityPath": "result.conversationId",
+      "actorPath": "actorUserId",
+      "equalPaths": [["input.conversationId", "result.conversationId"]]
+    },
+    {
+      "key": "attachmentUpdated",
+      "type": "attachment.updated",
+      "payloadClass": "AttachmentUpdatedPayload",
+      "payloadModel": "Canonical message attachment metadata update",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["conversationId", "messageId", "attachment"],
+      "optionalFields": [],
+      "entityPath": "conversationId"
+    },
+    {
+      "key": "huddleUpdated",
+      "type": "huddle.updated",
+      "payloadClass": "HuddleUpdatedPayload",
+      "payloadModel": "HuddleSessionState",
+      "streamScopes": ["conversation"],
+      "requiredFields": ["state"],
+      "optionalFields": [],
+      "entityPath": "state.conversationId"
+    }
+  ]
+}

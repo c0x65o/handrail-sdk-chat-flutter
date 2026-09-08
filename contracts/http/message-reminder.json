@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "method": "PUT",
+  "path": "/conversations/{conversationId}/messages/{messageId}/reminder",
+  "operation": "message_reminder.v1",
+  "identifierMaxUtf8Bytes": 255,
+  "idempotencyKeyMaxUtf8Bytes": 255,
+  "initialReminderRevision": 0,
+  "intents": ["set", "cancel"],
+  "intentSemantics": {
+    "set": "createOrReschedule",
+    "reschedule": "set",
+    "cancel": "cancelRequestedState",
+    "toggle": "forbidden"
+  },
+  "inputFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "explicitIntent" },
+    { "name": "conversationId", "type": "ConversationId" },
+    { "name": "messageId", "type": "MessageId" },
+    { "name": "expectedReminderRevision", "type": "advanceableNonnegativeSafeInteger" },
+    { "name": "idempotencyKey", "type": "boundedNonblankString" },
+    { "name": "dueAt", "type": "finiteFutureIso8601", "requiredFor": "set", "forbiddenFor": "cancel" }
+  ],
+  "canonicalReminderFields": [
+    { "name": "privacy", "type": "literal", "value": "affected_authenticated_actor" },
+    { "name": "state", "type": "reminderState" },
+    { "name": "dueAt", "type": "finiteIso8601", "requiredFor": "scheduled", "forbiddenFor": "cancelled" }
+  ],
+  "resultFields": [
+    { "name": "operation", "type": "literal" },
+    { "name": "intent", "type": "explicitIntent", "correlation": "exactRequestEcho" },
+    { "name": "reconciliationStatus", "type": "reconciliationStatus" },
+    { "name": "conversationId", "type": "ConversationId", "correlation": "exactRequestEcho" },
+    { "name": "messageId", "type": "MessageId", "correlation": "exactRequestEcho" },
+    { "name": "expectedReminderRevision", "type": "nonnegativeSafeInteger", "correlation": "exactRequestEcho" },
+    { "name": "idempotencyKey", "type": "boundedNonblankString", "correlation": "exactRequestEcho" },
+    { "name": "reminderRevision", "type": "nullableNonnegativeSafeInteger" },
+    { "name": "reminder", "type": "nullableCanonicalPrivateReminder", "delivery": "affectedAuthenticatedActorOnly" }
+  ],
+  "reconciliationStatuses": [
+    { "name": "applied", "authoritativeState": "requestedState", "revisionRule": "expectedPlusOne", "canonicalData": "required" },
+    { "name": "replayed", "authoritativeState": "requestedState", "revisionRule": "expectedPlusOne", "canonicalData": "required" },
+    { "name": "already-requested", "authoritativeState": "requestedState", "revisionRule": "equalsExpected", "canonicalData": "required" },
+    { "name": "revision-conflict", "authoritativeState": "currentAffectedActorStateDifferentFromRequest", "revisionRule": "differentFromExpected", "canonicalData": "required" },
+    { "name": "unavailable-source", "authoritativeState": "undisclosed", "revisionRule": "undisclosed", "canonicalData": "forbidden" }
+  ],
+  "privacyPolicy": {
+    "identitySource": "trustedServerContextOnly",
+    "canonicalReminderDelivery": "affectedAuthenticatedActorOnly",
+    "canonicalReminderContainsActorIdentity": false,
+    "otherActorReminderData": "forbidden",
+    "unavailableSourceActorStateDisclosure": "none"
+  },
+  "trustedContextAliases": [
+    "tenant", "tenantId", "organization", "organizationId", "actor", "actorId",
+    "actorContext", "actorRole", "actorRoles", "actorUserId", "currentActor",
+    "currentActorId", "currentUser", "currentUserId", "user", "userId",
+    "principal", "principalId", "subject", "subjectId", "authenticatedUser",
+    "authenticatedUserId", "identity", "session", "sessionId", "auth",
+    "authentication", "authorization", "role", "roles", "capability",
+    "capabilities", "permission", "permissions"
+  ],
+  "toggleLikeAliases": [
+    "toggle", "toggleReminder", "remind", "isReminded", "reminderEnabled",
+    "enabled", "active", "desiredState"
+  ],
+  "coherenceRules": {
+    "rejectUnknownFields": true,
+    "rejectNormalizedTrustedAliasesRecursively": true,
+    "rejectNormalizedToggleAliasesRecursively": true,
+    "setRequiresDueAt": true,
+    "cancelForbidsDueAt": true,
+    "setDueAtStrictlyFutureAtParseReferenceTime": true,
+    "requestEchoesMustMatch": true,
+    "settledStateMustMatchIntent": true,
+    "conflictStateMustDifferFromIntent": true,
+    "statusSpecificRevisionRules": true,
+    "unavailableSourceForbidsCanonicalStateAndRevision": true,
+    "timestampsMustBeFiniteIso8601": true
+  }
+}
