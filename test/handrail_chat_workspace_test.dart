@@ -10,6 +10,7 @@ import 'package:handrail_chat/src/testing/fake_chat_realtime.dart' show FakeChat
 import 'package:handrail_chat/src/testing/in_memory_application_chat_storage.dart';
 
 import 'reply_style_runtime_test.dart' as style;
+import 'widget_evidence.dart';
 import 'reply_style_client_test.dart' as realtime;
 
 import 'fixtures/conversation_list_fixtures.dart';
@@ -2766,6 +2767,7 @@ Widget _host(
   TextScaler? textScaler,
 }) =>
     MaterialApp(
+      theme: widgetEvidenceTheme,
       home: ChatScope(
         key: ValueKey<Object>(client),
         client: client,

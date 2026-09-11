@@ -980,7 +980,9 @@ class _ReminderResponseControlState extends State<_ReminderResponseControl> {
     return DropdownButtonFormField<_TimelineLabReminderResponse>(
       key: const ValueKey<String>('timeline-lab-reminder-response'),
       isExpanded: true,
-      initialValue: _value,
+      // Keep the lab compatible with Flutter 3.19.
+      // ignore: deprecated_member_use
+      value: _value,
       decoration: const InputDecoration(
         labelText: 'Next reminder response',
         border: OutlineInputBorder(),

@@ -205,6 +205,11 @@ void _lifecycleTests() {
             _threadId);
         expect(tester.widget<IconButton>(find.byKey(_composerSend)).onPressed,
             isNull);
+        await tester.ensureVisible(find.byKey(_composerSend));
+        await tester.pumpAndSettle();
+        expect(tester.getRect(find.byKey(_composerSend)).bottom,
+            lessThanOrEqualTo(tester.getRect(find.byType(HandrailThreadView)).bottom));
+        expect(tester.takeException(), isNull);
         if (restriction == 'lock') {
           _remoteLifecycle(harness, 3, closed: true);
         } else {

@@ -103,6 +103,7 @@ final class HandrailMessageTimeline extends StatefulWidget {
     this.onThreadRequested,
     this.onCreateThreadRequested,
     this.onReplyRequested,
+    this.onThreadReplyRequested,
     this.onForwardRequested,
     this.onReactionRequested,
     this.reminderClock = _systemReminderClock,
@@ -137,6 +138,10 @@ final class HandrailMessageTimeline extends StatefulWidget {
   /// Presents named creation separately from Reply. The host owns navigation.
   final HandrailThreadRequested? onCreateThreadRequested;
   final HandrailReplyRequested? onReplyRequested;
+
+  /// Focuses the existing thread composer in Current mode, preserving its draft.
+  /// Return false when composition is unavailable. Never create a thread here.
+  final bool Function()? onThreadReplyRequested;
   final HandrailForwardRequested? onForwardRequested;
   final HandrailReactionRequested? onReactionRequested;
 
@@ -286,18 +291,16 @@ final class _HandrailMessageTimelineState
         namedThreadsEnabled:
             _styleClient != null && namedThreadsAvailable(_styleClient!),
         existingRoots: {
-          for (final thread
-              in _styleClient?.normalizedState.state.conversations.values
-                      .whereType<ThreadConversation>() ??
-                  const <ThreadConversation>[])
+          for (final thread in _styleClient
+                  ?.normalizedState.state.conversations.values
+                  .whereType<ThreadConversation>() ??
+              const <ThreadConversation>[])
             if (thread.parentConversationId == widget.conversationId)
               thread.rootMessageId,
         },
-        isThread:
-            _styleClient?.normalizedState.state.conversations[widget
-                    .conversationId]
-                is ThreadConversation,
+        isThread: state.conversation is ThreadConversation,
         onReplyRequested: widget.onReplyRequested,
+        onThreadReplyRequested: widget.onThreadReplyRequested,
         inlineReply: _styleClient?.replyStyles.state.effectiveStyle ==
             ReplyStyle.discord,
         inlineDisabledReason: _inlineDisabledReason,
@@ -343,6 +346,7 @@ final class _HandrailMessageTimelineBody extends StatefulWidget {
     required this.isThread,
     required this.existingRoots,
     required this.onReplyRequested,
+    required this.onThreadReplyRequested,
     required this.inlineReply,
     required this.inlineDisabledReason,
     required this.onForwardRequested,
@@ -373,6 +377,7 @@ final class _HandrailMessageTimelineBody extends StatefulWidget {
   final bool isThread;
   final Set<MessageId> existingRoots;
   final HandrailReplyRequested? onReplyRequested;
+  final bool Function()? onThreadReplyRequested;
   final bool inlineReply;
   final String? inlineDisabledReason;
   final HandrailForwardRequested? onForwardRequested;
@@ -1178,6 +1183,14 @@ final class _HandrailMessageTimelineBodyState
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(widget.inlineDisabledReason ??
               'The composer cannot accept a reply right now.'),
+        ));
+      }
+      return;
+    }
+    if (widget.isThread) {
+      if (!(widget.onThreadReplyRequested?.call() ?? false)) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('The thread composer cannot accept a reply right now.'),
         ));
       }
       return;

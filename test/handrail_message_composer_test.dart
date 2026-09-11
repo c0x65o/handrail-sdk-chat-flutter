@@ -833,15 +833,20 @@ void main() {
 
     await _selectText(tester, 'bullet');
     await _tapFormat(tester, 'unordered-list');
-    expect(_styleForText(tester, 'bullet').backgroundColor, isNotNull);
+    final colors = Theme.of(tester.element(find.byKey(_input))).colorScheme;
+    expect(_styleForText(tester, 'bullet').backgroundColor,
+        colors.secondaryContainer.withAlpha(115));
 
     await _selectText(tester, 'numbered');
     await _tapFormat(tester, 'ordered-list');
-    expect(_styleForText(tester, 'numbered').backgroundColor, isNotNull);
+    expect(_styleForText(tester, 'numbered').backgroundColor,
+        colors.secondaryContainer.withAlpha(115));
 
     await _selectText(tester, 'inline');
     await _tapFormat(tester, 'inline-code');
     expect(_styleForText(tester, 'inline').fontFamily, 'monospace');
+    expect(_styleForText(tester, 'inline').backgroundColor,
+        colors.surfaceContainerHighest);
 
     await _selectText(tester, 'block');
     await _tapFormat(tester, 'code-block');
@@ -1010,6 +1015,7 @@ void main() {
       typingIdleTimeout: const Duration(milliseconds: 100),
     );
 
+    await tester.pumpAndSettle();
     expect(find.bySemanticsLabel(RegExp('Message composer')), findsOneWidget);
     expect(find.bySemanticsLabel(RegExp('Message input')), findsOneWidget);
     expect(find.byTooltip('Send message'), findsOneWidget);

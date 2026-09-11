@@ -721,7 +721,9 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
   }) {
     return DropdownButtonFormField<String>(
       key: ValueKey('handrail-huddle-$keyName'),
-      initialValue: selectedId,
+      // `value` has the same initial-selection semantics on Flutter 3.19.
+      // ignore: deprecated_member_use
+      value: selectedId,
       isExpanded: true,
       decoration: InputDecoration(labelText: label, isDense: true),
       items: [

@@ -187,6 +187,13 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
 
   MessageReplyReference? get replyTo => _replyTo;
 
+  /// Continues composition without changing the draft, destination or reference.
+  bool focusComposition() {
+    if (!_canInteract || _sending) return false;
+    _focusNode.requestFocus();
+    return true;
+  }
+
   /// Selects a source in this composer conversation, including an existing
   /// thread. This creates a new message; it never edits message ancestry.
   /// Returns false when disabled, sending, or given another conversation.
@@ -1588,7 +1595,8 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
     _textController.configureVisuals(
       linkColor: colors.primary,
       codeBackgroundColor: colors.surfaceContainerHighest,
-      listBackgroundColor: colors.secondaryContainer.withValues(alpha: 0.45),
+      // Keep the 45% list highlight on Flutter 3.19 (8-bit alpha).
+      listBackgroundColor: colors.secondaryContainer.withAlpha(115),
     );
 
     return Semantics(
@@ -1610,6 +1618,9 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
               if (_attachmentIds.isNotEmpty || _uploads.isNotEmpty)
                 _buildAttachments(tokens),
               LayoutBuilder(
+                // Retain the input/portal when reply and attachment rows change.
+                // Flutter 3.19 cannot attach one controller to two portals.
+                key: const ValueKey('handrail-message-composer-editor'),
                 builder: (context, constraints) => OverlayPortal(
                   controller: _mentionOverlay,
                   overlayChildBuilder: (context) => UnconstrainedBox(

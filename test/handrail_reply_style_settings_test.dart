@@ -1,3 +1,5 @@
+import 'dart:ui' show SemanticsAction, SemanticsFlag;
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
 
 import 'reply_style_runtime_test.dart' as f;
+import 'widget_evidence.dart';
 
 void main() {
   testWidgets('saves only on confirmation and reloads saved choice',
@@ -30,6 +33,8 @@ void main() {
     expect(find.text('Effective style: Discord-style — saved preference.'),
         findsOneWidget);
     expect(find.text('Saving: Discord-style.'), findsNothing);
+    await captureWidgetEvidence(
+        tester, 'reply-settings-confirmed-discord-widget.png');
     final reloaded = _client(tester, http);
     await tester.runAsync(reloaded.initialize);
     await _mount(tester, reloaded);
@@ -102,6 +107,8 @@ void main() {
     expect(find.textContaining('secret diagnostic'), findsNothing);
     expect(_choice(tester, 'current').onChanged, isNull);
     expect(http.writes, hasLength(1));
+    await captureWidgetEvidence(
+        tester, 'reply-settings-failed-save-widget.png');
     http.write = null;
     await tester.ensureVisible(find.text('Retry saving reply style'));
     await tester.tap(find.text('Retry saving reply style'));
@@ -112,6 +119,8 @@ void main() {
     expect(find.text('Effective style: Discord-style — saved preference.'),
         findsOneWidget);
     expect(find.text('Retry saving reply style'), findsNothing);
+    await captureWidgetEvidence(
+        tester, 'reply-settings-recovered-save-widget.png');
   });
 
   testWidgets('host enforcement preserves and reveals differing saved choice',
@@ -219,23 +228,39 @@ void main() {
     await _mount(tester, client, scale: 2);
     await tester.ensureVisible(find.text('Discord-style'));
     await tester.pump();
-    expect(
-        tester.getSemantics(find.descendant(
-            of: find.byKey(const ValueKey('handrail-reply-style-discord')),
-            matching: find.byType(Radio<ReplyStyle>))),
-        matchesSemantics(
-            label: 'Discord-style',
-            hasSelectedState: true,
-            hasCheckedState: true,
-            isChecked: false,
-            isInMutuallyExclusiveGroup: true,
-            hasEnabledState: true,
-            isEnabled: true,
-            isFocusable: true,
-            hasTapAction: true,
-            hasFocusAction: true));
-    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
-    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    final radio = tester.getSemantics(find.descendant(
+        of: find.byKey(const ValueKey('handrail-reply-style-discord')),
+        matching: find.byType(Radio<ReplyStyle>))).getSemanticsData();
+    // Check stable semantics; newer Flutter adds hasSelectedState to Radio.
+    expect(radio.label, 'Discord-style');
+    for (final flag in [
+      SemanticsFlag.hasCheckedState,
+      SemanticsFlag.isInMutuallyExclusiveGroup,
+      SemanticsFlag.hasEnabledState,
+      SemanticsFlag.isEnabled,
+      SemanticsFlag.isFocusable,
+    ]) {
+      expect(radio.hasFlag(flag), isTrue, reason: flag.toString());
+    }
+    expect(radio.hasFlag(SemanticsFlag.isChecked), isFalse);
+    expect(radio.hasAction(SemanticsAction.tap), isTrue);
+    final radioElement = tester.element(
+        find.byKey(const ValueKey('handrail-reply-style-discord')));
+    bool radioHasFocus() {
+      var found = false;
+      FocusManager.instance.primaryFocus?.context?.visitAncestorElements((e) {
+        found = identical(e, radioElement);
+        return !found;
+      });
+      return found;
+    }
+    // Tab traversal entry differs across framework versions. Assert that the
+    // radio is reachable, then activate it using the keyboard on both SDKs.
+    for (var i = 0; i < 6 && !radioHasFocus(); i++) {
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+    }
+    expect(radioHasFocus(), isTrue);
     await tester.sendKeyEvent(LogicalKeyboardKey.space);
     await _pump(tester);
     expect(http.writes.single['style'], 'discord');
@@ -276,15 +301,18 @@ HandrailChatClient _client(WidgetTester tester, f.Http http,
 }
 
 Future<void> _mount(WidgetTester tester, HandrailChatClient client,
-        {double scale = 1}) =>
-    tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-            body: MediaQuery(
-      data: MediaQueryData(textScaler: TextScaler.linear(scale)),
-      child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: HandrailReplyStyleSettings(client: client)),
-    ))));
+    {double scale = 1}) async {
+  await prepareWidgetEvidence(tester);
+  await tester.pumpWidget(widgetEvidenceBoundary(MaterialApp(
+      theme: widgetEvidenceTheme,
+      home: Scaffold(
+          body: MediaQuery(
+        data: MediaQueryData(textScaler: TextScaler.linear(scale)),
+        child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: HandrailReplyStyleSettings(client: client)),
+      )))));
+}
 
 Future<void> _pump(WidgetTester tester) async {
   for (var i = 0; i < 12; i++) {

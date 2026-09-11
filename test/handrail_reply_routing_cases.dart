@@ -160,6 +160,8 @@ void replyRoutingTests() {
     final state = tester.state<HandrailMessageComposerState>(threadComposer);
     expect(state.replyTo!.messageId, const MessageId('thread-reply'));
     state.setReplyNotifyAuthor(false);
+    await tester.pump();
+    await captureWidgetEvidence(tester, 'discord-thread-reply-widget.png');
     client.replyStyles.configure(
         const ChatReplyStyleConfiguration(override: ReplyStyle.current));
     await tester.pump();
@@ -172,9 +174,98 @@ void replyRoutingTests() {
         isTrue);
     expect(handle.isReleased, isFalse);
     expect(identical(state, tester.state(threadComposer)), isTrue);
+    await tester.tap(find.byKey(const ValueKey('handrail-reply-thread-reply')));
+    await tester.pump();
+    expect(state.replyTo!.messageId, const MessageId('thread-reply'));
+    expect(state.replyTo!.notifyAuthor, isFalse);
     await _sendFriday(tester, http, _thread, const MessageId('thread-reply'),
         within: find.byType(HandrailThreadView), notify: false);
     expect(http.threadRequests, hasLength(requestsBefore));
+  });
+
+  for (final saved in [null, 'current']) {
+    for (final inline in [false, true]) {
+      testWidgets(
+          'reply routing Current in thread saved=$saved inline=$inline keeps composition',
+          (tester) async {
+        final http =
+            _ReplyRoutingTransport(saved: saved, inline: inline, summary: true);
+        final client = await _replyClient(tester, http);
+        await _mountReplyWorkspace(tester, client);
+        await tester
+            .tap(find.byKey(const ValueKey('handrail-thread-root-alpha')));
+        final reply = find.byKey(const ValueKey('handrail-reply-thread-reply'));
+        await _pumpUntil(tester, () => reply.evaluate().isNotEmpty);
+        final view = find.byType(HandrailThreadView);
+        final handle = tester.widget<HandrailThreadView>(view).openHandle!;
+        final composer = find.descendant(
+            of: view, matching: find.byType(HandrailMessageComposer));
+        final state = tester.state<HandrailMessageComposerState>(composer);
+        final input = find.descendant(
+            of: view,
+            matching:
+                find.byKey(const ValueKey('handrail-message-composer-input')));
+        final send = find.descendant(
+            of: view,
+            matching:
+                find.byKey(const ValueKey('handrail-message-composer-send')));
+        await tester.enterText(input, 'Friday');
+        tester.widget<TextField>(input).focusNode!.unfocus();
+        await tester.pump();
+        final requestsBefore = http.threadRequests.length;
+        await tester.tap(reply);
+        await tester.pump();
+        expect(tester.widget<TextField>(input).focusNode!.hasFocus, isTrue);
+        expect(tester.widget<TextField>(input).controller!.text, 'Friday');
+        expect(identical(state, tester.state(composer)), isTrue);
+        expect(state.replyTo, isNull);
+        expect(
+            identical(
+                handle, tester.widget<HandrailThreadView>(view).openHandle),
+            isTrue);
+        expect(handle.isReleased, isFalse);
+        expect(http.threadRequests, hasLength(requestsBefore));
+        if (saved == 'current' && !inline) {
+          await captureWidgetEvidence(
+              tester, 'current-thread-reply-widget.png');
+        }
+        await tester.tap(send);
+        await _pumpUntil(
+            tester,
+            () =>
+                http.sends.isNotEmpty &&
+                tester.widget<TextField>(input).controller!.text.isEmpty);
+        expect(http.sends.single['conversationId'], _thread.value);
+        expect(http.sends.single.containsKey('replyTo'), isFalse);
+        expect((http.sends.single['content'] as Map)['text'], 'Friday');
+        expect(http.threadRequests, hasLength(requestsBefore));
+      });
+    }
+  }
+
+  testWidgets(
+      'reply routing Current standalone thread never creates a nested thread',
+      (tester) async {
+    final http = _ReplyRoutingTransport(saved: 'current', summary: true);
+    final client = await _replyClient(tester, http);
+    await _mountReplyWorkspace(tester, client);
+    await tester.tap(find.byKey(const ValueKey('handrail-thread-root-alpha')));
+    final reply = find.byKey(const ValueKey('handrail-reply-thread-reply'));
+    await _pumpUntil(tester, () => reply.evaluate().isNotEmpty);
+    final requestsBefore = http.threadRequests.length;
+    await tester.pumpWidget(MaterialApp(
+        home: Scaffold(
+            body: HandrailMessageTimeline(
+                conversationId: _thread,
+                reads: client.reads,
+                controller: client.timelines.forConversation(_thread)))));
+    await _pumpUntil(tester, () => reply.evaluate().isNotEmpty);
+    await tester.tap(reply);
+    await tester.pump();
+    expect(find.text('The thread composer cannot accept a reply right now.'),
+        findsOneWidget);
+    expect(http.threadRequests, hasLength(requestsBefore));
+    expect(http.sends, isEmpty);
   });
 
   for (final saved in [null, 'current']) {
@@ -342,9 +433,10 @@ Future<HandrailChatClient> _replyClient(
 
 Future<void> _mountReplyWorkspace(
     WidgetTester tester, HandrailChatClient client) async {
-  await tester.pumpWidget(_host(client,
+  await prepareWidgetEvidence(tester);
+  await tester.pumpWidget(widgetEvidenceBoundary(_host(client,
       width: 1100,
-      child: const HandrailChatWorkspace(initialConversationId: _alpha)));
+      child: const HandrailChatWorkspace(initialConversationId: _alpha))));
   await _pumpUntil(
       tester,
       () =>
@@ -441,7 +533,7 @@ class _ReplyRoutingTransport extends _WorkspaceTransport {
             'updatedAt': _now,
             'revision': {'revision': 1},
             'content': body['content'],
-            'replyTo': body['replyTo']
+            if (body.containsKey('replyTo')) 'replyTo': body['replyTo']
           },
         });
       }

@@ -2,6 +2,17 @@ import 'dart:ui' show lerpDouble;
 
 import 'package:flutter/material.dart';
 
+// Native ColorScheme members take precedence on Flutter 3.22 and later,
+// preserving host overrides. Flutter 3.19 uses its existing surface roles.
+extension HandrailCompatibleSurfaceColors on ColorScheme {
+  Color get surfaceContainer => surface;
+  Color get surfaceContainerLow => surface;
+  // ignore: deprecated_member_use
+  Color get surfaceContainerHigh => surfaceVariant;
+  // ignore: deprecated_member_use
+  Color get surfaceContainerHighest => surfaceVariant;
+}
+
 /// Typography tokens used by Handrail Chat UI implementations.
 @immutable
 class HandrailChatTypography {

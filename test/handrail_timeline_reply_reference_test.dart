@@ -365,7 +365,10 @@ void main() {
     expect(tester.takeException(), isNull);
     final reference = find.textContaining('Reply to alice:');
     await tester.ensureVisible(reference);
-    await tester.tap(reference);
+    // Apply the scroll's layout before hit testing the enlarged reference.
+    await tester.pump();
+    expect(reference.hitTestable(), findsOneWidget);
+    await tester.tap(reference.hitTestable());
     await _settle(tester);
     expect(find.byType(Dialog), findsOneWidget);
     expect(tester.takeException(), isNull);

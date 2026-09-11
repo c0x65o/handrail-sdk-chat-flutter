@@ -4,6 +4,28 @@ The Flutter and Dart SDK for Handrail Chat. One package provides the headless
 client, Flutter lifecycle bindings, optional composable UI, native media
 contracts, and deterministic testing helpers.
 
+## SDK compatibility
+
+The package supports **Flutter >=3.19.0 and Dart >=3.3.0 <4.0.0**. The
+compatibility repair was exercised with Flutter 3.19.0 / Dart 3.3.0 and the
+worker's current Flutter 3.41.7 / Dart 3.11.5. Development dependencies also
+resolve at the minimum: flutter_lints 4.x and test >=1.24.9 <2.0.0.
+
+Material surface roles use the host's native colors on newer Flutter and the
+3.19 surface/surfaceVariant roles on older Flutter. Composer list highlights
+use 115/255 alpha (the nearest 8-bit representation of 45%). System Back and
+huddle device selection retain their existing behavior. No SDK floor increase
+or wire/storage change is required.
+
+The browser lab in `example/` has the same declared floor; its web dependency
+can resolve to 0.5.1 on Dart 3.3. The separate native `examples/flutter-erp/`
+host declares Dart ^3.11.5 and does not establish the package minimum.
+Existing examples still pin an older committed SDK: the uncommitted repair is
+verified through disposable source consumers, not claimed as Git-published.
+See the sibling JS repository's
+`docs/validation/owner-task-24350c4f/flutter-compatibility/README.md` for commands,
+locks, logs, artifact identities, and remaining independent QA gates.
+
 ## Installation
 
 The package now lives at the root of `handrail-sdk-chat-flutter`. Install from

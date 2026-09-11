@@ -160,6 +160,9 @@ final class _HandrailThreadViewState extends State<HandrailThreadView> {
   bool _selectReply(MessageContextRequest source) =>
       _composerKey.currentState?.selectReply(source) ?? false;
 
+  bool _continueThreadReply() =>
+      _composerKey.currentState?.focusComposition() ?? false;
+
   ChatThreadOpeningController? _openingController;
   StreamSubscription<ChatThreadOpeningState>? _openingSubscription;
   ChatThreadOpenHandle? _handle;
@@ -376,26 +379,11 @@ final class _HandrailThreadViewState extends State<HandrailThreadView> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final boundedHeight = constraints.hasBoundedHeight;
-        return Material(
-          color: colors.surface,
-          child: Column(
-            mainAxisSize: boundedHeight ? MainAxisSize.max : MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildHeader(context, tokens),
-              if (_handle != null) _buildLifecycleStatus(),
-              Divider(height: 1, color: colors.outlineVariant),
-              root,
-              Divider(height: 1, color: colors.outlineVariant),
-              if (boundedHeight)
-                Expanded(child: content)
-              else
-                SizedBox(
-                  height: widget.unboundedTimelineHeight,
-                  child: content,
-                ),
-              if (_handle case final handle?)
-                KeyedSubtree(
+        Widget body(double? maxHeight) {
+          final handle = _handle;
+          final composer = handle == null
+              ? null
+              : KeyedSubtree(
                   key: ValueKey<String>(
                     'handrail-thread-composer-${handle.conversationId.value}',
                   ),
@@ -408,7 +396,50 @@ final class _HandrailThreadViewState extends State<HandrailThreadView> {
                     enabled: _composerEnabled,
                     showFormatSelector: constraints.maxWidth >= 320,
                   ),
-                ),
+                );
+          return Column(
+            mainAxisSize:
+                maxHeight == null ? MainAxisSize.min : MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (maxHeight != null)
+                Expanded(child: content)
+              else
+                SizedBox(
+                    height: widget.unboundedTimelineHeight, child: content),
+              if (composer != null)
+                if (maxHeight != null)
+                  // Keep all draft controls reachable when header/root context and
+                  // the composer together exceed the panel's available height.
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: maxHeight),
+                    child: SingleChildScrollView(child: composer),
+                  )
+                else
+                  composer,
+            ],
+          );
+        }
+
+        return Material(
+          color: colors.surface,
+          child: Column(
+            mainAxisSize: boundedHeight ? MainAxisSize.max : MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _buildHeader(context, tokens),
+              if (_handle != null) _buildLifecycleStatus(),
+              Divider(height: 1, color: colors.outlineVariant),
+              root,
+              Divider(height: 1, color: colors.outlineVariant),
+              if (boundedHeight)
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, remaining) => body(remaining.maxHeight),
+                  ),
+                )
+              else
+                body(null),
             ],
           ),
         );
@@ -727,6 +758,7 @@ final class _HandrailThreadViewState extends State<HandrailThreadView> {
         builders: widget.builders,
         scrollController: widget.timelineScrollController,
         onReplyRequested: _composerEnabled ? _selectReply : null,
+        onThreadReplyRequested: _composerEnabled ? _continueThreadReply : null,
       );
     }
 

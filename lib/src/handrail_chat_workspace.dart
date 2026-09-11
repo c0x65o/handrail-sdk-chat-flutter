@@ -212,6 +212,9 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
   bool _selectReply(MessageContextRequest source) =>
       _composerKey.currentState?.selectReply(source) ?? false;
 
+  bool _continueThreadReply() =>
+      _composerKey.currentState?.focusComposition() ?? false;
+
   ChatConversationListController? _listController;
   HandrailChatClient? _listClient;
   StreamSubscription<ChatConversationListState>? _listSubscription;
@@ -888,7 +891,9 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
     final narrow = constraints.maxWidth < widget.compactBreakpoint;
     return PopScope(
       canPop: !_discoveryOpen,
-      onPopInvokedWithResult: (didPop, result) {
+      // Flutter 3.19 supports this callback; no route result is consumed.
+      // ignore: deprecated_member_use
+      onPopInvoked: (didPop) {
         if (!didPop && _discoveryOpen) _backPanel();
       },
       child: FocusTraversalGroup(
@@ -1186,6 +1191,7 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
               onThreadRequested: _openThread,
               onCreateThreadRequested: _createNamedThread,
               onReplyRequested: _selectReply,
+              onThreadReplyRequested: _continueThreadReply,
               onForwardRequested: _showForwardDialog,
               onReactionRequested: widget.availableReactions.isEmpty
                   ? null
