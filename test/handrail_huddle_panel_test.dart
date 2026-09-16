@@ -48,9 +48,10 @@ void main() {
     expect(session.state.status, ChatMediaSessionStatus.connected);
 
     await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump();
     expect(provider.closeCount, 0,
         reason: 'The supplied session is caller-owned.');
-    await tester.runAsync(harness.dispose);
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets('disables lifecycle controls while an action is pending', (
@@ -81,7 +82,8 @@ void main() {
       () => harness.controller.state.canonicalState is StartingHuddleState,
     );
     await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(harness.dispose);
+    await tester.pump();
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets(
@@ -204,7 +206,8 @@ void main() {
 
       semantics.dispose();
       await tester.pumpWidget(const SizedBox.shrink());
-      await tester.runAsync(harness.dispose);
+      await tester.pump();
+      await _disposeHarness(tester, harness);
     },
   );
 
@@ -231,6 +234,8 @@ void main() {
       diagnostic: () => '${harness.controller.state}; '
           'diagnostics=${harness.diagnostics}',
     );
+    await _pumpUntil(tester, () => provider.closeCount == 1);
+    expect(session.state.status, ChatMediaSessionStatus.idle);
     expect(find.text('Departed'), findsOneWidget);
     expect(find.byKey(const ValueKey('handrail-huddle-join')), findsOneWidget);
     expect(find.byKey(const ValueKey('handrail-huddle-leave')), findsNothing);
@@ -252,7 +257,8 @@ void main() {
     expect(find.byKey(const ValueKey('handrail-huddle-end')), findsNothing);
 
     await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(harness.dispose);
+    await tester.pump();
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets('known actor can rejoin after denied end then successful leave', (
@@ -360,7 +366,8 @@ void main() {
     }
 
     await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(harness.dispose);
+    await tester.pump();
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets('surfaces permission denial and stable provider failure text', (
@@ -411,7 +418,8 @@ void main() {
     expect(find.textContaining(providerSecret), findsNothing);
 
     await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(harness.dispose);
+    await tester.pump();
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets('surfaces stable controller failure without response text', (
@@ -431,7 +439,8 @@ void main() {
     expect(find.textContaining('SERVER_PRIVATE_FAILURE'), findsNothing);
 
     await tester.pumpWidget(const SizedBox.shrink());
-    await tester.runAsync(harness.dispose);
+    await tester.pump();
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets(
@@ -464,7 +473,7 @@ void main() {
 
     await tester.pumpWidget(const SizedBox.shrink());
     await tester.pump();
-    await tester.runAsync(harness.dispose);
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets('switches between compact and expanded accessible layouts', (
@@ -497,7 +506,7 @@ void main() {
     semantics.dispose();
     await tester.pumpWidget(const SizedBox.shrink());
     await tester.pump();
-    await tester.runAsync(harness.dispose);
+    await _disposeHarness(tester, harness);
   });
 
   testWidgets(
@@ -535,6 +544,7 @@ void main() {
     expect(secondProvider.closeCount, 0);
 
     await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump();
     await _pumpUntil(tester, () => secondProvider.closeCount == 1);
     expect(firstProvider.closeCount, 1);
     expect(secondProvider.closeCount, 1);
@@ -546,8 +556,8 @@ void main() {
       reason: 'The panel must never dispose the caller-owned controller.',
     );
 
-    await tester.runAsync(first.dispose);
-    await tester.runAsync(second.dispose);
+    await _disposeHarness(tester, first);
+    await _disposeHarness(tester, second);
   });
 
   testWidgets('does not close supplied sessions or accept stale updates', (
@@ -597,6 +607,7 @@ void main() {
     expect(find.text('Speaking'), findsOneWidget);
 
     await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump();
     secondProvider.emitActiveSpeakers(const [
       ChatMediaActiveSpeaker(participantId: 'user-alice', isSpeaking: false),
     ]);
@@ -607,7 +618,7 @@ void main() {
     expect(firstProvider.closeCount, 0);
     expect(secondProvider.closeCount, 0);
 
-    await tester.runAsync(harness.dispose);
+    await _disposeHarness(tester, harness);
   });
 }
 
@@ -643,6 +654,19 @@ Future<void> _pumpPanel(
     ),
   );
   await tester.pump();
+}
+
+Future<void> _disposeHarness(WidgetTester tester, _Harness harness) async {
+  // Stream listeners can have been created in either runAsync or FakeAsync.
+  // Drive both queues while disposal completes instead of awaiting with the
+  // other queue paused. Keep failure bounded and preserve disposal errors.
+  var completed = false;
+  final disposal = harness.dispose();
+  unawaited(disposal.then((_) => completed = true, onError: (Object _) {
+    completed = true;
+  }));
+  await _pumpUntil(tester, () => completed);
+  await disposal;
 }
 
 Future<void> _chooseDropdown(
@@ -740,6 +764,14 @@ final class _Harness {
       huddleClock: () => _now,
       huddleTimerScheduler: (_, __) => () {},
     );
+    // Match the authorized conversation snapshot supplied by a real host.
+    // This is command validation context, not a trusted runtime identity.
+    client.normalizedState.projectCurrentUserReadState(ConversationReadState(
+      conversationId: conversationId,
+      userId: const UserId('user-alice'),
+      lastReadSequence: const MessageSequence(0),
+      updatedAt: const IsoTimestamp('2030-01-01T00:00:00.000Z'),
+    ));
     controller = client.huddles.forConversation(conversationId);
   }
 
@@ -786,8 +818,8 @@ final class _Harness {
       'reconciliationStatus': 'applied',
       'state': switch (operation) {
         'start_huddle' => _starting(conversationId),
-        'join_huddle' => _active(conversationId,
-            withJoined: withJoinedParticipant),
+        'join_huddle' =>
+          _active(conversationId, withJoined: withJoinedParticipant),
         'leave_huddle' => _left(
             conversationId,
             withDeparted: _withDepartedParticipant,

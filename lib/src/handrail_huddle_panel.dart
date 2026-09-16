@@ -411,6 +411,7 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
       final needsJoin = canonical is StartingHuddleState ||
           participation == ChatHuddleActorParticipation.absent ||
           participation == ChatHuddleActorParticipation.left ||
+          _controllerState.media is ChatHuddleMediaIdleState ||
           _controllerState.media is ChatHuddleMediaRejoinRequiredState;
       if (needsJoin) {
         children.add(_actionButton(
@@ -753,6 +754,7 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
         participation != ChatHuddleActorParticipation.absent &&
         participation != ChatHuddleActorParticipation.left &&
         _controllerState.media is! ChatHuddleMediaRejoinRequiredState &&
+        _controllerState.media is! ChatHuddleMediaIdleState &&
         !_isUnavailable;
   }
 

@@ -563,7 +563,7 @@ void main() {
       requestedCapabilities: const <String, bool>{messageSearchFeature: true},
     );
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final openedHits = <HandrailMessageSearchHit>[];
 
     await tester.pumpWidget(_host(
@@ -655,7 +655,7 @@ void main() {
       requestedCapabilities: const <String, bool>{messageSearchFeature: true},
     );
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     await client.initialize();
     final overrideRequests = <HandrailMessageSearchRequest>[];
 
@@ -702,7 +702,7 @@ void main() {
       requestedCapabilities: const <String, bool>{messageSearchFeature: true},
     );
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     await client.initialize();
 
     await tester.pumpWidget(_host(
@@ -727,7 +727,7 @@ void main() {
     final transport = _WorkspaceTransport();
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
 
     await tester.pumpWidget(_host(
       client,
@@ -807,7 +807,7 @@ void main() {
       listResponses: Queue.of([_jsonResponse(conversationListPage())]),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final controller = ChatConversationListController(
       client: client,
       scope: const OrganizationConversationSnapshotScope(),
@@ -865,7 +865,7 @@ void main() {
       },
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -982,7 +982,7 @@ void main() {
     );
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1074,7 +1074,7 @@ void main() {
       listResponses: Queue.of([_jsonResponse(conversationListPage())]),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final controller = ChatConversationListController(
       client: client,
       scope: const OrganizationConversationSnapshotScope(),
@@ -1131,7 +1131,7 @@ void main() {
       listResponses: Queue.of([_jsonResponse(conversationListPage())]),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
 
     await tester.pumpWidget(_host(
       client,
@@ -1313,7 +1313,7 @@ void main() {
       )),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1393,7 +1393,7 @@ void main() {
     );
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1481,7 +1481,7 @@ void main() {
       listResponses: Queue.of([_jsonResponse(conversationListPage())]),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final controller = ChatConversationListController(
       client: client,
       scope: const OrganizationConversationSnapshotScope(),
@@ -1544,7 +1544,7 @@ void main() {
       },
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1621,7 +1621,7 @@ void main() {
       },
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1681,7 +1681,7 @@ void main() {
       createChannel: (_) => pending.future,
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1766,7 +1766,7 @@ void main() {
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
     _seedConversation(client, _beta, 'Beta', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -1879,7 +1879,7 @@ void main() {
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
     _seedConversation(client, _beta, 'Beta', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final semantics = tester.ensureSemantics();
     void expectSemantics(Finder finder, String label) {
       final node = tester.getSemantics(finder);
@@ -2019,7 +2019,7 @@ void main() {
     final transport = _WorkspaceTransport(includeThreadSummary: false);
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
 
     await tester.pumpWidget(_host(
       client,
@@ -2065,7 +2065,7 @@ void main() {
     final transport = _WorkspaceTransport();
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
 
     await tester.pumpWidget(_host(
@@ -2127,7 +2127,7 @@ void main() {
     );
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
     final semantics = tester.ensureSemantics();
 
@@ -2231,7 +2231,7 @@ void main() {
     );
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final key = GlobalKey<HandrailChatWorkspaceState>();
     final semantics = tester.ensureSemantics();
 
@@ -2303,7 +2303,7 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
     final client = _client(_WorkspaceTransport());
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     await client.initialize();
     final controller = ChatConversationListController(
       client: client,
@@ -2351,7 +2351,7 @@ void main() {
     final transport = _WorkspaceTransport();
     final client = _client(transport);
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final controller = ChatConversationListController(
       client: client,
       scope: const OrganizationConversationSnapshotScope(),
@@ -2492,7 +2492,7 @@ void main() {
     final pending = Completer<HandrailChatHttpResponse>();
     final loadingTransport = _WorkspaceTransport(listPending: pending);
     final loadingClient = _client(loadingTransport);
-    addTearDown(loadingClient.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, loadingClient));
     final builders = ChatWidgetBuilders(
       loading: (_, input) => Text('Loading ${input.target.name}'),
       error: (context, input) => Column(
@@ -2522,7 +2522,7 @@ void main() {
       ]),
     );
     final retryClient = _client(retryTransport);
-    addTearDown(retryClient.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, retryClient));
     final retryController = ChatConversationListController(
       client: retryClient,
       scope: const OrganizationConversationSnapshotScope(),
@@ -2552,7 +2552,7 @@ void main() {
         _jsonResponse(const {'error': 'denied'}, statusCode: 403),
       ]),
     ));
-    addTearDown(deniedClient.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, deniedClient));
     final deniedKey = GlobalKey<HandrailChatWorkspaceState>();
     await tester.pumpWidget(_host(
       deniedClient,
@@ -2577,7 +2577,7 @@ void main() {
       ]),
     );
     final revokedClient = _client(revokedTransport);
-    addTearDown(revokedClient.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, revokedClient));
     final revokedController = ChatConversationListController(
       client: revokedClient,
       scope: const OrganizationConversationSnapshotScope(),
@@ -2596,7 +2596,7 @@ void main() {
     expect(find.text('Chat access revoked'), findsOneWidget);
 
     final disposedClient = _client(_WorkspaceTransport());
-    addTearDown(disposedClient.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, disposedClient));
     final disposedController = ChatConversationListController(
       client: disposedClient,
       scope: const OrganizationConversationSnapshotScope(),
@@ -2619,7 +2619,7 @@ void main() {
       (tester) async {
     final client = _client(_WorkspaceTransport());
     _seedConversation(client, _alpha, 'Alpha', latestSequence: 1);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     await tester.pumpWidget(_host(
       client,
       width: 1100,
@@ -2722,7 +2722,7 @@ void main() {
       ]),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => _disposeWorkspaceClient(tester, client));
     final ownedKey = GlobalKey<HandrailChatWorkspaceState>();
     await tester.pumpWidget(_host(
       client,
@@ -3302,6 +3302,23 @@ class _WorkspaceTransport implements HandrailChatHttpTransport {
     return _jsonResponse(const {'error': 'unexpected fixture request'},
         statusCode: 400);
   }
+}
+
+Future<void> _disposeWorkspaceClient(
+  WidgetTester tester,
+  HandrailChatClient client,
+) async {
+  // Active SDK callbacks may belong to either runAsync or FakeAsync. Unmount
+  // UI first, then drive both queues while closing its subscribed client.
+  await tester.pumpWidget(const SizedBox.shrink());
+  await tester.pump();
+  var disposed = false;
+  final disposal = client.dispose();
+  unawaited(disposal.then((_) => disposed = true, onError: (Object _) {
+    disposed = true;
+  }));
+  await _pumpUntil(tester, () => disposed);
+  await disposal;
 }
 
 Future<void> _pumpUntil(WidgetTester tester, bool Function() predicate,

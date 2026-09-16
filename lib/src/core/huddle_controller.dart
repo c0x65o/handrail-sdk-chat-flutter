@@ -1524,6 +1524,11 @@ final class ChatHuddleController {
         command.mediaJoin,
       );
     }
+    if (applied && command is LeaveHuddleResult) {
+      // A successful leave is authoritative even without a runtime identity.
+      _clearDescriptor();
+      _emit(_copyState(media: const ChatHuddleMediaIdleState()));
+    }
     final result = ChatHuddleActionSuccess(
       operation: operation,
       state: _state.canonicalState,

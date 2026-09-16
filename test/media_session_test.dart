@@ -110,6 +110,117 @@ void main() {
       await huddle.client.dispose();
     });
 
+    test('leave releases tracks and rejoin connects a fresh provider',
+        () async {
+      final huddle = await _activeHuddle();
+      final firstCalls = <String>[];
+      final secondCalls = <String>[];
+      final delegate = _FakeDelegate(firstCalls, _FakeProvider(firstCalls));
+      final session = ChatHuddleMediaSession(
+        controller: huddle.controller,
+        delegate: delegate,
+      );
+      await session.connect();
+      await session.setMicrophoneEnabled(true);
+      await huddle.controller.leave();
+      await Future<void>.delayed(Duration.zero);
+      expect(firstCalls.where((call) => call == 'close'), hasLength(1));
+      expect(session.state.status, ChatMediaSessionStatus.idle);
+      expect(session.state.microphoneEnabled, isFalse);
+      expect(session.state.activeSpeakers, isEmpty);
+      expect(session.state.devices.devices, isEmpty);
+
+      delegate.provider = _FakeProvider(secondCalls);
+      await huddle.controller.join();
+      await session.connect();
+      await session.setMicrophoneEnabled(true);
+      expect(session.state.status, ChatMediaSessionStatus.connected);
+      expect(secondCalls, ['microphone:true']);
+      expect(firstCalls.where((call) => call == 'connect'), hasLength(2));
+
+      await huddle.controller.end();
+      await Future<void>.delayed(Duration.zero);
+      // Cleanup is driven by the controller even without a mounted panel.
+      expect(secondCalls.where((call) => call == 'close'), hasLength(1));
+      expect(session.state.status, ChatMediaSessionStatus.idle);
+      await session.close();
+      await huddle.client.dispose();
+      expect(secondCalls.where((call) => call == 'close'), hasLength(1));
+    });
+
+    test(
+        'leave closes tracks before pending permission and rejects queued work',
+        () async {
+      final huddle = await _activeHuddle();
+      final calls = <String>[];
+      final delegate = _FakeDelegate(calls, _FakeProvider(calls));
+      final permission = Completer<ChatMediaPermissionDecision>();
+      delegate.permissionGate = permission;
+      final session = ChatHuddleMediaSession(
+        controller: huddle.controller,
+        delegate: delegate,
+      );
+      await session.connect();
+      final microphone = session.setMicrophoneEnabled(true);
+      final queuedCamera = session.setCameraEnabled(true);
+      final microphoneRejected =
+          expectLater(microphone, throwsA(isA<ChatMediaException>()));
+      final cameraRejected =
+          expectLater(queuedCamera, throwsA(isA<ChatMediaException>()));
+      await Future<void>.delayed(Duration.zero);
+      await huddle.controller.leave();
+      await Future<void>.delayed(Duration.zero);
+      expect(permission.isCompleted, isFalse);
+      expect(calls.where((call) => call == 'close'), hasLength(1));
+      expect(session.state.microphoneEnabled, isFalse);
+      permission.complete(ChatMediaPermissionDecision.granted);
+      await microphoneRejected;
+      await cameraRejected;
+      expect(calls, ['connect', 'permission:microphone', 'close']);
+      expect(session.state.status, ChatMediaSessionStatus.idle);
+      await session.close();
+      await huddle.client.dispose();
+    });
+
+    test('late connection after leave is closed without exposing live media',
+        () async {
+      final huddle = await _activeHuddle();
+      final calls = <String>[];
+      final provider = _FakeProvider(calls);
+      final gate = Completer<ChatMediaProviderSession>();
+      final delegate = _DelayedDelegate(gate);
+      final session = ChatHuddleMediaSession(
+        controller: huddle.controller,
+        delegate: delegate,
+      );
+      final connecting = session.connect();
+      await Future<void>.delayed(Duration.zero);
+      await huddle.controller.leave();
+      await Future<void>.delayed(Duration.zero);
+      gate.complete(provider);
+      await connecting;
+      expect(calls, ['close']);
+      expect(session.state.status, ChatMediaSessionStatus.idle);
+      await session.close();
+      await huddle.client.dispose();
+      expect(calls, ['close']);
+    });
+
+    test('controller disposal releases an otherwise unowned media session',
+        () async {
+      final huddle = await _activeHuddle();
+      final calls = <String>[];
+      final session = ChatHuddleMediaSession(
+        controller: huddle.controller,
+        delegate: _FakeDelegate(calls, _FakeProvider(calls)),
+      );
+      await session.connect();
+      await huddle.client.dispose();
+      await session.close();
+      expect(calls.where((call) => call == 'close'), hasLength(1));
+      expect(session.state.status, ChatMediaSessionStatus.closed);
+    });
+
     test('maps microphone, camera, and screen-share permission denial',
         () async {
       final huddle = await _activeHuddle();
@@ -246,6 +357,8 @@ Future<
       switch (operation) {
         'start_huddle' => _starting,
         'join_huddle' => _active,
+        'leave_huddle' => _left,
+        'end_huddle' => _ended,
         'set_huddle_screen_share' =>
           input['intent'] == 'set' ? _sharing : _active,
         _ => throw StateError('unexpected operation $operation'),
@@ -254,9 +367,15 @@ Future<
     );
   });
   final client = _client(transport);
+  client.normalizedState.projectCurrentUserReadState(ConversationReadState(
+    conversationId: _conversationId,
+    userId: const UserId('user-alice'),
+    lastReadSequence: const MessageSequence(0),
+    updatedAt: const IsoTimestamp('2030-01-01T00:00:00.000Z'),
+  ));
   final controller = client.huddles.forConversation(_conversationId);
-  await controller.start();
-  await controller.join();
+  expect(await controller.start(), isA<ChatHuddleActionSuccess>());
+  expect(await controller.join(), isA<ChatHuddleActionSuccess>());
   return (client: client, controller: controller, transport: transport);
 }
 
@@ -298,9 +417,10 @@ final class _FakeDelegate implements ChatMediaDelegate {
   });
 
   final List<String> calls;
-  final _FakeProvider provider;
+  _FakeProvider provider;
   final Map<ChatMediaPermission, ChatMediaPermissionDecision> permissions;
   HuddleMediaJoinDescriptor? descriptor;
+  Completer<ChatMediaPermissionDecision>? permissionGate;
 
   @override
   Future<ChatMediaProviderSession> connect(
@@ -316,6 +436,7 @@ final class _FakeDelegate implements ChatMediaDelegate {
     ChatMediaPermission permission,
   ) async {
     calls.add('permission:${permission.name}');
+    if (permissionGate != null) return permissionGate!.future;
     return permissions[permission] ?? ChatMediaPermissionDecision.granted;
   }
 }
@@ -441,3 +562,37 @@ final _sharing = <String, Object?>{
   ..._active,
   'screenShareOwnerUserId': 'user-alice',
 };
+
+final _left = <String, Object?>{
+  ..._active,
+  'participants': <Object?>[
+    <String, Object?>{
+      'userId': 'user-alice',
+      'status': 'left',
+      'joinedAt': '2030-01-01T00:00:02.000Z',
+      'leftAt': '2030-01-01T00:00:03.000Z',
+    },
+  ],
+};
+
+final _ended = <String, Object?>{
+  ..._left,
+  'status': 'ended',
+  'endedAt': '2030-01-01T00:00:03.000Z',
+  'endedByUserId': 'user-alice',
+};
+
+final class _DelayedDelegate implements ChatMediaDelegate {
+  _DelayedDelegate(this.gate);
+  final Completer<ChatMediaProviderSession> gate;
+
+  @override
+  Future<ChatMediaProviderSession> connect(
+          HuddleMediaJoinDescriptor descriptor) =>
+      gate.future;
+
+  @override
+  Future<ChatMediaPermissionDecision> requestPermission(
+          ChatMediaPermission permission) async =>
+      ChatMediaPermissionDecision.granted;
+}

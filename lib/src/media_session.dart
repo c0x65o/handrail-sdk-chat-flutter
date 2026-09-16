@@ -238,6 +238,10 @@ final class ChatHuddleMediaSession {
       _activeSpeakerChanges.stream,
       () => _state.activeSpeakers,
     );
+    _controllerSubscription = controller.states.listen(
+      (_) => _reconcileController(),
+      onDone: () => unawaited(close().catchError((_) {})),
+    );
   }
 
   final ChatHuddleController _controller;
@@ -258,6 +262,10 @@ final class ChatHuddleMediaSession {
   Future<void>? _connectFuture;
   Future<void>? _closeFuture;
   Future<void>? _providerCloseFuture;
+  Future<void>? _disconnectFuture;
+  StreamSubscription<ChatHuddleState>? _controllerSubscription;
+  HuddleSessionId? _connectedHuddleId;
+  int _generation = 0;
   Future<void> _operationTail = Future<void>.value();
   bool _closing = false;
 
@@ -290,7 +298,12 @@ final class ChatHuddleMediaSession {
     final active = _connectFuture;
     if (active != null) return active;
     late final Future<void> attempt;
-    attempt = _connect().whenComplete(() {
+    attempt = (() async {
+      await _disconnectFuture;
+      if (_closing) return;
+      await _connect();
+    })()
+        .whenComplete(() {
       if (identical(_connectFuture, attempt)) _connectFuture = null;
     });
     _connectFuture = attempt;
@@ -299,15 +312,17 @@ final class ChatHuddleMediaSession {
 
   Future<void> setMicrophoneEnabled(bool enabled) => _enqueue(
         ChatMediaOperation.microphone,
-        () async {
+        (generation) async {
           if (enabled) {
             await _requestPermission(
               ChatMediaPermission.microphone,
               ChatMediaOperation.microphone,
+              generation,
             );
           }
-          await _connectedProvider(ChatMediaOperation.microphone)
+          await _connectedProvider(ChatMediaOperation.microphone, generation)
               .setMicrophoneEnabled(enabled);
+          _ensureGeneration(generation, ChatMediaOperation.microphone);
           _emit(_copyState(
             microphoneEnabled: enabled,
             clearFailure: true,
@@ -317,15 +332,17 @@ final class ChatHuddleMediaSession {
 
   Future<void> setCameraEnabled(bool enabled) => _enqueue(
         ChatMediaOperation.camera,
-        () async {
+        (generation) async {
           if (enabled) {
             await _requestPermission(
               ChatMediaPermission.camera,
               ChatMediaOperation.camera,
+              generation,
             );
           }
-          await _connectedProvider(ChatMediaOperation.camera)
+          await _connectedProvider(ChatMediaOperation.camera, generation)
               .setCameraEnabled(enabled);
+          _ensureGeneration(generation, ChatMediaOperation.camera);
           _emit(_copyState(cameraEnabled: enabled, clearFailure: true));
         },
       );
@@ -333,16 +350,19 @@ final class ChatHuddleMediaSession {
   /// Coordinates canonical screen-share intent before changing native tracks.
   Future<void> setScreenShareEnabled(bool enabled) => _enqueue(
         ChatMediaOperation.screenShare,
-        () async {
+        (generation) async {
           if (enabled) {
             await _requestPermission(
               ChatMediaPermission.screenShare,
               ChatMediaOperation.screenShare,
+              generation,
             );
           }
+          _connectedProvider(ChatMediaOperation.screenShare, generation);
           final result = enabled
               ? await _controller.setScreenShare(HuddleScreenShareIntent.set)
               : await _controller.clearScreenShare();
+          _ensureGeneration(generation, ChatMediaOperation.screenShare);
           if (result is ChatHuddleActionFeatureDisabled) {
             _emit(_copyState(
               status: ChatMediaSessionStatus.unavailable,
@@ -357,8 +377,9 @@ final class ChatHuddleMediaSession {
               retryable: result.retryable,
             );
           }
-          await _connectedProvider(ChatMediaOperation.screenShare)
+          await _connectedProvider(ChatMediaOperation.screenShare, generation)
               .setScreenShareEnabled(enabled);
+          _ensureGeneration(generation, ChatMediaOperation.screenShare);
           _emit(_copyState(
             screenShareEnabled: enabled,
             clearFailure: true,
@@ -368,9 +389,10 @@ final class ChatHuddleMediaSession {
 
   Future<void> selectAudioInput(String? deviceId) => _enqueue(
         ChatMediaOperation.audioInput,
-        () async {
-          await _connectedProvider(ChatMediaOperation.audioInput)
+        (generation) async {
+          await _connectedProvider(ChatMediaOperation.audioInput, generation)
               .selectAudioInput(deviceId);
+          _ensureGeneration(generation, ChatMediaOperation.audioInput);
           _setDevices(ChatMediaDeviceState(
             devices: _state.devices.devices,
             selectedAudioInputId: deviceId,
@@ -381,9 +403,10 @@ final class ChatHuddleMediaSession {
 
   Future<void> selectAudioOutput(String? deviceId) => _enqueue(
         ChatMediaOperation.audioOutput,
-        () async {
-          await _connectedProvider(ChatMediaOperation.audioOutput)
+        (generation) async {
+          await _connectedProvider(ChatMediaOperation.audioOutput, generation)
               .selectAudioOutput(deviceId);
+          _ensureGeneration(generation, ChatMediaOperation.audioOutput);
           _setDevices(ChatMediaDeviceState(
             devices: _state.devices.devices,
             selectedAudioInputId: _state.devices.selectedAudioInputId,
@@ -391,6 +414,64 @@ final class ChatHuddleMediaSession {
           ));
         },
       );
+
+  /// Releases provider tracks while retaining this binding for a fresh join.
+  /// Hosts may also call this when their media transport disconnects.
+  Future<void> disconnect() {
+    if (_closing || _state.status == ChatMediaSessionStatus.closed) {
+      return _closeFuture ?? Future<void>.value();
+    }
+    return _disconnectFuture ??= _disconnect().whenComplete(
+      () => _disconnectFuture = null,
+    );
+  }
+
+  void _reconcileController() {
+    if (_closing) return;
+    final state = _controller.state;
+    final canonical = state.canonicalState;
+    final invalidated = canonical is! LiveHuddleState ||
+        (_connectedHuddleId != null &&
+            canonical.huddleSessionId != _connectedHuddleId) ||
+        state.media is ChatHuddleMediaIdleState ||
+        state.media is ChatHuddleMediaUnavailableState;
+    if (invalidated &&
+        (_provider != null ||
+            _state.status == ChatMediaSessionStatus.connecting)) {
+      unawaited(disconnect().catchError((_) {}));
+    }
+  }
+
+  Future<void> _disconnect() async {
+    ++_generation;
+    _emit(ChatMediaSessionState(
+      status: ChatMediaSessionStatus.idle,
+      devices: ChatMediaDeviceState(devices: const []),
+      activeSpeakers: const [],
+    ));
+    // Pending permissions cannot keep tracks alive or block a fresh session.
+    // Their generation checks reject late results without touching new state.
+    _operationTail = Future<void>.value();
+    await _deviceSubscription?.cancel();
+    await _speakerSubscription?.cancel();
+    _deviceSubscription = null;
+    _speakerSubscription = null;
+    final provider = _provider;
+    _provider = null;
+    _connectedHuddleId = null;
+    try {
+      if (provider != null) await _closeProvider(provider);
+    } finally {
+      _providerCloseFuture = null;
+      if (!_closing) {
+        _emit(ChatMediaSessionState(
+          status: ChatMediaSessionStatus.idle,
+          devices: ChatMediaDeviceState(devices: const []),
+          activeSpeakers: const [],
+        ));
+      }
+    }
+  }
 
   /// Closes provider tracks and all adapter streams exactly once.
   Future<void> close() => _closeFuture ??= _close();
@@ -432,12 +513,20 @@ final class ChatHuddleMediaSession {
       );
     }
 
+    final generation = _generation;
+    final canonical = _controller.state.canonicalState;
+    _connectedHuddleId =
+        canonical is LiveHuddleState ? canonical.huddleSessionId : null;
     _emit(_copyState(
       status: ChatMediaSessionStatus.connecting,
       clearFailure: true,
     ));
     try {
       final provider = await delegate.connect(descriptor);
+      if (generation != _generation) {
+        await provider.close();
+        return;
+      }
       _provider = provider;
       if (_closing) {
         await _closeProvider(provider);
@@ -465,8 +554,10 @@ final class ChatHuddleMediaSession {
         ),
       );
     } on ChatMediaException catch (error) {
+      if (generation != _generation || _closing) return;
       await _fail(error);
     } catch (_) {
+      if (generation != _generation || _closing) return;
       await _fail(_exception(
         ChatMediaErrorCode.providerFailure,
         ChatMediaOperation.connect,
@@ -477,7 +568,7 @@ final class ChatHuddleMediaSession {
 
   Future<void> _enqueue(
     ChatMediaOperation operation,
-    Future<void> Function() action,
+    Future<void> Function(int generation) action,
   ) {
     if (_enterUnavailableIfNeeded()) return Future<void>.value();
     if (_closing || _state.status == ChatMediaSessionStatus.closed) {
@@ -485,15 +576,19 @@ final class ChatHuddleMediaSession {
         _exception(ChatMediaErrorCode.closed, operation),
       );
     }
+    final generation = _generation;
     final result = _operationTail.then((_) async {
       if (_enterUnavailableIfNeeded()) return;
       if (_closing || _state.status == ChatMediaSessionStatus.closed) {
         throw _exception(ChatMediaErrorCode.closed, operation);
       }
       try {
-        await action();
+        _ensureGeneration(generation, operation);
+        await action(generation);
       } on ChatMediaException catch (error) {
-        _emit(_copyState(lastFailure: error.failure));
+        if (generation == _generation) {
+          _emit(_copyState(lastFailure: error.failure));
+        }
         rethrow;
       } catch (_) {
         final error = _exception(
@@ -501,7 +596,9 @@ final class ChatHuddleMediaSession {
           operation,
           retryable: true,
         );
-        _emit(_copyState(lastFailure: error.failure));
+        if (generation == _generation) {
+          _emit(_copyState(lastFailure: error.failure));
+        }
         throw error;
       }
     });
@@ -512,7 +609,9 @@ final class ChatHuddleMediaSession {
   Future<void> _requestPermission(
     ChatMediaPermission permission,
     ChatMediaOperation operation,
+    int generation,
   ) async {
+    _ensureGeneration(generation, operation);
     final delegate = _delegate;
     if (delegate == null) {
       throw _exception(
@@ -521,12 +620,26 @@ final class ChatHuddleMediaSession {
       );
     }
     final decision = await delegate.requestPermission(permission);
+    _ensureGeneration(generation, operation);
     if (decision != ChatMediaPermissionDecision.granted) {
       throw _exception(ChatMediaErrorCode.permissionDenied, operation);
     }
   }
 
-  ChatMediaProviderSession _connectedProvider(ChatMediaOperation operation) {
+  void _ensureGeneration(int generation, ChatMediaOperation operation) {
+    if (_closing || generation != _generation) {
+      throw _exception(
+        _closing ? ChatMediaErrorCode.closed : ChatMediaErrorCode.notConnected,
+        operation,
+      );
+    }
+  }
+
+  ChatMediaProviderSession _connectedProvider(
+    ChatMediaOperation operation,
+    int generation,
+  ) {
+    _ensureGeneration(generation, operation);
     final provider = _provider;
     if (provider == null || _state.status != ChatMediaSessionStatus.connected) {
       throw _exception(ChatMediaErrorCode.notConnected, operation);
@@ -536,6 +649,8 @@ final class ChatHuddleMediaSession {
 
   Future<void> _close() async {
     _closing = true;
+    ++_generation;
+    await _controllerSubscription?.cancel();
     if (_state.status != ChatMediaSessionStatus.closed) {
       _emit(_copyState(status: ChatMediaSessionStatus.closing));
     }
@@ -546,7 +661,7 @@ final class ChatHuddleMediaSession {
       } catch (_) {
         // A failed connection already emitted a stable public failure.
       }
-      await _operationTail;
+      await _disconnectFuture;
       await _deviceSubscription?.cancel();
       await _speakerSubscription?.cancel();
       final provider = _provider;
@@ -588,13 +703,13 @@ final class ChatHuddleMediaSession {
   }
 
   void _setDevices(ChatMediaDeviceState devices) {
-    if (_closing) return;
+    if (_closing || _disconnectFuture != null) return;
     _emit(_copyState(devices: devices, clearFailure: true));
     if (!_deviceChanges.isClosed) _deviceChanges.add(devices);
   }
 
   void _setActiveSpeakers(Iterable<ChatMediaActiveSpeaker> speakers) {
-    if (_closing) return;
+    if (_closing || _disconnectFuture != null) return;
     final immutable = List<ChatMediaActiveSpeaker>.unmodifiable(speakers);
     _emit(_copyState(activeSpeakers: immutable, clearFailure: true));
     if (!_activeSpeakerChanges.isClosed) {
