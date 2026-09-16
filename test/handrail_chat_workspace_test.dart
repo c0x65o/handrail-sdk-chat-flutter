@@ -2688,6 +2688,17 @@ void main() {
     expect(
       _primaryFocusIsWithin(
         tester,
+        find.byKey(const ValueKey<String>(
+          'handrail-workspace-threads',
+        )),
+      ),
+      isTrue,
+    );
+    await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+    await tester.pump();
+    expect(
+      _primaryFocusIsWithin(
+        tester,
         find.byKey(const ValueKey<String>('handrail-workspace-search')),
       ),
       isTrue,
