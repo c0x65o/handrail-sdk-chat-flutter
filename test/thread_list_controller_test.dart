@@ -118,15 +118,19 @@ class Http implements HandrailChatHttpTransport {
   @override
   Future<HandrailChatHttpResponse> send(HandrailChatHttpRequest r) async {
     requests.add(r);
-    if (r.method != 'GET')
+    if (r.method != 'GET') {
       return write == null ? response({}, 503) : await write!(r);
-    if (r.uri.path.endsWith('/threads'))
+    }
+    if (r.uri.path.endsWith('/threads')) {
       return read == null ? response(value) : await read!(r);
-    if (r.uri.path.endsWith('/messages'))
+    }
+    if (r.uri.path.endsWith('/messages')) {
       return response(existingThreadTimelineFixture(
           parent: r.uri.path.contains(parent.value)));
-    if (r.uri.path.endsWith(thread.value))
+    }
+    if (r.uri.path.endsWith(thread.value)) {
       return response(existingThreadDetailFixture());
+    }
     return response(metadata);
   }
 
@@ -781,12 +785,13 @@ class Socket implements ChatRealtimeSocket {
   void send(String data) {
     final json = jsonDecode(data) as Map<String, dynamic>;
     sent.add(json);
-    if (json['type'] == 'chat.subscribe')
+    if (json['type'] == 'chat.subscribe') {
       scheduleMicrotask(() => emit({
             'type': 'chat.subscription.accepted',
             'streamId': json['streamId'],
             'requestId': json['requestId']
           }));
+    }
   }
 
   void emit(Map<String, Object?> json) => controller.add(jsonEncode(json));

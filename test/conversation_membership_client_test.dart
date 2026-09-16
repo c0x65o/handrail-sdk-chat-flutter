@@ -552,6 +552,11 @@ void main() {
       expect((await queuedAtClose).category, ChatCommandResultCategory.closed);
       expect((await closing).category, ChatCommandResultCategory.closed);
       await dispose;
+      // Closing the active request must not dispatch the queued request after
+      // the dispatcher's cancellation sweep. Both futures and disposal settle
+      // even though the transport response above remains unresolved.
+      expect(transport.requests, hasLength(2));
+      expect(tokenCalls, 2);
       expect(
         (await client.joinConversation(const ChatJoinConversationInput(
           conversationId: ConversationId('conversation-1'),

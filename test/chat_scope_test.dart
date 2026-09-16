@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/flutter.dart';
 
+import 'fixtures/widget_cleanup.dart';
+
 void main() {
   group('ChatScope construction and lookup', () {
     test('requires exactly one client source', () {
@@ -93,8 +95,8 @@ void main() {
 
       expect(outerFound, same(outer));
       expect(innerFound, same(inner));
-      await outer.dispose();
-      await inner.dispose();
+      await pumpWidgetCleanup(tester, outer.dispose);
+      await pumpWidgetCleanup(tester, inner.dispose);
     });
   });
 
@@ -145,7 +147,7 @@ void main() {
       await tester.pumpWidget(_host(const SizedBox.shrink()));
       expect(() => client.initialize(), returnsNormally);
       expect(transport.requests, hasLength(1));
-      await client.dispose();
+      await pumpWidgetCleanup(tester, client.dispose);
     });
   });
 

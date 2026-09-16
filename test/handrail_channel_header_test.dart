@@ -1,9 +1,15 @@
+// Legacy semantics flags keep these assertions runnable on Flutter 3.19.
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
+import 'dart:ui' show SemanticsFlag;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'fixtures/widget_cleanup.dart';
 import 'package:handrail_chat/ui.dart';
 
 const _conversationId = ConversationId('channel-header');
@@ -15,7 +21,7 @@ void main() {
       (tester) async {
     final pending = Completer<HandrailChatHttpResponse>();
     final client = _client(_HeaderTransport(pending: pending));
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_scopedHost(
       client,
@@ -44,7 +50,7 @@ void main() {
     final errorClient = _client(_HeaderTransport(
       responses: Queue.of([_response({}, statusCode: 500)]),
     ));
-    addTearDown(errorClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, errorClient.dispose));
     await tester.pumpWidget(_scopedHost(
       errorClient,
       const HandrailChannelHeader(conversationId: _conversationId),
@@ -61,7 +67,7 @@ void main() {
     final deniedClient = _client(_HeaderTransport(
       responses: Queue.of([_response({}, statusCode: 403)]),
     ));
-    addTearDown(deniedClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, deniedClient.dispose));
     await tester.pumpWidget(_scopedHost(
       deniedClient,
       const HandrailChannelHeader(conversationId: _conversationId),
@@ -77,7 +83,7 @@ void main() {
     revokedClient.normalizedState.hydrateConversationDetail(
       ConversationDetailSnapshot.fromJson(_detail(name: 'Private')),
     );
-    addTearDown(revokedClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, revokedClient.dispose));
     await tester.pumpWidget(_scopedHost(
       revokedClient,
       const HandrailChannelHeader(conversationId: _conversationId),
@@ -90,7 +96,7 @@ void main() {
     final missingClient = _client(_HeaderTransport(
       responses: Queue.of([_response({}, statusCode: 404)]),
     ));
-    addTearDown(missingClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, missingClient.dispose));
     await tester.pumpWidget(_scopedHost(
       missingClient,
       const HandrailChannelHeader(conversationId: _conversationId),
@@ -103,7 +109,7 @@ void main() {
     final unavailableClient = _client(_HeaderTransport(
       responses: Queue.of([_response(_detail(name: 'Available'))]),
     ));
-    addTearDown(unavailableClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, unavailableClient.dispose));
     final controller =
         unavailableClient.conversations.forConversation(_conversationId);
     await tester.pumpWidget(_host(HandrailChannelHeader(
@@ -124,7 +130,7 @@ void main() {
     final client = _client(_HeaderTransport(
       responses: Queue.of([_response(_detail(name: 'Initial title'))]),
     ));
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final semantics = tester.ensureSemantics();
 
     await tester.pumpWidget(_scopedHost(
@@ -162,7 +168,7 @@ void main() {
       const ValueKey<String>('handrail-channel-header-title-semantics'),
     ));
     expect(titleSemantics.label, 'Initial title');
-    expect(titleSemantics.flagsCollection.isHeader, isTrue);
+    expect(titleSemantics.hasFlag(SemanticsFlag.isHeader), isTrue);
 
     client.normalizedState.hydrateConversationDetail(
       ConversationDetailSnapshot.fromJson(_detail(
@@ -184,7 +190,7 @@ void main() {
       update: (_) async => throw StateError('preference work is unauthorized'),
     );
     final client = _client(transport);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_scopedHost(
       client,
@@ -207,7 +213,7 @@ void main() {
 
     final loading = Completer<HandrailChatHttpResponse>();
     final loadingClient = _client(_HeaderTransport(pending: loading));
-    addTearDown(loadingClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, loadingClient.dispose));
     addTearDown(() {
       if (!loading.isCompleted) {
         loading.complete(_response({}, statusCode: 403));
@@ -245,7 +251,7 @@ void main() {
       transport,
       generateIdempotencyKey: () => 'header-notification-${++key}',
     );
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     await tester.pumpWidget(_scopedHost(
       client,
       const HandrailChannelHeader(
@@ -308,7 +314,7 @@ void main() {
       transport,
       generateIdempotencyKey: () => 'header-mute-${++key}',
     );
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     await tester.pumpWidget(_scopedHost(
       client,
       HandrailChannelHeader(
@@ -380,7 +386,7 @@ void main() {
       transport,
       generateIdempotencyKey: () => 'header-pending',
     );
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     addTearDown(() {
       if (!pending.isCompleted) {
         pending.complete(const HandrailChatHttpResponse(
@@ -472,7 +478,7 @@ void main() {
       transport,
       generateIdempotencyKey: () => 'header-conflict-${++key}',
     );
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     await tester.pumpWidget(_scopedHost(
       client,
       const HandrailChannelHeader(
@@ -556,7 +562,7 @@ void main() {
     final suppliedClient = _client(_HeaderTransport(
       responses: Queue.of([_response(_detail(name: 'Supplied'))]),
     ));
-    addTearDown(suppliedClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, suppliedClient.dispose));
     final supplied =
         suppliedClient.conversations.forConversation(_conversationId);
     final suppliedKey = GlobalKey<HandrailChannelHeaderState>();
@@ -576,7 +582,7 @@ void main() {
     final scopedClient = _client(_HeaderTransport(
       responses: Queue.of([_response(_detail(name: 'Scoped'))]),
     ));
-    addTearDown(scopedClient.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, scopedClient.dispose));
     final scopedKey = GlobalKey<HandrailChannelHeaderState>();
     await tester.pumpWidget(_scopedHost(
       scopedClient,
@@ -601,15 +607,27 @@ void main() {
   testWidgets('rejects a supplied controller for another conversation',
       (tester) async {
     final client = _client(_HeaderTransport());
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final controller =
         client.conversations.forConversation(_otherConversationId);
 
-    await tester.pumpWidget(_host(HandrailChannelHeader(
-      conversationId: _conversationId,
-      controller: controller,
-    )));
-    expect(tester.takeException(), isA<FlutterError>());
+    // Avoid Scaffold's secondary layout errors when its child intentionally
+    // rejects invalid identity during the first build (including Flutter 3.19).
+    await tester.pumpWidget(Directionality(
+      textDirection: TextDirection.ltr,
+      child: HandrailChannelHeader(
+        conversationId: _conversationId,
+        controller: controller,
+      ),
+    ));
+    expect(
+      tester.takeException(),
+      isA<FlutterError>().having(
+        (error) => error.message,
+        'identity diagnostic',
+        contains('received a controller for channel-other'),
+      ),
+    );
   });
 }
 

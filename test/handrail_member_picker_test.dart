@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'fixtures/widget_cleanup.dart';
 import 'package:handrail_chat/ui.dart';
 
 import 'fixtures/conversation_membership_fixtures.dart';
@@ -18,7 +20,7 @@ void main() {
     final requests = <HandrailMemberDirectorySearchRequest>[];
     final secondPage = Completer<HandrailMemberDirectoryPage>();
     final resources = _resources();
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     Future<HandrailMemberDirectoryPage> search(
       HandrailMemberDirectorySearchRequest request,
@@ -95,7 +97,7 @@ void main() {
     final oldSearch = Completer<HandrailMemberDirectoryPage>();
     final newSearch = Completer<HandrailMemberDirectoryPage>();
     final resources = _resources();
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,
@@ -132,7 +134,7 @@ void main() {
   ) async {
     final semantics = tester.ensureSemantics();
     final resources = _resources();
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,
@@ -203,7 +205,7 @@ void main() {
         return _response(response);
       },
     );
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,
@@ -288,7 +290,7 @@ void main() {
     final resources = _resources(
       onRequest: (_) async => throw StateError('must not dispatch'),
     );
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,
@@ -331,7 +333,7 @@ void main() {
     final initial = Completer<HandrailMemberDirectoryPage>();
     var failingAttempts = 0;
     final resources = _resources();
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,
@@ -387,7 +389,7 @@ void main() {
     final semantics = tester.ensureSemantics();
     final selections = <Set<UserId>>[];
     final resources = _resources();
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,
@@ -439,7 +441,7 @@ void main() {
     final pickerKey = GlobalKey<HandrailMemberPickerState>();
     final lateSearch = Completer<HandrailMemberDirectoryPage>();
     final resources = _resources();
-    addTearDown(resources.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, resources.dispose));
 
     await _pumpPicker(
       tester,

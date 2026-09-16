@@ -55,7 +55,7 @@ void main() {
     expect(find.text('Effective style: Discord-style — app default.'),
         findsOneWidget);
     expect(find.text('No saved choice.'), findsOneWidget);
-    expect(_choice(tester, 'current').onChanged, isNotNull);
+    expect(_choiceEnabled(tester, 'current'), isTrue);
     await tester.tap(find.text('Current'));
     await _pump(tester);
     expect(find.text('Effective style: Current — saved preference.'),
@@ -75,7 +75,7 @@ void main() {
     expect(find.textContaining('The displayed style is provisional.'),
         findsOneWidget);
     expect(find.text('No saved choice.'), findsNothing);
-    expect(_choice(tester, 'discord').onChanged, isNull);
+    expect(_choiceEnabled(tester, 'discord'), isFalse);
     read.complete(f.response({'error': 'private server details'}, 403));
     await _pump(tester);
     expect(find.textContaining('private server details'), findsNothing);
@@ -86,7 +86,7 @@ void main() {
     await _pump(tester);
     expect(find.text('Effective style: Discord-style — saved preference.'),
         findsOneWidget);
-    expect(_choice(tester, 'discord').onChanged, isNotNull);
+    expect(_choiceEnabled(tester, 'discord'), isTrue);
     expect(http.writes, isEmpty);
   });
 
@@ -105,7 +105,7 @@ void main() {
     expect(find.text('Requested choice (unconfirmed): Discord-style.'),
         findsOneWidget);
     expect(find.textContaining('secret diagnostic'), findsNothing);
-    expect(_choice(tester, 'current').onChanged, isNull);
+    expect(_choiceEnabled(tester, 'current'), isFalse);
     expect(http.writes, hasLength(1));
     await captureWidgetEvidence(
         tester, 'reply-settings-failed-save-widget.png');
@@ -134,12 +134,12 @@ void main() {
     expect(find.text('Effective style: Current — enforced by this app.'),
         findsOneWidget);
     expect(find.text('Saved choice: Discord-style.'), findsOneWidget);
-    expect(_choice(tester, 'discord').onChanged, isNull);
+    expect(_choiceEnabled(tester, 'discord'), isFalse);
     client.replyStyles.configure(const ChatReplyStyleConfiguration());
     await _pump(tester);
     expect(find.text('Effective style: Discord-style — saved preference.'),
         findsOneWidget);
-    expect(_choice(tester, 'current').onChanged, isNotNull);
+    expect(_choiceEnabled(tester, 'current'), isTrue);
     expect(http.writes, isEmpty);
   });
 
@@ -162,7 +162,7 @@ void main() {
     final client = _client(tester, http);
     await tester.runAsync(client.initialize);
     await _mount(tester, client);
-    expect(_choice(tester, 'discord').onChanged, isNull);
+    expect(_choiceEnabled(tester, 'discord'), isFalse);
     expect(find.text('Reply style preferences are unavailable on this server.'),
         findsOneWidget);
     expect(find.textContaining('Inline replies are unavailable'), findsNothing);
@@ -240,8 +240,12 @@ void main() {
       SemanticsFlag.isEnabled,
       SemanticsFlag.isFocusable,
     ]) {
+      // Flutter 3.19 predates SemanticsData.flagsCollection.
+      // ignore: deprecated_member_use
       expect(radio.hasFlag(flag), isTrue, reason: flag.toString());
     }
+    // Flutter 3.19 predates SemanticsData.flagsCollection.
+    // ignore: deprecated_member_use
     expect(radio.hasFlag(SemanticsFlag.isChecked), isFalse);
     expect(radio.hasAction(SemanticsAction.tap), isTrue);
     final radioElement = tester.element(
@@ -341,4 +345,11 @@ class _CapabilitiesHttp extends f.Http {
     }
     return super.send(request);
   }
+}
+
+bool _choiceEnabled(WidgetTester tester, String style) {
+  // Match the product's Flutter 3.19-compatible RadioListTile callback gate;
+  // RadioGroup is unavailable at the declared minimum.
+  // ignore: deprecated_member_use
+  return _choice(tester, style).onChanged != null;
 }

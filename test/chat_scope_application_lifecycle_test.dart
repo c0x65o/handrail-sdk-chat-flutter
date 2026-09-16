@@ -3,15 +3,17 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'fixtures/widget_cleanup.dart';
 import 'package:handrail_chat/flutter.dart';
 import 'package:handrail_chat/testing.dart'
     show FakeChatClock, FakeChatRealtimeNetwork, InMemoryApplicationChatStorage;
 
 const _conversationId = ConversationId('conversation-1');
 final _storageIdentity = ApplicationChatStorageIdentity(
-  tenantId: TenantId('tenant-1'),
-  userId: UserId('user-1'),
-  deviceId: DeviceId('device-1'),
+  tenantId: const TenantId('tenant-1'),
+  userId: const UserId('user-1'),
+  deviceId: const DeviceId('device-1'),
 );
 
 void main() {
@@ -21,7 +23,7 @@ void main() {
       (tester) async {
         await _ensureResumed(tester);
         final fixture = await _LifecycleFixture.create(seedReadState: true);
-        addTearDown(fixture.dispose);
+        addTearDown(() => pumpWidgetCleanup(tester, fixture.dispose));
 
         await tester.pumpWidget(_host(fixture.scope));
         await _pumpUntil(tester, () => fixture.sockets.isNotEmpty);
@@ -136,7 +138,7 @@ void main() {
           queuedRead: true,
           initialCursor: 'persisted-cursor',
         );
-        addTearDown(fixture.dispose);
+        addTearDown(() => pumpWidgetCleanup(tester, fixture.dispose));
 
         await tester.pumpWidget(_host(fixture.scope));
         await _flushAsync(tester);
@@ -230,7 +232,7 @@ void main() {
       await _ensureResumed(tester);
       await _transition(tester, AppLifecycleState.inactive);
       final fixture = await _LifecycleFixture.create(queuedSend: true);
-      addTearDown(fixture.dispose);
+      addTearDown(() => pumpWidgetCleanup(tester, fixture.dispose));
 
       await tester.pumpWidget(_host(fixture.scope));
       await _flushAsync(tester);

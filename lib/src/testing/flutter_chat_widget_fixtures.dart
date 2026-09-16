@@ -3,7 +3,6 @@ import 'dart:collection';
 
 import 'package:flutter/widgets.dart';
 
-import '../../flutter.dart';
 import '../../ui.dart';
 import 'fake_chat_clock.dart';
 import 'fake_chat_connectivity.dart';

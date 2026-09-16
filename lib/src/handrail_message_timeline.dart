@@ -513,7 +513,11 @@ final class _HandrailMessageTimelineBodyState
     });
   }
 
-  void _followLiveEdgeAfterLayout({required int remainingPasses, int? generation}) {
+  void _followLiveEdgeAfterLayout({
+    required int remainingPasses,
+    int? generation,
+    double? previousOffset,
+  }) {
     final expectedGeneration = generation ?? widget.bindingGeneration;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || widget.bindingGeneration != expectedGeneration) return;
@@ -527,9 +531,9 @@ final class _HandrailMessageTimelineBodyState
         }
         return;
       }
-      if (remainingPasses < 3 &&
-          position.maxScrollExtent - position.pixels >
-              widget.liveEdgeThreshold) {
+      // Lazy layout can revise the extent after our jump. Only an actual
+      // offset change should cancel initial positioning.
+      if (previousOffset != null && position.pixels != previousOffset) {
         return;
       }
       position.jumpTo(position.maxScrollExtent);
@@ -537,7 +541,9 @@ final class _HandrailMessageTimelineBodyState
         _followLiveEdgeAfterLayout(
           remainingPasses: remainingPasses - 1,
           generation: expectedGeneration,
+          previousOffset: position.pixels,
         );
+        WidgetsBinding.instance.ensureVisualUpdate();
       }
     });
   }
@@ -897,8 +903,9 @@ final class _HandrailMessageTimelineBodyState
         message.content?.blocks == null;
     final canRemind = !deleted && canonical;
     final markUnreadPending = _markUnreadPending.contains(message.id);
-    return KeyedSubtree(
+    return _RetainedTimelineRow(
       key: rowKey,
+      retain: _loadingEarlier,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -1416,6 +1423,36 @@ final class _ReplyContextObserverState extends State<_ReplyContextObserver> {
   void dispose() {
     unawaited(_subscription?.cancel());
     super.dispose();
+  }
+}
+
+// Preserve visible row state while pagination moves its index beyond the lazy
+// viewport. The post-layout offset correction then reveals the same element.
+final class _RetainedTimelineRow extends StatefulWidget {
+  const _RetainedTimelineRow({super.key, required this.retain, required this.child});
+
+  final bool retain;
+  final Widget child;
+
+  @override
+  State<_RetainedTimelineRow> createState() => _RetainedTimelineRowState();
+}
+
+final class _RetainedTimelineRowState extends State<_RetainedTimelineRow>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => widget.retain;
+
+  @override
+  void didUpdateWidget(_RetainedTimelineRow oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.retain != widget.retain) updateKeepAlive();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return widget.child;
   }
 }
 

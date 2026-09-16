@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
 
+import 'fixtures/widget_cleanup.dart';
+
 const _messageId = MessageId('message-reaction-picker');
 const _conversationId = ConversationId('conversation-reaction-picker');
 
@@ -15,7 +17,7 @@ void main() {
     'renders selected state and only the bounded configured reaction set',
     (tester) async {
       final harness = _Harness((request) async => _successFor(request));
-      addTearDown(harness.dispose);
+      addTearDown(() => pumpWidgetCleanup(tester, harness.dispose));
 
       await _pumpPicker(
         tester,
@@ -74,7 +76,7 @@ void main() {
         responses.add(response);
         return response.future;
       });
-      addTearDown(harness.dispose);
+      addTearDown(() => pumpWidgetCleanup(tester, harness.dispose));
       await _pumpPicker(tester, harness: harness);
 
       await tester.tap(_reaction('thumbsup'));
@@ -123,7 +125,7 @@ void main() {
   ) async {
     final response = Completer<HandrailChatHttpResponse>();
     final harness = _Harness((_) => response.future);
-    addTearDown(harness.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, harness.dispose));
     await _pumpPicker(
       tester,
       harness: harness,
@@ -160,7 +162,7 @@ void main() {
   ) async {
     final semantics = tester.ensureSemantics();
     final harness = _Harness((request) async => _successFor(request));
-    addTearDown(harness.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, harness.dispose));
     await _pumpPicker(
       tester,
       harness: harness,
@@ -186,7 +188,7 @@ void main() {
   ) async {
     final semantics = tester.ensureSemantics();
     final harness = _Harness((request) async => _successFor(request));
-    addTearDown(harness.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, harness.dispose));
     await _pumpPicker(
       tester,
       harness: harness,
@@ -242,7 +244,7 @@ void main() {
     tester,
   ) async {
     final harness = _Harness((request) async => _successFor(request));
-    addTearDown(harness.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, harness.dispose));
     await _pumpPicker(tester, harness: harness);
 
     expect(
@@ -353,7 +355,7 @@ final class _Harness {
 }
 
 MessageTimelinePage _messagePage() {
-  final request = MessageTimelineRequest(
+  const request = MessageTimelineRequest(
     conversationId: _conversationId,
     direction: MessageTimelineDirection.backward,
     limit: 10,

@@ -140,9 +140,9 @@ void main() {
           'clientMessageId': transport.sendResult['clientMessageId'],
         },
       },
-          trustedIdentity: DurableEventTrustedIdentity(
-              tenantId: const TenantId('chat-lab'),
-              userId: const UserId('alice')));
+          trustedIdentity: const DurableEventTrustedIdentity(
+              tenantId: TenantId('chat-lab'),
+              userId: UserId('alice')));
       if (echoFirst) client.reduceDurableEvent(event);
       final result = await client.sendMessage(ChatSendMessageInput(
           conversationId: _dm,

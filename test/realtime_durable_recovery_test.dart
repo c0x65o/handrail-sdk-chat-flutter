@@ -219,7 +219,7 @@ void main() {
         (
           'gap',
           _event('gap'),
-          DurableEventReductionError(
+          const DurableEventReductionError(
             DurableEventDiagnostic(
               code: DurableEventDiagnosticCode.orderingGap,
               reason: DurableEventRecoveryReason.eventGap,

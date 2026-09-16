@@ -265,8 +265,9 @@ void threadDiscoveryTests() {
             initialConversationId: _alpha,
             delegates: ChatApplicationDelegates(openThread: (id) async {
               ids.add(id);
-              if (outcome == 'throws')
+              if (outcome == 'throws') {
                 throw StateError('host navigation failed');
+              }
               if (outcome == 'late') return pending.future;
               return ChatApplicationDelegateResult.handled;
             }),
@@ -428,8 +429,9 @@ class _DiscoveryTransport extends _NamedThreadTransport {
     summary['updatedAt'] = _now;
     summary['activityAt'] = _now;
     (summary['currentReadState'] as Map)['lastReadSequence'] = 0;
-    if (supported)
+    if (supported) {
       summary['threadLifecycle'] = {'revision': 1, 'locked': false};
+    }
     return {
       'thread': summary,
       'currentThreadFollow': {

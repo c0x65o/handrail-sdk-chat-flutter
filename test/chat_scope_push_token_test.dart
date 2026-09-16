@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:handrail_chat/flutter.dart';
 import 'package:handrail_chat/testing.dart';
 
 void main() {

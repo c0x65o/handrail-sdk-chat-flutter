@@ -672,22 +672,13 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
     setState(() => _openingThread = true);
     final client = ChatScope.of(context).client;
     _threadClient = client;
-    final existingId =
-        client
-            .normalizedState
-            .state
-            .canonicalMessages[actions.messageId]
-            ?.threadSummary
-            ?.threadId ??
-        client.normalizedState.state.conversations.values
-            .whereType<ThreadConversation>()
-            .where(
-              (thread) =>
-                  thread.rootMessageId == actions.messageId &&
-                  thread.parentConversationId == _selectedConversationId,
-            )
-            .firstOrNull
-            ?.id;
+    final parentId = _selectedConversationId;
+    final existingId = parentId == null
+        ? null
+        : client.threads.knownThreadIdForRoot(
+            actions.messageId,
+            parentConversationId: parentId,
+          );
     if (existingId != null) {
       final existing = await client.threads.openExistingThread(existingId);
       if (_disposed || !mounted || generation != _threadGeneration) {

@@ -268,7 +268,7 @@ final class HandrailChannelHeaderState extends State<HandrailChannelHeader> {
         ChatConversationControllerStatus.resolving ||
         ChatConversationControllerStatus.loading =>
           Semantics(
-            key: ValueKey<String>('handrail-channel-header-loading'),
+            key: const ValueKey<String>('handrail-channel-header-loading'),
             container: true,
             liveRegion: true,
             label: 'Loading conversation',

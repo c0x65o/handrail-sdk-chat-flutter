@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'fixtures/widget_cleanup.dart';
 import 'package:handrail_chat/testing.dart' show ChatReadVisibilityFixture;
 import 'package:handrail_chat/ui.dart';
 
@@ -32,10 +34,12 @@ void main() {
           )),
         );
         final controller = client.timeline(_conversationId);
-        if (warm) await tester.runAsync(controller.refresh);
+        // The precompleted transport response belongs to FakeAsync. Await it
+        // in the same zone rather than suspending that queue with runAsync.
+        if (warm) await controller.refresh();
         final scroll = ScrollController();
         addTearDown(scroll.dispose);
-        addTearDown(client.dispose);
+        addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
         await tester.pumpWidget(_host(client, SizedBox(
           height: 300,
           child: HandrailMessageTimeline(
@@ -99,7 +103,7 @@ void main() {
     final scrollController = ScrollController();
     final semantics = tester.ensureSemantics();
     addTearDown(scrollController.dispose);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final builtElements = <MessageId, Element>{};
     final builders = ChatWidgetBuilders(
       message: (context, input) {
@@ -193,7 +197,7 @@ void main() {
     final scrollController = ScrollController();
     final semantics = tester.ensureSemantics();
     addTearDown(scrollController.dispose);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final builtElements = <MessageId, Element>{};
     final builders = ChatWidgetBuilders(
       message: (context, input) {
@@ -308,7 +312,7 @@ void main() {
     final controller = client.timeline(_conversationId);
     final scrollController = ScrollController();
     addTearDown(scrollController.dispose);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     late StateSetter rebuild;
     var attachTransientPosition = false;
 
@@ -382,7 +386,7 @@ void main() {
     final controller = client.timeline(_conversationId);
     final scrollController = ScrollController();
     addTearDown(scrollController.dispose);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final seen = <String>[];
     final builders = ChatWidgetBuilders(
       message: (context, input) {
@@ -494,7 +498,7 @@ void main() {
       )),
     );
     final controller = client.timeline(_conversationId);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final reads = ChatReadVisibilityFixture(minimumExposure: Duration.zero);
     addTearDown(reads.dispose);
     final recordedMessages = <ChatMessageBuilderInput>[];
@@ -592,7 +596,7 @@ void main() {
       )),
     );
     final controller = client.timeline(_conversationId);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final requested = <ChatMessageActions>[];
 
     await tester.pumpWidget(_host(
@@ -673,7 +677,7 @@ void main() {
     );
     final controller = client.timeline(_conversationId);
     final requested = <ChatMessageBuilderInput>[];
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -769,7 +773,7 @@ void main() {
     );
     final controller = client.timeline(_conversationId);
     final requested = <ChatMessageActions>[];
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -832,7 +836,7 @@ void main() {
     );
     final client = _client(transport);
     final controller = client.timeline(_conversationId);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -875,7 +879,7 @@ void main() {
           local.hour + 5,
           local.minute,
         );
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -989,7 +993,7 @@ void main() {
           local.minute,
         );
     ChatMessageActions? renderedActions;
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1077,7 +1081,7 @@ void main() {
     );
     final controller = client.timeline(_conversationId);
     final now = DateTime.utc(2030, 3, 10, 15);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1161,7 +1165,7 @@ void main() {
     final scrollController = ScrollController();
     final semantics = tester.ensureSemantics();
     addTearDown(scrollController.dispose);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1227,6 +1231,12 @@ void main() {
       () => find.text('Message marked unread').evaluate().isNotEmpty,
     );
 
+    // SnackBar semantics become visible after its entrance animation.
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 100),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(seconds: 2),
+    );
     expect(find.text('Mark unread'), findsWidgets);
     expect(find.bySemanticsLabel('Message marked unread'), findsOneWidget);
     expect(
@@ -1265,7 +1275,7 @@ void main() {
     );
     final controller = client.timeline(_conversationId);
     final semantics = tester.ensureSemantics();
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1296,6 +1306,12 @@ void main() {
           find.text("Message couldn't be marked unread").evaluate().isNotEmpty,
     );
 
+    // SnackBar semantics become visible after its entrance animation.
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 100),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(seconds: 2),
+    );
     expect(
       find.bySemanticsLabel("Message couldn't be marked unread"),
       findsOneWidget,
@@ -1333,7 +1349,7 @@ void main() {
       )),
     );
     final controller = client.timeline(_conversationId);
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1406,7 +1422,7 @@ void main() {
     final client = _client(transport);
     final controller = client.timeline(_conversationId);
     final semantics = tester.ensureSemantics();
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1432,6 +1448,12 @@ void main() {
     expect(clipboardCalls, hasLength(1));
     expect(clipboardCalls.single.method, 'Clipboard.setData');
     expect(clipboardCalls.single.arguments, const {'text': visibleText});
+    // SnackBar semantics become visible after its entrance animation.
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 100),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(seconds: 2),
+    );
     expect(find.text('Message copied'), findsOneWidget);
     expect(find.bySemanticsLabel('Message copied'), findsOneWidget);
     expect(find.textContaining(visibleText), findsOneWidget);
@@ -1467,7 +1489,7 @@ void main() {
     final client = _client(transport);
     final controller = client.timeline(_conversationId);
     final semantics = tester.ensureSemantics();
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
 
     await tester.pumpWidget(_host(
       client,
@@ -1483,6 +1505,12 @@ void main() {
     ));
     await tester.pump();
 
+    // SnackBar semantics become visible after its entrance animation.
+    await tester.pumpAndSettle(
+      const Duration(milliseconds: 100),
+      EnginePhase.sendSemanticsUpdate,
+      const Duration(seconds: 2),
+    );
     expect(find.text("Message couldn't be copied"), findsOneWidget);
     expect(
       find.bySemanticsLabel("Message couldn't be copied"),
@@ -1535,7 +1563,7 @@ void main() {
     expect(find.text('Custom empty'), findsOneWidget);
     expect(invoked, contains('empty:${_conversationId.value}'));
     await tester.pumpWidget(const SizedBox.shrink());
-    await emptyClient.dispose();
+    await pumpWidgetCleanup(tester, emptyClient.dispose);
 
     final errorTransport = _TimelineTransport(statusCode: 500);
     final errorClient = _client(errorTransport);
@@ -1555,7 +1583,7 @@ void main() {
     expect(find.textContaining('Custom error:'), findsOneWidget);
     expect(invoked, contains('error:retryable'));
     await tester.pumpWidget(const SizedBox.shrink());
-    await errorClient.dispose();
+    await pumpWidgetCleanup(tester, errorClient.dispose);
 
     final deniedTransport = _TimelineTransport(statusCode: 403);
     final deniedClient = _client(deniedTransport);
@@ -1582,7 +1610,7 @@ void main() {
     expect(invoked, contains('error:terminal'));
     semantics.dispose();
     await tester.pumpWidget(const SizedBox.shrink());
-    await deniedClient.dispose();
+    await pumpWidgetCleanup(tester, deniedClient.dispose);
   });
 
   testWidgets(
@@ -1683,8 +1711,8 @@ void main() {
     await tester.pumpWidget(const SizedBox.shrink());
     expect(firstController.state.isDisposed, isFalse);
     expect(secondController.state.isDisposed, isFalse);
-    await firstClient.dispose();
-    await secondClient.dispose();
+    await pumpWidgetCleanup(tester, firstClient.dispose);
+    await pumpWidgetCleanup(tester, secondClient.dispose);
   });
 }
 
@@ -2038,6 +2066,9 @@ Future<void> _pumpUntil(
   bool Function() predicate,
 ) async {
   for (var index = 0; index < 100 && !predicate(); index += 1) {
+    await tester.runAsync(() async {
+      await Future<void>.delayed(Duration.zero);
+    });
     await tester.pump();
   }
   expect(predicate(), isTrue,

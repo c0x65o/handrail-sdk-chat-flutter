@@ -73,7 +73,7 @@ extension NormalizedConversationPreferenceRuntime on NormalizedSnapshotStore {
     final request = UpdateConversationPreferenceInput.fromJson(input.toJson());
     final previous = _state;
     if (!previous.conversations.containsKey(request.conversationId)) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Preference update requires a known conversation.',
       );
     }
@@ -82,14 +82,14 @@ extension NormalizedConversationPreferenceRuntime on NormalizedSnapshotStore {
       request.conversationId,
     );
     if (userId == null) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Preference update requires known current-user state.',
       );
     }
     final knownRevision =
         previous.preferenceRevisions[request.conversationId] ?? 0;
     if (request.expectedPreferenceRevision != knownRevision) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Preference update did not use the authoritative revision.',
       );
     }
@@ -151,13 +151,13 @@ extension NormalizedConversationPreferenceRuntime on NormalizedSnapshotStore {
     final previous = _state;
     final id = parsed.conversationId;
     if (!previous.conversations.containsKey(id)) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Canonical preference requires a known conversation.',
       );
     }
     final userId = _currentUserIdForConversation(previous, id);
     if (userId == null) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Canonical preference requires known current-user state.',
       );
     }
@@ -290,7 +290,7 @@ extension NormalizedConversationPreferenceRuntime on NormalizedSnapshotStore {
     if (intents.isNotEmpty) {
       final userId = _currentUserIdForConversation(previous, conversationId);
       if (userId == null) {
-        throw NormalizedSnapshotConflict(
+        throw const NormalizedSnapshotConflict(
           'Pending preference lost current-user identity.',
         );
       }

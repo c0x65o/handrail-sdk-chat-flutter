@@ -301,7 +301,7 @@ void main() {
           'https://provider.invalid/private/PROVIDER_URL_SENTINEL_15ef';
       const exceptionSentinel = 'EXCEPTION_SENTINEL_d4c1';
       final diagnostics = <ChatSnapshotQueryDiagnostic>[];
-      final rejectedResponse = HandrailChatHttpResponse(
+      const rejectedResponse = HandrailChatHttpResponse(
         statusCode: 422,
         body: bodySentinel,
       );

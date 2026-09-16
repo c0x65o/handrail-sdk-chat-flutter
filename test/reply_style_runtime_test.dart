@@ -384,8 +384,9 @@ void main() {
       final http = Http();
       http.write = (r) async {
         final data = result(jsonDecode(r.body!));
-        if (field != 'httpStatus')
+        if (field != 'httpStatus') {
           data[field] = field == 'baseRevision' ? 8 : 'other';
+        }
         return response(data, field == 'httpStatus' ? 409 : 200);
       };
       final client = clientFor(http);

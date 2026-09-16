@@ -63,7 +63,7 @@ extension NormalizedConversationArchiveStateStore on NormalizedSnapshotStore {
     if (current.any(
       (pending) => pending.idempotencyKey == validated.idempotencyKey,
     )) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Conversation archive idempotency keys must be unique per lane.',
       );
     }
@@ -94,7 +94,7 @@ extension NormalizedConversationArchiveStateStore on NormalizedSnapshotStore {
       (input) => input.idempotencyKey == idempotencyKey,
     );
     if (requestIndex < 0) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'Conversation archive result has no matching pending intent.',
       );
     }

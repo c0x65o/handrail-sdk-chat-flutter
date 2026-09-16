@@ -231,6 +231,28 @@ final class ChatThreadsController {
         ),
       );
 
+  /// Returns a cached thread identity for navigation, not authorization.
+  /// Use [openExistingThread] to reauthorize and load it before presentation.
+  ConversationId? knownThreadIdForRoot(
+    MessageId rootMessageId, {
+    required ConversationId parentConversationId,
+  }) {
+    if (_disposed) return null;
+    final root = _normalizedState.state.canonicalMessages[rootMessageId];
+    if (root?.conversationId == parentConversationId &&
+        root?.threadSummary != null) {
+      return root!.threadSummary!.threadId;
+    }
+    for (final thread in _normalizedState.state.conversations.values
+        .whereType<ThreadConversation>()) {
+      if (thread.rootMessageId == rootMessageId &&
+          thread.parentConversationId == parentConversationId) {
+        return thread.id;
+      }
+    }
+    return null;
+  }
+
   Future<ChatThreadOpenResult> open({required MessageId rootMessageId}) =>
       forRoot(rootMessageId).open();
 

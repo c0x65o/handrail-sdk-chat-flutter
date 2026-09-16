@@ -115,8 +115,13 @@ final class _ReactionRecoveryRuntime {
     required this.onStorageDiagnostic,
   }) {
     _storeSubscription = store.acceptedCommitChanges.listen((_) {
-      _refreshProjections();
-      _startPump();
+      // Restoring an optimistic projection commits to this synchronous stream.
+      // Wait for the authoritative commit to finish, as delete recovery does.
+      scheduleMicrotask(() {
+        if (_closed) return;
+        _refreshProjections();
+        _startPump();
+      });
     });
   }
 
@@ -526,6 +531,9 @@ final class _ReactionRecoveryRuntime {
           candidate.request.idempotencyKey == reaction.request.idempotencyKey,
     );
     if (index < 0) return false;
+    // A deferred store notification may have projected this retained intent
+    // while its persistence future was completing. Do not project it twice.
+    if (_reactions[index].status == _QueuedReactionStatus.pending) return true;
     final pending = reaction.withStatus(_QueuedReactionStatus.pending);
     _reactions[index] = pending;
     try {
@@ -682,7 +690,7 @@ final class _ReactionRecoveryRuntime {
   ) async {
     if (result case ChatCommandSuccess<ReactionMutationResult>(:final value)) {
       if (!_reactionResultMatchesRequest(reaction.request, value)) {
-        return ChatCommandMalformedResponse<ReactionMutationResult>();
+        return const ChatCommandMalformedResponse<ReactionMutationResult>();
       }
       try {
         store.reconcileOptimisticReaction(
@@ -690,7 +698,7 @@ final class _ReactionRecoveryRuntime {
           value,
         );
       } catch (_) {
-        return ChatCommandMalformedResponse<ReactionMutationResult>();
+        return const ChatCommandMalformedResponse<ReactionMutationResult>();
       }
       await _remove(identity, generation, epoch, reaction);
     } else if (_isTerminal(result)) {

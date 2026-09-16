@@ -1398,8 +1398,9 @@ void main() {
       reason: 'the ambiguous old-scope intent remains recoverable',
     );
     expect(
-      store.state.currentUserReadStates[_conversationOne]?.lastReadSequence,
-      const MessageSequence(2),
+      store.state.currentUserReadStates,
+      isEmpty,
+      reason: 'identity replacement clears the previous actor snapshot',
     );
     await client.dispose();
     await store.close();
@@ -1470,6 +1471,14 @@ void main() {
       _storageIdentity(userId: 'user-2', deviceId: 'device-2'),
     );
     expect(await command, isA<ChatCommandClosed<ReadCursorMutationResult>>());
+    expect(store.state.currentUserReadStates, isEmpty,
+        reason: 'identity activation removes all previous actor state');
+    store.hydrateConversationList(_snapshot([
+      _summary(_conversationOne, userId: 'user-2', lastReadSequence: 3),
+    ]));
+    final newReadState = store.state.currentUserReadStates[_conversationOne]!;
+    expect(newReadState.userId, const UserId('user-2'));
+    expect(newReadState.lastReadSequence, const MessageSequence(3));
 
     response.complete(
       _responseFor(
@@ -1480,9 +1489,9 @@ void main() {
     );
     await _eventLoop();
     expect(
-      store.state.currentUserReadStates[_conversationOne]?.lastReadSequence,
-      const MessageSequence(2),
-      reason: 'identity activation removes the old optimistic projection',
+      store.state.currentUserReadStates[_conversationOne],
+      same(newReadState),
+      reason: 'the old response cannot replace the new actor read state',
     );
     expect(
       await storage.readCursorRecord(
@@ -1542,8 +1551,9 @@ void main() {
     expect(await storage.readCursorRecord(identity), isNotNull);
     expect(await storage.readCursorRecord(nextIdentity), isNull);
     expect(
-      store.state.currentUserReadStates[_conversationOne]?.lastReadSequence,
-      const MessageSequence(2),
+      store.state.currentUserReadStates,
+      isEmpty,
+      reason: 'identity replacement clears the previous actor snapshot',
     );
     await client.dispose();
     await store.close();
@@ -1967,6 +1977,7 @@ ConversationListSnapshot _snapshot(List<Map<String, Object?>> summaries) =>
 Map<String, Object?> _summary(
   ConversationId conversationId, {
   ConversationType type = ConversationType.channel,
+  String userId = 'user-1',
   int latestSequence = 8,
   int lastReadSequence = 2,
   int? manualUnreadFromSequence,
@@ -1989,7 +2000,7 @@ Map<String, Object?> _summary(
       'currentMember': {
         'tenantId': _tenantId.value,
         'conversationId': conversationId.value,
-        'userId': _userId.value,
+        'userId': userId,
         'role': 'member',
         'state': 'active',
         'joinedAt': _initialTime,
@@ -1997,7 +2008,7 @@ Map<String, Object?> _summary(
       },
       'currentReadState': {
         'conversationId': conversationId.value,
-        'userId': _userId.value,
+        'userId': userId,
         'lastReadSequence': lastReadSequence,
         if (manualUnreadFromSequence != null)
           'manualUnreadFromSequence': manualUnreadFromSequence,
@@ -2005,13 +2016,13 @@ Map<String, Object?> _summary(
       },
       'currentPreference': {
         'conversationId': conversationId.value,
-        'userId': _userId.value,
+        'userId': userId,
         'notificationPreference': 'mentions',
         'isStarred': false,
         'mute': {'muted': false},
         'updatedAt': updatedAt,
       },
-      'activeMemberUserIds': [_userId.value],
+      'activeMemberUserIds': [userId],
     };
 
 MessageTimelinePage _timeline(

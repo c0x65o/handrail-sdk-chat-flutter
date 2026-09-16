@@ -290,11 +290,17 @@ HuddleCommandResult parseHuddleCommandResult(Object? json, HuddleCommandInput ex
     final needsMedia = expectedInput is StartHuddleInput || expectedInput is JoinHuddleInput;
     _exact(value, needsMedia ? const {'operation', 'outcome', 'reconciliationStatus', 'state', 'mediaJoin'} : const {'operation', 'outcome', 'reconciliationStatus', 'state'}, 'result', HuddleContractErrorCode.malformedResult);
     final state = HuddleSessionState.fromJson(value['state']); _target(state, expectedInput); _successState(state, expectedInput);
-    if (expectedInput is StartHuddleInput) result = StartHuddleResult(reconciliationStatus: reconciliation, state: state as StartingHuddleState, mediaJoin: HuddleMediaJoinDescriptor.fromJson(value['mediaJoin'], now: now));
-    else if (expectedInput is JoinHuddleInput) result = JoinHuddleResult(reconciliationStatus: reconciliation, state: state as ActiveHuddleState, mediaJoin: HuddleMediaJoinDescriptor.fromJson(value['mediaJoin'], now: now));
-    else if (expectedInput is LeaveHuddleInput) result = LeaveHuddleResult(reconciliationStatus: reconciliation, state: state as ActiveHuddleState);
-    else if (expectedInput is SetHuddleScreenShareInput) result = SetHuddleScreenShareResult(reconciliationStatus: reconciliation, state: state as ActiveHuddleState);
-    else result = EndHuddleResult(reconciliationStatus: reconciliation, state: state as EndedHuddleState);
+    if (expectedInput is StartHuddleInput) {
+      result = StartHuddleResult(reconciliationStatus: reconciliation, state: state as StartingHuddleState, mediaJoin: HuddleMediaJoinDescriptor.fromJson(value['mediaJoin'], now: now));
+    } else if (expectedInput is JoinHuddleInput) {
+      result = JoinHuddleResult(reconciliationStatus: reconciliation, state: state as ActiveHuddleState, mediaJoin: HuddleMediaJoinDescriptor.fromJson(value['mediaJoin'], now: now));
+    } else if (expectedInput is LeaveHuddleInput) {
+      result = LeaveHuddleResult(reconciliationStatus: reconciliation, state: state as ActiveHuddleState);
+    } else if (expectedInput is SetHuddleScreenShareInput) {
+      result = SetHuddleScreenShareResult(reconciliationStatus: reconciliation, state: state as ActiveHuddleState);
+    } else {
+      result = EndHuddleResult(reconciliationStatus: reconciliation, state: state as EndedHuddleState);
+    }
   }
   if (previousState != null) {
     if (result is HuddleFeatureDisabledResult) {

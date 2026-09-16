@@ -28,7 +28,7 @@ Map<String, Object?> editMessageResultFixture(
 }) {
   final isConflict = reconciliationStatus == 'revision_conflict';
   final expectedRevision = isConflict ? 1 : 2;
-  final canonicalRevision = 3;
+  const canonicalRevision = 3;
   return <String, Object?>{
     'operation': 'edit',
     'reconciliationStatus': reconciliationStatus,

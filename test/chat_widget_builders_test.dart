@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
 
+import 'fixtures/widget_cleanup.dart';
+
 const _conversationId = ConversationId('conversation-builders');
 const _now = '2026-08-26T22:00:00.000Z';
 
@@ -134,8 +136,10 @@ void main() {
       );
       expect(find.textContaining('custom '), findsNWidgets(7));
 
-      await timeline.dispose();
-      await client.dispose();
+      await pumpWidgetCleanup(tester, () async {
+        await timeline.dispose();
+        await client.dispose();
+      });
     });
 
     testWidgets('public default callbacks render without a product widget',
@@ -144,7 +148,7 @@ void main() {
       final client = _client(transport);
       final timeline = client.timeline(_conversationId);
       final message = _message();
-      final builders = const ChatWidgetBuilders();
+      const builders = ChatWidgetBuilders();
 
       await tester.pumpWidget(
         MaterialApp(
@@ -222,8 +226,10 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       expect(find.text('timeline failed'), findsOneWidget);
 
-      await timeline.dispose();
-      await client.dispose();
+      await pumpWidgetCleanup(tester, () async {
+        await timeline.dispose();
+        await client.dispose();
+      });
     });
 
     test('merges partial and nested overrides without changing defaults', () {
@@ -432,7 +438,7 @@ MessageTimelineMessage _message() => MessageTimelineMessage.fromJson({
     });
 
 MessageTimelinePage _timelinePage() {
-  final request = MessageTimelineRequest(
+  const request = MessageTimelineRequest(
     conversationId: _conversationId,
     direction: MessageTimelineDirection.backward,
     limit: 10,

@@ -40,8 +40,10 @@ void main() {
 
   test('the complete lifecycle table and operation-specific deltas are enforced', () {
     const allowed = {'inactive:inactive', 'inactive:starting', 'starting:starting', 'starting:active', 'starting:ended', 'active:active', 'active:ended', 'ended:ended'};
-    for (final from in HuddleSessionStatus.values) for (final to in HuddleSessionStatus.values) {
-      expect(isAllowedHuddleLifecycleTransition(from, to), allowed.contains('${from.name}:${to.name}'));
+    for (final from in HuddleSessionStatus.values) {
+      for (final to in HuddleSessionStatus.values) {
+        expect(isAllowedHuddleLifecycleTransition(from, to), allowed.contains('${from.name}:${to.name}'));
+      }
     }
     expect(() => validateHuddleStateTransition(HuddleSessionState.fromJson(endedHuddle), HuddleSessionState.fromJson(startingHuddle), HuddleCommandInput.fromJson(startInput)), throwsA(_code(HuddleContractErrorCode.invalidTransition)));
     expect(() => validateHuddleStateTransition(HuddleSessionState.fromJson(startingHuddle), HuddleSessionState.fromJson(activeAliceHuddle), HuddleCommandInput.fromJson(joinInput), reconciliationStatus: HuddleReconciliationStatus.replayed), throwsA(_code(HuddleContractErrorCode.replayMismatch)));

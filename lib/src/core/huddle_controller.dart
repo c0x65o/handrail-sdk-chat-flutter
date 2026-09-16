@@ -1200,7 +1200,7 @@ final class ChatHuddleController {
   Future<ChatHuddleActionResult> _hydrate(
     ChatHuddleActionOptions options,
   ) async {
-    final operation = ChatHuddleActionOperation.hydrate;
+    const operation = ChatHuddleActionOperation.hydrate;
     final expectedWatermark = _watermark;
     _emit(_copyState(hydrationStatus: ChatHuddleHydrationStatus.loading));
     final active = ChatCommandCancellationController();

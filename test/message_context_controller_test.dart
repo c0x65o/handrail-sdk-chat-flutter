@@ -87,10 +87,12 @@ class Http implements HandrailChatHttpTransport {
   Future<HandrailChatHttpResponse> send(HandrailChatHttpRequest r) async {
     requests.add(r);
     if (r.uri.path.endsWith('/_meta')) return response(metadata);
-    if (r.uri.path.endsWith('/context'))
+    if (r.uri.path.endsWith('/context')) {
       return read == null ? response(value) : await read!(r);
-    if (r.uri.path.endsWith('/messages'))
+    }
+    if (r.uri.path.endsWith('/messages')) {
       return timeline == null ? response(page([])) : await timeline!(r);
+    }
     return detail == null
         ? response(existingThreadDetailFixture())
         : await detail!(r);
@@ -129,7 +131,7 @@ void hydrate(HandrailChatClient client) {
       ConversationDetailSnapshot.fromJson(existingThreadDetailFixture()));
   client.normalizedState.hydrateMessageTimeline(MessageTimelinePage.fromJson(
       page([10]),
-      request: MessageTimelineRequest(
+      request: const MessageTimelineRequest(
           conversationId: thread,
           direction: MessageTimelineDirection.backward,
           limit: 2)));
@@ -161,8 +163,9 @@ Map<String, Object?> parentDetail({bool left = false, bool public = false}) {
   c['visibility'] = public ? 'public' : 'private';
   if (left) c['updatedAt'] = '2026-08-27T16:00:00.000Z';
   (c['currentMember'] as Map)['state'] = left ? 'left' : 'active';
-  if (left)
+  if (left) {
     (c['currentMember'] as Map)['updatedAt'] = '2026-08-27T16:00:00.000Z';
+  }
   return detail;
 }
 
@@ -544,7 +547,7 @@ void main() {
     ((updated['messages'] as List).single as Map)['revision'] = {'revision': 3};
     client.normalizedState.hydrateMessageTimeline(MessageTimelinePage.fromJson(
         updated,
-        request: MessageTimelineRequest(
+        request: const MessageTimelineRequest(
             conversationId: thread,
             direction: MessageTimelineDirection.backward,
             limit: 2)));

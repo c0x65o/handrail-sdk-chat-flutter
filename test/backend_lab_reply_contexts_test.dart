@@ -75,7 +75,7 @@ void main() {
         await tester.pumpWidget(MaterialApp(
           home: ChatScope(
               client: client,
-              child: Scaffold(
+              child: const Scaffold(
                 body: HandrailMessageTimeline(
                   conversationId: f.thread,
                   isConversationActive: false,
@@ -124,7 +124,7 @@ void main() {
         client.normalizedState
             .hydrateMessageTimeline(MessageTimelinePage.fromJson(
           page,
-          request: MessageTimelineRequest(
+          request: const MessageTimelineRequest(
             conversationId: f.thread,
             direction: MessageTimelineDirection.backward,
             limit: 50,

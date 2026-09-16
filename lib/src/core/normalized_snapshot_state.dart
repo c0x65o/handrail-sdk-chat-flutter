@@ -1403,7 +1403,7 @@ final class NormalizedSnapshotStore {
     final previous = _state;
     final root = previous.canonicalMessages[result.rootMessageId];
     if (root == null || root.conversationId != result.parentConversationId) {
-      throw NormalizedSnapshotConflict(
+      throw const NormalizedSnapshotConflict(
         'The canonical thread root is unavailable or belongs to another '
         'conversation.',
       );

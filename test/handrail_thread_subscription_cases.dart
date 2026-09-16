@@ -7,9 +7,10 @@ void _subscriptionTests() {
       final harness = _Harness(existingThread: true);
       addTearDown(() => _disposeLifecycleHarness(tester, harness));
       await _prepareLifecycle(tester, harness);
-      if (style != null)
+      if (style != null) {
         harness.client.replyStyles
             .configure(ChatReplyStyleConfiguration(override: style));
+      }
       await _mountLifecycle(tester, harness, onClose: () {});
       final composer = tester.state(find.byType(HandrailMessageComposer));
       await _subscriptionChoose(

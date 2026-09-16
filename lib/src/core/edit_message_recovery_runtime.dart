@@ -49,8 +49,13 @@ final class _MessageEditRecoveryRuntime {
     required this.onStorageDiagnostic,
   }) {
     _storeSubscription = store.acceptedCommitChanges.listen((_) {
-      _refreshProjections();
-      _startPump();
+      // Restoring an optimistic projection commits to this synchronous stream.
+      // Wait for the authoritative commit to finish, as delete recovery does.
+      scheduleMicrotask(() {
+        if (_closed) return;
+        _refreshProjections();
+        _startPump();
+      });
     });
   }
 
@@ -435,6 +440,9 @@ final class _MessageEditRecoveryRuntime {
           candidate.request.idempotencyKey == edit.request.idempotencyKey,
     );
     if (index < 0) return false;
+    // A deferred store notification may have projected this retained intent
+    // while its persistence future was completing. Do not project it twice.
+    if (_edits[index].status == ChatQueuedMessageEditStatus.pending) return true;
     final pending = ChatQueuedMessageEdit._(
       identity: edit.identity,
       request: edit.request,
@@ -584,13 +592,13 @@ final class _MessageEditRecoveryRuntime {
   ) async {
     if (result case ChatCommandSuccess<EditMessageResult>(:final value)) {
       if (!_resultMatches(identity, edit, value)) {
-        return ChatCommandMalformedResponse<EditMessageResult>();
+        return const ChatCommandMalformedResponse<EditMessageResult>();
       }
       try {
         store.reconcileOptimisticMessageEdit(
             edit.request.idempotencyKey, value);
       } catch (_) {
-        return ChatCommandMalformedResponse<EditMessageResult>();
+        return const ChatCommandMalformedResponse<EditMessageResult>();
       }
       await _remove(identity, generation, epoch, edit);
     } else if (_isTerminal(result)) {

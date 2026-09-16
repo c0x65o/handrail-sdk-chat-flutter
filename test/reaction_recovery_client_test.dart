@@ -626,6 +626,8 @@ void main() {
       _seedStore().canonicalPersistenceSnapshot(),
     );
     await _eventually(() => missingTransport.patches.length == 1);
+    await _eventually(() => _aggregate(missing.store)?.count == 1);
+    expect(_aggregate(missing.store)?.reactedByCurrentUser, isTrue);
     await missing.dispose();
 
     final storage = InMemoryApplicationChatStorage();
@@ -1108,7 +1110,7 @@ NormalizedSnapshotStore _seedStore() {
       },
     },
   }));
-  final request = MessageTimelineRequest(
+  const request = MessageTimelineRequest(
     conversationId: _conversationId,
     direction: MessageTimelineDirection.backward,
     limit: 10,

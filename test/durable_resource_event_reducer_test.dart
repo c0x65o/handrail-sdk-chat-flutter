@@ -1515,9 +1515,9 @@ void main() {
         () => (store.state.huddles[const ConversationId(_conversationId)]
                 as StartingHuddleState)
             .participants
-            .add(HuddleJoinedParticipant(
-              userId: const UserId('user-x'),
-              joinedAt: const IsoTimestamp('2030-01-01T00:00:09.000Z'),
+            .add(const HuddleJoinedParticipant(
+              userId: UserId('user-x'),
+              joinedAt: IsoTimestamp('2030-01-01T00:00:09.000Z'),
             )),
         throwsUnsupportedError,
       );
@@ -2257,9 +2257,9 @@ KnownDurableEvent _event({
         'occurredAt': _eventTime(second),
         'payload': payload,
       },
-      trustedIdentity: DurableEventTrustedIdentity(
-        tenantId: const TenantId(_tenantId),
-        userId: const UserId(_userId),
+      trustedIdentity: const DurableEventTrustedIdentity(
+        tenantId: TenantId(_tenantId),
+        userId: UserId(_userId),
       ),
     );
 

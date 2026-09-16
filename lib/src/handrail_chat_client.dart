@@ -2686,6 +2686,26 @@ final class HandrailChatClient {
     final replyStylesClose = replyStyles._dispose();
     final messageContextsClose = messageContexts.dispose();
     _unreadMentionRefresh.close();
+    // Close queued lanes before any await can let an interrupted active command
+    // drain into another dispatch after closeActive has already swept it.
+    _closeConversationArchiveCommands();
+    _closeConversationMembershipCommands();
+    _closeConversationPreferenceCommands();
+    for (final lane in _reactionCommandLanes.values) {
+      for (final intent in lane.intents.skip(lane.active == null ? 0 : 1)) {
+        if (intent.completer.isCompleted) continue;
+        _rollbackReactionIntent(intent.request);
+        unawaited(intent.cancellationSubscription?.cancel());
+        intent.completer.complete(
+          const ChatCommandClosed<ReactionMutationResult>(),
+        );
+      }
+      if (lane.active != null && lane.intents.length > 1) {
+        lane.intents.removeRange(1, lane.intents.length);
+      } else if (lane.active == null) {
+        lane.intents.clear();
+      }
+    }
     _commandDispatcher.closeActive();
     ++_storageIdentityGeneration;
     _storageActivationIdentity = null;
@@ -2731,24 +2751,6 @@ final class HandrailChatClient {
     await threads.dispose();
     await _immediateThreadFollowRuntime?.dispose();
     await _immediateMessageReminderRuntime?.dispose();
-    _closeConversationArchiveCommands();
-    _closeConversationMembershipCommands();
-    _closeConversationPreferenceCommands();
-    for (final lane in _reactionCommandLanes.values) {
-      for (final intent in lane.intents.skip(lane.active == null ? 0 : 1)) {
-        if (intent.completer.isCompleted) continue;
-        _rollbackReactionIntent(intent.request);
-        unawaited(intent.cancellationSubscription?.cancel());
-        intent.completer.complete(
-          const ChatCommandClosed<ReactionMutationResult>(),
-        );
-      }
-      if (lane.active != null && lane.intents.length > 1) {
-        lane.intents.removeRange(1, lane.intents.length);
-      } else if (lane.active == null) {
-        lane.intents.clear();
-      }
-    }
     if (attachmentClose != null) await attachmentClose;
     if (realtimeStorageIdentityClose != null) {
       await realtimeStorageIdentityClose;

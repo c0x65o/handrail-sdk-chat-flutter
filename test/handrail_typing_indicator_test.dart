@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
 
+import 'fixtures/widget_cleanup.dart';
+
 const _conversationId = ConversationId('conversation-typing');
 const _tenantId = TenantId('tenant-typing');
 const _currentUserId = UserId('user-current');
@@ -146,7 +148,7 @@ void main() {
     await _pumpUntil(tester, () => tester.widget<Text>(text).data!.isEmpty);
     expect(tester.getSize(indicator).height, reservedHeight);
     await tester.pumpWidget(const SizedBox.shrink());
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('uses privacy-safe person counts without a user resolver',
@@ -191,7 +193,7 @@ void main() {
           '3 people are typing…',
     );
     await tester.pumpWidget(const SizedBox.shrink());
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 }
 

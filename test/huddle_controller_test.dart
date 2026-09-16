@@ -116,11 +116,7 @@ void main() {
       expect(controller.mediaBoundary.readJoinDescriptor(), isNull);
       expect(
         controller.state.media,
-        isA<ChatHuddleMediaRejoinRequiredState>().having(
-          (state) => state.reason,
-          'reason',
-          ChatHuddleRejoinReason.notJoined,
-        ),
+        isA<ChatHuddleMediaIdleState>(),
       );
       expect(await controller.end(), isA<ChatHuddleActionSuccess>());
 
@@ -231,11 +227,7 @@ void main() {
       );
       expect(
         controller.state.media,
-        isA<ChatHuddleMediaRejoinRequiredState>().having(
-          (state) => state.reason,
-          'reason',
-          ChatHuddleRejoinReason.notJoined,
-        ),
+        isA<ChatHuddleMediaIdleState>(),
       );
 
       await client.dispose();

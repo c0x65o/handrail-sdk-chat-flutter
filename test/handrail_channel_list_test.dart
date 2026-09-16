@@ -1,12 +1,17 @@
+// Legacy semantics flags keep these assertions runnable on Flutter 3.19.
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
-import 'dart:ui' show Tristate;
+import 'dart:ui' show SemanticsFlag;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
+
+import 'fixtures/widget_cleanup.dart';
 
 import 'fixtures/conversation_list_fixtures.dart';
 
@@ -43,7 +48,7 @@ void main() {
     expect(createRequests, 1);
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets(
@@ -138,7 +143,7 @@ void main() {
 
     semantics.dispose();
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('orders all non-empty conversation sections after Starred',
@@ -199,7 +204,7 @@ void main() {
     expect(positions, orderedEquals([...positions]..sort()));
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('omits headers for empty conversation sections', (tester) async {
@@ -231,7 +236,7 @@ void main() {
     expect(find.text('Group conversations'), findsNothing);
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets(
@@ -315,7 +320,7 @@ void main() {
 
     semantics.dispose();
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets(
@@ -373,11 +378,15 @@ void main() {
     expect(tester.getSize(star), const Size(48, 48));
     expect(find.bySemanticsLabel('Star Alpha'), findsOneWidget);
     expect(
+      tester.getSemantics(find.bySemanticsLabel('Star Alpha'))
+          .hasFlag(SemanticsFlag.hasToggledState),
+      isTrue,
+    );
+    expect(
       tester
           .getSemantics(find.bySemanticsLabel('Star Alpha'))
-          .flagsCollection
-          .isToggled,
-      Tristate.isFalse,
+          .hasFlag(SemanticsFlag.isToggled),
+      isFalse,
     );
 
     await tester.tap(star);
@@ -428,9 +437,8 @@ void main() {
           .getSemantics(find.byKey(const ValueKey<String>(
             'handrail-channel-public-channels-alpha-star-semantics',
           )))
-          .flagsCollection
-          .isToggled,
-      Tristate.isTrue,
+          .hasFlag(SemanticsFlag.isToggled),
+      isTrue,
     );
 
     scrollable.position.jumpTo(80);
@@ -455,9 +463,8 @@ void main() {
           .getSemantics(find.byKey(const ValueKey<String>(
             'handrail-channel-public-channels-alpha-semantics',
           )))
-          .flagsCollection
-          .isSelected,
-      Tristate.isTrue,
+          .hasFlag(SemanticsFlag.isSelected),
+      isTrue,
     );
     expect(selected, isEmpty);
 
@@ -475,7 +482,7 @@ void main() {
 
     semantics.dispose();
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('keyboard activation unstars once without selecting the row',
@@ -525,7 +532,7 @@ void main() {
     expect(find.byIcon(Icons.star_border), findsOneWidget);
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('failure and revision conflict settle to canonical star state',
@@ -592,7 +599,7 @@ void main() {
     );
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('default and custom rows remain bounded at compact widths',
@@ -636,7 +643,7 @@ void main() {
     expect(find.textContaining('Custom renderer'), findsOneWidget);
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('disables load more while a retained-items refresh is active',
@@ -693,7 +700,7 @@ void main() {
     await tester.pump();
     semantics.dispose();
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets(
@@ -760,9 +767,8 @@ void main() {
           .getSemantics(find.byKey(const ValueKey<String>(
             'handrail-channel-public-channels-channel-21-semantics',
           )))
-          .flagsCollection
-          .isSelected,
-      Tristate.isTrue,
+          .hasFlag(SemanticsFlag.isSelected),
+      isTrue,
     );
 
     transport.completeNext(conversationListPage(
@@ -793,9 +799,8 @@ void main() {
           .getSemantics(find.byKey(const ValueKey<String>(
             'handrail-channel-public-channels-channel-21-semantics',
           )))
-          .flagsCollection
-          .isSelected,
-      Tristate.isTrue,
+          .hasFlag(SemanticsFlag.isSelected),
+      isTrue,
     );
     scrollable.position.jumpTo(0);
     await tester.pump();
@@ -811,7 +816,7 @@ void main() {
     );
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('auto-load failure does not loop and remains manually retryable',
@@ -873,7 +878,7 @@ void main() {
     expect(transport.requests, hasLength(3));
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets('shows loading, empty, error, denied, and revoked states',
@@ -888,7 +893,7 @@ void main() {
     await _pumpUntil(tester, () => loadingController.state.isEmpty);
     expect(find.text('No channels'), findsOneWidget);
     await loadingController.dispose();
-    await loadingClient.dispose();
+    await pumpWidgetCleanup(tester, loadingClient.dispose);
 
     final errorTransport = _QueueTransport()
       ..json(const {'error': 'failed'}, statusCode: 500);
@@ -902,7 +907,7 @@ void main() {
     expect(find.text(errorController.state.error!.message), findsOneWidget);
     expect(find.text('Retry'), findsOneWidget);
     await errorController.dispose();
-    await errorClient.dispose();
+    await pumpWidgetCleanup(tester, errorClient.dispose);
 
     final deniedTransport = _QueueTransport()
       ..json(const {'error': 'denied'}, statusCode: 403);
@@ -920,7 +925,7 @@ void main() {
       findsOneWidget,
     );
     await deniedController.dispose();
-    await deniedClient.dispose();
+    await pumpWidgetCleanup(tester, deniedClient.dispose);
 
     final revokedTransport = _QueueTransport()
       ..json(conversationListPage(items: [
@@ -943,7 +948,7 @@ void main() {
       findsOneWidget,
     );
     await revokedController.dispose();
-    await revokedClient.dispose();
+    await pumpWidgetCleanup(tester, revokedClient.dispose);
   });
 
   testWidgets('arrow focus traversal and Enter/Space activate host callbacks',
@@ -986,7 +991,7 @@ void main() {
     ]);
 
     await controller.dispose();
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 
   testWidgets(
@@ -1058,8 +1063,8 @@ void main() {
     expect(ownedController.state.isDisposed, isTrue);
 
     await callerController.dispose();
-    await callerClient.dispose();
-    await ownedClient.dispose();
+    await pumpWidgetCleanup(tester, callerClient.dispose);
+    await pumpWidgetCleanup(tester, ownedClient.dispose);
   });
 }
 

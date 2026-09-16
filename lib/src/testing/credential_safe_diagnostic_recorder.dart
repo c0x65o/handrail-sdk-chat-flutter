@@ -1,4 +1,3 @@
-import '../../core.dart';
 import '../../media.dart';
 import '../chat_application_connectivity.dart';
 

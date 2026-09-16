@@ -339,7 +339,7 @@ void main() {
     h.client.normalizedState
         .hydrateMessageTimeline(MessageTimelinePage.fromJson(
       _page([20], replySource: 'other-source'),
-      request: MessageTimelineRequest(
+      request: const MessageTimelineRequest(
           conversationId: _conversation,
           direction: MessageTimelineDirection.backward,
           limit: 30),

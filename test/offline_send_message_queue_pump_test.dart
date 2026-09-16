@@ -207,10 +207,10 @@ void main() {
       final first = Completer<HandrailChatHttpResponse>();
       final second = Completer<HandrailChatHttpResponse>();
       final store = _seedConversationStore();
-      var timelineEmissions = 0;
+      final timelineEmissions = <NormalizedTimelineSnapshot>[];
       final timelineSubscription = store
           .watchTimeline(const ConversationId('conversation-1'))
-          .listen((_) => timelineEmissions += 1);
+          .listen(timelineEmissions.add);
       final fixture = _RestartFixture(
         storage: storage,
         normalizedState: store,
@@ -234,7 +234,19 @@ void main() {
         store.timeline(const ConversationId('conversation-1')).messageIds,
         const [MessageId('message-1'), MessageId('message-2')],
       );
-      expect(timelineEmissions, 2);
+      // The late durable event advances the replay cursor without replacing
+      // either already-reconciled message. Assert both content and cursor edges.
+      expect(timelineEmissions.map((state) => state.messageIds), const [
+        [MessageId('message-1')],
+        [MessageId('message-1'), MessageId('message-2')],
+        [MessageId('message-1'), MessageId('message-2')],
+      ]);
+      expect(timelineEmissions.map((state) => state.replayCursor?.eventId),
+          const ['event-1', 'event-1', 'event-2']);
+      for (var index = 0; index < 2; index += 1) {
+        expect(timelineEmissions.last.canonicalMessages[index].toJson(),
+            timelineEmissions[1].canonicalMessages[index].toJson());
+      }
       expect(storage.removeCount, 1,
           reason: 'only the final durable queue record is removed');
       expect(

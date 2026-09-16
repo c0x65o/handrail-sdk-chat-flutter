@@ -169,7 +169,7 @@ void main() {
 
     final result = await client.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
         replyTo: reply,
       ),
@@ -207,7 +207,7 @@ void main() {
 
     final result = await client.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
       ),
     );
@@ -248,13 +248,13 @@ void main() {
 
     final applied = await client.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
       ),
     );
     final replayed = await client.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
       ),
     );
@@ -293,7 +293,7 @@ void main() {
 
     final beforeResult = await beforeClient.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
         replyTo: reply,
       ),
@@ -314,7 +314,7 @@ void main() {
     final during = ChatCommandCancellationController();
     final future = duringClient.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
         replyTo: reply,
       ),
@@ -386,7 +386,7 @@ void main() {
 
     final auth = await authClient.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
       ),
     );
@@ -404,7 +404,7 @@ void main() {
     );
     final transport = await transportClient.sendMessage(
       ChatSendMessageInput(
-        conversationId: ConversationId('conversation-1'),
+        conversationId: const ConversationId('conversation-1'),
         content: content,
       ),
     );

@@ -1629,7 +1629,7 @@ void main() {
 
     final beforeController = ChatCommandCancellationController()..cancel();
     final before = await client.synchronizeDraft(
-      ChatClearDraftInput(
+      const ChatClearDraftInput(
         conversationId: _conversationOne,
         baseRevision: 0,
         deviceMutationId: 'before-device',

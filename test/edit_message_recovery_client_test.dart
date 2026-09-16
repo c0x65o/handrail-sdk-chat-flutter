@@ -33,6 +33,98 @@ final _editedContent = MessageContent(
 );
 
 void main() {
+  test('deferred commit projects a persisted edit before execute resumes',
+      () async {
+    final backing = InMemoryApplicationChatStorage();
+    final storage = _BlockingMutationStorage(backing);
+    final store = _seedStore();
+    final response = Completer<HandrailChatHttpResponse>();
+    final transport = _ScriptedTransport()
+      ..enqueuePatch((_) => response.future);
+    final fixture = _Fixture(storage: storage, store: store, transport: transport);
+    addTearDown(fixture.dispose);
+    await fixture.activate();
+
+    var projectionCount = 0;
+    var injectedCommit = false;
+    var projectedBeforeResume = false;
+    var resumed = false;
+    final subscription = store.acceptedCommitChanges.listen((state) {
+      final message = state.canonicalMessages[_messageId];
+      if (message?.revision.revision == 1 &&
+          message?.content?.text == _editedContent.text) {
+        projectionCount += 1;
+        projectedBeforeResume = !resumed;
+      }
+    });
+    addTearDown(subscription.cancel);
+
+    // Intercept the queued persistence continuation only after _persist has
+    // published its waiting intent. Deliver an independent accepted commit
+    // first, so its deferred listener can project before execute resumes.
+    // This controls scheduling through Dart's Zone API, without runtime hooks,
+    // elapsed-time sleeps, or a guessed number of microtask turns.
+    final pending = runZoned(
+      () => fixture.client.editMessage(_input('deferred-projection')),
+      zoneSpecification: ZoneSpecification(
+        scheduleMicrotask: (self, parent, zone, callback) {
+          final edits = fixture.client.queuedMessageEdits;
+          if (!injectedCommit &&
+              edits.length == 1 &&
+              edits.single.status ==
+                  ChatQueuedMessageEditStatus.waitingForCanonicalBase) {
+            injectedCommit = true;
+            store.reconcileMessage(ActiveMessage.fromJson({
+              ..._message().toJson(),
+              'id': 'unrelated-message',
+              'sequence': 2,
+            }));
+            parent.scheduleMicrotask(zone, () {
+              resumed = true;
+              callback();
+            });
+          } else {
+            parent.scheduleMicrotask(zone, callback);
+          }
+        },
+      ),
+    );
+    await storage.replaceStarted.future;
+    expect(fixture.client.queuedMessageEdits, isEmpty);
+    expect(projectionCount, 0);
+    expect(transport.patches, isEmpty);
+    storage.releaseReplace.complete();
+    await _eventually(() => resumed);
+    expect(injectedCommit, isTrue);
+    expect(projectedBeforeResume, isTrue);
+    expect(projectionCount, 1);
+
+    // A second projection attempt used to reject the command and remove its
+    // durable intent. Observe the retained request while HTTP is still held.
+    await _eventually(() => transport.patches.isNotEmpty ||
+        fixture.client.queuedMessageEdits.isEmpty);
+    expect(transport.patches, hasLength(1));
+    expect(fixture.client.queuedMessageEdits.single.status,
+        ChatQueuedMessageEditStatus.pending);
+    final intent = (await _readEdits(backing, _identity))!.intents.single;
+    expect((intent.request as EditMessageRequest).toJson(), _request('deferred-projection').toJson());
+    expect(intent.enqueueOrder, 1);
+    expect(intent.enqueuedAt.value, '2032-02-01T00:00:00.000Z');
+    expect(store.canonicalPersistenceSnapshot().canonicalMessages[_messageId]
+        ?.content?.text, _originalContent.text);
+
+    response.complete(_successResponse(_requestFrom(transport.patches.single)));
+    expect(await pending, isA<ChatCommandSuccess<EditMessageResult>>());
+    expect(fixture.client.queuedMessageEdits, isEmpty);
+    expect(await _readEdits(backing, _identity), isNull);
+    expect(projectionCount, 1);
+    expect(transport.patches, hasLength(1));
+    final canonical = store.canonicalPersistenceSnapshot()
+        .canonicalMessages[_messageId]!;
+    expect(canonical.content?.text, _editedContent.text);
+    expect(canonical.revision.revision, 2);
+  });
+
   test(
       'edit enqueue retries over concurrent delete, reaction, and forward intents',
       () async {

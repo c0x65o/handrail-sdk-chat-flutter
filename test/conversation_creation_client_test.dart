@@ -547,10 +547,10 @@ void main() {
         onDiagnostic: diagnostics.add,
         retryOptions: const ChatCommandRetryOptions(maxAttempts: 1),
       );
-      final input = ChatCreateChannelInput(
+      const input = ChatCreateChannelInput(
         name: 'participant-sensitive',
         visibility: ConversationVisibility.private,
-        entity: const HostEntityReference(
+        entity: HostEntityReference(
           type: 'entity-sensitive',
           id: 'participant-sensitive',
         ),

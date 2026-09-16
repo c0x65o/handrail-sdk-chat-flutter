@@ -544,7 +544,7 @@ MessageTimelinePage _page({
   MessageId messageId = _messageId,
   List<MessageReactionAggregate> reactions = const [],
 }) {
-  final request = MessageTimelineRequest(
+  const request = MessageTimelineRequest(
     conversationId: _conversationId,
     direction: MessageTimelineDirection.backward,
     limit: 10,

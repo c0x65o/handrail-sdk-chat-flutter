@@ -137,8 +137,9 @@ void main() {
     Map<String, Object?> conversationEvent() {
       final wire = threadEvent();
       wire['type'] = type;
-      if (type == 'conversation.created')
+      if (type == 'conversation.created') {
         _map(wire['payload']).remove('rootThreadSummary');
+      }
       return wire;
     }
 

@@ -245,8 +245,18 @@ void main() {
       final controller = client.huddles.forConversation(
         const ConversationId('conversation-media'),
       );
-      await controller.start();
-      await controller.join();
+      // The opaque token is not actor identity. Match the authenticated-cache
+      // fixture pattern used by the huddle HTTP boundary tests.
+      client.normalizedState.projectCurrentUserReadState(
+        ConversationReadState(
+          conversationId: const ConversationId('conversation-media'),
+          userId: const UserId('user-media'),
+          lastReadSequence: const MessageSequence(0),
+          updatedAt: const IsoTimestamp('2030-01-01T00:00:00.000Z'),
+        ),
+      );
+      expect(await controller.start(), isA<ChatHuddleActionSuccess>());
+      expect(await controller.join(), isA<ChatHuddleActionSuccess>());
 
       final provider = FakeChatMediaProviderSession();
       provider.queueError(

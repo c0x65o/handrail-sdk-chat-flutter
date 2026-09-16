@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+
+import 'fixtures/widget_cleanup.dart';
 import 'package:handrail_chat/testing.dart';
 
 const _conversationId = ConversationId('fixture-conversation');
@@ -103,7 +105,7 @@ void main() {
 
     await tester.pumpWidget(const SizedBox.shrink());
     await _flush(tester);
-    await harness.dispose();
+    await pumpWidgetCleanup(tester, harness.dispose);
     expect(harness.isDisposed, isTrue);
     expect(tester.takeException(), isNull);
   });
@@ -167,7 +169,7 @@ void main() {
     await _flush(tester);
     expect(harness.http.requests, hasLength(requestCount));
 
-    await harness.dispose();
+    await pumpWidgetCleanup(tester, harness.dispose);
     expect(
       () => harness.pushTokens.emit(_pushToken('post-disposal')),
       throwsStateError,
@@ -238,7 +240,7 @@ void main() {
     const userId = UserId('user-1');
     const threadId = ConversationId('thread-1');
     const messageId = MessageId('message-1');
-    final entity = HostEntityReference(type: 'project', id: 'project-1');
+    const entity = HostEntityReference(type: 'project', id: 'project-1');
 
     expect(
       await recording.delegates.openUser(userId),
@@ -332,7 +334,7 @@ void main() {
     expect(recording.errors, isEmpty);
 
     await tester.pumpWidget(const SizedBox.shrink());
-    await harness.dispose();
+    await pumpWidgetCleanup(tester, harness.dispose);
   });
 }
 

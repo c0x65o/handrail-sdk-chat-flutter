@@ -324,7 +324,7 @@ class HandrailMessageSearchState extends State<HandrailMessageSearch> {
     HandrailChatThemeData chatTheme,
   ) {
     if (_activeQuery.isEmpty) {
-      return Center(
+      return const Center(
         child: Text(
           'Enter a search term',
           key: ValueKey('handrail-message-search-initial'),
@@ -336,7 +336,7 @@ class HandrailMessageSearchState extends State<HandrailMessageSearch> {
         child: Semantics(
           liveRegion: true,
           label: 'Searching messages',
-          child: CircularProgressIndicator(
+          child: const CircularProgressIndicator(
             key: ValueKey('handrail-message-search-initial-loading'),
           ),
         ),
@@ -350,7 +350,7 @@ class HandrailMessageSearchState extends State<HandrailMessageSearch> {
         child: Semantics(
           liveRegion: true,
           label: 'No search results',
-          child: Text(
+          child: const Text(
             'No results found',
             key: ValueKey('handrail-message-search-empty'),
           ),
@@ -378,12 +378,12 @@ class HandrailMessageSearchState extends State<HandrailMessageSearch> {
   Widget _buildFooter() {
     if (_loadingMore) {
       return Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Center(
           child: Semantics(
             liveRegion: true,
             label: 'Loading more search results',
-            child: CircularProgressIndicator(
+            child: const CircularProgressIndicator(
               key: ValueKey('handrail-message-search-loading-more'),
             ),
           ),

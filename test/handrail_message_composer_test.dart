@@ -16,9 +16,9 @@ import 'fixtures/conversation_membership_fixtures.dart';
 import 'fixtures/draft_mutation_fixtures.dart';
 
 final _storageIdentity = ApplicationChatStorageIdentity(
-    tenantId: TenantId(_tenantId),
-    userId: UserId(_userId),
-    deviceId: DeviceId('device-composer'));
+    tenantId: const TenantId(_tenantId),
+    userId: const UserId(_userId),
+    deviceId: const DeviceId('device-composer'));
 
 const _conversationId = ConversationId('conversation-composer');
 const _tenantId = 'tenant-composer';
@@ -74,7 +74,7 @@ void main() {
           composerKey: key,
           delegates: ChatApplicationDelegates(
               pickAttachment: () async => ChatAttachmentPickerSelection(
-                  [AttachmentId('attachment-schedule')])));
+                  [const AttachmentId('attachment-schedule')])));
       key.currentState!.selectReply(MessageContextRequest(
           conversationId: _conversationId, messageId: _sourceId));
       await tester.pump();
@@ -87,13 +87,13 @@ void main() {
       await _pumpUntil(tester, () => _text(tester).isEmpty);
       expect(harness.transport.operations('send'), isEmpty);
       final queued = harness.client.queuedSendMessages.single;
-      expect(queued.identity.userId, UserId(_userId));
+      expect(queued.identity.userId, const UserId(_userId));
       expect(queued.conversationId, _conversationId);
       expect(queued.request.replyTo!.toJson(),
           {'messageId': _sourceId.value, 'notifyAuthor': false});
       expect(queued.content.text, 'Friday');
       expect(queued.content.attachments!.single.attachmentId,
-          AttachmentId('attachment-schedule'));
+          const AttachmentId('attachment-schedule'));
       expect(
           await storage.read(queued.identity,
               ApplicationChatStorageRecordKind.queuedSendMessageIntents),
@@ -153,7 +153,7 @@ void main() {
           composerKey: key,
           delegates: ChatApplicationDelegates(
               pickAttachment: () async => ChatAttachmentPickerSelection(
-                  [AttachmentId('attachment-schedule')])));
+                  [const AttachmentId('attachment-schedule')])));
       key.currentState!.selectReply(MessageContextRequest(
           conversationId: _conversationId, messageId: _sourceId));
       key.currentState!.setReplyNotifyAuthor(false);
@@ -176,7 +176,7 @@ void main() {
       expect(queued.content.text, 'Keep this reply');
       expect(queued.request.replyTo!.notifyAuthor, isFalse);
       expect(queued.content.attachments!.single.attachmentId,
-          AttachmentId('attachment-schedule'));
+          const AttachmentId('attachment-schedule'));
     });
   }
 
@@ -280,7 +280,7 @@ void main() {
         changed = harness.client.activateStorageIdentity(
             ApplicationChatStorageIdentity(
                 tenantId: _storageIdentity.tenantId,
-                userId: UserId('another-user'),
+                userId: const UserId('another-user'),
                 deviceId: _storageIdentity.deviceId));
         await tester.pump();
       }
@@ -328,7 +328,7 @@ void main() {
         composerKey: key, focusNode: focus, draftDebounce: Duration.zero);
     expect(
         key.currentState!.selectReply(MessageContextRequest(
-            conversationId: ConversationId('elsewhere'), messageId: _sourceId)),
+            conversationId: const ConversationId('elsewhere'), messageId: _sourceId)),
         isFalse);
     expect(
         key.currentState!.selectReply(MessageContextRequest(

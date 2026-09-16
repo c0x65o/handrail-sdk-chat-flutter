@@ -299,6 +299,10 @@ void main() {
       );
       final client = _client(transport, store: store);
 
+      expect(client.threads.knownThreadIdForRoot(_rootId,
+          parentConversationId: const ConversationId('conversation-parent')), _threadId);
+      expect(client.threads.knownThreadIdForRoot(_rootId,
+          parentConversationId: const ConversationId('other-parent')), isNull);
       final opened = await client.threads.open(rootMessageId: _rootId);
 
       final success = opened as ChatThreadOpenSuccess;

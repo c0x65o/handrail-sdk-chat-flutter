@@ -584,8 +584,9 @@ class _NamedThreadTransport extends _ReplyRoutingTransport {
         rootMessageId: _root.value,
         threadId: _thread.value,
         summaryThreadId: _thread.value);
-    if (name != null)
+    if (name != null) {
       ((body['conversation'] as Map)['conversation'] as Map)['name'] = name;
+    }
     return _jsonResponse(body, statusCode: 201);
   }
 
@@ -600,8 +601,9 @@ class _NamedThreadTransport extends _ReplyRoutingTransport {
     }
     if (request.method == 'POST' && request.uri.path.endsWith('/thread')) {
       requests.add(request);
-      if (failures-- > 0)
+      if (failures-- > 0) {
         return _jsonResponse({'error': 'unavailable'}, statusCode: 503);
+      }
       if (pending != null) return pending!.future;
       return result();
     }

@@ -8,9 +8,9 @@ const _parentId = 'conversation-1';
 const _otherId = 'conversation-2';
 const _threadId = 'thread-1';
 
-final _trustedIdentity = DurableEventTrustedIdentity(
-  tenantId: const TenantId(_tenantId),
-  userId: const UserId(_userId),
+const _trustedIdentity = DurableEventTrustedIdentity(
+  tenantId: TenantId(_tenantId),
+  userId: UserId(_userId),
 );
 
 void main() {
@@ -1940,7 +1940,7 @@ void main() {
     test('creates canonically, updates hydrated list scopes, and is immutable',
         () async {
       final store = _seedStore(latestSequence: 0, messages: const []);
-      final entityScope = EntityConversationSnapshotScope(
+      const entityScope = EntityConversationSnapshotScope(
         entity: HostEntityReference(type: 'erp.order', id: 'order-42'),
       );
       store.hydrateConversationList(

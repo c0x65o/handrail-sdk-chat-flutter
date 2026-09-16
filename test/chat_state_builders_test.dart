@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/flutter.dart';
 
+import 'fixtures/widget_cleanup.dart';
+
 void main() {
   testWidgets(
     'ChatStateBuilder renders current state, deduplicates, replaces, and cancels',
@@ -123,8 +125,8 @@ void main() {
     );
 
     await tester.pumpWidget(_host(const SizedBox.shrink()));
-    await outer.dispose();
-    await inner.dispose();
+    await pumpWidgetCleanup(tester, outer.dispose);
+    await pumpWidgetCleanup(tester, inner.dispose);
   });
 
   testWidgets(
@@ -161,8 +163,8 @@ void main() {
     expect(builds, buildsAfterReplacement);
 
     await tester.pumpWidget(_host(const SizedBox.shrink()));
-    await firstClient.dispose();
-    await secondClient.dispose();
+    await pumpWidgetCleanup(tester, firstClient.dispose);
+    await pumpWidgetCleanup(tester, secondClient.dispose);
   });
 
   testWidgets('typed builders pass error and access-revoked states unchanged', (
@@ -241,7 +243,7 @@ void main() {
     expect(huddleStates.last.media, isA<ChatHuddleMediaErrorState>());
 
     await tester.pumpWidget(_host(const SizedBox.shrink()));
-    await client.dispose();
+    await pumpWidgetCleanup(tester, client.dispose);
   });
 }
 

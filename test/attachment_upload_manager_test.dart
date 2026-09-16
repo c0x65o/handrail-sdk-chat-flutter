@@ -38,7 +38,7 @@ void main() {
 
       final handle = client.uploadAttachment(
         ChatAttachmentUploadInput(
-          conversationId: ConversationId('conversation-1'),
+          conversationId: const ConversationId('conversation-1'),
           metadata: _metadata(),
           source: Stream<List<int>>.fromIterable(const [
             [1],
@@ -104,7 +104,7 @@ void main() {
       final result = await client
           .uploadAttachment(
             ChatAttachmentUploadInput(
-              conversationId: ConversationId('conversation-1'),
+              conversationId: const ConversationId('conversation-1'),
               metadata: _metadata(),
               source: Stream<List<int>>.value(const [1, 2]),
               temporaryResource: resource,
@@ -378,7 +378,7 @@ ChatAttachmentUploadInput _input({
   ChatAttachmentTemporaryResource? temporaryResource,
 }) =>
     ChatAttachmentUploadInput(
-      conversationId: ConversationId('conversation-1'),
+      conversationId: const ConversationId('conversation-1'),
       metadata: _metadata(),
       source: Stream<List<int>>.fromIterable(const [
         [1],

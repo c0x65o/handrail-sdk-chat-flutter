@@ -726,7 +726,7 @@ final class _MessageDeleteRecoveryRuntime {
   ) async {
     if (result case ChatCommandSuccess<SoftDeleteMessageResult>(:final value)) {
       if (!_resultMatches(identity, delete, value)) {
-        return ChatCommandMalformedResponse<SoftDeleteMessageResult>();
+        return const ChatCommandMalformedResponse<SoftDeleteMessageResult>();
       }
       try {
         _projectedKeys.remove(delete.request.idempotencyKey);
@@ -736,7 +736,7 @@ final class _MessageDeleteRecoveryRuntime {
         );
       } catch (_) {
         _projectedKeys.add(delete.request.idempotencyKey);
-        return ChatCommandMalformedResponse<SoftDeleteMessageResult>();
+        return const ChatCommandMalformedResponse<SoftDeleteMessageResult>();
       }
       await _remove(identity, generation, epoch, delete);
     } else if (_isTerminal(result)) {

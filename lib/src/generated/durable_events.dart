@@ -716,48 +716,58 @@ _ParsedEvent _parseEvent(Object? value, DurableEventTrustedIdentity trusted) {
     final type = _string(envelope['type']);
     final occurredAt = _timestamp(envelope['occurredAt']);
     final spec = _eventSpecs[type];
-    if (spec == null)
+    if (spec == null) {
       throw _failure(DurableEventParseErrorCode.unknownEventType);
-    if (tenant != trusted.tenantId.toJson())
+    }
+    if (tenant != trusted.tenantId.toJson()) {
       throw _failure(DurableEventParseErrorCode.tenantMismatch);
+    }
     final payload = _readMap(envelope['payload']);
     _exactKeys(payload, {...spec.requiredFields, ...spec.optionalFields});
     for (final field in spec.requiredFields) {
-      if (!payload.containsKey(field))
+      if (!payload.containsKey(field)) {
         throw _failure(DurableEventParseErrorCode.incoherentPayload);
+      }
     }
     final entity =
         spec.entityPath == null ? null : _pathString(payload, spec.entityPath!);
     if (spec.tenantPath case final path?) {
-      if (_pathString(payload, path) != tenant)
+      if (_pathString(payload, path) != tenant) {
         throw _failure(DurableEventParseErrorCode.tenantMismatch);
+      }
     }
     for (final entry in spec.literalFields.entries) {
-      if (_path(payload, entry.key) != entry.value)
+      if (_path(payload, entry.key) != entry.value) {
         throw _failure(DurableEventParseErrorCode.incoherentPayload);
+      }
     }
     for (final pair in spec.equalPaths) {
-      if (_pathString(payload, pair[0]) != _pathString(payload, pair[1]))
+      if (_pathString(payload, pair[0]) != _pathString(payload, pair[1])) {
         throw _failure(DurableEventParseErrorCode.incoherentPayload);
+      }
     }
     if (spec.incrementPair case final pair?) {
       if (_positive(_path(payload, pair[1])) !=
-          _positive(_path(payload, pair[0])) + 1)
+          _positive(_path(payload, pair[0])) + 1) {
         throw _failure(DurableEventParseErrorCode.incoherentPayload);
+      }
     }
     final expectedPrivate = 'user:${trusted.userId.toJson()}';
     final private = stream.startsWith('user:');
     if (private) {
       if (!spec.streamScopes.contains('user_private') ||
-          stream != expectedPrivate)
+          stream != expectedPrivate) {
         throw _failure(DurableEventParseErrorCode.privateStreamMismatch);
+      }
       if (spec.actorPath case final path?) {
-        if (_pathString(payload, path) != trusted.userId.toJson())
+        if (_pathString(payload, path) != trusted.userId.toJson()) {
           throw _failure(DurableEventParseErrorCode.privateStreamMismatch);
+        }
       }
       if (spec.privateUserPath case final path?) {
-        if (_pathString(payload, path) != trusted.userId.toJson())
+        if (_pathString(payload, path) != trusted.userId.toJson()) {
           throw _failure(DurableEventParseErrorCode.privateStreamMismatch);
+        }
       }
     } else if (!spec.streamScopes.contains('conversation') ||
         stream != entity) {
@@ -816,28 +826,34 @@ void _validateCanonical(String type, Map<String, Object?> payload) {
     final input = SynchronizeDraftInput.fromJson(payload['input']);
     SynchronizeDraftResult.fromJson(payload['result'], expectedInput: input);
   }
-  if (type == 'conversation.created' || type == 'thread.created')
+  if (type == 'conversation.created' || type == 'thread.created') {
     _validateConversation(_readMap(payload['conversation']));
+  }
   if (type == 'message.created' ||
       type == 'message.updated' ||
-      type == 'message.deleted') _validateMessage(_readMap(payload['message']));
+      type == 'message.deleted') {
+    _validateMessage(_readMap(payload['message']));
+  }
   if (type == 'reaction.updated') {
     _nonNegative(payload['count']);
-    if (payload['reactedByCurrentUser'] is! bool)
+    if (payload['reactedByCurrentUser'] is! bool) {
       throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    }
   }
   if (type == 'conversation.read_cursor_updated') {
     _nonNegative(payload['latestSequence']);
     _nonNegative(payload['unreadCount']);
   }
   if (type == 'thread.follow.updated') _positive(payload['followRevision']);
-  if (type == 'saved_message.updated')
+  if (type == 'saved_message.updated') {
     _positive(payload['savedMessageRevision']);
+  }
   if (type == 'message_reminder.updated') {
     _positive(payload['reminderRevision']);
     final reminder = _readMap(payload['reminder']);
-    if (reminder['privacy'] != 'affected_authenticated_actor')
+    if (reminder['privacy'] != 'affected_authenticated_actor') {
       throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    }
     final state = _string(reminder['state']);
     if (state == 'scheduled') {
       _exactKeys(reminder, const {'privacy', 'state', 'dueAt'});
@@ -858,8 +874,9 @@ void _validateCanonical(String type, Map<String, Object?> payload) {
   }
   if (type == 'huddle.updated') {
     final status = _string(_readMap(payload['state'])['status']);
-    if (!const ['inactive', 'starting', 'active', 'ended'].contains(status))
+    if (!const ['inactive', 'starting', 'active', 'ended'].contains(status)) {
       throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    }
   }
 }
 
@@ -877,10 +894,12 @@ void _validateConversation(Map<String, Object?> value) {
   final type = _string(value['type']);
   final visibility = _string(value['visibility']);
   if (!const ['channel', 'direct', 'group_direct', 'thread'].contains(type) ||
-      !const ['public', 'private'].contains(visibility))
+      !const ['public', 'private'].contains(visibility)) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
-  if ((type == 'direct' || type == 'group_direct') && visibility != 'private')
+  }
+  if ((type == 'direct' || type == 'group_direct') && visibility != 'private') {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   if (type == 'channel') _string(value['name']);
   if (type == 'thread') {
     _string(value['parentConversationId']);
@@ -902,52 +921,60 @@ void _validateMessage(Map<String, Object?> value) {
   _timestamp(value['createdAt']);
   _timestamp(value['updatedAt']);
   final author = _readMap(value['author']);
-  if (author['type'] != 'user')
+  if (author['type'] != 'user') {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   _string(author['userId']);
   _positive(_readMap(value['revision'])['revision']);
   if (value['content'] != null) {
     final content = _readMap(value['content']);
     if (!const ['plain', 'markdown'].contains(_string(content['format'])) ||
-        content['text'] is! String)
+        content['text'] is! String) {
       throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    }
   }
 }
 
 Map<String, Object?> _readMap(Object? value) {
-  if (value is! Map)
+  if (value is! Map) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   final result = <String, Object?>{};
   for (final entry in value.entries) {
-    if (entry.key is! String)
+    if (entry.key is! String) {
       throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    }
     result[entry.key as String] = entry.value;
   }
   return result;
 }
 
 String _string(Object? value) {
-  if (value is! String || value.trim().isEmpty || value != value.trim())
+  if (value is! String || value.trim().isEmpty || value != value.trim()) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   return value;
 }
 
 int _positive(Object? value) {
-  if (value is! int || value < 1)
+  if (value is! int || value < 1) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   return value;
 }
 
 int _nonNegative(Object? value) {
-  if (value is! int || value < 0)
+  if (value is! int || value < 0) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   return value;
 }
 
 String _timestamp(Object? value) {
   final text = _string(value);
-  if (DateTime.tryParse(text) == null)
+  if (DateTime.tryParse(text) == null) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
   return text;
 }
 
@@ -962,8 +989,9 @@ Object? _path(Map<String, Object?> value, String path) {
 String _pathString(Map<String, Object?> value, String path) =>
     _string(_path(value, path));
 void _exactKeys(Map<String, Object?> value, Set<String> allowed) {
-  if (value.keys.any((key) => !allowed.contains(key)))
+  if (value.keys.any((key) => !allowed.contains(key))) {
     throw _failure(DurableEventParseErrorCode.incoherentPayload);
+  }
 }
 
 Map<String, Object?> _freezeMap(Map<String, Object?> value) => Map.unmodifiable(

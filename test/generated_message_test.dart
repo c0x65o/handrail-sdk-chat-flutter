@@ -105,7 +105,7 @@ void main() {
     for (final id in ['', ' source', 'a\u0000', 'é' * 128]) {
       expect(() => MessageReplyReference(messageId: MessageId(id), notifyAuthor: false), throwsFormatException);
     }
-    for (final id in ['opaque-source:123', 'a' * 255, 'é' * 127 + 'a']) {
+    for (final id in ['opaque-source:123', 'a' * 255, "${'é' * 127}a"]) {
       final wire = {'messageId': id, 'notifyAuthor': false};
       expect(MessageReplyReference.fromJson(wire).toJson(), wire);
     }

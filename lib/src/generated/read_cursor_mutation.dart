@@ -326,8 +326,9 @@ final class ConversationReadState {
     const allowed = {...required, 'manualUnreadFromSequence'};
     _allowed(object, allowed, path, code);
     for (final key in required) {
-      if (!object.containsKey(key))
+      if (!object.containsKey(key)) {
         throw _error(code, '$path.$key is required');
+      }
     }
     final state = ConversationReadState(
       conversationId: ConversationId(
@@ -779,8 +780,9 @@ void _validateCanonicalState(
                     ? state.lastReadSequence.value
                     : marker - 1))
             .clamp(0, latestSequence);
-  if (unreadCount != derived)
+  if (unreadCount != derived) {
     throw _error(code, 'unreadCount must be derived from read state');
+  }
   if (operation == ReadCursorMutationOperation.markRead && marker != null) {
     throw _error(code, 'mark_read must clear manualUnreadFromSequence');
   }
@@ -839,19 +841,21 @@ void _rejectTrustedFields(Object? value, [String path = 'input']) {
   } else if (value is Map) {
     for (final entry in value.entries) {
       final key = entry.key;
-      if (key is! String)
+      if (key is! String) {
         throw _error(
           ReadCursorMutationErrorCode.malformedInput,
           '$path keys must be strings',
         );
+      }
       final normalized = key
           .replaceAll(RegExp('[^a-zA-Z0-9]'), '')
           .toLowerCase();
-      if (_trustedFields.contains(normalized))
+      if (_trustedFields.contains(normalized)) {
         throw _error(
           ReadCursorMutationErrorCode.trustedIdentityField,
           '$path.$key is server-derived and cannot be supplied by a client',
         );
+      }
       _rejectTrustedFields(entry.value, '$path.$key');
     }
   }
@@ -895,8 +899,9 @@ void _allowed(
 }
 
 String _nonBlank(Object? value, String path, ReadCursorMutationErrorCode code) {
-  if (value is! String || value.trim().isEmpty)
+  if (value is! String || value.trim().isEmpty) {
     throw _error(code, '$path must be a nonblank string');
+  }
   return value;
 }
 

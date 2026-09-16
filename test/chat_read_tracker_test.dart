@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/flutter.dart';
 
+import 'fixtures/widget_cleanup.dart';
+
 const _conversationOne = ConversationId('conversation-1');
 const _conversationTwo = ConversationId('conversation-2');
 const _exposure = Duration(milliseconds: 100);
@@ -304,7 +306,7 @@ void main() {
       readVisibilityScheduler: scheduler,
       readVisibilityMinimumExposure: _exposure,
     );
-    addTearDown(client.dispose);
+    addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
     final key = GlobalKey();
 
     await tester.pumpWidget(

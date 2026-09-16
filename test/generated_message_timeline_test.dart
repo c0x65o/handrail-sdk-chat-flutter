@@ -267,9 +267,10 @@ void main() {
         ..['replyTo'] = {'messageId': 'source-1', 'notifyAuthor': true}
         ..['isThreadRoot'] = false;
       final mismatchedAttachment = _message(4, enrichedRoot: true);
-      (mismatchedAttachment['attachmentMetadata'] as List<Object?>).single
-          as Map<String, Object?>
-        ..['attachmentId'] = 'other-attachment';
+      final attachment =
+          (mismatchedAttachment['attachmentMetadata'] as List<Object?>).single
+              as Map<String, Object?>;
+      attachment['attachmentId'] = 'other-attachment';
       final duplicateReaction = _message(4, enrichedRoot: true);
       (duplicateReaction['reactions'] as List<Object?>).add({
         'reactionKey': 'thumbsup',
