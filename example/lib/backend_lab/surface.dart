@@ -178,6 +178,33 @@ class _BackendChatLabState extends State<BackendChatLab> {
       _huddleLabel = state.items.firstWhere(matches).displayName;
       if (!mounted) return;
       _capture('before-parent-hydration');
+      // A fresh document has no ordered huddle baseline. Establish an
+      // authorized, cursor-bracketed snapshot before opening replay, so its
+      // first live join cannot trigger recovery that interrupts fresh media.
+      client.huddles.forConversation(_initialConversationId!);
+      final timeline = await client.getMessageTimeline(MessageTimelineRequest(
+        conversationId: _initialConversationId!,
+        direction: MessageTimelineDirection.backward,
+        limit: messageTimelineMaximumLimit,
+      ));
+      if (timeline is! ChatSnapshotQuerySuccess<MessageTimelinePage>) {
+        throw StateError('Chat Lab timeline bootstrap failed.');
+      }
+      final cursor = await client.hydrateRealtimeSnapshots(
+        ChatRealtimeSnapshotHydrationInput(
+          reason: ChatRealtimeSnapshotRecoveryReason.replayUnavailable,
+          expiredCursor: timeline.value.replay.resumeFrom,
+          retainedConversationIds: [_initialConversationId!],
+          isCancelled: () => !mounted,
+        ),
+      );
+      if (!mounted) return;
+      if (cursor != null) {
+        _cursor.write(
+          scope: 'chat-lab:$_instanceId:$_actor',
+          value: jsonEncode(cursor.toJson()),
+        );
+      }
       await session.start();
       if (!mounted) return;
       setState(() => _ready = true);

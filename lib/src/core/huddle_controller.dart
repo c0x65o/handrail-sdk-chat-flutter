@@ -716,7 +716,9 @@ final class ChatHuddlesController {
       final persisted = _PersistedHuddleCommand(intent, scope);
       final controller = forConversation(conversationId);
       if (controller._foregroundJoinKeys
-          .contains(intent.request.idempotencyKey)) return;
+          .contains(intent.request.idempotencyKey)) {
+        return;
+      }
       final cancellation = ChatCommandCancellationController();
       ChatHuddleActionResult hydrated;
       try {
@@ -1588,7 +1590,9 @@ final class ChatHuddleController {
         current is! LiveHuddleState ||
         response is! ActiveHuddleState ||
         current.conversationId != response.conversationId ||
-        current.huddleSessionId != response.huddleSessionId) return false;
+        current.huddleSessionId != response.huddleSessionId) {
+      return false;
+    }
     final participant =
         current.participants.where((p) => p.userId == actor).firstOrNull;
     final received = response.participants.where(

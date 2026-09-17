@@ -2751,15 +2751,18 @@ final class HandrailChatClient {
   bool _huddlesFeatureEnabled() {
     if (_disposed ||
         requestedCapabilities['huddles'] == false ||
-        requestedCapabilities['media'] == false) return false;
+        requestedCapabilities['media'] == false) {
+      return false;
+    }
     final lifecycle = _state;
     if (lifecycle is! ChatClientReadyState) return true;
     final capabilities = lifecycle.negotiatedCapabilities;
     // The canonical JS server advertises huddles through `media`. Keep the
     // legacy huddles flag compatible, while honoring either explicit opt-out.
     if (lifecycle.metadata.enabledFeatures.values['huddles'] == false ||
-        lifecycle.metadata.enabledFeatures.values['media'] == false)
+        lifecycle.metadata.enabledFeatures.values['media'] == false) {
       return false;
+    }
     return capabilities['media'] == true || capabilities['huddles'] == true;
   }
 
