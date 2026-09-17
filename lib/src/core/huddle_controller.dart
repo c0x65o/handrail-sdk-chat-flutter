@@ -483,6 +483,9 @@ final class ChatHuddlesController {
     _connectivityOnline = connectivityOnline;
     _realtimeConnected = realtimeConnected;
     _applicationForeground = applicationForeground;
+    // Without storage there is no retry queue to pause. Its readiness must
+    // not cancel explicit commands or invalidate their private HTTP response.
+    if (_storage == null) return;
     if (!_ready) {
       _invalidateWork();
       return;
@@ -660,6 +663,9 @@ final class ChatHuddlesController {
         continue;
       }
       if (decision != _HuddleAuthorityDecision.equal) continue;
+      final controller = forConversation(intent.conversationId);
+      final foregroundJoin = controller._foregroundJoinKeys
+          .contains(intent.request.idempotencyKey);
       final persisted = _PersistedHuddleCommand(intent, scope);
       if (await _remove(persisted) && _scopeActive(scope)) {
         final controller = forConversation(intent.conversationId);
@@ -668,7 +674,7 @@ final class ChatHuddlesController {
           _operationForHuddleInput(intent.request),
           state,
         );
-        controller._settledRecovered(intent.request);
+        if (!foregroundJoin) controller._settledRecovered(intent.request);
       }
     }
     _startPumps();
@@ -709,6 +715,8 @@ final class ChatHuddlesController {
       }
       final persisted = _PersistedHuddleCommand(intent, scope);
       final controller = forConversation(conversationId);
+      if (controller._foregroundJoinKeys
+          .contains(intent.request.idempotencyKey)) return;
       final cancellation = ChatCommandCancellationController();
       ChatHuddleActionResult hydrated;
       try {
@@ -1016,6 +1024,7 @@ final class ChatHuddleController {
       StreamController<ChatHuddleState>.broadcast(sync: true);
   final Set<ChatCommandCancellationController> _activeCancellations = {};
   final Set<Future<void>> _commandDrains = {};
+  final Set<String> _foregroundJoinKeys = {};
   final Map<String, Completer<ChatHuddleActionSuccess>> _authoritySettlements =
       {};
   late final Stream<ChatHuddleState> _states;
@@ -1025,6 +1034,7 @@ final class ChatHuddleController {
   Future<void> _commandTail = Future<void>.value();
   HuddleMediaJoinDescriptor? _descriptor;
   HuddleSessionId? _descriptorSessionId;
+  IsoTimestamp? _descriptorJoinedAt;
   void Function()? _cancelDescriptorTimer;
   ChatRealtimeConversationSubscriptionRelease? _releaseRealtime;
   var _observerCount = 0;
@@ -1202,6 +1212,7 @@ final class ChatHuddleController {
   ) async {
     const operation = ChatHuddleActionOperation.hydrate;
     final expectedWatermark = _watermark;
+    final expectedEpoch = _owner._epoch;
     _emit(_copyState(hydrationStatus: ChatHuddleHydrationStatus.loading));
     final active = ChatCommandCancellationController();
     _activeCancellations.add(active);
@@ -1266,7 +1277,7 @@ final class ChatHuddleController {
       _activeCancellations.remove(active);
     }
 
-    if (!_disposed) {
+    if (!_disposed && expectedEpoch == _owner._epoch) {
       _emit(
         _copyState(
           hydrationStatus: result is ChatHuddleActionFailure
@@ -1383,6 +1394,22 @@ final class ChatHuddleController {
     ChatHuddleActionOptions options, {
     _PersistedHuddleCommand? retained,
   }) async {
+    final foregroundJoin = retained == null && input is JoinHuddleInput;
+    if (foregroundJoin) _foregroundJoinKeys.add(input.idempotencyKey);
+    try {
+      return await _executeCommandCore(operation, input, options,
+          retained: retained);
+    } finally {
+      if (foregroundJoin) _foregroundJoinKeys.remove(input.idempotencyKey);
+    }
+  }
+
+  Future<ChatHuddleActionResult> _executeCommandCore(
+    ChatHuddleActionOperation operation,
+    HuddleCommandInput input,
+    ChatHuddleActionOptions options, {
+    _PersistedHuddleCommand? retained,
+  }) async {
     if (_disposed) return _closed(operation);
     final recovering = retained != null;
     final disabled = _featureDisabled(operation);
@@ -1407,6 +1434,7 @@ final class ChatHuddleController {
     }
     final previousState = _state.canonicalState;
     final expectedWatermark = ++_watermark;
+    final expectedEpoch = _owner._epoch;
     final active = ChatCommandCancellationController();
     _activeCancellations.add(active);
     final callerSubscription = _forwardCancellation(
@@ -1431,10 +1459,12 @@ final class ChatHuddleController {
           cancellationSignal: active.signal,
         ),
       );
-      final outcome = await Future.any<Object>(<Future<Object>>[
-        dispatch,
-        authority.future,
-      ]);
+      // Public event settlement cannot supply a foreground join's secret.
+      // Continue its HTTP response; recovered commands remain descriptor-free.
+      final outcome = !recovering && input is JoinHuddleInput
+          ? await dispatch
+          : await Future.any<Object>(
+              <Future<Object>>[dispatch, authority.future]);
       if (outcome is ChatHuddleActionSuccess) {
         active.cancel();
         unawaited(dispatch);
@@ -1518,10 +1548,20 @@ final class ChatHuddleController {
         (command.state as StartingHuddleState).huddleSessionId,
         command.mediaJoin,
       );
-    } else if (applied && command is JoinHuddleResult && !recovering) {
+    } else if (command is JoinHuddleResult &&
+        !recovering &&
+        (applied ||
+            (!active.signal.isCancelled &&
+                expectedEpoch == _owner._epoch &&
+                _matchesCurrentJoin(command)))) {
       _storeDescriptor(
         (command.state as ActiveHuddleState).huddleSessionId,
         command.mediaJoin,
+        joinedAt: (command.state as ActiveHuddleState)
+            .participants
+            .where((p) => p.userId == _owner._identity?.userId)
+            .firstOrNull
+            ?.joinedAt,
       );
     }
     if (applied && command is LeaveHuddleResult) {
@@ -1538,6 +1578,28 @@ final class ChatHuddleController {
     await _owner._settleResult(persisted, result);
     if (recovering) _settledRecovered(input);
     return result;
+  }
+
+  bool _matchesCurrentJoin(JoinHuddleResult result) {
+    final actor = _owner._identity?.userId;
+    final current = _state.canonicalState;
+    final response = result.state;
+    if (actor == null ||
+        current is! LiveHuddleState ||
+        response is! ActiveHuddleState ||
+        current.conversationId != response.conversationId ||
+        current.huddleSessionId != response.huddleSessionId) return false;
+    final participant =
+        current.participants.where((p) => p.userId == actor).firstOrNull;
+    final received = response.participants.where(
+        (p) => p.userId == actor && p.status == HuddleParticipantStatus.joined);
+    if (received.length != 1) return false;
+    final joinedAt = received.single.joinedAt;
+    return participant == null ||
+        DateTime.parse(participant.joinedAt.value)
+            .isBefore(DateTime.parse(joinedAt.value)) ||
+        (participant.status == HuddleParticipantStatus.joined &&
+            participant.joinedAt == joinedAt);
   }
 
   bool _matchesHttpCommandOutcome(
@@ -1705,7 +1767,9 @@ final class ChatHuddleController {
     } else if (next is! LiveHuddleState) {
       _clearDescriptor();
       media = const ChatHuddleMediaIdleState();
-    } else if (storedSession != null && !_owner._needsMediaJoin(next)) {
+    } else if (storedSession != null &&
+        !_owner._needsMediaJoin(next) &&
+        !(eventReconciliation && _precedesPrivateJoin(next))) {
       _clearDescriptor();
       media = const ChatHuddleMediaIdleState();
     } else if (_descriptor == null &&
@@ -1723,6 +1787,20 @@ final class ChatHuddleController {
       return;
     }
     _emit(_copyState(canonicalState: next, media: media));
+  }
+
+  // HTTP can finish before older canonical events are delivered. A leave
+  // retains a participant record; absence or an older participation incarnation
+  // in that same session must not tear down the newly admitted connection.
+  bool _precedesPrivateJoin(LiveHuddleState next) {
+    final actor = _owner._identity?.userId;
+    final joinedAt = _descriptorJoinedAt;
+    if (actor == null || joinedAt == null) return false;
+    final participant =
+        next.participants.where((p) => p.userId == actor).firstOrNull;
+    return participant == null ||
+        DateTime.parse(participant.joinedAt.value)
+            .isBefore(DateTime.parse(joinedAt.value));
   }
 
   ChatHuddleMediaState _mediaAfterCanonical(HuddleSessionState canonical) {
@@ -1746,8 +1824,9 @@ final class ChatHuddleController {
 
   void _storeDescriptor(
     HuddleSessionId sessionId,
-    HuddleMediaJoinDescriptor descriptor,
-  ) {
+    HuddleMediaJoinDescriptor descriptor, {
+    IsoTimestamp? joinedAt,
+  }) {
     _clearDescriptor();
     final delay =
         DateTime.parse(descriptor.expiresAt.value).difference(_clock());
@@ -1763,11 +1842,13 @@ final class ChatHuddleController {
     }
     _descriptor = descriptor;
     _descriptorSessionId = sessionId;
+    _descriptorJoinedAt = joinedAt;
     try {
       _cancelDescriptorTimer = _scheduleTimer(delay, () {
         if (_descriptor != descriptor) return;
         _descriptor = null;
         _descriptorSessionId = null;
+        _descriptorJoinedAt = null;
         _cancelDescriptorTimer = null;
         if (!_disposed) {
           _emit(
@@ -1784,6 +1865,7 @@ final class ChatHuddleController {
     } catch (_) {
       _descriptor = null;
       _descriptorSessionId = null;
+      _descriptorJoinedAt = null;
       _emit(
         _copyState(
           media: const ChatHuddleMediaRejoinRequiredState(
@@ -1829,6 +1911,7 @@ final class ChatHuddleController {
     _cancelDescriptorTimer = null;
     _descriptor = null;
     _descriptorSessionId = null;
+    _descriptorJoinedAt = null;
     try {
       cancel?.call();
     } catch (_) {

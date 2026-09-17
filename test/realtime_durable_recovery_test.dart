@@ -6,6 +6,94 @@ import 'package:test/test.dart';
 
 void main() {
   group('durable realtime integration', () {
+    for (final unstable in [false, true]) {
+      test('huddle recovery requires a stable cursor window: $unstable',
+          () async {
+        final http = _RecoveryHttpTransport();
+        var reads = 0;
+        http.respond = (request) {
+          if (request.uri.path.endsWith('/huddle'))
+            return _httpResponse(_activeSnapshot);
+          if (request.uri.path.endsWith('/messages')) {
+            reads++;
+            return _httpResponse({
+              ..._timelineSnapshot('conversation-1'),
+              'replay': {
+                'resumeFrom': {'eventId': unstable ? 'cursor-$reads' : 'stable'}
+              }
+            });
+          }
+          return null;
+        };
+        final client = HandrailChatClient(
+            apiBaseUri: Uri.parse('https://chat.example/api/chat'),
+            tokenProvider: () async => 'token',
+            transport: http);
+        addTearDown(client.dispose);
+        final controller = client.huddles
+            .forConversation(const ConversationId('conversation-1'));
+        final before = client.normalizedState.state;
+        final hydration = client.hydrateRealtimeSnapshots(
+            const ChatRealtimeSnapshotHydrationInput(
+                reason: ChatRealtimeSnapshotRecoveryReason.eventGap,
+                expiredCursor: EventCursor(eventId: 'expired'),
+                retainedConversationIds: [ConversationId('conversation-1')]));
+        if (unstable) {
+          await expectLater(hydration, throwsException);
+          expect(reads, 6);
+          expect(client.normalizedState.state, same(before));
+        } else {
+          expect((await hydration)?.eventId, 'stable');
+          expect(reads, 2);
+          expect(
+              client.normalizedState.state
+                  .huddles[const ConversationId('conversation-1')],
+              isA<ActiveHuddleState>());
+          expect(controller.state.canonicalState.toJson(), _activeSnapshot);
+          final event = {
+            ..._event('after-recovered-active'),
+            'payload': {'state': _activeSnapshot}
+          };
+          expect(
+              client
+                  .reduceDurableEvent(KnownDurableEvent.fromJson(event,
+                      trustedIdentity: const DurableEventTrustedIdentity(
+                          tenantId: TenantId('tenant-1'),
+                          userId: UserId('user-1'))))
+                  .status,
+              DurableEventReductionStatus.applied);
+        }
+      });
+    }
+
+    test('huddle-only denial preserves authorized conversation recovery',
+        () async {
+      final http = _RecoveryHttpTransport()
+        ..respond = (request) => request.uri.path.endsWith('/huddle')
+            ? const HandrailChatHttpResponse(statusCode: 403, body: '{}')
+            : null;
+      final client = HandrailChatClient(
+          apiBaseUri: Uri.parse('https://chat.example/api/chat'),
+          tokenProvider: () async => 'token',
+          transport: http);
+      addTearDown(client.dispose);
+      client.huddles.forConversation(const ConversationId('conversation-1'));
+      await client.hydrateRealtimeSnapshots(
+          const ChatRealtimeSnapshotHydrationInput(
+              reason: ChatRealtimeSnapshotRecoveryReason.eventGap,
+              expiredCursor: EventCursor(eventId: 'expired'),
+              retainedConversationIds: [ConversationId('conversation-1')]));
+      expect(client.normalizedState.state.huddles, isEmpty);
+      expect(client.normalizedState.state.timelines.keys,
+          contains(const ConversationId('conversation-1')));
+      expect(
+          client.huddles
+              .forConversation(const ConversationId('conversation-1'))
+              .state
+              .media,
+          isA<ChatHuddleMediaUnavailableState>());
+    });
+
     test('recovery includes a conversation retained during snapshot reads',
         () async {
       final socket = _FakeSocket();
@@ -499,6 +587,8 @@ void main() {
           '/api/chat/conversations',
           '/api/chat/conversations/conversation-1',
           '/api/chat/conversations/conversation-1/messages',
+          '/api/chat/conversations/conversation-1/huddle',
+          '/api/chat/conversations/conversation-1/messages',
           '/api/chat/conversations/conversation-2',
         ],
       );
@@ -737,6 +827,10 @@ final class _RecoveryHttpTransport implements HandrailChatHttpTransport {
     if (path == '/api/chat/conversations/conversation-1') {
       return _httpResponse(_detailSnapshot('conversation-1'));
     }
+    if (path == '/api/chat/conversations/conversation-1/huddle') {
+      return _httpResponse(
+          {'status': 'inactive', 'conversationId': 'conversation-1'});
+    }
     if (path == '/api/chat/conversations/conversation-1/messages') {
       return _httpResponse(_timelineSnapshot('conversation-1'));
     }
@@ -838,3 +932,18 @@ Map<String, Object?> _snapshotMetadata() => <String, Object?>{
         'version': conversationSnapshotVersion,
       },
     };
+
+const _activeSnapshot = <String, Object?>{
+  'status': 'active',
+  'conversationId': 'conversation-1',
+  'huddleSessionId': 'huddle-1',
+  'startedAt': '2026-08-26T11:00:00.000Z',
+  'participants': [
+    {
+      'userId': 'user-1',
+      'status': 'joined',
+      'joinedAt': '2026-08-26T11:00:01.000Z'
+    }
+  ],
+  'screenShareOwnerUserId': null,
+};

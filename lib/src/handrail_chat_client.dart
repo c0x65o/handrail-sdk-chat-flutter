@@ -1288,6 +1288,8 @@ final class HandrailChatClient {
     final listSnapshots = <ConversationListSnapshot>[];
     final detailSnapshots = <ConversationDetailSnapshot>[];
     final timelinePages = <MessageTimelinePage>[];
+    final huddleSnapshots = <HuddleSessionState>[];
+    final deniedHuddles = <ConversationId>[];
     final replayCursors = <EventCursor>[];
     final reminderGeneration = _messageReminderRecoveryRuntime?.generation ??
         _immediateMessageReminderRuntime!.generation;
@@ -1369,6 +1371,67 @@ final class HandrailChatClient {
         continue;
       }
       final timeline = _requireSnapshotSuccess(timelineResult);
+      // Huddle snapshots have no cursor of their own. Bracket the read with
+      // timeline cursors so replay starts from an unchanged canonical window.
+      if (_huddlesFeatureEnabled() &&
+          (huddles._controllers.containsKey(conversationId) ||
+              normalizedState.state.huddles.containsKey(conversationId) ||
+              (input.diagnostic?.eventType == 'huddle.updated' &&
+                  input.diagnostic?.conversationId == conversationId))) {
+        final token = await tokenProvider();
+        if (_disposed ||
+            input.isCancelled ||
+            hydrationGeneration != _storageIdentityGeneration) {
+          throw const _RealtimeSnapshotHydrationCancelled();
+        }
+        final response = await transport.send(HandrailChatHttpRequest(
+          method: 'GET',
+          uri: _snapshotEndpointUri(
+              apiBaseUri, ['conversations', conversationId.value, 'huddle']),
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $token'
+          },
+        ));
+        if (_disposed ||
+            input.isCancelled ||
+            hydrationGeneration != _storageIdentityGeneration) {
+          throw const _RealtimeSnapshotHydrationCancelled();
+        }
+        if (response.statusCode == 403 || response.statusCode == 404) {
+          // Huddle policy is independent of message/conversation access.
+          deniedHuddles.add(conversationId);
+        } else {
+          if (response.statusCode != 200) {
+            throw const FormatException('Huddle recovery snapshot unavailable');
+          }
+          final huddle = HuddleSessionState.fromJson(jsonDecode(response.body));
+          if (huddle.conversationId != conversationId) {
+            throw const FormatException('Huddle recovery scope mismatch');
+          }
+          final afterResult = await getMessageTimeline(MessageTimelineRequest(
+            conversationId: conversationId,
+            direction: MessageTimelineDirection.backward,
+            limit: messageTimelineMaximumLimit,
+          ));
+          if (_disposed ||
+              input.isCancelled ||
+              hydrationGeneration != _storageIdentityGeneration) {
+            throw const _RealtimeSnapshotHydrationCancelled();
+          }
+          if (_isRevokedSnapshotResult(afterResult)) {
+            realtimeSession?.clearConversationSubscription(conversationId);
+            detailSnapshots.removeLast();
+            continue;
+          }
+          final after = _requireSnapshotSuccess(afterResult);
+          if (after.replay.resumeFrom.eventId !=
+              timeline.replay.resumeFrom.eventId) {
+            throw const _RealtimeSnapshotCursorMismatch();
+          }
+          huddleSnapshots.add(huddle);
+        }
+      }
       timelinePages.add(timeline);
       replayCursors.add(timeline.replay.resumeFrom);
     }
@@ -1385,6 +1448,7 @@ final class HandrailChatClient {
         conversationDetails: detailSnapshots,
         messageTimelines: timelinePages,
         messageReminderPages: reminderPages,
+        huddleSnapshots: huddleSnapshots,
         safeCursor: null,
       );
       return null;
@@ -1400,8 +1464,22 @@ final class HandrailChatClient {
       conversationDetails: detailSnapshots,
       messageTimelines: timelinePages,
       messageReminderPages: reminderPages,
+      huddleSnapshots: huddleSnapshots,
       safeCursor: safeCursor,
     );
+    for (final snapshot in huddleSnapshots) {
+      huddles.reconcileCanonicalState(snapshot);
+    }
+    for (final id in deniedHuddles) {
+      final controller = huddles._controllers[id];
+      controller?._resetForIdentityChange();
+      if (controller != null) {
+        controller._emit(controller._copyState(
+          hydrationStatus: ChatHuddleHydrationStatus.error,
+          media: const ChatHuddleMediaUnavailableState(),
+        ));
+      }
+    }
     return safeCursor;
   }
 
@@ -2671,12 +2749,18 @@ final class HandrailChatClient {
   }
 
   bool _huddlesFeatureEnabled() {
-    if (_disposed) return false;
+    if (_disposed ||
+        requestedCapabilities['huddles'] == false ||
+        requestedCapabilities['media'] == false) return false;
     final lifecycle = _state;
     if (lifecycle is! ChatClientReadyState) return true;
     final capabilities = lifecycle.negotiatedCapabilities;
-    if (capabilities['huddles'] != true) return false;
-    return capabilities['media'] != false;
+    // The canonical JS server advertises huddles through `media`. Keep the
+    // legacy huddles flag compatible, while honoring either explicit opt-out.
+    if (lifecycle.metadata.enabledFeatures.values['huddles'] == false ||
+        lifecycle.metadata.enabledFeatures.values['media'] == false)
+      return false;
+    return capabilities['media'] == true || capabilities['huddles'] == true;
   }
 
   /// Closes active snapshot queries and releases lifecycle stream resources.

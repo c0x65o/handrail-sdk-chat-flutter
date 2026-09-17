@@ -280,6 +280,7 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
                     SizedBox(height: chatTheme.spacing.medium),
                     Semantics(
                       liveRegion: true,
+                      excludeSemantics: true,
                       label: feedback,
                       child: Text(
                         feedback,
@@ -412,8 +413,9 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
           participation == ChatHuddleActorParticipation.absent ||
           participation == ChatHuddleActorParticipation.left ||
           _controllerState.media is ChatHuddleMediaIdleState ||
-          _controllerState.media is ChatHuddleMediaRejoinRequiredState;
-      if (needsJoin) {
+          (_controllerState.media is ChatHuddleMediaRejoinRequiredState &&
+              !_hasJoinedMediaConnection);
+      if (needsJoin && participation != ChatHuddleActorParticipation.joined) {
         children.add(_actionButton(
           keyName: 'join',
           label: 'Join huddle',
@@ -426,7 +428,10 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
                     connectAfterSuccess: true,
                   ),
         ));
-      } else {
+      }
+      // Reload can recover canonical membership without private join material.
+      // Keep Leave available so the actor can explicitly leave and rejoin.
+      if (!needsJoin || participation == ChatHuddleActorParticipation.joined) {
         children.add(_actionButton(
           keyName: 'leave',
           label: 'Leave huddle',
@@ -698,6 +703,7 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
       button: true,
       enabled: enabled,
       toggled: selected,
+      onTap: enabled ? onPressed : null,
       child: ExcludeSemantics(
         child: Tooltip(
           message: label,
@@ -748,12 +754,20 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
     return const <HuddleParticipant>[];
   }
 
+  // Expiry of consumed join material does not end an admitted live connection.
+  bool get _hasJoinedMediaConnection =>
+      _controllerState.canonicalState is ActiveHuddleState &&
+      widget.controller.currentActorParticipation ==
+          ChatHuddleActorParticipation.joined &&
+      _mediaState.status == ChatMediaSessionStatus.connected;
+
   bool get _showMediaControls {
     final participation = widget.controller.currentActorParticipation;
     return _controllerState.canonicalState is ActiveHuddleState &&
         participation != ChatHuddleActorParticipation.absent &&
         participation != ChatHuddleActorParticipation.left &&
-        _controllerState.media is! ChatHuddleMediaRejoinRequiredState &&
+        (_controllerState.media is! ChatHuddleMediaRejoinRequiredState ||
+            _hasJoinedMediaConnection) &&
         _controllerState.media is! ChatHuddleMediaIdleState &&
         !_isUnavailable;
   }
@@ -772,6 +786,12 @@ class _HandrailHuddlePanelState extends State<HandrailHuddlePanel> {
     final mediaFailure = _mediaState.lastFailure;
     if (mediaFailure != null) return _mediaFailureMessage(mediaFailure);
     final controllerMedia = _controllerState.media;
+    if (controllerMedia is ChatHuddleMediaRejoinRequiredState &&
+        widget.controller.currentActorParticipation ==
+            ChatHuddleActorParticipation.joined &&
+        !_hasJoinedMediaConnection) {
+      return 'Leave this huddle, then join again to reconnect media.';
+    }
     if (controllerMedia is ChatHuddleMediaErrorState) {
       return _huddleFailureMessage(controllerMedia.code);
     }

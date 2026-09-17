@@ -685,7 +685,7 @@ const Map<String, _EventSpec> _eventSpecs = {
   'huddle.updated': _EventSpec(
       streamScopes: <String>['conversation'],
       requiredFields: <String>['state'],
-      optionalFields: <String>[],
+      optionalFields: <String>['operation', 'participant', 'intent', 'reason'],
       entityPath: 'state.conversationId'),
 };
 
@@ -874,8 +874,35 @@ void _validateCanonical(String type, Map<String, Object?> payload) {
   }
   if (type == 'huddle.updated') {
     final status = _string(_readMap(payload['state'])['status']);
-    if (!const ['inactive', 'starting', 'active', 'ended'].contains(status)) {
+    if (!const ['inactive', 'starting', 'active', 'ended'].contains(status))
       throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    for (final field in <String, List<String>>{
+      'operation': [
+        'start_huddle',
+        'join_huddle',
+        'leave_huddle',
+        'set_huddle_screen_share',
+        'end_huddle'
+      ],
+      'intent': ['set', 'clear'],
+      'reason': ['explicit_leave', 'disconnect', 'huddle_ended'],
+    }.entries) {
+      if (payload.containsKey(field.key) &&
+          !field.value.contains(_string(payload[field.key])))
+        throw _failure(DurableEventParseErrorCode.incoherentPayload);
+    }
+    if (payload.containsKey('participant')) {
+      final participant = _readMap(payload['participant']);
+      _exactKeys(participant, {'userId', 'status', 'joinedAt', 'leftAt'});
+      _string(participant['userId']);
+      _timestamp(participant['joinedAt']);
+      if (!const ['joined', 'left'].contains(_string(participant['status'])))
+        throw _failure(DurableEventParseErrorCode.incoherentPayload);
+      if (participant['status'] == 'left') {
+        _timestamp(participant['leftAt']);
+      } else if (participant.containsKey('leftAt')) {
+        throw _failure(DurableEventParseErrorCode.incoherentPayload);
+      }
     }
   }
 }

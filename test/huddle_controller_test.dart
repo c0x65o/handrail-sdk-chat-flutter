@@ -11,6 +11,23 @@ const _descriptorSecret = 'OPAQUE_MEDIA_DESCRIPTOR_SENTINEL';
 
 void main() {
   group('ChatHuddleController', () {
+    test('queue readiness does not cancel nonpersistent foreground requests',
+        () async {
+      final response = Completer<HandrailChatHttpResponse>();
+      final transport = _FakeHttpTransport((_) => response.future);
+      final client = _client(transport);
+      addTearDown(client.dispose);
+      client.setApplicationForeground(false);
+      final starting = client.huddles.forConversation(_conversationId).start();
+      await Future<void>.delayed(Duration.zero);
+      client.setApplicationForeground(true);
+      response.complete(_commandResponseValue(
+          jsonDecode(transport.requests.single.body!) as Map<String, Object?>,
+          _starting,
+          media: true));
+      expect(await starting, isA<ChatHuddleActionSuccess>());
+    });
+
     test('hydrates inactive and active snapshots with current-first state',
         () async {
       for (final snapshot in <Map<String, Object?>>[
@@ -417,6 +434,60 @@ void main() {
       );
       await replayClient.dispose();
     });
+
+    for (final flag in ['media', 'huddles']) {
+      test(
+          'explicit $flag opt-out prevents I/O before and after initialization',
+          () async {
+        final transport = _FakeHttpTransport((request) async {
+          expect(request.uri.path.endsWith('/_meta'), isTrue);
+          return _jsonResponse({
+            ..._metadata(huddles: true),
+            'enabledFeatures': {'media': true, 'huddles': true}
+          });
+        });
+        final client = _client(transport, requestedCapabilities: {
+          'media': true,
+          'huddles': true,
+          flag: false
+        });
+        addTearDown(client.dispose);
+        final controller = client.huddles.forConversation(_conversationId);
+        expect(
+            await controller.hydrate(), isA<ChatHuddleActionFeatureDisabled>());
+        expect(transport.requests, isEmpty);
+        await client.initialize();
+        expect(
+            await controller.start(), isA<ChatHuddleActionFeatureDisabled>());
+        expect(transport.requests, hasLength(1));
+      });
+    }
+
+    for (final enabled in [true, false]) {
+      test('canonical server media feature gates huddles: $enabled', () async {
+        final transport = _FakeHttpTransport((request) async {
+          if (request.uri.path.endsWith('/_meta')) {
+            return _jsonResponse({
+              ..._metadata(huddles: true),
+              'enabledFeatures': {'media': enabled}
+            });
+          }
+          return _jsonResponse(_inactive);
+        });
+        final client = _client(transport,
+            requestedCapabilities: {'media': true, 'huddles': true});
+        addTearDown(client.dispose);
+        await client.initialize();
+        final result =
+            await client.huddles.forConversation(_conversationId).hydrate();
+        expect(
+            result,
+            enabled
+                ? isA<ChatHuddleActionSuccess>()
+                : isA<ChatHuddleActionFeatureDisabled>());
+        expect(transport.requests.length, enabled ? 2 : 1);
+      });
+    }
 
     test('negotiated feature disable preserves state without huddle I/O',
         () async {

@@ -6,4 +6,4 @@ const String handrailChatPackageName = 'handrail_chat';
 /// `pubspec.yaml` is canonical. Handrail's native version writer updates this
 /// mirror through `.handrail/version-mirrors.json` in the same release.
 /// The JavaScript SDK has an independent version sequence.
-const String handrailChatPackageVersion = '0.1.27';
+const String handrailChatPackageVersion = '0.1.28';

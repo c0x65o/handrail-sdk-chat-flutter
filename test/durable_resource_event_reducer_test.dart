@@ -1755,6 +1755,39 @@ void main() {
       await endedStore.close();
     });
 
+    test(
+        'controller hydration does not advance ordered state past queued events',
+        () async {
+      final client = HandrailChatClient(
+        apiBaseUri: Uri.parse('https://chat.example.test/api/chat'),
+        tokenProvider: () async => 'token',
+        transport: _FakeTransport((_) async => HandrailChatHttpResponse(
+              statusCode: 200,
+              body: jsonEncode(_activeHuddle),
+            )),
+      );
+      addTearDown(client.dispose);
+      _seedClient(client);
+      client.reduceDurableEvent(_huddleEvent(
+          eventId: 'before-hydration', second: 1, state: _inactiveHuddle));
+      final controller =
+          client.huddles.forConversation(const ConversationId(_conversationId));
+      expect(await controller.hydrate(), isA<ChatHuddleActionSuccess>());
+      expect(
+          client.normalizedState.state
+              .huddles[const ConversationId(_conversationId)],
+          isA<InactiveHuddleState>());
+      client.reduceDurableEvent(_huddleEvent(
+          eventId: 'queued-starting', second: 2, state: _startingHuddle));
+      final result = client.reduceDurableEvent(_huddleEvent(
+        eventId: 'active-after-authoritative-hydration',
+        second: 4,
+        state: _activeHuddle,
+      ));
+      expect(result.status, DurableEventReductionStatus.applied);
+      expect(controller.state.canonicalState, isA<ActiveHuddleState>());
+    });
+
     test('client settlement prevents an older command response from winning',
         () async {
       final response = Completer<HandrailChatHttpResponse>();
@@ -1896,28 +1929,29 @@ MessageTimelinePage _timeline({
         'conversationId': _conversationId,
         'messages': [
           for (final id in [_messageId, if (withSecondMessage) 'message-2'])
-          {
-            'id': id,
-            'tenantId': _tenantId,
-            'conversationId': _conversationId,
-            'author': {'type': 'user', 'userId': _userId},
-            'sequence': id == _messageId ? 1 : 2,
-            'createdAt': _baseTime,
-            'updatedAt': _baseTime,
-            'revision': {'revision': 1},
-            'content': {
-              'format': 'markdown',
-              'text': 'Message',
-              if (withAttachment)
-                'attachments': [
-                  {'attachmentId': _attachmentId},
-                ],
+            {
+              'id': id,
+              'tenantId': _tenantId,
+              'conversationId': _conversationId,
+              'author': {'type': 'user', 'userId': _userId},
+              'sequence': id == _messageId ? 1 : 2,
+              'createdAt': _baseTime,
+              'updatedAt': _baseTime,
+              'revision': {'revision': 1},
+              'content': {
+                'format': 'markdown',
+                'text': 'Message',
+                if (withAttachment)
+                  'attachments': [
+                    {'attachmentId': _attachmentId},
+                  ],
+              },
+              'isThreadRoot': false,
+              'reactions': <Object?>[],
+              'attachmentMetadata': withAttachment
+                  ? <Object?>[_attachmentMetadata()]
+                  : <Object?>[],
             },
-            'isThreadRoot': false,
-            'reactions': <Object?>[],
-            'attachmentMetadata':
-                withAttachment ? <Object?>[_attachmentMetadata()] : <Object?>[],
-          },
         ],
         'pagination': {
           'older': {'available': false},

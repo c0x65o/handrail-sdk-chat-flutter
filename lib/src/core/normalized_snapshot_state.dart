@@ -1162,6 +1162,22 @@ final class NormalizedSnapshotStore {
     return _commit(_state, persisted);
   }
 
+  // Only recovery staging may install an HTTP snapshot ahead of replay.
+  NormalizedSnapshotState _hydrateHuddleSnapshot(HuddleSessionState snapshot) {
+    _ensureOpen();
+    final validated = HuddleSessionState.fromJson(snapshot.toJson());
+    if (!_state.conversations.containsKey(validated.conversationId)) {
+      throw const FormatException('Huddle snapshot requires its conversation');
+    }
+    return _commit(
+        _state,
+        _copyState(_state,
+            huddles: Map.unmodifiable({
+              ..._state.huddles,
+              validated.conversationId: validated,
+            })));
+  }
+
   /// Atomically replaces durable snapshot state after replay recovery.
   ///
   /// Validation and normalization happen in an unobserved staging store. The
@@ -1172,6 +1188,7 @@ final class NormalizedSnapshotStore {
     required List<ConversationDetailSnapshot> conversationDetails,
     required List<MessageTimelinePage> messageTimelines,
     List<MessageReminderListSnapshot> messageReminderPages = const [],
+    List<HuddleSessionState> huddleSnapshots = const [],
     required EventCursor? safeCursor,
   }) {
     _ensureOpen();
@@ -1190,6 +1207,9 @@ final class NormalizedSnapshotStore {
       }
       for (final page in messageReminderPages) {
         staging.hydrateMessageReminderList(page);
+      }
+      for (final snapshot in huddleSnapshots) {
+        staging._hydrateHuddleSnapshot(snapshot);
       }
       final staged = staging.state;
       final timelines = <ConversationId, NormalizedTimelineEntry>{

@@ -25,6 +25,54 @@ void main() {
     );
   });
 
+  test(
+      'huddle metadata accepts canonical operations and rejects private join material',
+      () {
+    final event = _map(_roundTrip((fixtures['valid']! as List)
+        .firstWhere((value) => _map(value)['type'] == 'huddle.updated')));
+    final state = _map(_map(event['payload'])['state']);
+    for (final metadata in <Map<String, Object?>>[
+      {'operation': 'start_huddle'},
+      {
+        'operation': 'join_huddle',
+        'participant': (state['participants']! as List).first
+      },
+      {'operation': 'leave_huddle', 'reason': 'disconnect'},
+      {'operation': 'set_huddle_screen_share', 'intent': 'clear'},
+      {'operation': 'end_huddle'},
+    ]) {
+      final payload = {'state': state, ...metadata};
+      expect(
+          KnownDurableEvent.fromJson({...event, 'payload': payload},
+                  trustedIdentity: trustedIdentity)
+              .payload
+              .data,
+          payload);
+    }
+    for (final metadata in <Map<String, Object?>>[
+      {'operation': 'unknown'},
+      {'intent': 'unknown'},
+      {'reason': 'unknown'},
+      {
+        'participant': {
+          'userId': 'user-1',
+          'status': 'left',
+          'joinedAt': event['occurredAt']
+        }
+      },
+      {
+        'mediaJoin': {'descriptor': 'FORBIDDEN_JOIN_MATERIAL'}
+      },
+    ]) {
+      expect(
+          () => KnownDurableEvent.fromJson({
+                ...event,
+                'payload': {'state': state, ...metadata}
+              }, trustedIdentity: trustedIdentity),
+          throwsA(isA<DurableEventFormatException>()));
+    }
+  });
+
   Map<String, Object?> threadEvent() =>
       _map(_roundTrip((fixtures['valid']! as List)
           .firstWhere((value) => _map(value)['type'] == 'thread.created')));

@@ -21,6 +21,140 @@ final _otherIdentity = ApplicationChatStorageIdentity(
 
 void main() {
   group('current actor huddle participation', () {
+    for (final later in [
+      'same',
+      'starting',
+      'absent',
+      'older-left',
+      'left',
+      'rejoined',
+      'session',
+      'identity'
+    ]) {
+      test(
+          'foreground event-first join keeps only current private material: $later',
+          () async {
+        final response = Completer<HandrailChatHttpResponse>();
+        final transport = _FakeTransport((request) async {
+          if (request.uri.path.endsWith('/_meta')) return _metadataResponse;
+          if (request.method == 'GET') return _json(_starting);
+          return response.future;
+        });
+        final client =
+            _client(transport, storage: InMemoryApplicationChatStorage());
+        addTearDown(client.dispose);
+        await client.activateStorageIdentity(_identity);
+        await client.initialize();
+        final controller = client.huddles.forConversation(_conversationId);
+        controller
+            .reconcileCanonicalState(HuddleSessionState.fromJson(_starting));
+        var completed = false;
+        final joining = controller.join().then((value) {
+          completed = true;
+          return value;
+        });
+        await _eventually(() => transport.commandRequests.isNotEmpty);
+        final input = jsonDecode(transport.commandRequests.single.body!)
+            as Map<String, Object?>;
+        client.huddles
+            .reconcileCanonicalState(HuddleSessionState.fromJson(_active));
+        if (later == 'starting')
+          controller
+              .reconcileCanonicalState(HuddleSessionState.fromJson(_starting));
+        if (later == 'absent')
+          controller.reconcileCanonicalState(
+              HuddleSessionState.fromJson(_activeEmpty));
+        if (later == 'older-left')
+          controller.reconcileCanonicalState(HuddleSessionState.fromJson({
+            ..._left,
+            'participants': [
+              {
+                'userId': 'user-alice',
+                'status': 'left',
+                'joinedAt': '2030-01-01T00:00:01.100Z',
+                'leftAt': '2030-01-01T00:00:01.500Z'
+              }
+            ]
+          }));
+        if (later == 'left')
+          controller
+              .reconcileCanonicalState(HuddleSessionState.fromJson(_left));
+        if (later == 'rejoined')
+          controller.reconcileCanonicalState(HuddleSessionState.fromJson({
+            ..._active,
+            'participants': [
+              {
+                'userId': 'user-alice',
+                'status': 'joined',
+                'joinedAt': '2030-01-01T00:01:00.000Z'
+              }
+            ]
+          }));
+        if (later == 'session')
+          controller.reconcileCanonicalState(HuddleSessionState.fromJson(
+              {..._active, 'huddleSessionId': 'new-session'}));
+        if (later == 'identity')
+          await client.activateStorageIdentity(_otherIdentity);
+        await Future<void>.delayed(Duration.zero);
+        if (later == 'same')
+          expect(completed, isFalse,
+              reason: 'A public event cannot replace the private response');
+        response.complete(_command(input, _active, media: true));
+        final result = await joining;
+        if (['same', 'starting', 'absent', 'older-left'].contains(later)) {
+          expect(result, isA<ChatHuddleActionSuccess>());
+          expect((result as ChatHuddleActionSuccess).applied, isFalse);
+          expect(controller.mediaBoundary.readJoinDescriptor(), isNotNull);
+          if (later == 'same')
+            expect(controller.state.canonicalState.toJson(), _active);
+        } else {
+          expect(controller.mediaBoundary.readJoinDescriptor(), isNull);
+        }
+      });
+    }
+
+    test('HTTP-first join survives earlier ordered actor-absent events',
+        () async {
+      final client = _client(
+          _FakeTransport((request) async => _command(
+              jsonDecode(request.body!) as Map<String, Object?>, _active,
+              media: true)),
+          storage: InMemoryApplicationChatStorage());
+      addTearDown(client.dispose);
+      await client.activateStorageIdentity(_identity);
+      final controller = client.huddles.forConversation(_conversationId);
+      controller
+          .reconcileCanonicalState(HuddleSessionState.fromJson(_starting));
+      expect(await controller.join(), isA<ChatHuddleActionSuccess>());
+      final descriptor = controller.mediaBoundary.readJoinDescriptor();
+      expect(descriptor, isNotNull);
+      // HTTP completed ahead of the ordered event stream. Absence in an older
+      // same-session event is not an explicit leave (which retains a record).
+      client.huddles
+          .reconcileCanonicalState(HuddleSessionState.fromJson(_activeEmpty));
+      expect(controller.mediaBoundary.readJoinDescriptor(), same(descriptor));
+      expect(controller.state.media, isA<ChatHuddleMediaReadyState>());
+      client.huddles.reconcileCanonicalState(HuddleSessionState.fromJson({
+        ..._left,
+        'participants': [
+          {
+            'userId': 'user-alice',
+            'status': 'left',
+            'joinedAt': '2030-01-01T00:00:01.100Z',
+            'leftAt': '2030-01-01T00:00:01.500Z'
+          }
+        ]
+      }));
+      expect(controller.mediaBoundary.readJoinDescriptor(), same(descriptor));
+      client.huddles
+          .reconcileCanonicalState(HuddleSessionState.fromJson(_active));
+      expect(controller.mediaBoundary.readJoinDescriptor(), same(descriptor));
+      client.huddles
+          .reconcileCanonicalState(HuddleSessionState.fromJson(_left));
+      expect(controller.mediaBoundary.readJoinDescriptor(), isNull);
+      expect(controller.state.media, isA<ChatHuddleMediaIdleState>());
+    });
+
     test('tracks joined to left canonical updates independently of media',
         () async {
       final transport = _FakeTransport(_standardHandler);

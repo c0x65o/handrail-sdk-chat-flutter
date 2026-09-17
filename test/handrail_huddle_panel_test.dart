@@ -54,6 +54,52 @@ void main() {
     await _disposeHarness(tester, harness);
   });
 
+  testWidgets('connected joined controls survive consumed descriptor expiry',
+      (tester) async {
+    final harness = (await tester.runAsync(() async {
+      final harness = _Harness(storage: InMemoryApplicationChatStorage());
+      await harness.client.activateStorageIdentity(
+          ApplicationChatStorageIdentity(
+              tenantId: const TenantId('tenant-panel'),
+              userId: const UserId('user-alice'),
+              deviceId: const DeviceId('device-panel')));
+      await harness.activate();
+      return harness;
+    }))!;
+    final provider = _provider();
+    final session = ChatHuddleMediaSession(
+        controller: harness.controller,
+        delegate: FakeChatMediaDelegate(fallbackSession: provider));
+    await tester.runAsync(session.connect);
+    await _pumpPanel(tester, harness.controller, mediaSession: session);
+    harness.expireDescriptor!();
+    await tester.pump();
+    expect(harness.controller.mediaBoundary.readJoinDescriptor(), isNull);
+    expect(session.state.status, ChatMediaSessionStatus.connected);
+    expect(find.byKey(const ValueKey('handrail-huddle-leave')), findsOneWidget);
+    expect(find.byKey(const ValueKey('handrail-huddle-join')), findsNothing);
+    expect(find.byKey(const ValueKey('handrail-huddle-microphone')),
+        findsOneWidget);
+    final toggle = tester
+        .widgetList<Semantics>(find.byType(Semantics))
+        .singleWhere(
+            (widget) => widget.properties.label == 'Unmute microphone');
+    expect(toggle.properties.onTap, isNotNull);
+    await tester.runAsync(session.disconnect);
+    await tester.pump();
+    expect(find.byKey(const ValueKey('handrail-huddle-leave')), findsOneWidget);
+    expect(find.byKey(const ValueKey('handrail-huddle-join')), findsNothing);
+    expect(find.text('Leave this huddle, then join again to reconnect media.'),
+        findsOneWidget);
+    harness.controller.reconcileCanonicalState(_state(_left(_conversationId)));
+    await _pumpUntil(tester, () => provider.closeCount == 1);
+    expect(
+        find.byKey(const ValueKey('handrail-huddle-microphone')), findsNothing);
+    expect(find.byKey(const ValueKey('handrail-huddle-join')), findsOneWidget);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await _disposeHarness(tester, harness);
+  });
+
   testWidgets('disables lifecycle controls while an action is pending', (
     tester,
   ) async {
@@ -373,6 +419,7 @@ void main() {
   testWidgets('surfaces permission denial and stable provider failure text', (
     tester,
   ) async {
+    final semantics = tester.ensureSemantics();
     const providerSecret = 'SECRET_PROVIDER_EXCEPTION_TEXT';
     final harness = _Harness();
     await tester.runAsync(harness.activate);
@@ -399,6 +446,8 @@ void main() {
           ChatMediaErrorCode.permissionDenied,
     );
     expect(find.text('Microphone permission was denied.'), findsOneWidget);
+    expect(find.bySemanticsLabel('Microphone permission was denied.'),
+        findsOneWidget);
     expect(delegate.permissionRequests, [ChatMediaPermission.microphone]);
 
     provider.queueError(
@@ -416,6 +465,7 @@ void main() {
     expect(
         find.text('Media operation could not be completed.'), findsOneWidget);
     expect(find.textContaining(providerSecret), findsNothing);
+    semantics.dispose();
 
     await tester.pumpWidget(const SizedBox.shrink());
     await tester.pump();
@@ -762,7 +812,12 @@ final class _Harness {
       onCommandDiagnostic: diagnostics.add,
       generateIdempotencyKey: () => 'panel-key-${++_keySequence}',
       huddleClock: () => _now,
-      huddleTimerScheduler: (_, __) => () {},
+      huddleTimerScheduler: (_, callback) {
+        expireDescriptor = callback;
+        return () {
+          if (identical(expireDescriptor, callback)) expireDescriptor = null;
+        };
+      },
     );
     // Match the authorized conversation snapshot supplied by a real host.
     // This is command validation context, not a trusted runtime identity.
@@ -784,6 +839,7 @@ final class _Harness {
   late final _Transport transport;
   late final HandrailChatClient client;
   late final ChatHuddleController controller;
+  void Function()? expireDescriptor;
   var _keySequence = 0;
   var _withDepartedParticipant = false;
   var responseCount = 0;

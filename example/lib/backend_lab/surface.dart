@@ -7,6 +7,7 @@ import 'package:handrail_chat/ui.dart';
 import 'package:web/web.dart' as web;
 
 import 'browser_transport.dart';
+import 'media.dart';
 import 'reply_contexts.dart';
 import 'thread_lifecycles.dart';
 
@@ -51,6 +52,7 @@ class _BackendChatLabState extends State<BackendChatLab> {
   String? _seedProfile;
   Map<String, String> _actors = const {};
   ConversationId? _initialConversationId;
+  String _huddleLabel = '';
   String _actor = '';
   String? _error;
   bool _ready = false;
@@ -135,6 +137,8 @@ class _BackendChatLabState extends State<BackendChatLab> {
         realtimeSession: session,
         requestedCapabilities: {
           messageSearchFeature: true,
+          'huddles': true,
+          'media': true,
           if (replyStyles) ChatReplyThreadFeatures.threadLifecycle: true,
         },
         conversationPreferenceClock: () =>
@@ -171,6 +175,7 @@ class _BackendChatLabState extends State<BackendChatLab> {
         throw StateError('The requested Chat Lab conversation is unavailable.');
       }
       _initialConversationId = state.items.firstWhere(matches).conversationId;
+      _huddleLabel = state.items.firstWhere(matches).displayName;
       if (!mounted) return;
       _capture('before-parent-hydration');
       await session.start();
@@ -227,6 +232,28 @@ class _BackendChatLabState extends State<BackendChatLab> {
       'listError': _list?.state.error?.code.name,
       'error': _error,
       'selectedConversationId': selected?.value,
+      if (_initialConversationId != null)
+        'huddle': {
+          'canonical': client.huddles
+              .forConversation(_initialConversationId!)
+              .state
+              .canonicalState
+              .toJson(),
+          'media': client.huddles
+              .forConversation(_initialConversationId!)
+              .state
+              .media
+              .state,
+          'hydration': client.huddles
+              .forConversation(_initialConversationId!)
+              .state
+              .hydrationStatus
+              .name,
+          'participation': client.huddles
+              .forConversation(_initialConversationId!)
+              .currentActorParticipation
+              .name,
+        },
       'conversationIds':
           _list?.state.items.map((i) => i.conversationId.value).toList() ?? [],
       'hydratedTimelineIds':
@@ -407,6 +434,14 @@ class _BackendChatLabState extends State<BackendChatLab> {
                 )),
             if (_error != null)
               Padding(padding: const EdgeInsets.all(8), child: Text(_error!)),
+            if (_ready)
+              BackendLabHuddle(
+                key: ValueKey('$_actor:${_initialConversationId!.value}'),
+                controller:
+                    _client!.huddles.forConversation(_initialConversationId!),
+                label: _huddleLabel,
+                actor: UserId(_actor),
+              ),
             Expanded(
                 child: _ready
                     ? ChatScope(

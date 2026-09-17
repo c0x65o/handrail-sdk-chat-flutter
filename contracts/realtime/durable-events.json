@@ -262,7 +262,7 @@
       "payloadModel": "HuddleSessionState",
       "streamScopes": ["conversation"],
       "requiredFields": ["state"],
-      "optionalFields": [],
+      "optionalFields": ["operation", "participant", "intent", "reason"],
       "entityPath": "state.conversationId"
     }
   ]
