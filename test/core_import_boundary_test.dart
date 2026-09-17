@@ -5,9 +5,48 @@ import 'package:handrail_chat/core.dart' as core;
 import 'package:test/test.dart';
 
 void main() {
+  test(
+      'public package version matches the canonical manifest before generation',
+      () async {
+    // Read the checked-in source without running generators or version writers:
+    // repairing it first would conceal a broken release candidate.
+    final manifest = await File('pubspec.yaml').readAsString();
+    final versions =
+        RegExp(r'^version:\s*(\S+)\s*$', multiLine: true).allMatches(manifest);
+    expect(versions, hasLength(1));
+    expect(core.handrailChatPackageVersion, versions.single.group(1));
+  });
+
+  test('native version mirror targets the exported Dart constant', () async {
+    final declaration = jsonDecode(
+      await File('.handrail/version-mirrors.json').readAsString(),
+    ) as Map<String, Object?>;
+    expect(declaration, {
+      'schema_version': 1,
+      'source': 'pubspec.yaml',
+      'mirrors': [
+        {
+          'file': 'lib/src/package_metadata.dart',
+          'format': 'text_templates',
+          'templates': [
+            "const String handrailChatPackageVersion = '{{version}}';",
+          ],
+        },
+      ],
+    });
+    final source = await File('lib/src/package_metadata.dart').readAsString();
+    final mirrors = declaration['mirrors']! as List<Object?>;
+    final mirror = mirrors.single! as Map<String, Object?>;
+    final template = (mirror['templates']! as List<Object?>).single! as String;
+    final expected = template.replaceAll(
+      '{{version}}',
+      core.handrailChatPackageVersion,
+    );
+    expect(expected.allMatches(source), hasLength(1));
+  });
+
   test('core.dart has a pure-Dart import graph', () async {
     expect(core.handrailChatPackageName, 'handrail_chat');
-    expect(core.handrailChatPackageVersion, '0.1.19');
     expect(
       core.composerMarkdownToRichTextDocument('**pure Dart**').blocks,
       hasLength(1),

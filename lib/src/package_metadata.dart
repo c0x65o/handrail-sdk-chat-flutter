@@ -3,6 +3,7 @@ const String handrailChatPackageName = 'handrail_chat';
 
 /// The package version sent by production realtime clients.
 ///
-/// The unified release check keeps this value aligned with `pubspec.yaml` and
-/// the npm/browser package metadata.
-const String handrailChatPackageVersion = '0.1.19';
+/// `pubspec.yaml` is canonical. Handrail's native version writer updates this
+/// mirror through `.handrail/version-mirrors.json` in the same release.
+/// The JavaScript SDK has an independent version sequence.
+const String handrailChatPackageVersion = '0.1.26';

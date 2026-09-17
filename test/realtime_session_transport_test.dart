@@ -6,6 +6,25 @@ import 'package:test/test.dart';
 
 void main() {
   group('ChatRealtimeSessionTransport', () {
+    test('sends the public package version in the client handshake', () async {
+      final socket = FakeSocket();
+      final session = ChatRealtimeSessionTransport(
+        endpoint: Uri.parse('https://chat.example/api/chat'),
+        clientPackageVersion: handrailChatPackageVersion,
+        protocolVersion: handrailChatProtocolVersion,
+        tokenProvider: () => 'test-token',
+        socketFactory: (_, __) => socket,
+      );
+      addTearDown(session.dispose);
+
+      await session.start();
+
+      expect(jsonDecode(socket.sent.single), {
+        'clientPackageVersion': handrailChatPackageVersion,
+        'protocolVersion': handrailChatProtocolVersion,
+      });
+    });
+
     test('constructs ordered protocols, sends handshake, and accepts session',
         () async {
       final socket = FakeSocket();

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source": "pubspec.yaml",
+  "mirrors": [
+    {
+      "file": "lib/src/package_metadata.dart",
+      "format": "text_templates",
+      "templates": [
+        "const String handrailChatPackageVersion = '{{version}}';"
+      ]
+    }
+  ]
+}

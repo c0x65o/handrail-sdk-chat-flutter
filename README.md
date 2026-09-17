@@ -28,6 +28,9 @@ locks, logs, artifact identities, and remaining independent QA gates.
 
 ## Installation
 
+Maintainers: see [Flutter release instructions](docs/releasing.md) for canonical
+version ownership, the pre-generation consistency guard, and native finalization.
+
 The package now lives at the root of `handrail-sdk-chat-flutter`. Install from
 `https://github.com/c0x65o/handrail-sdk-chat-flutter.git` at a full committed SDK
 SHA with a matching `pubspec.lock`. The current migration uses
