@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
-import 'package:handrail_chat/src/testing/fake_chat_realtime.dart' show FakeChatRealtimeNetwork;
+import 'package:handrail_chat/src/testing/fake_chat_realtime.dart'
+    show FakeChatRealtimeNetwork;
 import 'package:handrail_chat/src/testing/in_memory_application_chat_storage.dart';
 
 import 'reply_style_runtime_test.dart' as style;
@@ -57,8 +58,8 @@ void main() {
                   initialConversationId: _alpha,
                   notificationControls:
                       const HandrailChannelNotificationControls(
-                        authorized: true,
-                      ),
+                    authorized: true,
+                  ),
                   messageSearch: (_) async =>
                       HandrailMessageSearchPage(hits: const []),
                   members: HandrailWorkspaceMemberConfiguration(
@@ -414,16 +415,14 @@ void main() {
         );
         client.setApplicationForeground(false);
         final threadFinder = find.byType(HandrailThreadView);
-        final handle = tester
-            .widget<HandrailThreadView>(threadFinder)
-            .openHandle!;
+        final handle =
+            tester.widget<HandrailThreadView>(threadFinder).openHandle!;
         final threadElement = tester.element(threadFinder);
         final composers = find.byType(HandrailMessageComposer);
         final composerElements = tester.elementList(composers).toList();
         expect(composerElements, isNotEmpty);
-        final composerStates = tester
-            .stateList<HandrailMessageComposerState>(composers)
-            .toList();
+        final composerStates =
+            tester.stateList<HandrailMessageComposerState>(composers).toList();
         for (final composer in composerStates) {
           expect(composer.replyTo?.notifyAuthor, isFalse);
         }
@@ -2079,11 +2078,14 @@ void main() {
     await _pumpUntil(
       tester,
       () => find
-          .byKey(const ValueKey<String>('handrail-forward-root-alpha'))
+          .byKey(const ValueKey<String>('handrail-message-actions-root-alpha'))
           .evaluate()
           .isNotEmpty,
     );
 
+    await tester
+        .tap(find.byKey(const ValueKey('handrail-message-actions-root-alpha')));
+    await tester.pumpAndSettle();
     await tester.tap(
       find.byKey(const ValueKey<String>('handrail-forward-root-alpha')),
     );
@@ -2142,10 +2144,13 @@ void main() {
     await _pumpUntil(
       tester,
       () => find
-          .byKey(const ValueKey<String>('handrail-forward-root-alpha'))
+          .byKey(const ValueKey<String>('handrail-message-actions-root-alpha'))
           .evaluate()
           .isNotEmpty,
     );
+    await tester
+        .tap(find.byKey(const ValueKey('handrail-message-actions-root-alpha')));
+    await tester.pumpAndSettle();
     await tester.tap(
       find.byKey(const ValueKey<String>('handrail-forward-root-alpha')),
     );
@@ -2246,10 +2251,13 @@ void main() {
     await _pumpUntil(
       tester,
       () => find
-          .byKey(const ValueKey<String>('handrail-forward-root-alpha'))
+          .byKey(const ValueKey<String>('handrail-message-actions-root-alpha'))
           .evaluate()
           .isNotEmpty,
     );
+    await tester
+        .tap(find.byKey(const ValueKey('handrail-message-actions-root-alpha')));
+    await tester.pumpAndSettle();
     await tester.tap(
       find.byKey(const ValueKey<String>('handrail-forward-root-alpha')),
     );
@@ -2443,6 +2451,9 @@ void main() {
     expect(find.byType(HandrailMemberPicker), findsOneWidget);
     await _closePanel(tester);
 
+    await tester
+        .tap(find.byKey(const ValueKey('handrail-message-actions-root-alpha')));
+    await tester.pumpAndSettle();
     await tester.tap(
       find.byKey(const ValueKey<String>('handrail-add-reaction-root-alpha')),
     );
@@ -3272,8 +3283,10 @@ class _WorkspaceTransport implements HandrailChatHttpTransport {
       final id = ConversationId(request.uri.pathSegments.last);
       if (id == _thread) {
         return _jsonResponse(threadCreationResultFixture('existing_for_root',
-          parentConversationId: _alpha.value, rootMessageId: _root.value,
-          threadId: _thread.value, summaryThreadId: _thread.value)['conversation']);
+            parentConversationId: _alpha.value,
+            rootMessageId: _root.value,
+            threadId: _thread.value,
+            summaryThreadId: _thread.value)['conversation']);
       }
       return _jsonResponse(_conversationDetail(
         id: id,
@@ -3381,20 +3394,19 @@ class _HeaderDiscoveryTransport extends _DiscoveryTransport {
 
 final class _SettingsWorkspaceTransport extends _WorkspaceTransport {
   _SettingsWorkspaceTransport()
-    : super(
-        enabledFeatures: const {replyStylePreferenceFeature: true},
-        includeThreadSummary: false,
-        listResponses: Queue.of([
-          _jsonResponse(
-            jsonDecode(
-                  jsonEncode(_listPage())
-                      .replaceAll(conversationListTestTenant, _tenant)
-                      .replaceAll(conversationListTestUser, _user),
-                )
-                as Map<String, dynamic>,
-          ),
-        ]),
-      );
+      : super(
+          enabledFeatures: const {replyStylePreferenceFeature: true},
+          includeThreadSummary: false,
+          listResponses: Queue.of([
+            _jsonResponse(
+              jsonDecode(
+                jsonEncode(_listPage())
+                    .replaceAll(conversationListTestTenant, _tenant)
+                    .replaceAll(conversationListTestUser, _user),
+              ) as Map<String, dynamic>,
+            ),
+          ]),
+        );
   Map<String, Object?> preference = style.absent;
   @override
   Future<HandrailChatHttpResponse> send(HandrailChatHttpRequest request) async {

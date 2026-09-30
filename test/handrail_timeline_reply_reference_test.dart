@@ -30,7 +30,7 @@ void main() {
       return Text(value.message.content!.text);
     }));
     await _settle(tester);
-    expect(find.text('Reply to alice: $_sourceText'), findsOneWidget);
+    expect(find.text('Reply to message: $_sourceText'), findsOneWidget);
     expect(find.text('Friday'), findsOneWidget);
     expect(input!.replyContext!.state.source!.author.userId.value, 'alice');
     expect(input!.replyContext!.jumpToSource, isNotNull);
@@ -63,14 +63,14 @@ void main() {
       final offset = scroll.offset;
       expect(
           find.bySemanticsLabel(
-              'Jump to original message. Reply to alice: $_sourceText'),
+              'Jump to original message. Reply to message: $_sourceText'),
           findsOneWidget);
-      await tester.tap(find.text('Reply to alice: $_sourceText'));
+      await tester.tap(find.text('Reply to message: $_sourceText'));
       await _settle(tester);
-      expect(find.text('alice: $_sourceText'), findsOneWidget);
+      expect(find.text(_sourceText), findsOneWidget);
       expect(FocusManager.instance.primaryFocus!.debugLabel,
           'Original reply source');
-      final target = tester.getRect(find.text('alice: $_sourceText'));
+      final target = tester.getRect(find.text(_sourceText));
       final viewport = tester.getRect(find.byType(SingleChildScrollView));
       expect(viewport.overlaps(target), isTrue);
       expect(h.http.pages.length, 3); // newest + one page on either side
@@ -113,11 +113,11 @@ void main() {
     };
     await h.mount(tester);
     await _settle(tester);
-    expect(find.text('Reply to alice: $_sourceText'), findsOneWidget);
+    expect(find.text('Reply to message: $_sourceText'), findsOneWidget);
     expect(find.textContaining('Historical author'), findsNothing);
-    await tester.tap(find.text('Reply to alice: $_sourceText'));
+    await tester.tap(find.text('Reply to message: $_sourceText'));
     await _settle(tester);
-    expect(find.text('alice: $_sourceText'), findsOneWidget);
+    expect(find.text(_sourceText), findsOneWidget);
     expect(h.http.contextReads, 1);
     expect(
         h.http.requests.any((r) =>
@@ -132,7 +132,7 @@ void main() {
     await h.mount(tester);
     await _settle(tester);
     h.http.adjacent = (_) async => _response({}, 503);
-    await tester.tap(find.text('Reply to alice: $_sourceText'));
+    await tester.tap(find.text('Reply to message: $_sourceText'));
     await _settle(tester);
     expect(find.textContaining(_sourceText, skipOffstage: false), findsNothing);
     expect(
@@ -145,7 +145,7 @@ void main() {
         of: find.byType(Dialog),
         matching: find.text('Retry original message')));
     await _settle(tester);
-    expect(find.text('alice: $_sourceText'), findsOneWidget);
+    expect(find.text(_sourceText), findsOneWidget);
     expect(h.http.contextReads, 2);
     expect(FocusManager.instance.primaryFocus!.debugLabel,
         'Original reply source');
@@ -159,7 +159,7 @@ void main() {
       await h.mount(tester);
       await _settle(tester);
       final button =
-          find.widgetWithText(TextButton, 'Reply to alice: $_sourceText');
+          find.widgetWithText(TextButton, 'Reply to message: $_sourceText');
       final focusContext = tester.element(find.descendant(
         of: button,
         matching: find.byType(Text),
@@ -191,7 +191,7 @@ void main() {
     h.http.lookup = null;
     await tester.tap(find.text('Retry original message'));
     await _settle(tester);
-    expect(find.text('Reply to alice: $_sourceText'), findsOneWidget);
+    expect(find.text('Reply to message: $_sourceText'), findsOneWidget);
     expect(h.http.contextReads, 2);
   });
 
@@ -211,7 +211,7 @@ void main() {
     expect(h.http.contextReads, 0);
     h.source.setAuthority(_authority);
     await _settle(tester);
-    expect(find.text('Reply to alice: $_sourceText'), findsOneWidget);
+    expect(find.text('Reply to message: $_sourceText'), findsOneWidget);
     expect(h.http.contextReads, 1);
   });
 
@@ -248,7 +248,7 @@ void main() {
     final h = await _Harness.create(tester, loaded: true);
     await h.mount(tester);
     await _settle(tester);
-    expect(find.text('Reply to alice: $_sourceText'), findsOneWidget);
+    expect(find.text('Reply to message: $_sourceText'), findsOneWidget);
     final held = Completer<HandrailChatHttpResponse>();
     h.http.lookup = (_) => held.future;
     final pending = h.source.retry();
@@ -284,7 +284,7 @@ void main() {
           ConversationDetailSnapshot.fromJson(_parentDetail()));
       await h.mount(tester);
       await _settle(tester);
-      expect(find.text('Reply to alice: $_sourceText'), findsOneWidget);
+      expect(find.text('Reply to message: $_sourceText'), findsOneWidget);
       final held = Completer<HandrailChatHttpResponse>();
       Future<ChatMessageContextState>? pending;
       if (phase == 'lookup') {
@@ -292,7 +292,7 @@ void main() {
         pending = h.source.retry();
       } else {
         h.http.adjacent = (_) => held.future;
-        await tester.tap(find.text('Reply to alice: $_sourceText'));
+        await tester.tap(find.text('Reply to message: $_sourceText'));
       }
       await _settle(tester);
       h.client.normalizedState.hydrateConversationDetail(
@@ -363,7 +363,7 @@ void main() {
     await h.mount(tester, scale: 2.5);
     await _settle(tester);
     expect(tester.takeException(), isNull);
-    final reference = find.textContaining('Reply to alice:');
+    final reference = find.textContaining('Reply to message:');
     await tester.ensureVisible(reference);
     // Apply the scroll's layout before hit testing the enlarged reference.
     await tester.pump();

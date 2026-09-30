@@ -72,8 +72,7 @@ void namedThreadTests() {
         ThreadCreationReconciliationStatus.existingForRoot);
     await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
     await tester.pump();
-    await tester
-        .tap(find.byKey(const ValueKey('handrail-create-thread-root-alpha')));
+    await tester.tap(find.byKey(const ValueKey('handrail-thread-root-alpha')));
     await _pumpUntil(
         tester, () => find.byType(HandrailThreadView).evaluate().isNotEmpty);
     expect(find.byType(AlertDialog), findsNothing);
@@ -235,23 +234,18 @@ void namedThreadTests() {
     final http = _NamedThreadTransport(enabled: false, saved: 'current');
     final client = await _namedClient(tester, http);
     await _mountReplyWorkspace(tester, client);
-    expect(
-        tester
-            .widget<TextButton>(
-                find.byKey(const ValueKey('handrail-create-thread-root-alpha')))
-            .onPressed,
-        isNull);
-    expect(
-        find.textContaining('Named threads are unavailable'), findsOneWidget);
+    expect(find.byKey(const ValueKey('handrail-create-thread-root-alpha')),
+        findsNothing);
+    expect(find.textContaining('Named threads are unavailable'), findsNothing);
     await tester.tap(find.byKey(const ValueKey('handrail-reply-root-alpha')));
     await _pumpUntil(
         tester, () => find.byType(HandrailThreadView).evaluate().isNotEmpty);
     expect(_requestBody(http.threadRequests.single).containsKey('name'), false);
     await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
     await tester.pump();
-    expect(find.text('Open Thread'), findsOneWidget);
-    await tester
-        .tap(find.byKey(const ValueKey('handrail-create-thread-root-alpha')));
+    expect(find.byKey(const ValueKey('handrail-thread-root-alpha')),
+        findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('handrail-thread-root-alpha')));
     await _pumpUntil(
         tester, () => find.byType(HandrailThreadView).evaluate().isNotEmpty);
     expect(find.text('Canonical launch'), findsOneWidget);

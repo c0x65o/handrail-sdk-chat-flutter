@@ -834,6 +834,7 @@ final class HandrailChatClient {
   _NormalizedSnapshotCheckpointBaseline? _normalizedSnapshotCheckpointBaseline;
   bool _normalizedSnapshotCheckpointDraining = false;
   int _storageIdentityGeneration = 0;
+  final Map<MessageId, Future<void>> _threadSummaryReads = {};
   bool _applicationForeground = true;
   late final _UnreadMentionRefreshCoordinator _unreadMentionRefresh;
   bool _disposed = false;
@@ -1316,7 +1317,8 @@ final class HandrailChatClient {
       final result = await listConversations(
         ConversationListSnapshotInput(scope: scope, limit: 100),
       );
-      if (_disposed || input.isCancelled ||
+      if (_disposed ||
+          input.isCancelled ||
           hydrationGeneration != _storageIdentityGeneration) {
         throw const _RealtimeSnapshotHydrationCancelled();
       }
@@ -1339,7 +1341,8 @@ final class HandrailChatClient {
       final detailResult = await getConversation(
         ConversationDetailSnapshotInput(conversationId: conversationId),
       );
-      if (_disposed || input.isCancelled ||
+      if (_disposed ||
+          input.isCancelled ||
           hydrationGeneration != _storageIdentityGeneration) {
         throw const _RealtimeSnapshotHydrationCancelled();
       }
@@ -1361,7 +1364,8 @@ final class HandrailChatClient {
           limit: messageTimelineMaximumLimit,
         ),
       );
-      if (_disposed || input.isCancelled ||
+      if (_disposed ||
+          input.isCancelled ||
           hydrationGeneration != _storageIdentityGeneration) {
         throw const _RealtimeSnapshotHydrationCancelled();
       }
@@ -1436,8 +1440,9 @@ final class HandrailChatClient {
       replayCursors.add(timeline.replay.resumeFrom);
     }
 
-    if (_disposed || input.isCancelled ||
-          hydrationGeneration != _storageIdentityGeneration) {
+    if (_disposed ||
+        input.isCancelled ||
+        hydrationGeneration != _storageIdentityGeneration) {
       throw const _RealtimeSnapshotHydrationCancelled();
     }
     if (replayCursors.isEmpty) {
@@ -1558,6 +1563,7 @@ final class HandrailChatClient {
         return result;
       }
       normalizedState.reconcileMessage(value.message);
+      unawaited(_refreshSentThreadRoot(value.message, sendIdentityGeneration));
       if (normalizedState.state.conversationMetadata
               .containsKey(value.message.conversationId) &&
           !normalizedState.state.messages.containsKey(value.message.id)) {
@@ -1570,7 +1576,8 @@ final class HandrailChatClient {
     return result;
   }
 
-  Future<void> _hydrateSentMessage(Message message, int identityGeneration) async {
+  Future<void> _hydrateSentMessage(
+      Message message, int identityGeneration) async {
     final result = await getMessageTimeline(MessageTimelineRequest(
       conversationId: message.conversationId,
       direction: MessageTimelineDirection.forward,
@@ -1582,12 +1589,56 @@ final class HandrailChatClient {
         !normalizedState.state.canonicalMessages.containsKey(message.id)) {
       return;
     }
-    if (result case ChatSnapshotQuerySuccess<MessageTimelinePage>(:final value)) {
+    if (result
+        case ChatSnapshotQuerySuccess<MessageTimelinePage>(:final value)) {
       try {
         normalizedState.hydrateMessageTimeline(value);
       } on NormalizedSnapshotConflict {
         // A later authoritative update may win while this read is in flight.
         // Sending already succeeded; ordinary timeline recovery remains usable.
+      }
+    }
+  }
+
+  Future<void> _refreshSentThreadRoot(
+      Message message, int identityGeneration) async {
+    final conversation =
+        normalizedState.state.conversations[message.conversationId];
+    if (conversation is! ThreadConversation) return;
+    final rootId = conversation.rootMessageId;
+    final previous = _threadSummaryReads[rootId];
+    final completed = Completer<void>();
+    _threadSummaryReads[rootId] = completed.future;
+    // Serialize reads for the same root so concurrent confirmed replies cannot
+    // leave the later summary discarded behind an earlier response.
+    try {
+      if (previous != null) await previous;
+      if (_disposed || identityGeneration != _storageIdentityGeneration) return;
+      final root = normalizedState.state.canonicalMessages[rootId];
+      if (root == null) return;
+      // Read canonical facts instead of incrementing (which double-counts replay).
+      final result = await getMessageTimeline(MessageTimelineRequest(
+        conversationId: root.conversationId,
+        direction: MessageTimelineDirection.forward,
+        cursor: MessageSequence(root.sequence.value - 1),
+        limit: 1,
+      ));
+      if (_disposed || identityGeneration != _storageIdentityGeneration) return;
+      if (result
+          case ChatSnapshotQuerySuccess<MessageTimelinePage>(:final value)) {
+        for (final row in value.messages) {
+          if (row.id == root.id) {
+            normalizedState.reconcileThreadSummaryRead(root, row);
+          }
+        }
+      }
+    } catch (_) {
+      // A read failure cannot turn the confirmed send into an uncertain write
+      // or replay it. Normal history refresh can recover.
+    } finally {
+      completed.complete();
+      if (identical(_threadSummaryReads[rootId], completed.future)) {
+        _threadSummaryReads.remove(rootId);
       }
     }
   }
@@ -2051,7 +2102,7 @@ final class HandrailChatClient {
   ) {
     final replyIdentityChanged =
         replyStyles.state.identity?.tenantId != identity.tenantId ||
-        replyStyles.state.identity?.userId != identity.userId;
+            replyStyles.state.identity?.userId != identity.userId;
     replyStyles._setIdentity(ChatReplyStyleIdentity(
         tenantId: identity.tenantId, userId: identity.userId));
     if (replyIdentityChanged && realtimeSession == null) {
@@ -2127,7 +2178,8 @@ final class HandrailChatClient {
     if (_installedSnapshotIdentity case final installed?
         when installed.tenantId != identity.tenantId ||
             installed.userId != identity.userId ||
-            (_localStorage != null && installed.deviceId != identity.deviceId)) {
+            (_localStorage != null &&
+                installed.deviceId != identity.deviceId)) {
       // The server's ephemeral device identity can change on reconnect. An
       // in-memory snapshot belongs to the authenticated actor; only persisted
       // snapshots additionally depend on the host's device storage boundary.

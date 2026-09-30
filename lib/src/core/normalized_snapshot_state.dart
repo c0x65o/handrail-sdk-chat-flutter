@@ -1687,6 +1687,43 @@ final class NormalizedSnapshotStore {
     return committed;
   }
 
+  /// Installs a root summary read after a confirmed thread write, provided no
+  /// newer canonical root arrived while that read was in flight.
+  void reconcileThreadSummaryRead(
+      Message expected, MessageTimelineMessage incoming) {
+    _ensureOpen();
+    final previous = _state;
+    final current = previous.canonicalMessages[expected.id];
+    if (current == null || !_sameValue(current.toJson(), expected.toJson())) {
+      return;
+    }
+    if (incoming.id != expected.id || incoming.threadSummary == null) return;
+    final checked = _preserveSameRevisionThreadSummary(current, incoming);
+    _validateCanonicalMessage(current, checked.message);
+    if (incoming.revision.revision != current.revision.revision) return;
+    final canonical = current.toJson()
+      ..['threadSummary'] = incoming.threadSummary!.toJson();
+    final projection = previous.messages[expected.id];
+    _commit(
+        previous,
+        _copyState(
+          previous,
+          canonicalMessages: Map.unmodifiable({
+            ...previous.canonicalMessages,
+            expected.id: Message.fromJson(canonical)
+          }),
+          messages: projection == null
+              ? previous.messages
+              : Map.unmodifiable({
+                  ...previous.messages,
+                  expected.id:
+                      MessageTimelineMessage.fromJson(projection.toJson()
+                        ..['threadSummary'] = incoming.threadSummary!.toJson()
+                        ..['isThreadRoot'] = true)
+                }),
+        ));
+  }
+
   /// Reconciles one authoritative command result into canonical state and the
   /// ordered timeline without fabricating [MessageTimelineMessage] fields.
   NormalizedSnapshotState reconcileMessage(Message incoming) {
@@ -2230,7 +2267,8 @@ final class NormalizedSnapshotStore {
       var incoming = summary.conversation;
       final id = incoming.id;
       final original = conversations[id];
-      final existing = original == null ? null : _mergeThreadLifecycle(original, incoming);
+      final existing =
+          original == null ? null : _mergeThreadLifecycle(original, incoming);
       incoming = _mergeThreadLifecycle(incoming, original);
       if (existing != null && !identical(existing, original)) {
         changedConversations ??= {...conversations};
@@ -2258,9 +2296,13 @@ final class NormalizedSnapshotStore {
       final incomingRead = summary.currentReadState;
       final acceptsMentionCount = knownRead == null ||
           (incomingRead.userId == knownRead.userId &&
-              (incomingRead.lastReadSequence.value > knownRead.lastReadSequence.value ||
-                  (incomingRead.lastReadSequence == knownRead.lastReadSequence &&
-                      incomingRead.updatedAt.value.compareTo(knownRead.updatedAt.value) >= 0)));
+              (incomingRead.lastReadSequence.value >
+                      knownRead.lastReadSequence.value ||
+                  (incomingRead.lastReadSequence ==
+                          knownRead.lastReadSequence &&
+                      incomingRead.updatedAt.value
+                              .compareTo(knownRead.updatedAt.value) >=
+                          0)));
       if (existing == null || rank > 0) {
         changedConversations ??= {...conversations};
         changedConversations[id] = incoming;

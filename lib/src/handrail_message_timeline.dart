@@ -456,8 +456,9 @@ final class _HandrailMessageTimelineBodyState
   }
 
   MessageTimelineMessage? _firstEntryUnreadMessage() {
-    final boundary = widget.state.currentUserReadState?.manualUnreadFromSequence ??
-        _entryUnreadBoundary;
+    final boundary =
+        widget.state.currentUserReadState?.manualUnreadFromSequence ??
+            _entryUnreadBoundary;
     if (boundary == null) return null;
     for (final message in widget.state.messages) {
       if (message.sequence.value >= boundary.value) {
@@ -645,7 +646,9 @@ final class _HandrailMessageTimelineBodyState
 
   void _handleScroll() {
     if (_initialPositionScheduled ||
-        _loadingEarlier || _earlierLoadFailed || !widget.state.hasEarlier) {
+        _loadingEarlier ||
+        _earlierLoadFailed ||
+        !widget.state.hasEarlier) {
       return;
     }
     final position = _singleScrollPosition();
@@ -920,7 +923,7 @@ final class _HandrailMessageTimelineBodyState
             label: deleted
                 ? 'Deleted message ${message.sequence.value}'
                 : 'Message ${message.sequence.value} from '
-                    '${message.author.userId.value}',
+                    '${message.author.userId == readState?.userId ? 'you' : 'a participant'}',
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: theme.spacing.medium,
@@ -937,7 +940,8 @@ final class _HandrailMessageTimelineBodyState
                       skipTraversal: true,
                       focusNode: _sourceFocusNodes.putIfAbsent(
                         message.id,
-                        () => FocusNode(debugLabel: 'Message ${message.id.value}'),
+                        () => FocusNode(
+                            debugLabel: 'Message ${message.id.value}'),
                       ),
                       child: _ReplyMessageContent(
                         message: message,
@@ -949,6 +953,7 @@ final class _HandrailMessageTimelineBodyState
                               )
                             : null,
                         onJump: _jumpToSource,
+                        currentUserId: readState?.userId,
                       ),
                     ),
                   ),
@@ -992,93 +997,102 @@ final class _HandrailMessageTimelineBodyState
                         ],
                       ),
                     ),
-                  if (canReact && widget.onReactionRequested != null)
-                    Align(
-                      alignment: AlignmentDirectional.centerStart,
-                      child: IconButton(
-                        key: ValueKey<String>(
-                          'handrail-add-reaction-${message.id.value}',
-                        ),
-                        tooltip: 'Add reaction',
-                        onPressed: () => widget.onReactionRequested!(
-                          ChatMessageBuilderInput(
-                            message: message,
-                            actions: actions,
-                          ),
-                        ),
-                        icon: const Icon(Icons.add_reaction_outlined),
-                      ),
-                    ),
                   if (!deleted || hasThread)
                     Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Wrap(
                         spacing: theme.spacing.extraSmall,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           if (!deleted)
-                            TextButton(
-                              key: ValueKey<String>(
-                                'handrail-copy-${message.id.value}',
-                              ),
-                              onPressed: () => unawaited(
-                                _copyMessage(
-                                  context,
-                                  message.content!.text,
-                                ),
-                              ),
-                              child: const Text('Copy'),
+                            PopupMenuButton<String>(
+                              key: ValueKey(
+                                  'handrail-message-actions-${message.id.value}'),
+                              tooltip: 'Message actions',
+                              icon: const Icon(Icons.more_horiz),
+                              onSelected: (action) {
+                                if (!mounted) return;
+                                MessageTimelineMessage? current;
+                                for (final row
+                                    in widget.controller.state.messages) {
+                                  if (row.id == message.id) current = row;
+                                }
+                                if (current == null ||
+                                    current.message is DeletedMessage) {
+                                  return;
+                                }
+                                final selected = current;
+                                final selectedActions =
+                                    ChatMessageActions.forMessage(
+                                        controller: widget.controller,
+                                        message: selected);
+                                switch (action) {
+                                  case 'copy':
+                                    unawaited(_copyMessage(
+                                        context, selected.content!.text));
+                                  case 'reaction':
+                                    widget.onReactionRequested?.call(
+                                        ChatMessageBuilderInput(
+                                            message: selected,
+                                            actions: selectedActions));
+                                  case 'unread':
+                                    unawaited(_markUnread(context, selected));
+                                  case 'forward':
+                                    unawaited(widget.onForwardRequested
+                                        ?.call(selectedActions));
+                                  case 'remind':
+                                    unawaited(_showReminderSheet(
+                                        context, selectedActions));
+                                }
+                              },
+                              itemBuilder: (_) => [
+                                PopupMenuItem(
+                                    value: 'copy',
+                                    key: ValueKey(
+                                        'handrail-copy-${message.id.value}'),
+                                    child: const Text('Copy')),
+                                if (canReact &&
+                                    widget.onReactionRequested != null)
+                                  PopupMenuItem(
+                                      value: 'reaction',
+                                      key: ValueKey(
+                                          'handrail-add-reaction-${message.id.value}'),
+                                      child: const Text('Add reaction')),
+                                if (canMarkUnread)
+                                  PopupMenuItem(
+                                      value: 'unread',
+                                      enabled: !markUnreadPending,
+                                      key: ValueKey(
+                                          'handrail-mark-unread-${message.id.value}'),
+                                      child: Text(markUnreadPending
+                                          ? 'Marking unread…'
+                                          : 'Mark unread')),
+                                if (canForward)
+                                  PopupMenuItem(
+                                      value: 'forward',
+                                      key: ValueKey(
+                                          'handrail-forward-${message.id.value}'),
+                                      child: const Text('Forward')),
+                                if (canRemind)
+                                  PopupMenuItem(
+                                      value: 'remind',
+                                      key: ValueKey(
+                                          'handrail-remind-${message.id.value}'),
+                                      child: const Text('Remind me')),
+                              ],
                             ),
-                          if (canMarkUnread)
-                            Semantics(
-                              container: true,
-                              liveRegion: markUnreadPending,
-                              button: true,
-                              label: markUnreadPending
-                                  ? 'Marking unread from message '
-                                      '${message.sequence.value}'
-                                  : 'Mark unread from message '
-                                      '${message.sequence.value}',
-                              child: TextButton(
-                                key: ValueKey<String>(
-                                  'handrail-mark-unread-${message.id.value}',
-                                ),
-                                focusNode: _markUnreadFocusNodes.putIfAbsent(
-                                  message.id,
-                                  FocusNode.new,
-                                ),
-                                onPressed: markUnreadPending
-                                    ? null
-                                    : () => unawaited(
-                                          _markUnread(context, message),
-                                        ),
-                                child: ExcludeSemantics(
-                                  child: Text(
-                                    markUnreadPending
-                                        ? 'Marking unread…'
-                                        : 'Mark unread',
-                                  ),
-                                ),
-                              ),
-                            ),
-                          if (canForward)
+                          if (canonical &&
+                              !deleted &&
+                              !widget.isThread &&
+                              !hasThread &&
+                              widget.namedThreadsEnabled &&
+                              widget.onCreateThreadRequested != null)
                             TextButton(
-                              key: ValueKey<String>(
-                                'handrail-forward-${message.id.value}',
-                              ),
+                              key: ValueKey(
+                                  'handrail-create-thread-${message.id.value}'),
                               onPressed: () => unawaited(
-                                widget.onForwardRequested!(actions),
-                              ),
-                              child: const Text('Forward'),
-                            ),
-                          if (canRemind)
-                            TextButton(
-                              key: ValueKey<String>(
-                                'handrail-remind-${message.id.value}',
-                              ),
-                              onPressed: () => unawaited(
-                                _showReminderSheet(context, actions),
-                              ),
-                              child: const Text('Remind me'),
+                                  widget.onCreateThreadRequested!(actions)),
+                              child: const Text('Create Thread'),
                             ),
                           if (threadSummary != null)
                             TextButton(
@@ -1092,42 +1106,14 @@ final class _HandrailMessageTimelineBodyState
                                 '${threadSummary.unreadCount > 0 ? ' · ${threadSummary.unreadCount} unread' : ''}',
                               ),
                             ),
-                          if (canonical &&
-                              !widget.isThread &&
-                              (hasThread || !deleted))
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextButton(
-                                  key: ValueKey(
-                                    'handrail-create-thread-${message.id.value}',
-                                  ),
-                                  onPressed: hasThread
-                                      ? () => _requestThread(actions)
-                                      : widget.namedThreadsEnabled &&
-                                            widget.onCreateThreadRequested !=
-                                                null
-                                      ? () => unawaited(
-                                          widget.onCreateThreadRequested!(
-                                            actions,
-                                          ),
-                                        )
-                                      : null,
-                                  child: Text(
-                                    hasThread ? 'Open Thread' : 'Create Thread',
-                                  ),
-                                ),
-                                if (!hasThread && !widget.namedThreadsEnabled)
-                                  const Text(
-                                    'Named threads are unavailable on this server.',
-                                  ),
-                                if (!hasThread &&
-                                    widget.namedThreadsEnabled &&
-                                    widget.onCreateThreadRequested == null)
-                                  const Text(
-                                    'Named threads require a creation handler.',
-                                  ),
-                              ],
+                          if (hasThread &&
+                              threadSummary == null &&
+                              !widget.isThread)
+                            TextButton(
+                              key: ValueKey(
+                                  'handrail-create-thread-${message.id.value}'),
+                              onPressed: () => _requestThread(actions),
+                              child: const Text('Open Thread'),
                             ),
                           if (canonical &&
                               !deleted &&
@@ -1157,6 +1143,14 @@ final class _HandrailMessageTimelineBodyState
                             ),
                         ],
                       ),
+                    ),
+                  if (markUnreadPending)
+                    Semantics(
+                      container: true,
+                      liveRegion: true,
+                      label:
+                          'Marking unread from message ${message.sequence.value}',
+                      child: const SizedBox.shrink(),
                     ),
                 ],
               ),
@@ -1429,7 +1423,8 @@ final class _ReplyContextObserverState extends State<_ReplyContextObserver> {
 // Preserve visible row state while pagination moves its index beyond the lazy
 // viewport. The post-layout offset correction then reveals the same element.
 final class _RetainedTimelineRow extends StatefulWidget {
-  const _RetainedTimelineRow({super.key, required this.retain, required this.child});
+  const _RetainedTimelineRow(
+      {super.key, required this.retain, required this.child});
 
   final bool retain;
   final Widget child;
@@ -1463,11 +1458,13 @@ final class _ReplyMessageContent extends StatelessWidget {
     required this.builder,
     required this.source,
     required this.onJump,
+    this.currentUserId,
   });
   final MessageTimelineMessage message;
   final ChatMessageActions actions;
   final ChatMessageWidgetBuilder builder;
   final ChatMessageContextController? source;
+  final UserId? currentUserId;
   final Future<void> Function(ChatMessageContextController) onJump;
 
   @override
@@ -1499,7 +1496,7 @@ final class _ReplyMessageContent extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _ReplyReference(reply: reply),
+            _ReplyReference(reply: reply, currentUserId: currentUserId),
             builder(
               context,
               ChatMessageBuilderInput(
@@ -1515,14 +1512,14 @@ final class _ReplyMessageContent extends StatelessWidget {
   }
 }
 
-String _replyLabel(ChatMessageContextState state) {
+String _replyLabel(ChatMessageContextState state, [UserId? currentUserId]) {
   final source = state.source;
   if (source != null) {
     final text = source.content.text.replaceAll(RegExp(r'\s+'), ' ').trim();
     final excerpt = text.isEmpty
         ? 'Message with attachment or content'
         : text.characters.take(160).toString();
-    return 'Reply to ${source.author.userId.value}: $excerpt';
+    return '${source.author.userId == currentUserId ? 'Reply to your message' : 'Reply to message'}: $excerpt';
   }
   return switch (state.status) {
     ChatMessageContextStatus.loading => 'Loading original message',
@@ -1533,12 +1530,13 @@ String _replyLabel(ChatMessageContextState state) {
 }
 
 final class _ReplyReference extends StatelessWidget {
-  const _ReplyReference({required this.reply});
+  const _ReplyReference({required this.reply, this.currentUserId});
+  final UserId? currentUserId;
   final ChatMessageReplyContext reply;
 
   @override
   Widget build(BuildContext context) {
-    final label = _replyLabel(reply.state);
+    final label = _replyLabel(reply.state, currentUserId);
     final jump = reply.jumpToSource;
     if (jump != null) {
       return Semantics(
@@ -1618,93 +1616,90 @@ final class _ReplySourceWindowState extends State<_ReplySourceWindow> {
 
   @override
   Widget build(BuildContext context) => Dialog(
-    child: SizedBox(
-      width: 560,
-      height: 420,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Row(
+        child: SizedBox(
+          width: 560,
+          height: 420,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Semantics(
+                        label: 'Original message in this conversation',
+                        excludeSemantics: true,
+                        child: const Text('Original message'),
+                      ),
+                    ),
+                    IconButton(
+                      tooltip: 'Return to replies',
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
                 Expanded(
-                  child: Semantics(
-                    label: 'Original message in this conversation',
-                    excludeSemantics: true,
-                    child: const Text('Original message'),
-                  ),
-                ),
-                IconButton(
-                  tooltip: 'Return to replies',
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: const Icon(Icons.close),
-                ),
-              ],
-            ),
-            Expanded(
-              child: _ReplyContextObserver(
-                source: widget.source,
-                builder: (context, state) {
-                  final source = state.source;
-                  return SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        if (source == null) ...[
-                          Text(_replyLabel(state)),
-                          if (state.canRetry)
-                            TextButton(
-                              onPressed: () async {
-                                await widget.source.retry();
-                                if (mounted) await _loadWindow();
-                              },
-                              child: const Text('Retry original message'),
-                            ),
-                        ] else ...[
-                          for (final message
-                              in state.before.reversed
+                  child: _ReplyContextObserver(
+                    source: widget.source,
+                    builder: (context, state) {
+                      final source = state.source;
+                      return SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            if (source == null) ...[
+                              Text(_replyLabel(state)),
+                              if (state.canRetry)
+                                TextButton(
+                                  onPressed: () async {
+                                    await widget.source.retry();
+                                    if (mounted) await _loadWindow();
+                                  },
+                                  child: const Text('Retry original message'),
+                                ),
+                            ] else ...[
+                              for (final message in state.before.reversed
                                   .take(widget.source.pageSize)
                                   .toList()
                                   .reversed)
-                            _sourceMessage(message.message),
-                          Focus(
-                            key: _sourceKey,
-                            focusNode: _focus,
-                            child: Semantics(
-                              container: true,
-                              label: 'Original message',
-                              child: _sourceMessage(source),
-                            ),
-                          ),
-                          for (final message in state.after.take(
-                            widget.source.pageSize,
-                          ))
-                            _sourceMessage(message.message),
-                          if (state.isLoadingPage)
-                            const Text('Loading nearby messages'),
-                        ],
-                      ],
-                    ),
-                  );
-                },
-              ),
+                                _sourceMessage(message.message),
+                              Focus(
+                                key: _sourceKey,
+                                focusNode: _focus,
+                                child: Semantics(
+                                  container: true,
+                                  label: 'Original message',
+                                  child: _sourceMessage(source),
+                                ),
+                              ),
+                              for (final message in state.after.take(
+                                widget.source.pageSize,
+                              ))
+                                _sourceMessage(message.message),
+                              if (state.isLoadingPage)
+                                const Text('Loading nearby messages'),
+                            ],
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-    ),
-  );
+      );
 
   // Deliberately immediate: never recursively expand these messages' replyTo.
   Widget _sourceMessage(Message message) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8),
-    child: Text(
-      message is ActiveMessage
-          ? '${message.author.userId.value}: ${message.content.text}'
-          : 'Message deleted',
-    ),
-  );
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Text(
+          message is ActiveMessage ? message.content.text : 'Message deleted',
+        ),
+      );
 
   @override
   void dispose() {

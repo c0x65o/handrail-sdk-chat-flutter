@@ -155,6 +155,8 @@ final class ChatConversationListController {
           ConversationSnapshotScope.fromJson(scope.toJson()),
         ) {
     _states = _createStateStream();
+    _normalizedSubscription = _client.normalizedState.acceptedCommitChanges
+        .listen((_) => _projectCanonicalList());
   }
 
   final HandrailChatClient _client;
@@ -163,6 +165,9 @@ final class ChatConversationListController {
   final StreamController<ChatConversationListState> _changes =
       StreamController<ChatConversationListState>.broadcast(sync: true);
   late final Stream<ChatConversationListState> _states;
+  late final StreamSubscription<NormalizedSnapshotState>
+      _normalizedSubscription;
+  NormalizedConversationListEntry? _lastListEntry;
   ChatConversationListState _state;
   ConversationSnapshotCursor? _nextCursor;
   ConversationSnapshotCursor? _failedCursor;
@@ -174,6 +179,51 @@ final class ChatConversationListController {
 
   ChatConversationListState get state => _state;
   Stream<ChatConversationListState> get states => _states;
+
+  void _projectCanonicalList() {
+    final entry = _client.normalizedState.state
+        .conversationLists[conversationSnapshotScopeKey(scope)];
+    if (identical(entry, _lastListEntry)) return;
+    _lastListEntry = entry;
+    if (entry == null) return;
+    if (_disposed ||
+        !_hasLoadedSuccessfully ||
+        _state.status == ChatConversationListStatus.accessDenied ||
+        _state.status == ChatConversationListStatus.accessRevoked) {
+      return;
+    }
+    final snapshot = _client.normalizedState.conversationList(scope);
+    final canonical = _client.normalizedState.state;
+    final items = <ChatConversationListItem>[];
+    for (final conversation in snapshot.conversations) {
+      final metadata = canonical.conversationMetadata[conversation.id];
+      final read = canonical.currentUserReadStates[conversation.id];
+      if (metadata == null || read == null) continue;
+      final unreadFrom = read.manualUnreadFromSequence?.value ??
+          read.lastReadSequence.value + 1;
+      items.add(ChatConversationListItem(
+        conversation: conversation,
+        displayName: switch (conversation) {
+          ChannelConversation(:final name) => name,
+          DirectConversation() => 'Direct message',
+          GroupDirectConversation() => 'Group conversation',
+          ThreadConversation() => 'Thread',
+        },
+        unreadCount: metadata.latestSequence.value < unreadFrom
+            ? 0
+            : metadata.latestSequence.value - unreadFrom + 1,
+        activityAt: metadata.activityAt,
+      ));
+    }
+    _nextCursor = snapshot.nextCursor;
+    _emit(_state._copyWith(
+      status: items.isEmpty
+          ? ChatConversationListStatus.empty
+          : ChatConversationListStatus.ready,
+      items: items,
+      hasMore: _nextCursor != null,
+    ));
+  }
 
   /// Latest projected and canonical preference state for one rendered row.
   NormalizedConversationPreferenceState conversationPreference(
@@ -399,6 +449,7 @@ final class ChatConversationListController {
   Future<void> dispose() async {
     if (_disposed) return;
     _disposed = true;
+    unawaited(_normalizedSubscription.cancel());
     _activeCancellation?.cancel();
     _activeCancellation = null;
     final active = _activeOperation;

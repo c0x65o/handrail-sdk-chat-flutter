@@ -40,31 +40,36 @@ void main() {
         final scroll = ScrollController();
         addTearDown(scroll.dispose);
         addTearDown(() => pumpWidgetCleanup(tester, client.dispose));
-        await tester.pumpWidget(_host(client, SizedBox(
-          height: 300,
-          child: HandrailMessageTimeline(
-            conversationId: _conversationId,
-            controller: controller,
-            scrollController: scroll,
-            isConversationActive: false,
-            builders: ChatWidgetBuilders(message: (context, input) => SizedBox(
-              height: input.message.sequence.value.isEven ? 95 : 45,
-              child: Text(input.message.content!.text),
-            )),
-          ),
-        )));
+        await tester.pumpWidget(_host(
+            client,
+            SizedBox(
+              height: 300,
+              child: HandrailMessageTimeline(
+                conversationId: _conversationId,
+                controller: controller,
+                scrollController: scroll,
+                isConversationActive: false,
+                builders: ChatWidgetBuilders(
+                    message: (context, input) => SizedBox(
+                          height: input.message.sequence.value.isEven ? 95 : 45,
+                          child: Text(input.message.content!.text),
+                        )),
+              ),
+            )));
         await _pumpUntil(tester, () => controller.state.isReady);
         for (var frame = 0; frame < 60; frame++) {
           await tester.pump();
         }
-        final divider = find.byKey(ValueKey<String>('handrail-unread-$boundary'));
+        final divider =
+            find.byKey(ValueKey<String>('handrail-unread-$boundary'));
         expect(divider, findsOneWidget);
         final viewport = tester.getRect(find.byKey(
           const ValueKey<String>('handrail-message-timeline-list'),
         ));
         expect(viewport.overlaps(tester.getRect(divider)), isTrue);
         if (boundary < 40) {
-          expect(scroll.position.maxScrollExtent - scroll.offset, greaterThan(300));
+          expect(scroll.position.maxScrollExtent - scroll.offset,
+              greaterThan(300));
           final offset = scroll.offset;
           client.normalizedState.hydrateConversationDetail(
             ConversationDetailSnapshot.fromJson(_conversationDetail(
@@ -76,7 +81,8 @@ void main() {
           await tester.pump();
           expect(divider, findsOneWidget);
           expect(scroll.offset, closeTo(offset, 1));
-          client.reduceDurableEvent(_createdEvent(41,
+          client.reduceDurableEvent(_createdEvent(
+            41,
             clientMessageId: 'unread-append',
             eventId: 'unread-append',
             text: 'new arrival',
@@ -703,6 +709,7 @@ void main() {
     final canonicalAggregate = find.byKey(
       const ValueKey<String>('handrail-reaction-message-1-thumbsup'),
     );
+    await _openMessageActions(tester, 'message-1');
     final canonicalPicker = find.byKey(
       const ValueKey<String>('handrail-add-reaction-message-1'),
     );
@@ -792,6 +799,7 @@ void main() {
     );
     await tester.pump();
 
+    await _openMessageActions(tester, 'message-1');
     final eligible = find.byKey(
       const ValueKey<String>('handrail-forward-message-1'),
     );
@@ -893,6 +901,7 @@ void main() {
     ));
     await _pumpUntil(tester, () => controller.state.isReady);
 
+    await _openMessageActions(tester, 'message-1');
     await tester.tap(find.byKey(
       const ValueKey<String>('handrail-remind-message-1'),
     ));
@@ -1025,6 +1034,7 @@ void main() {
       isA<Stream<NormalizedMessageReminderState>>(),
     );
 
+    await _openMessageActions(tester, 'message-1');
     await tester.tap(find.byKey(
       const ValueKey<String>('handrail-remind-message-1'),
     ));
@@ -1094,6 +1104,7 @@ void main() {
       ),
     ));
     await _pumpUntil(tester, () => controller.state.isReady);
+    await _openMessageActions(tester, 'message-1');
     await tester.tap(find.byKey(
       const ValueKey<String>('handrail-remind-message-1'),
     ));
@@ -1185,27 +1196,31 @@ void main() {
       await tester.pump();
     }
 
+    final focusNode = _messageActionsFocus(tester, 'message-8');
+    focusNode.requestFocus();
+    await tester.pump();
+    await _openMessageActions(tester, 'message-8');
     final action = find.byKey(
       const ValueKey<String>('handrail-mark-unread-message-8'),
     );
     expect(action, findsOneWidget);
-    final focusNode = tester.widget<TextButton>(action).focusNode!;
-    focusNode.requestFocus();
-    await tester.pump();
-    expect(focusNode.hasFocus, isTrue);
     final offsetBefore = scrollController.offset;
-    final invoke = tester.widget<TextButton>(action).onPressed!;
-
-    invoke();
-    invoke();
+    await tester.tap(action);
+    await tester.pumpAndSettle();
+    // The same action cannot dispatch a second write while pending.
+    tester
+        .widget<PopupMenuButton<String>>(
+            find.byKey(const ValueKey('handrail-message-actions-message-8')))
+        .onSelected!('unread');
     await _pumpUntil(tester, () => transport.readCursorRequests.length == 1);
 
-    expect(find.text('Marking unread…'), findsOneWidget);
     expect(
-      find.bySemanticsLabel('Marking unread from message 8'),
-      findsOneWidget,
-    );
-    expect(tester.widget<TextButton>(action).onPressed, isNull);
+        find.bySemanticsLabel('Marking unread from message 8'), findsOneWidget);
+    await _openMessageActions(tester, 'message-8');
+    expect(find.text('Marking unread…'), findsOneWidget);
+    expect(tester.widget<PopupMenuItem<String>>(action).enabled, isFalse);
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    await tester.pumpAndSettle();
     expect(
       controller.state.currentUserReadState?.manualUnreadFromSequence,
       const MessageSequence(8),
@@ -1237,7 +1252,7 @@ void main() {
       EnginePhase.sendSemanticsUpdate,
       const Duration(seconds: 2),
     );
-    expect(find.text('Mark unread'), findsWidgets);
+    expect(find.byTooltip('Message actions'), findsWidgets);
     expect(find.bySemanticsLabel('Message marked unread'), findsOneWidget);
     expect(
       controller.state.currentUserReadState?.manualUnreadFromSequence,
@@ -1287,13 +1302,15 @@ void main() {
     ));
     await _pumpUntil(tester, () => controller.state.isReady);
 
+    final focusNode = _messageActionsFocus(tester, 'message-2');
+    focusNode.requestFocus();
+    await tester.pump();
+    await _openMessageActions(tester, 'message-2');
     final action = find.byKey(
       const ValueKey<String>('handrail-mark-unread-message-2'),
     );
-    final focusNode = tester.widget<TextButton>(action).focusNode!;
-    focusNode.requestFocus();
-    await tester.pump();
-    tester.widget<TextButton>(action).onPressed!();
+    await tester.tap(action);
+    await tester.pumpAndSettle();
     await _pumpUntil(tester, () => transport.readCursorRequests.length == 1);
 
     readCursorResponse.complete(HandrailChatHttpResponse(
@@ -1327,8 +1344,11 @@ void main() {
     );
     expect(
         find.byKey(const ValueKey<String>('handrail-unread-2')), findsNothing);
-    expect(tester.widget<TextButton>(action).onPressed, isNotNull);
     expect(focusNode.hasFocus, isTrue);
+    await _openMessageActions(tester, 'message-2');
+    expect(tester.widget<PopupMenuItem<String>>(action).enabled, isTrue);
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    await tester.pumpAndSettle();
     semantics.dispose();
   });
 
@@ -1368,6 +1388,7 @@ void main() {
     );
     await tester.pump();
 
+    await _openMessageActions(tester, 'message-1');
     expect(
       find.byKey(const ValueKey<String>('handrail-mark-unread-message-1')),
       findsOneWidget,
@@ -1433,6 +1454,7 @@ void main() {
     ));
     await _pumpUntil(tester, () => controller.state.isReady);
 
+    await _openMessageActions(tester, 'message-1');
     final copy = find.byKey(
       const ValueKey<String>('handrail-copy-message-1'),
     );
@@ -1499,6 +1521,7 @@ void main() {
       ),
     ));
     await _pumpUntil(tester, () => controller.state.isReady);
+    await _openMessageActions(tester, 'message-1');
 
     await tester.tap(find.byKey(
       const ValueKey<String>('handrail-copy-message-1'),
@@ -2095,3 +2118,13 @@ Future<void> _waitForReminderIdle(
     reason: 'The reminder command did not settle.',
   );
 }
+
+Future<void> _openMessageActions(WidgetTester tester, String id) async {
+  await tester.tap(find.byKey(ValueKey('handrail-message-actions-$id')));
+  await tester.pumpAndSettle();
+}
+
+FocusNode _messageActionsFocus(WidgetTester tester, String id) =>
+    Focus.of(tester.element(find.descendant(
+        of: find.byKey(ValueKey('handrail-message-actions-$id')),
+        matching: find.byIcon(Icons.more_horiz))));
