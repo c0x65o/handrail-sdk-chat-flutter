@@ -206,8 +206,12 @@ final class HandrailChatHttpResponse {
   const HandrailChatHttpResponse({
     required this.statusCode,
     required this.body,
+    this.headers = const <String, String>{},
   });
 
+  /// Response headers supplied by the host transport, including Retry-After.
+  /// Header names are matched case-insensitively.
+  final Map<String, String> headers;
   final int statusCode;
   final String body;
 

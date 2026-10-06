@@ -23,6 +23,10 @@ class BrowserChatTransport implements HandrailChatHttpTransport {
         .toDart;
     return HandrailChatHttpResponse(
       statusCode: response.status,
+      headers: {
+        if (response.headers.get('retry-after') case final value?)
+          'retry-after': value,
+      },
       body: (await response.text().toDart).toDart,
     );
   }

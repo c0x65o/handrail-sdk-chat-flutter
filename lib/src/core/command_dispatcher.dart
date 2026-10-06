@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:http_parser/http_parser.dart' show parseHttpDate;
+
 import '../handrail_chat_client.dart';
 
 /// HTTP methods supported by the generic command boundary.
@@ -128,6 +130,7 @@ final class ChatCommandRetryOptions {
     this.maxAuthenticationRefreshes = 1,
     this.backoff,
     this.wait,
+    this.now,
   });
 
   /// Total HTTP attempt budget, including an authentication refresh attempt.
@@ -137,6 +140,9 @@ final class ChatCommandRetryOptions {
   final int maxAuthenticationRefreshes;
   final ChatCommandBackoff? backoff;
   final ChatCommandWait? wait;
+
+  /// Clock paired with an injected wait boundary. Defaults to DateTime.now.
+  final DateTime Function()? now;
 }
 
 /// Stable diagnostic events emitted by command dispatch.
@@ -407,6 +413,17 @@ final class ChatCommandDispatcher {
   final ChatCommandIdempotencyKeyGenerator _generateIdempotencyKey;
   final ChatCommandDiagnosticCallback? _onDiagnostic;
   final Set<_ActiveCommand> _activeCommands = <_ActiveCommand>{};
+  DateTime? _rateLimitedUntil;
+
+  DateTime _now() => (retryOptions.now ?? DateTime.now)();
+
+  Duration _cooldownDelay() {
+    final remaining = _rateLimitedUntil?.difference(_now()) ?? Duration.zero;
+    if (remaining.isNegative) return Duration.zero;
+    return remaining > const Duration(seconds: 60)
+        ? const Duration(seconds: 60)
+        : remaining;
+  }
 
   Future<ChatCommandResult<Result>> dispatch<Input, RequestBody, Result>(
     ChatCommandDescriptor<Input, RequestBody, Result> descriptor,
@@ -506,9 +523,27 @@ final class ChatCommandDispatcher {
       }
     }
 
+    Future<bool> waitForCooldown() async {
+      try {
+        // An overlapping response may extend the deadline during this wait.
+        while (_cooldownDelay() > Duration.zero) {
+          await _raceWithCancellation(
+            Future<void>.sync(() => (retryOptions.wait ?? _defaultWait)(
+                  _cooldownDelay(),
+                  active.controller.signal,
+                )),
+            active.controller.signal,
+          );
+        }
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
     Future<bool> scheduleRetry() async {
       retryNumber += 1;
-      late final Duration delay;
+      late Duration delay;
       try {
         delay = (retryOptions.backoff ?? _defaultBackoff)(retryNumber);
         if (delay.isNegative || delay > const Duration(seconds: 60)) {
@@ -517,6 +552,8 @@ final class ChatCommandDispatcher {
       } catch (_) {
         return false;
       }
+      final cooldown = _cooldownDelay();
+      if (cooldown > delay) delay = cooldown;
       _diagnose(
         ChatCommandDiagnostic(
           event: ChatCommandDiagnosticEvent.retryScheduled,
@@ -548,6 +585,10 @@ final class ChatCommandDispatcher {
       }
 
       while (attempt < retryOptions.maxAttempts) {
+        while (_cooldownDelay() > Duration.zero) {
+          if (await waitForCooldown()) continue;
+          return interruption() ?? ChatCommandTransportFailure<Result>();
+        }
         final beforeAttempt = interruption();
         if (beforeAttempt != null) return beforeAttempt;
         attempt += 1;
@@ -590,11 +631,21 @@ final class ChatCommandDispatcher {
           return interruption() ?? ChatCommandTransportFailure<Result>();
         }
 
+        final responseStopped = interruption();
+        if (responseStopped != null) return responseStopped;
+
         if (response.statusCode < 100 || response.statusCode > 599) {
           _diagnoseMalformed(diagnosticName, attempt);
           return ChatCommandMalformedResponse<Result>();
         }
 
+        if (response.statusCode == 429) {
+          final deadline = _rateLimitDeadline(response, _now());
+          if (_rateLimitedUntil == null ||
+              deadline.isAfter(_rateLimitedUntil!)) {
+            _rateLimitedUntil = deadline;
+          }
+        }
         if (_transientHttpStatuses.contains(response.statusCode)) {
           if (descriptor.retrySafety == ChatCommandRetrySafety.safe &&
               attempt < retryOptions.maxAttempts &&
@@ -740,6 +791,7 @@ final class ChatCommandDispatcher {
   /// Cancels all currently active commands as `closed` without making this
   /// reusable dispatcher terminal.
   void closeActive() {
+    _rateLimitedUntil = null;
     for (final active in _activeCommands.toList(growable: false)) {
       active.closed = true;
       active.controller.cancel();
@@ -769,6 +821,34 @@ final class ChatCommandDispatcher {
       ),
     );
   }
+}
+
+DateTime _rateLimitDeadline(HandrailChatHttpResponse response, DateTime now) {
+  String? value;
+  for (final header in response.headers.entries) {
+    if (header.key.toLowerCase() == 'retry-after') {
+      value = header.value.trim();
+      break;
+    }
+  }
+  try {
+    if (value != null && value.isNotEmpty) {
+      final DateTime deadline;
+      if (RegExp(r'^\d+(?:\.\d+)?$').hasMatch(value)) {
+        final milliseconds = double.parse(value) * 1000;
+        if (!milliseconds.isFinite || milliseconds > 8640000000000000) {
+          throw const FormatException();
+        }
+        deadline = now.add(Duration(milliseconds: milliseconds.ceil()));
+      } else {
+        deadline = parseHttpDate(value);
+      }
+      return deadline.isAfter(now) ? deadline : now;
+    }
+  } catch (_) {
+    // Missing, malformed, or unrepresentable headers use the bounded fallback.
+  }
+  return now.add(const Duration(seconds: 60));
 }
 
 Duration _defaultBackoff(int retryNumber) => Duration(

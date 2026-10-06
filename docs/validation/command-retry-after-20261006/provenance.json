@@ -1,0 +1,200 @@
+{
+  "work_request": "6c0a069f-a0a0-4f74-a8fd-83d08f030e39",
+  "run": "8bd3fc5e-0032-46f0-8ccd-03bc5b973bc5",
+  "recorded_at_utc": "2026-10-06T19:30:49.290052+00:00",
+  "status": "source qualified with pre-existing Flutter full-analysis gate failure; unpublished",
+  "baselines": {
+    "js": {
+      "version": "1.0.52",
+      "sha": "a4b94b012e967402a9f72de33b1974a774d157be"
+    },
+    "flutter": {
+      "version": "0.1.30",
+      "sha": "39dddc7b448917aa9392f557617cc3014cad6326"
+    }
+  },
+  "corrected_published_pins": null,
+  "post_publication_installed_consumers": "unverified; requires owning native workflow commit/push first",
+  "source_and_test_sha256": {
+    "js": {
+      "package-lock.json": "e6fb1c50adba617a53aa68971f71206d45f120ec61c5900fa03e386c0355efe4",
+      "package.json": "b723724d4f97de73c8620b7a5e36446e5798ed538a4da393be0cb2ee2a186665",
+      "src/client/command-dispatcher.ts": "af673f3b7ca3125620af8f900434df65d15b28710e5cd0c9f462ce4e0a3eccb2",
+      "src/client/rate-limit.ts": "4679debcabc14a49afcb90b95760078527f57d93de2cc1d1ed886f3b3b9e5021",
+      "src/client/snapshot-reader.ts": "a35c74be0b283d40288c31761fa902dee1d62fe320ab32efd4d69de76e8a4e32",
+      "test/client-durable-send-dispatch.test.mjs": "29447acaf506fbf3df67bf9b39cb884bf5a502a9e8ff24d36dbc538c582d553a",
+      "test/command-retry-after.test.mjs": "84db42d6c9756be90152b636f009be6b6eca3a18719cd1569ca69ae79c452257"
+    },
+    "flutter": {
+      "example/lib/backend_lab/browser_transport.dart": "1eee70fbf9ba0376b069ed5a136ac55b11aae5405d58a1a7da31833f835f4d61",
+      "examples/flutter-erp/lib/erp_chat_host.dart": "d836b01229ddfecc0d7803e39facc44cdb6e6b9e77c6cdab665e627c0479dc23",
+      "lib/src/core/command_dispatcher.dart": "03a7a2f763805a26f342f62d1268cbada0f0efc0e836b4984cfe724e3dc8d88b",
+      "lib/src/handrail_chat_client.dart": "693fcd93a40696da80bafcb8533d105f4ec18ffe7837b92f0abc6be6a3bac249",
+      "pubspec.lock": "3ca8f57c1367c9c888f4aec41551eab1ba9c15cf8f2255515686d46743bb6bbe",
+      "pubspec.yaml": "5386efd510400aae91d6b219efcfb7613d77fd35b67fbbbcf8b8ff07e2fcae08",
+      "test/command_retry_after_test.dart": "37a37bd5869775103be0dcf017312ca7142ba357262ef374489939f77abd0855",
+      "test/send_message_client_test.dart": "7a728feb01f40218a4e82d9b355f215b4729f434c54b349ee69d24d86482ec5a"
+    }
+  },
+  "js_normal_build_candidate": {
+    "source_sha256": "e5c74eb92e253dbffb9ee6c098c78c21a23d6b5a34af06ae0a4a90517bde5d37",
+    "package_sha256": "24522938cae2fac57bc3e873f7c780793fb5aa5895f7d847bc9bc3f90afd99ee"
+  },
+  "js_built_artifact_sha256": {
+    "dist/candidate.json": "9a450dc66fe72ff39a02b0cb80fe5c1a47d1a05a598039ee16a5f2cf0d3e4eeb",
+    "dist/client/command-dispatcher.d.ts": "43d83a0c5ffa4fa53acd5a2b48f17e2031271cec4c4ddaae130f7496cabc9797",
+    "dist/client/command-dispatcher.js": "7f7cad35b71d1b4682338ba110300fb80fd04ccab6ebff10164d020f104cd229",
+    "dist/client/rate-limit.js": "ba999c069e0cf28348ebaf9ef5501f7ecd90c5870de0d92a7386ea56c4826f99",
+    "dist/client/snapshot-reader.js": "88757151bddea4593f5716cffe6f6b8c68ecda1091012bc9be1bf799715c02b3"
+  },
+  "flutter_toolchain": "Flutter 3.41.7 \u2022 channel [user-branch] \u2022 unknown source\nFramework \u2022 revision cc0734ac71 (6 months ago) \u2022 2026-04-15 21:21:08 -0700\nEngine \u2022 hash 7a53c052bc4b472cf780b199087e1368e4a9aa8c (revision 59aa584fdf) (5 months ago) \u2022 2026-04-16 02:32:16.000Z\nTools \u2022 Dart 3.11.5 \u2022 DevTools 2.54.2",
+  "flutter_local_resolved_packages": {
+    "handrail_chat": "0.1.30",
+    "test": "1.30.0",
+    "flutter_lints": "4.0.0",
+    "flutter_test": "0.0.0",
+    "unorm_dart": "0.3.2",
+    "flutter": "0.0.0",
+    "yaml": "3.1.4",
+    "webkit_inspection_protocol": "1.2.1",
+    "web_socket_channel": "3.0.3",
+    "typed_data": "1.4.0",
+    "test_core": "0.6.16",
+    "test_api": "0.7.10",
+    "stream_channel": "2.1.4",
+    "stack_trace": "1.12.1",
+    "source_span": "1.10.0",
+    "shelf_web_socket": "3.0.0",
+    "shelf_static": "1.1.3",
+    "shelf_packages_handler": "3.0.2",
+    "shelf": "1.4.2",
+    "path": "1.9.1",
+    "package_config": "2.2.0",
+    "node_preamble": "2.0.2",
+    "matcher": "0.12.19",
+    "http_multi_server": "3.2.2",
+    "coverage": "1.15.1",
+    "collection": "1.19.1",
+    "boolean_selector": "2.1.1",
+    "async": "2.11.0",
+    "analyzer": "10.0.1",
+    "lints": "4.0.0",
+    "meta": "1.17.0",
+    "leak_tracker_flutter_testing": "3.0.10",
+    "vector_math": "2.2.0",
+    "clock": "1.1.2",
+    "fake_async": "1.3.3",
+    "sky_engine": "0.0.0",
+    "material_color_utilities": "0.13.0",
+    "characters": "1.4.1",
+    "string_scanner": "1.2.0",
+    "logging": "1.3.0",
+    "web_socket": "1.0.1",
+    "web": "0.5.1",
+    "vm_service": "13.0.0",
+    "source_maps": "0.10.14",
+    "source_map_stack_trace": "2.1.2",
+    "glob": "2.2.0",
+    "frontend_server_client": "4.0.0",
+    "args": "2.7.0",
+    "term_glyph": "1.2.1",
+    "mime": "2.1.0",
+    "http_parser": "4.1.2",
+    "convert": "3.1.2",
+    "cli_config": "0.2.0",
+    "_fe_analyzer_shared": "93.0.0",
+    "leak_tracker_testing": "3.0.2",
+    "leak_tracker": "11.0.2",
+    "file": "7.0.1",
+    "pool": "1.5.3",
+    "io": "1.1.0",
+    "crypto": "3.0.7",
+    "watcher": "1.2.1",
+    "pub_semver": "2.2.1"
+  },
+  "flutter_local_package_config_sha256": "67756f41f1763c3c28325ceba5e9ece620fc3a28f509c4d1cd2631e83e379f3a",
+  "flutter_browser_compiled_js_sha256": "f4dd10afd7fadb6dc2ff1d262f87809cd78b31e94c6738952d8121aa33b2c8c6",
+  "checks": [
+    {
+      "repo": "js",
+      "command": "npm run build",
+      "exit_code": 0,
+      "artifact": "build.txt"
+    },
+    {
+      "repo": "js",
+      "command": "npm run typecheck",
+      "exit_code": 0,
+      "artifact": "types.txt"
+    },
+    {
+      "repo": "js",
+      "command": "node --test --test-concurrency=1 test/command-retry-after.test.mjs test/client-command-dispatcher.test.mjs test/client-durable-send-dispatch.test.mjs test/client-background-read-state.test.mjs test/client-durable-read-state.test.mjs test/exports.test.mjs test/ui-browser-graph.test.mjs",
+      "exit_code": 0,
+      "passed": 103,
+      "artifact": "js-regressions.txt"
+    },
+    {
+      "repo": "flutter",
+      "command": "flutter test --no-pub --concurrency=2 test/command_retry_after_test.dart test/command_dispatcher_test.dart test/durable_resource_event_reducer_test.dart test/send_message_client_test.dart test/offline_send_message_queue_test.dart test/offline_send_message_queue_pump_test.dart test/read_cursor_runtime_test.dart test/reply_unread_refresh_client_test.dart",
+      "exit_code": 0,
+      "passed": 169,
+      "artifact": "flutter-regressions.txt"
+    },
+    {
+      "repo": "flutter",
+      "command": "flutter analyze --no-pub lib test",
+      "exit_code": 1,
+      "result": "13 pre-existing informational lints in unchanged baseline files",
+      "artifact": "analyze.txt"
+    },
+    {
+      "repo": "flutter",
+      "command": "flutter analyze --no-pub lib/src/core/command_dispatcher.dart lib/src/handrail_chat_client.dart test/command_retry_after_test.dart test/send_message_client_test.dart",
+      "exit_code": 0,
+      "artifact": "analyze-changed.txt"
+    },
+    {
+      "repo": "flutter",
+      "command": "dart compile js --packages=.dart_tool/package_config.json docs/validation/command-retry-after-20261006/browser_compile.dart -o <run-tmp>/browser-adapter.js",
+      "exit_code": 0,
+      "artifact": "browser-compile.txt"
+    },
+    {
+      "repo": "both",
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "artifacts_sha256": {
+    "js": {
+      "docs/validation/command-retry-after-20261006/before-js.json": "13f4fe2543addcde2146265416a5f3bd6023a7390a77d6bc6d5c48602d741990",
+      "docs/validation/command-retry-after-20261006/build.txt": "1bc3fff3303ad40654e58a431624266e66b0b4b7b6b0eb8d64a59ce2e9660ba3",
+      "docs/validation/command-retry-after-20261006/js-regressions.txt": "4189b102780ccf6b493e2b8665d81021f9ade69c54056d11607ae7ffa5476f6c",
+      "docs/validation/command-retry-after-20261006/qualification.md": "ed632f936e2257ea5de9329fe7153244a36fd5da3d2f2d312616dc472a6c3457",
+      "docs/validation/command-retry-after-20261006/reproduce_before.mjs": "ca8ada408d5f6837324bdb288bd7186be0e78b3b7d0d5fe65f6e23286878b610",
+      "docs/validation/command-retry-after-20261006/types.txt": "fd785c7bcbfe8170a9eec1f47cd2da35fa7c0849617bd8f0a56f4088b54de6b8"
+    },
+    "flutter": {
+      "docs/validation/command-retry-after-20261006/analyze-changed.txt": "36c502d00f835b9ef7873abacbe6b2f135ed76936a652c2d85a1e9f4b42c69b7",
+      "docs/validation/command-retry-after-20261006/analyze-exit.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "docs/validation/command-retry-after-20261006/analyze-initial.txt": "27552020577594a36cc93532c71048382f93a73813f9d7d094e239cfbb95d343",
+      "docs/validation/command-retry-after-20261006/analyze.txt": "5764bb7c4453e5481a7663b38d42008ab931ea53d390dfa280dfd8c42a78e29d",
+      "docs/validation/command-retry-after-20261006/before-flutter.json": "b6c919f0b40922318895dd7354e06c2e84c0102763614b9cb6cd1826f30a5203",
+      "docs/validation/command-retry-after-20261006/browser-compile.txt": "16984e5b6fd090394d8525376fa1c36a737b9e6d879567f702e109f750b60eb8",
+      "docs/validation/command-retry-after-20261006/browser_compile.dart": "b0c952af9c3c4771b0859d3b35a948bc3791625d87e13c114d7e3bbe82e966cf",
+      "docs/validation/command-retry-after-20261006/flutter-regressions.txt": "35f313fd15c0ab48a6f30b96e0df72a950e3737512f45c68ae3e56bc3ba2f59f",
+      "docs/validation/command-retry-after-20261006/qualification.md": "ed632f936e2257ea5de9329fe7153244a36fd5da3d2f2d312616dc472a6c3457",
+      "docs/validation/command-retry-after-20261006/reproduce_before.dart": "40b79452bcfc775ad5c48fcada0079c248383105b57c53508a164267301265ab",
+      "docs/validation/command-retry-after-20261006/toolchain.txt": "e1b24c13e7b0474f51c2fd0906e2736aa6d8964dbaaa5b3eaa4acc3b834bd4e7"
+    }
+  },
+  "limitations": [
+    "No corrected publication or exact installed-consumer checks during this uncommitted worker turn.",
+    "Full Flutter analyzer failed on 13 baseline informational lints; changed-file analysis passed.",
+    "Browser adapter compiled; browser runtime/CORS transport not exercised.",
+    "No new Preview PostgreSQL limiter-window measurement; whole-consumer budget remains unqualified.",
+    "HTTP boundary fixtures test retry and idempotency invariants, not PostgreSQL durability.",
+    "Local Flutter pub resolution refreshed transitive packages for the isolated toolchain; the intended lockfile retains prior resolutions except the direct http_parser classification."
+  ]
+}

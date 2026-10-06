@@ -66,6 +66,10 @@ final class ErpChatHttpTransport implements HandrailChatHttpTransport {
     final response = await ioRequest.close();
     return HandrailChatHttpResponse(
       statusCode: response.statusCode,
+      headers: {
+        if (response.headers.value('retry-after') case final value?)
+          'retry-after': value,
+      },
       body: await utf8.decoder.bind(response).join(),
     );
   }

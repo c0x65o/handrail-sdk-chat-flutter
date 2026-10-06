@@ -189,6 +189,72 @@ void main() {
     await client.dispose();
   });
 
+  test('Retry-After reaches public sendMessage without changing generated identity',
+      () async {
+    var time = DateTime.utc(2026, 10, 6);
+    final waits = <Duration>[];
+    var clientIdCalls = 0;
+    var idempotencyCalls = 0;
+    var attempts = 0;
+    final transport = _RecordingTransport((request) async {
+      attempts += 1;
+      if (attempts == 1) {
+        return const HandrailChatHttpResponse(statusCode: 429, body: '', headers: {'Retry-After': '2'});
+      }
+      return HandrailChatHttpResponse(
+        statusCode: 200,
+        body: jsonEncode(
+          _sendResult(
+            'applied',
+            conversationId: const ConversationId('conversation-1'),
+            content: content,
+            clientMessageId: 'client-message-stable',
+            replyTo: reply,
+          ),
+        ),
+      );
+    });
+    final client = _client(
+      transport: transport,
+      generateClientMessageId: () {
+        clientIdCalls += 1;
+        return 'client-message-stable';
+      },
+      generateIdempotencyKey: () {
+        idempotencyCalls += 1;
+        return 'send-key-stable';
+      },
+      retryOptions: ChatCommandRetryOptions(
+        maxAttempts: 2,
+        backoff: (_) => Duration.zero,
+        now: () => time,
+        wait: (delay, _) async { waits.add(delay); time = time.add(delay); },
+      ),
+    );
+
+    final result = await client.sendMessage(
+      ChatSendMessageInput(
+        conversationId: const ConversationId('conversation-1'),
+        content: content,
+        replyTo: reply,
+      ),
+    );
+
+    expect(result, isA<ChatCommandSuccess<SendMessageResult>>());
+    expect(waits, [const Duration(seconds: 2)]);
+    expect(transport.requests, hasLength(2));
+    expect(
+        jsonDecode(transport.requests.first.body!)['replyTo'], reply.toJson());
+    expect(clientIdCalls, 1);
+    expect(idempotencyCalls, 1);
+    expect(transport.requests[0].body, transport.requests[1].body);
+    expect(
+      transport.requests.map((request) => request.headers['Idempotency-Key']),
+      everyElement('send-key-stable'),
+    );
+    await client.dispose();
+  });
+
   test('generated-contract validation runs before token and HTTP access',
       () async {
     var tokenCalls = 0;
