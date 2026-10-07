@@ -1,0 +1,47 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action bold Material3=false
+00:01 +1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:01 +2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-regressions-v2/thread-320.png
+00:02 +3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:03 +7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:03 +8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:03 +9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:04 +10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:04 +11: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:04 +12: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:04 +13: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:05 +14: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+pumpAndSettle timed out
+
+When the exception was thrown, this was the stack:
+#0      WidgetTester.pumpAndSettle.<anonymous closure> (package:flutter_test/src/widget_tester.dart:717:11)
+<asynchronous suspension>
+#1      TestAsyncUtils.guard.<anonymous closure> (package:flutter_test/src/test_async_utils.dart:130:27)
+<asynchronous suspension>
+#2      _controlHierarchyTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_control_hierarchy_cases.dart:34:9)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  one thread dismissal hierarchy at 320.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:06 +14 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0 [E]
+  Test failed. See exception logs above.
+  The test description was: one thread dismissal hierarchy at 320.0
+  
+00:06 +14 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-regressions-v2/thread-390.png
+00:07 +15 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-regressions-v2/thread-1400.png
+00:08 +16 -1: Some tests failed.

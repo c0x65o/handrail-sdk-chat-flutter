@@ -1,0 +1,11 @@
+{
+  "lib/src/handrail_message_composer.dart": "edc9a41893cde2be83c0afd6c8b208eff47752761cc70dfd386c2f2c747b3919",
+  "test/handrail_message_composer_test.dart": "eeea5fc21ec6602eb5b9f974f08267551b2e97e005454c2c9ff8ea0c26a42668",
+  "test/handrail_link_dialog_cases.dart": "ffd37d020d6b566bd0dd7981913a0a9a9db4460c54929cf631a92e7bfa988dfd",
+  "lib/src/handrail_chat_workspace.dart": "3105d2ec80f4b62bf59a7380a301fe0e3bda084f8180ac40f6a813c8adee085f",
+  "lib/src/handrail_thread_view.dart": "40215ed47a9f6fffdc74e3b5b7184825d1ac704d0be2df3cbcef6dce64cfdf94",
+  "pubspec.yaml": "4eb5fbf1a1dbdb08e651796196fcb6599350a8f7518025af0c6dd60df642f1d9",
+  "pubspec.lock": "3ca8f57c1367c9c888f4aec41551eab1ba9c15cf8f2255515686d46743bb6bbe",
+  ".handrail/version-mirrors.json": "d9682a9e07b56f91292864b89193faa01a27e7f3f8bd16629fe26bf13e71f754",
+  "lib/src/package_metadata.dart": "1854c1d072c423dfe3141a58e4e58cd84e3fe5a0c999e6311c66c2580f370b14"
+}

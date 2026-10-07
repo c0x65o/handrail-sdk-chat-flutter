@@ -1244,31 +1244,23 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 16),
-                    child: Text(_discoveryOpen &&
-                            panel == _WorkspacePanel.threads
-                        ? 'Threads in ${(_discoveryParentState!.conversation as ChannelConversation).name}'
-                        : _panelTitle(panel)),
+            if (panel != _WorkspacePanel.thread)
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 16),
+                      child: Text(_discoveryOpen &&
+                              panel == _WorkspacePanel.threads
+                          ? 'Threads in ${(_discoveryParentState!.conversation as ChannelConversation).name}'
+                          : _panelTitle(panel)),
+                    ),
                   ),
-                ),
-                if (showSettings) _settingsButton(),
-                IconButton(
-                  key: const ValueKey<String>('handrail-workspace-close-panel'),
-                  tooltip: _discoveryOpen
-                      ? (panel == _WorkspacePanel.thread
-                          ? 'Back to threads'
-                          : 'Back to channel')
-                      : 'Close panel',
-                  onPressed: _backPanel,
-                  icon: Icon(_discoveryOpen ? Icons.arrow_back : Icons.close),
-                ),
-              ],
-            ),
-            const Divider(height: 1),
+                  if (showSettings) _settingsButton(),
+                  _panelDismissButton(panel),
+                ],
+              ),
+            if (panel != _WorkspacePanel.thread) const Divider(height: 1),
             Expanded(
                 child: _discoveryOpen
                     ? Stack(fit: StackFit.expand, children: [
@@ -1281,16 +1273,30 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
                           ),
                         ),
                         if (panel != _WorkspacePanel.threads)
-                          _buildPanelBody(context, panel),
+                          _buildPanelBody(context, panel,
+                              showSettings: showSettings),
                       ])
-                    : _buildPanelBody(context, panel)),
+                    : _buildPanelBody(context, panel,
+                        showSettings: showSettings)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildPanelBody(BuildContext context, _WorkspacePanel panel) {
+  Widget _panelDismissButton(_WorkspacePanel panel) => IconButton(
+        key: const ValueKey<String>('handrail-workspace-close-panel'),
+        tooltip: _discoveryOpen
+            ? (panel == _WorkspacePanel.thread
+                ? 'Back to threads'
+                : 'Back to channel')
+            : 'Close panel',
+        onPressed: _backPanel,
+        icon: Icon(_discoveryOpen ? Icons.arrow_back : Icons.close),
+      );
+
+  Widget _buildPanelBody(BuildContext context, _WorkspacePanel panel,
+      {bool showSettings = false}) {
     final conversationId = _selectedConversationId;
     return switch (panel) {
       _WorkspacePanel.threads => HandrailThreadList(
@@ -1344,7 +1350,10 @@ final class HandrailChatWorkspaceState extends State<HandrailChatWorkspace> {
       _WorkspacePanel.thread => HandrailThreadView(
           rootMessageId: _threadRootMessageId,
           openHandle: _threadHandle,
-          onClose: _backPanel,
+          headerActions: [
+            if (showSettings) _settingsButton(),
+            _panelDismissButton(panel),
+          ],
           builders: widget.builders,
           delegates: widget.delegates,
         ),

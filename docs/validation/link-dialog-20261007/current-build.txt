@@ -1,0 +1,12 @@
+Delegated cgroup unavailable: [Errno 16] Device or resource busy
+Compiling tool/ui_probe.dart for the Web...                     
+Wasm dry run findings:
+Found incompatibilities with WebAssembly.
+
+file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/tool/toolbar_probe.dart 5:1 - dart:html unsupported (0)
+
+Consider addressing these issues to enable wasm builds. See docs for more info: https://docs.flutter.dev/platform-integration/web/wasm
+
+Use --no-wasm-dry-run to disable these warnings.
+Compiling tool/ui_probe.dart for the Web...                        36.3s
+✓ Built build/web

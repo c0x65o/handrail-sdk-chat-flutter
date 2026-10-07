@@ -1,0 +1,690 @@
+--- a/lib/src/handrail_chat_workspace.dart
++++ b/lib/src/handrail_chat_workspace.dart
+@@ -1244,31 +1244,23 @@
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.stretch,
+           children: [
+-            Row(
+-              children: [
+-                Expanded(
+-                  child: Padding(
+-                    padding: const EdgeInsetsDirectional.only(start: 16),
+-                    child: Text(_discoveryOpen &&
+-                            panel == _WorkspacePanel.threads
+-                        ? 'Threads in ${(_discoveryParentState!.conversation as ChannelConversation).name}'
+-                        : _panelTitle(panel)),
++            if (panel != _WorkspacePanel.thread)
++              Row(
++                children: [
++                  Expanded(
++                    child: Padding(
++                      padding: const EdgeInsetsDirectional.only(start: 16),
++                      child: Text(_discoveryOpen &&
++                              panel == _WorkspacePanel.threads
++                          ? 'Threads in ${(_discoveryParentState!.conversation as ChannelConversation).name}'
++                          : _panelTitle(panel)),
++                    ),
+                   ),
+-                ),
+-                if (showSettings) _settingsButton(),
+-                IconButton(
+-                  key: const ValueKey<String>('handrail-workspace-close-panel'),
+-                  tooltip: _discoveryOpen
+-                      ? (panel == _WorkspacePanel.thread
+-                          ? 'Back to threads'
+-                          : 'Back to channel')
+-                      : 'Close panel',
+-                  onPressed: _backPanel,
+-                  icon: Icon(_discoveryOpen ? Icons.arrow_back : Icons.close),
+-                ),
+-              ],
+-            ),
+-            const Divider(height: 1),
++                  if (showSettings) _settingsButton(),
++                  _panelDismissButton(panel),
++                ],
++              ),
++            if (panel != _WorkspacePanel.thread) const Divider(height: 1),
+             Expanded(
+                 child: _discoveryOpen
+                     ? Stack(fit: StackFit.expand, children: [
+@@ -1281,16 +1273,30 @@
+                           ),
+                         ),
+                         if (panel != _WorkspacePanel.threads)
+-                          _buildPanelBody(context, panel),
++                          _buildPanelBody(context, panel,
++                              showSettings: showSettings),
+                       ])
+-                    : _buildPanelBody(context, panel)),
++                    : _buildPanelBody(context, panel,
++                        showSettings: showSettings)),
+           ],
+         ),
+       ),
+     );
+   }
+ 
+-  Widget _buildPanelBody(BuildContext context, _WorkspacePanel panel) {
++  Widget _panelDismissButton(_WorkspacePanel panel) => IconButton(
++        key: const ValueKey<String>('handrail-workspace-close-panel'),
++        tooltip: _discoveryOpen
++            ? (panel == _WorkspacePanel.thread
++                ? 'Back to threads'
++                : 'Back to channel')
++            : 'Close panel',
++        onPressed: _backPanel,
++        icon: Icon(_discoveryOpen ? Icons.arrow_back : Icons.close),
++      );
++
++  Widget _buildPanelBody(BuildContext context, _WorkspacePanel panel,
++      {bool showSettings = false}) {
+     final conversationId = _selectedConversationId;
+     return switch (panel) {
+       _WorkspacePanel.threads => HandrailThreadList(
+@@ -1344,7 +1350,10 @@
+       _WorkspacePanel.thread => HandrailThreadView(
+           rootMessageId: _threadRootMessageId,
+           openHandle: _threadHandle,
+-          onClose: _backPanel,
++          headerActions: [
++            if (showSettings) _settingsButton(),
++            _panelDismissButton(panel),
++          ],
+           builders: widget.builders,
+           delegates: widget.delegates,
+         ),
+--- a/lib/src/handrail_message_composer.dart
++++ b/lib/src/handrail_message_composer.dart
+@@ -1927,18 +1927,20 @@
+     required bool selected,
+     required VoidCallback? onPressed,
+   }) =>
+-      Semantics(
+-        selected: selected,
+-        button: true,
+-        label: tooltip,
+-        child: IconButton(
+-          key: ValueKey('handrail-message-composer-format-$keyName'),
+-          tooltip: tooltip,
+-          isSelected: selected,
+-          onPressed: onPressed,
+-          visualDensity: VisualDensity.compact,
+-          selectedIcon: Icon(icon),
+-          icon: Icon(icon),
++      MergeSemantics(
++        child: Semantics(
++          // Material 2 needs this state; merge it into the native button's
++          // label, enabled state and action rather than adding another button.
++          selected: selected,
++          child: IconButton(
++            key: ValueKey('handrail-message-composer-format-$keyName'),
++            tooltip: tooltip,
++            isSelected: selected,
++            onPressed: onPressed,
++            visualDensity: VisualDensity.compact,
++            selectedIcon: Icon(icon),
++            icon: Icon(icon),
++          ),
+         ),
+       );
+ 
+--- a/lib/src/handrail_thread_view.dart
++++ b/lib/src/handrail_thread_view.dart
+@@ -81,6 +81,7 @@
+     this.lifecycleController,
+     this.onClose,
+     this.title,
++    this.headerActions = const [],
+     this.builders = const ChatWidgetBuilders(),
+     this.delegates = const ChatApplicationDelegates(),
+     this.rootBuilder,
+@@ -139,6 +140,13 @@
+   /// Host-owned navigation callback. No route or navigator behavior is assumed.
+   final VoidCallback? onClose;
+   final Widget? title;
++
++  /// Host-owned actions beside subscription and lifecycle controls.
++  ///
++  /// Embedding panels can supply settings and navigation here instead of
++  /// surrounding the view with a second heading. Omit [onClose] when supplying
++  /// a custom dismissal action. The standalone header is retained by default.
++  final List<Widget> headerActions;
+   final ChatWidgetBuilders builders;
+   final ChatApplicationDelegates delegates;
+   final HandrailThreadRootBuilder? rootBuilder;
+@@ -450,7 +458,6 @@
+   Widget _buildHeader(BuildContext context, HandrailChatThemeData tokens) {
+     Widget header(Widget? menu, Widget? status) => Semantics(
+           container: true,
+-          header: true,
+           child: Padding(
+             padding: EdgeInsetsDirectional.only(
+               start: tokens.spacing.medium,
+@@ -461,26 +468,43 @@
+             child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.stretch,
+                 children: [
+-                  Row(children: [
+-                    Expanded(
++                  LayoutBuilder(builder: (context, constraints) {
++                    final title = Semantics(
++                      container: true,
++                      header: true,
+                       child: DefaultTextStyle(
+                         style: tokens.typography.conversationTitle,
+-                        maxLines: 1,
++                        maxLines: 2,
+                         overflow: TextOverflow.ellipsis,
+                         child: widget.title ??
+                             Text(_handle?.conversation.name ?? 'Thread'),
+                       ),
+-                    ),
+-                    if (menu != null) menu,
+-                    if (_handle != null) _buildLifecycleMenu(),
+-                    if (widget.onClose case final onClose?)
+-                      IconButton(
+-                        key: const ValueKey<String>('handrail-thread-close'),
+-                        tooltip: 'Close panel',
+-                        onPressed: onClose,
+-                        icon: const Icon(Icons.close),
+-                      ),
+-                  ]),
++                    );
++                    final actions = Wrap(
++                      alignment: WrapAlignment.end,
++                      crossAxisAlignment: WrapCrossAlignment.center,
++                      children: [
++                        if (menu != null) menu,
++                        if (_handle != null) _buildLifecycleMenu(),
++                        ...widget.headerActions,
++                        if (widget.onClose case final onClose?)
++                          IconButton(
++                            key:
++                                const ValueKey<String>('handrail-thread-close'),
++                            tooltip: 'Close panel',
++                            onPressed: onClose,
++                            icon: const Icon(Icons.close),
++                          ),
++                      ],
++                    );
++                    if (constraints.maxWidth < 400) {
++                      return Column(
++                        crossAxisAlignment: CrossAxisAlignment.stretch,
++                        children: [title, actions],
++                      );
++                    }
++                    return Row(children: [Expanded(child: title), actions]);
++                  }),
+                   if (status != null) status,
+                 ]),
+           ),
+--- a/test/handrail_chat_workspace_test.dart
++++ b/test/handrail_chat_workspace_test.dart
+@@ -20,6 +20,7 @@
+ import 'fixtures/thread_creation_fixtures.dart';
+ import 'fixtures/draft_mutation_fixtures.dart';
+ 
++part 'handrail_control_hierarchy_cases.dart';
+ part 'handrail_reply_routing_cases.dart';
+ part 'handrail_named_thread_cases.dart';
+ part 'handrail_thread_discovery_cases.dart';
+@@ -33,6 +34,7 @@
+ const _now = '2026-08-26T23:30:00.000Z';
+ 
+ void main() {
++  _controlHierarchyTests();
+   replyRoutingTests();
+   namedThreadTests();
+   threadDiscoveryTests();
+--- /dev/null
++++ b/test/handrail_control_hierarchy_cases.dart
+@@ -0,0 +1,67 @@
++part of 'handrail_chat_workspace_test.dart';
++
++void _controlHierarchyTests() {
++  for (final width in [320.0, 390.0, 1400.0]) {
++    testWidgets('one thread dismissal hierarchy at $width', (tester) async {
++      final semantics = tester.ensureSemantics();
++      try {
++        final http = _HeaderDiscoveryTransport();
++        final client = await _namedClient(tester, http);
++        tester.view.physicalSize = Size(width, 900);
++        tester.view.devicePixelRatio = 1;
++        addTearDown(tester.view.resetPhysicalSize);
++        addTearDown(tester.view.resetDevicePixelRatio);
++        await _mountReplyWorkspace(tester, client);
++        await tester.tap(find.byTooltip('Browse channel threads'));
++        await _pumpUntil(
++            tester, () => find.text('Canonical launch').evaluate().isNotEmpty);
++        await tester.tap(find.text('Canonical launch'));
++        await _pumpUntil(
++            tester, () => find.text('Thread reply').evaluate().isNotEmpty);
++        await captureWidgetEvidence(tester, 'thread-${width.toInt()}.png');
++        expect(find.byTooltip('Close panel'), findsNothing,
++            reason: 'discovery has one Back to threads dismissal');
++        expect(find.byTooltip('Back to threads'), findsOneWidget);
++        final thread = find.byType(HandrailThreadView);
++        final back = find.byTooltip('Back to threads');
++        expect(find.descendant(of: thread, matching: back), findsOneWidget);
++        expect(find.byTooltip('Thread subscriptions'), findsOneWidget);
++        if (width < 600) {
++          final settings =
++              find.byKey(const ValueKey('handrail-workspace-settings'));
++          expect(
++              find.descendant(of: thread, matching: settings), findsOneWidget);
++          await tester.tap(settings);
++          await _pumpUntil(
++              tester,
++              () => find
++                  .byType(HandrailReplyStyleSettings)
++                  .evaluate()
++                  .isNotEmpty);
++          expect(find.byType(HandrailReplyStyleSettings), findsOneWidget);
++          await tester.binding.handlePopRoute();
++          await _pumpUntil(tester,
++              () => find.byType(HandrailReplyStyleSettings).evaluate().isEmpty);
++        }
++        final handle = tester.widget<HandrailThreadView>(thread).openHandle!;
++        await tester.tap(back);
++        await _pumpUntil(
++            tester, () => find.byType(HandrailThreadView).evaluate().isEmpty);
++        expect(handle.isReleased, isTrue);
++        expect(find.text('Canonical launch'), findsOneWidget);
++        await tester.tap(find.text('Canonical launch'));
++        await _pumpUntil(
++            tester, () => find.text('Thread reply').evaluate().isNotEmpty);
++        await tester.sendKeyEvent(LogicalKeyboardKey.escape);
++        await _pumpUntil(
++            tester, () => find.byType(HandrailThreadView).evaluate().isEmpty);
++        expect(find.byType(HandrailThreadView), findsNothing);
++        expect(find.text('Canonical launch'), findsOneWidget);
++        expect(http.threadRequests, isEmpty);
++        expect(tester.takeException(), isNull);
++      } finally {
++        semantics.dispose();
++      }
++    });
++  }
++}
+--- /dev/null
++++ b/test/handrail_format_semantics_cases.dart
+@@ -0,0 +1,164 @@
++part of 'handrail_message_composer_test.dart';
++
++List<SemanticsNode> _formatNodes(WidgetTester tester, String label) {
++  final nodes = <SemanticsNode>[];
++  void visit(SemanticsNode node) {
++    if (node.isMergedIntoParent) return;
++    final data = node.getSemanticsData();
++    // ignore: deprecated_member_use
++    if (data.hasFlag(SemanticsFlag.isButton) &&
++        (data.label.contains(label) || data.tooltip == label)) {
++      nodes.add(node);
++    }
++    node.visitChildren((child) {
++      visit(child);
++      return true;
++    });
++  }
++
++  // ignore: deprecated_member_use
++  visit(tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!);
++  return nodes;
++}
++
++void _formatSemanticsTests() {
++  for (final width in [320.0, 390.0, 1050.0]) {
++    testWidgets('format toolbar render and keyboard scroll at $width',
++        (tester) async {
++      tester.view.physicalSize = Size(width, 600);
++      tester.view.devicePixelRatio = 1;
++      addTearDown(tester.view.resetPhysicalSize);
++      addTearDown(tester.view.resetDevicePixelRatio);
++      await prepareWidgetEvidence(tester);
++      final harness = _Harness();
++      addTearDown(() => _disposeHarness(tester, harness));
++      await _pumpComposer(tester, harness);
++      await tester.enterText(find.byKey(_input), 'Selected words');
++      await _selectText(tester, 'Selected');
++      await captureWidgetEvidence(tester, 'toolbar-${width.toInt()}.png');
++      final button = find
++          .byKey(const ValueKey('handrail-message-composer-format-code-block'));
++      var reached = false;
++      for (var i = 0; i < 12; i++) {
++        await tester.sendKeyEvent(LogicalKeyboardKey.tab);
++        await tester.pump();
++        FocusManager.instance.primaryFocus?.context
++            ?.visitAncestorElements((element) {
++          if (element.widget.key == tester.widget(button).key) reached = true;
++          return !reached;
++        });
++        if (reached) break;
++      }
++      expect(reached, isTrue);
++      // Keyboard traversal must make the clipped action visible.
++      expect(button.hitTestable(), findsOneWidget);
++      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
++      await tester.pump();
++      expect(_text(tester), 'Selected words');
++      await captureWidgetEvidence(
++          tester, 'toolbar-scrolled-${width.toInt()}.png');
++      expect(tester.takeException(), isNull);
++    });
++  }
++  for (final material3 in [false, true]) {
++    for (final entry in {
++      'bold': 'Bold',
++      'italic': 'Italic',
++      'link': 'Link',
++      'unordered-list': 'Bulleted list',
++      'ordered-list': 'Numbered list',
++      'inline-code': 'Inline code',
++      'code-block': 'Code block',
++    }.entries) {
++      testWidgets('single format action ${entry.key} Material3=$material3',
++          (tester) async {
++        final semantics = tester.ensureSemantics();
++        try {
++          final harness = _Harness(storage: InMemoryApplicationChatStorage());
++          addTearDown(() => _disposeHarness(tester, harness));
++          final focus = FocusNode();
++          addTearDown(focus.dispose);
++          final theme = ThemeData(useMaterial3: material3);
++          await _pumpComposer(tester, harness, theme: theme, focusNode: focus);
++          final button = find
++              .byKey(ValueKey('handrail-message-composer-format-${entry.key}'));
++          await _pumpComposer(tester, harness,
++              theme: theme,
++              focusNode: focus,
++              enabled: false,
++              waitUntilReady: false);
++          await tester.ensureVisible(button);
++          await tester.pumpAndSettle();
++          final disabledNodes = _formatNodes(tester, entry.value);
++          expect(disabledNodes, hasLength(1));
++          final disabledData = disabledNodes.single.getSemanticsData();
++          // ignore: deprecated_member_use
++          expect(disabledData.hasFlag(SemanticsFlag.hasEnabledState), isTrue);
++          // ignore: deprecated_member_use
++          expect(disabledData.hasFlag(SemanticsFlag.isEnabled), isFalse);
++          expect(disabledData.hasAction(SemanticsAction.tap), isFalse);
++          await _pumpComposer(tester, harness, theme: theme, focusNode: focus);
++          await tester.enterText(find.byKey(_input), 'Original');
++          await _selectText(tester, 'Original');
++          await tester.ensureVisible(button);
++          await tester.pumpAndSettle();
++          var nodes = _formatNodes(tester, entry.value);
++          expect(nodes, hasLength(1),
++              reason: 'one labelled native action, no wrapper button');
++          var data = nodes.single.getSemanticsData();
++          expect(data.label.isEmpty ? data.tooltip : data.label, entry.value);
++          // ignore: deprecated_member_use
++          expect(data.hasFlag(SemanticsFlag.isEnabled), isTrue);
++          // ignore: deprecated_member_use
++          expect(data.hasFlag(SemanticsFlag.isSelected), isFalse);
++          expect(data.hasAction(SemanticsAction.tap), isTrue);
++          // Exercise the action delivered by accessibility, not onPressed directly.
++          // ignore: deprecated_member_use
++          tester.binding.pipelineOwner.semanticsOwner!
++              .performAction(nodes.single.id, SemanticsAction.tap);
++          await tester.pumpAndSettle();
++          if (entry.key == 'link') {
++            expect(find.byType(AlertDialog), findsOneWidget);
++            // Dialog dismissal has a separately retained baseline controller
++            // lifetime defect. This test qualifies the toolbar's open action.
++            await tester.pumpWidget(const SizedBox.shrink());
++            await tester.pump();
++          } else {
++            data = _formatNodes(tester, entry.value).single.getSemanticsData();
++            // ignore: deprecated_member_use
++            expect(data.hasFlag(SemanticsFlag.isSelected), isTrue);
++            expect(focus.hasFocus, isTrue);
++            expect(_text(tester), 'Original');
++            await _pumpUntil(
++                tester,
++                () => harness.transport
++                    .operations('synchronize_draft')
++                    .isNotEmpty);
++            final expected = {
++              'bold': '**Original**',
++              'italic': '*Original*',
++              'inline-code': '`Original`',
++              'code-block': '```\nOriginal\n```',
++              'unordered-list': '- Original',
++              'ordered-list': '1. Original'
++            }[entry.key];
++            expect(
++                (harness.transport
++                    .operations('synchronize_draft')
++                    .last['content'] as Map)['text'],
++                expected);
++            // Touch toggles the very same control off.
++            await tester.tap(button);
++            await tester.pumpAndSettle();
++            final afterTouch =
++                _formatNodes(tester, entry.value).single.getSemanticsData();
++            // ignore: deprecated_member_use
++            expect(afterTouch.hasFlag(SemanticsFlag.isSelected), isFalse);
++          }
++        } finally {
++          semantics.dispose();
++        }
++      });
++    }
++  }
++}
+--- a/test/handrail_message_composer_test.dart
++++ b/test/handrail_message_composer_test.dart
+@@ -9,8 +9,12 @@
+ import 'package:handrail_chat/testing.dart'
+     show FakeChatRealtimeNetwork, InMemoryApplicationChatStorage;
+ 
++import 'widget_evidence.dart';
++
+ import 'fixtures/conversation_membership_fixtures.dart';
+ import 'fixtures/draft_mutation_fixtures.dart';
++
++part 'handrail_format_semantics_cases.dart';
+ 
+ final _storageIdentity = ApplicationChatStorageIdentity(
+   tenantId: const TenantId(_tenantId),
+@@ -52,6 +56,7 @@
+ );
+ 
+ void main() {
++  _formatSemanticsTests();
+   // Platform-channel controls, not evidence of browser/OS keyboard or IME input.
+   // The paired CanvasKit reproduction lives in composer-toolbar-20261007.
+   for (final format in ['bold', 'italic', 'inline-code']) {
+@@ -2513,8 +2518,8 @@
+   HandrailMessageComposerReplyBuilder? replyBuilder,
+ }) async {
+   await tester.pumpWidget(
+-    MaterialApp(
+-      theme: theme,
++    widgetEvidenceBoundary(MaterialApp(
++      theme: theme ?? widgetEvidenceTheme,
+       home: ChatScope(
+         key: ValueKey<_Harness>(harness),
+         client: harness.client,
+@@ -2547,7 +2552,7 @@
+           ),
+         ),
+       ),
+-    ),
++    )),
+   );
+   if (waitUntilReady) {
+     await _pumpUntil(
+--- a/test/handrail_named_thread_cases.dart
++++ b/test/handrail_named_thread_cases.dart
+@@ -42,7 +42,7 @@
+       expect(find.byKey(const ValueKey('handrail-create-thread-thread-reply')),
+           findsNothing);
+       final writes = http.requests.where((r) => r.method != 'GET').length;
+-      await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
++      await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
+       await tester.pump();
+       expect(handle.isReleased, isTrue);
+       expect(http.requests.where((r) => r.method != 'GET').length, writes);
+@@ -70,7 +70,7 @@
+         .openHandle!;
+     expect(handle.state.reconciliationStatus,
+         ThreadCreationReconciliationStatus.existingForRoot);
+-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
++    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
+     await tester.pump();
+     await tester.tap(find.byKey(const ValueKey('handrail-thread-root-alpha')));
+     await _pumpUntil(
+@@ -241,7 +241,7 @@
+     await _pumpUntil(
+         tester, () => find.byType(HandrailThreadView).evaluate().isNotEmpty);
+     expect(_requestBody(http.threadRequests.single).containsKey('name'), false);
+-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
++    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
+     await tester.pump();
+     expect(find.byKey(const ValueKey('handrail-thread-root-alpha')),
+         findsOneWidget);
+@@ -348,7 +348,7 @@
+     expect(find.text('In Alpha'), findsNothing);
+     expect(find.text('Parent conversation unavailable'), findsOneWidget);
+     expect(find.text('Root message unavailable'), findsOneWidget);
+-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
++    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
+     await tester.pump();
+     // Cached canonical IDs do not bypass fresh existing-thread authorization.
+     final timeline = tester
+@@ -468,7 +468,7 @@
+     await tester.pumpAndSettle();
+     expect(find.text('Canonical launch'), findsOneWidget);
+     expect(find.text('In Alpha'), findsOneWidget);
+-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
++    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
+     await _pumpUntil(
+         tester, () => find.text('Parent plan').evaluate().isNotEmpty);
+     expect(find.byType(HandrailThreadView), findsNothing);
+--- /dev/null
++++ b/test/handrail_thread_header_cases.dart
+@@ -0,0 +1,92 @@
++part of 'handrail_thread_view_test.dart';
++
++void _threadHeaderTests() {
++  for (final width in [320.0, 390.0, 900.0]) {
++    testWidgets('standalone thread title actions and permissions at $width',
++        (tester) async {
++      final semantics = tester.ensureSemantics();
++      try {
++        tester.view.physicalSize = Size(width, 800);
++        tester.view.devicePixelRatio = 1;
++        addTearDown(tester.view.resetPhysicalSize);
++        addTearDown(tester.view.resetDevicePixelRatio);
++        await prepareWidgetEvidence(tester);
++        final harness = _Harness(existingThread: true);
++        addTearDown(() => _disposeLifecycleHarness(tester, harness));
++        final lifecycle = await _prepareLifecycle(tester, harness);
++        var closes = 0;
++        const title =
++            'Launch planning and accessibility review for the next release';
++        await tester.pumpWidget(widgetEvidenceBoundary(_host(
++            harness.client,
++            HandrailThreadView(
++                rootMessageId: _rootId,
++                title: const Text(title),
++                onClose: () => closes++),
++            theme: widgetEvidenceTheme)));
++        await _pumpUntil(tester,
++            () => find.text('First thread reply').evaluate().isNotEmpty);
++        await _settleLifecycle(tester);
++        expect(find.text(title), findsOneWidget);
++        expect(find.byTooltip('Close panel'), findsOneWidget);
++        expect(find.byTooltip('Thread subscriptions'), findsOneWidget);
++        expect(find.byTooltip('Shared thread controls'), findsOneWidget);
++        await captureWidgetEvidence(tester, 'standalone-${width.toInt()}.png');
++        await tester.enterText(
++            find.byKey(_composerInput), 'Retain thread draft');
++        await _subscriptionChoose(tester, 'Follow');
++        expect(
++            harness.client.threads
++                .forThread(_threadId)
++                .state
++                .authoritativeFollow
++                ?.isFollowing,
++            isTrue);
++        await _openMenu(tester);
++        expect(find.text('Close shared thread'), findsOneWidget);
++        await tester.sendKeyEvent(LogicalKeyboardKey.escape);
++        await _settleLifecycle(tester);
++        await tester.tap(find.byTooltip('Close panel'));
++        expect(closes, 1);
++        expect(harness.transport.lifecycleWrites, isEmpty);
++        expect(_draftText(tester), 'Retain thread draft');
++        lifecycle.setAuthority(const ChatThreadLifecycleAuthority(
++            tenantId: TenantId(_tenantId),
++            userId: UserId('user-current'),
++            canRead: true,
++            canSend: false,
++            canManage: false));
++        await _settleLifecycle(tester);
++        expect(find.byTooltip('Shared thread controls'), findsNothing);
++        harness.transport.lifecycleRead =
++            () async => _lifecycleResponse({}, 403);
++        await tester.runAsync(lifecycle.load);
++        await _settleLifecycle(tester);
++        expect(
++            tester
++                .widget<HandrailMessageComposer>(
++                    find.byType(HandrailMessageComposer))
++                .enabled,
++            isFalse);
++        expect(find.byTooltip('Close panel'), findsOneWidget);
++        expect(_draftText(tester), 'Retain thread draft');
++        await captureWidgetEvidence(
++            tester, 'standalone-denied-${width.toInt()}.png');
++        final heading =
++            tester.getSemantics(find.text(title)).getSemanticsData();
++        expect(heading.label, title);
++        // ignore: deprecated_member_use
++        expect(heading.hasFlag(SemanticsFlag.isHeader), isTrue);
++        if (width < 400) {
++          expect(
++              tester.getRect(find.text(title)).bottom,
++              lessThanOrEqualTo(
++                  tester.getRect(find.byTooltip('Close panel')).top));
++        }
++        expect(tester.takeException(), isNull);
++      } finally {
++        semantics.dispose();
++      }
++    });
++  }
++}
+--- a/test/handrail_thread_view_test.dart
++++ b/test/handrail_thread_view_test.dart
+@@ -3,14 +3,18 @@
+ 
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
++import 'package:flutter/semantics.dart';
+ import 'package:flutter_test/flutter_test.dart';
+ import 'package:handrail_chat/ui.dart';
++
++import 'widget_evidence.dart';
+ 
+ import 'fixtures/thread_creation_fixtures.dart';
+ import 'fixtures/draft_mutation_fixtures.dart';
+ import 'fixtures/thread_follow_mutation_fixtures.dart';
+ import 'fixtures/conversation_preference_fixtures.dart';
+ 
++part 'handrail_thread_header_cases.dart';
+ part 'handrail_thread_lifecycle_cases.dart';
+ part 'handrail_thread_subscription_cases.dart';
+ 
+@@ -23,6 +27,7 @@
+ const _now = '2026-08-26T16:00:00.000Z';
+ 
+ void main() {
++  _threadHeaderTests();
+   _lifecycleTests();
+   _subscriptionTests();
+   testWidgets(

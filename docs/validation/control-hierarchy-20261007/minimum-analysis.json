@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/flutter-minimum/bin/flutter",
+    "analyze",
+    "--no-pub",
+    "lib",
+    "test"
+  ],
+  "source": "minimum",
+  "exit": 1,
+  "seconds": 13.204089945182204
+}

@@ -1,0 +1,5823 @@
+{
+  "phase": "review-ordinary",
+  "semantics": false,
+  "browser": "151.0.7922.34",
+  "cases": [
+    {
+      "mode": "sdk",
+      "format": "Bold",
+      "activation": "pointer",
+      "width": 390,
+      "errors": [],
+      "before": {
+        "accepted": {
+          "geometry": {
+            "editor": [
+              32,
+              656,
+              326,
+              48
+            ],
+            "bold": [
+              72,
+              712,
+              40,
+              32
+            ],
+            "boldFocused": false
+          },
+          "text": "Original",
+          "control": null,
+          "bold": false,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791347588728000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "BODY"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589216000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLUTTER-VIEW"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589269000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589313000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589363000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589414000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589479000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589512000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589554000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589587000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589631000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791347589633000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "inputMessages": [
+            {
+              "direction": "out",
+              "method": "TextInput.setClient",
+              "arguments": [
+                1,
+                {
+                  "viewId": 0,
+                  "inputType": {
+                    "name": "TextInputType.multiline",
+                    "signed": null,
+                    "decimal": null
+                  },
+                  "readOnly": false,
+                  "obscureText": false,
+                  "autocorrect": true,
+                  "smartDashesType": "1",
+                  "smartQuotesType": "1",
+                  "enableSuggestions": true,
+                  "enableInteractiveSelection": true,
+                  "actionLabel": null,
+                  "inputAction": "TextInputAction.send",
+                  "textCapitalization": "TextCapitalization.none",
+                  "keyboardAppearance": "Brightness.light",
+                  "enableIMEPersonalizedLearning": true,
+                  "contentCommitMimeTypes": [],
+                  "autofill": {
+                    "uniqueIdentifier": "EditableText-516347554",
+                    "hints": [],
+                    "editingValue": {
+                      "text": "",
+                      "selectionBase": 0,
+                      "selectionExtent": 0,
+                      "selectionAffinity": "TextAffinity.downstream",
+                      "selectionIsDirectional": false,
+                      "composingBase": -1,
+                      "composingExtent": -1
+                    },
+                    "hintText": "Write a message"
+                  },
+                  "enableDeltaModel": false,
+                  "hintLocales": null
+                }
+              ],
+              "time": 1791347589218000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditableSizeAndTransform",
+              "arguments": {
+                "width": 294,
+                "height": 24,
+                "transform": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  48,
+                  668,
+                  0,
+                  1
+                ]
+              },
+              "time": 1791347589219000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setMarkedTextRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setStyle",
+              "arguments": {
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeightIndex": 3,
+                "textAlignIndex": 4,
+                "textDirectionIndex": 1
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditingState",
+              "arguments": {
+                "text": "",
+                "selectionBase": 0,
+                "selectionExtent": 0,
+                "selectionAffinity": "TextAffinity.downstream",
+                "selectionIsDirectional": false,
+                "composingBase": -1,
+                "composingExtent": -1
+              },
+              "time": 1791347589221000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589221000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.requestAutofill",
+              "arguments": null,
+              "time": 1791347589226000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589230000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "O",
+                  "selectionBase": 1,
+                  "selectionExtent": 1,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589268000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 12,
+                "y": 0
+              },
+              "time": 1791347589289000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Or",
+                  "selectionBase": 2,
+                  "selectionExtent": 2,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589312000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 18,
+                "y": 0
+              },
+              "time": 1791347589333000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Ori",
+                  "selectionBase": 3,
+                  "selectionExtent": 3,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589363000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 22,
+                "y": 0
+              },
+              "time": 1791347589385000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Orig",
+                  "selectionBase": 4,
+                  "selectionExtent": 4,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589414000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 32,
+                "y": 0
+              },
+              "time": 1791347589450000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origi",
+                  "selectionBase": 5,
+                  "selectionExtent": 5,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589479000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 36,
+                "y": 0
+              },
+              "time": 1791347589496000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origin",
+                  "selectionBase": 6,
+                  "selectionExtent": 6,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589512000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 45,
+                "y": 0
+              },
+              "time": 1791347589539000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origina",
+                  "selectionBase": 7,
+                  "selectionExtent": 7,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589554000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 54,
+                "y": 0
+              },
+              "time": 1791347589576000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Original",
+                  "selectionBase": 8,
+                  "selectionExtent": 8,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589587000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 59,
+                "y": 0
+              },
+              "time": 1791347589608000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Original",
+                  "selectionBase": 0,
+                  "selectionExtent": 8,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589631000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589658000
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            0,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "Original",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              0,
+              8
+            ]
+          },
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              null,
+              null
+            ]
+          }
+        ]
+      },
+      "semanticFormatControls": [],
+      "canvasKit": [
+        "http://127.0.0.1:37193/canvaskit/chromium/canvaskit.wasm",
+        "http://127.0.0.1:37193/canvaskit/chromium/canvaskit.js"
+      ],
+      "first": {
+        "accepted": {
+          "geometry": {
+            "editor": [
+              32,
+              656,
+              326,
+              48
+            ],
+            "bold": [
+              72,
+              712,
+              40,
+              32
+            ],
+            "boldFocused": false
+          },
+          "text": "X",
+          "control": null,
+          "bold": false,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791347588728000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "BODY"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589216000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLUTTER-VIEW"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589269000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589313000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589363000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589414000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589479000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589512000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589554000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589587000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589631000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791347589633000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589886000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589897000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589929000,
+              "text": "X",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791347590086000,
+              "text": "X",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "inputMessages": [
+            {
+              "direction": "out",
+              "method": "TextInput.setClient",
+              "arguments": [
+                1,
+                {
+                  "viewId": 0,
+                  "inputType": {
+                    "name": "TextInputType.multiline",
+                    "signed": null,
+                    "decimal": null
+                  },
+                  "readOnly": false,
+                  "obscureText": false,
+                  "autocorrect": true,
+                  "smartDashesType": "1",
+                  "smartQuotesType": "1",
+                  "enableSuggestions": true,
+                  "enableInteractiveSelection": true,
+                  "actionLabel": null,
+                  "inputAction": "TextInputAction.send",
+                  "textCapitalization": "TextCapitalization.none",
+                  "keyboardAppearance": "Brightness.light",
+                  "enableIMEPersonalizedLearning": true,
+                  "contentCommitMimeTypes": [],
+                  "autofill": {
+                    "uniqueIdentifier": "EditableText-516347554",
+                    "hints": [],
+                    "editingValue": {
+                      "text": "",
+                      "selectionBase": 0,
+                      "selectionExtent": 0,
+                      "selectionAffinity": "TextAffinity.downstream",
+                      "selectionIsDirectional": false,
+                      "composingBase": -1,
+                      "composingExtent": -1
+                    },
+                    "hintText": "Write a message"
+                  },
+                  "enableDeltaModel": false,
+                  "hintLocales": null
+                }
+              ],
+              "time": 1791347589218000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditableSizeAndTransform",
+              "arguments": {
+                "width": 294,
+                "height": 24,
+                "transform": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  48,
+                  668,
+                  0,
+                  1
+                ]
+              },
+              "time": 1791347589219000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setMarkedTextRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setStyle",
+              "arguments": {
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeightIndex": 3,
+                "textAlignIndex": 4,
+                "textDirectionIndex": 1
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditingState",
+              "arguments": {
+                "text": "",
+                "selectionBase": 0,
+                "selectionExtent": 0,
+                "selectionAffinity": "TextAffinity.downstream",
+                "selectionIsDirectional": false,
+                "composingBase": -1,
+                "composingExtent": -1
+              },
+              "time": 1791347589221000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589221000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.requestAutofill",
+              "arguments": null,
+              "time": 1791347589226000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589230000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "O",
+                  "selectionBase": 1,
+                  "selectionExtent": 1,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589268000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 12,
+                "y": 0
+              },
+              "time": 1791347589289000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Or",
+                  "selectionBase": 2,
+                  "selectionExtent": 2,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589312000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 18,
+                "y": 0
+              },
+              "time": 1791347589333000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Ori",
+                  "selectionBase": 3,
+                  "selectionExtent": 3,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589363000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 22,
+                "y": 0
+              },
+              "time": 1791347589385000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Orig",
+                  "selectionBase": 4,
+                  "selectionExtent": 4,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589414000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 32,
+                "y": 0
+              },
+              "time": 1791347589450000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origi",
+                  "selectionBase": 5,
+                  "selectionExtent": 5,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589479000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 36,
+                "y": 0
+              },
+              "time": 1791347589496000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origin",
+                  "selectionBase": 6,
+                  "selectionExtent": 6,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589512000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 45,
+                "y": 0
+              },
+              "time": 1791347589539000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origina",
+                  "selectionBase": 7,
+                  "selectionExtent": 7,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589554000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 54,
+                "y": 0
+              },
+              "time": 1791347589576000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Original",
+                  "selectionBase": 8,
+                  "selectionExtent": 8,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589587000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 59,
+                "y": 0
+              },
+              "time": 1791347589608000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Original",
+                  "selectionBase": 0,
+                  "selectionExtent": 8,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589631000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589658000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.clearClient",
+              "arguments": null,
+              "time": 1791347589889000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.hide",
+              "arguments": null,
+              "time": 1791347589893000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setClient",
+              "arguments": [
+                2,
+                {
+                  "viewId": 0,
+                  "inputType": {
+                    "name": "TextInputType.multiline",
+                    "signed": null,
+                    "decimal": null
+                  },
+                  "readOnly": false,
+                  "obscureText": false,
+                  "autocorrect": true,
+                  "smartDashesType": "1",
+                  "smartQuotesType": "1",
+                  "enableSuggestions": true,
+                  "enableInteractiveSelection": true,
+                  "actionLabel": null,
+                  "inputAction": "TextInputAction.send",
+                  "textCapitalization": "TextCapitalization.none",
+                  "keyboardAppearance": "Brightness.light",
+                  "enableIMEPersonalizedLearning": true,
+                  "contentCommitMimeTypes": [],
+                  "autofill": {
+                    "uniqueIdentifier": "EditableText-516347554",
+                    "hints": [],
+                    "editingValue": {
+                      "text": "Original",
+                      "selectionBase": 0,
+                      "selectionExtent": 8,
+                      "selectionAffinity": "TextAffinity.downstream",
+                      "selectionIsDirectional": false,
+                      "composingBase": -1,
+                      "composingExtent": -1
+                    },
+                    "hintText": "Write a message"
+                  },
+                  "enableDeltaModel": false,
+                  "hintLocales": null
+                }
+              ],
+              "time": 1791347589899000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditableSizeAndTransform",
+              "arguments": {
+                "width": 294,
+                "height": 24,
+                "transform": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  48,
+                  668,
+                  0,
+                  1
+                ]
+              },
+              "time": 1791347589900000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setMarkedTextRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589900000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setStyle",
+              "arguments": {
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeightIndex": 3,
+                "textAlignIndex": 4,
+                "textDirectionIndex": 1
+              },
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditingState",
+              "arguments": {
+                "text": "Original",
+                "selectionBase": 0,
+                "selectionExtent": 8,
+                "selectionAffinity": "TextAffinity.downstream",
+                "selectionIsDirectional": false,
+                "composingBase": -1,
+                "composingExtent": -1
+              },
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.requestAutofill",
+              "arguments": null,
+              "time": 1791347589902000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X",
+                  "selectionBase": 1,
+                  "selectionExtent": 1,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589929000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 11,
+                "y": 0
+              },
+              "time": 1791347589942000
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            1,
+            1
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{\"tenant-composer/user-composer/probe-device/queuedDraftIntents\":{\"schemaVersion\":1,\"kind\":\"queued_draft_intents\",\"identity\":{\"tenantId\":\"tenant-composer\",\"userId\":\"user-composer\",\"deviceId\":\"probe-device\"},\"payload\":{\"intents\":[{\"contractVersion\":1,\"enqueueOrder\":2,\"enqueuedAt\":\"2026-10-07T04:33:10.150Z\",\"operation\":\"synchronize_draft\",\"intent\":\"replace\",\"conversationId\":\"conversation-composer\",\"baseRevision\":1,\"deviceMutationId\":\"probe-draft-3\",\"idempotencyKey\":\"probe-key-4\",\"content\":{\"format\":\"markdown\",\"text\":\"**X**\",\"attachments\":[]}}]}}}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": "**X**",
+          "pending": true,
+          "requests": [
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "X",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              1,
+              1
+            ]
+          },
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              null,
+              null
+            ]
+          }
+        ]
+      },
+      "continued": {
+        "accepted": {
+          "geometry": {
+            "editor": [
+              32,
+              656,
+              326,
+              48
+            ],
+            "bold": [
+              72,
+              712,
+              40,
+              32
+            ],
+            "boldFocused": false
+          },
+          "text": "X next",
+          "control": null,
+          "bold": false,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791347588728000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "BODY"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589216000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLUTTER-VIEW"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589269000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589313000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589363000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589414000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589479000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589512000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589554000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589587000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589631000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791347589633000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589886000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "focus",
+              "time": 1791347589897000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347589929000,
+              "text": "X",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791347590086000,
+              "text": "X",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347590243000,
+              "text": "X ",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347590277000,
+              "text": "X n",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347590307000,
+              "text": "X ne",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347590337000,
+              "text": "X nex",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791347590371000,
+              "text": "X next",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791347590753000,
+              "text": "X next",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "inputMessages": [
+            {
+              "direction": "out",
+              "method": "TextInput.setClient",
+              "arguments": [
+                1,
+                {
+                  "viewId": 0,
+                  "inputType": {
+                    "name": "TextInputType.multiline",
+                    "signed": null,
+                    "decimal": null
+                  },
+                  "readOnly": false,
+                  "obscureText": false,
+                  "autocorrect": true,
+                  "smartDashesType": "1",
+                  "smartQuotesType": "1",
+                  "enableSuggestions": true,
+                  "enableInteractiveSelection": true,
+                  "actionLabel": null,
+                  "inputAction": "TextInputAction.send",
+                  "textCapitalization": "TextCapitalization.none",
+                  "keyboardAppearance": "Brightness.light",
+                  "enableIMEPersonalizedLearning": true,
+                  "contentCommitMimeTypes": [],
+                  "autofill": {
+                    "uniqueIdentifier": "EditableText-516347554",
+                    "hints": [],
+                    "editingValue": {
+                      "text": "",
+                      "selectionBase": 0,
+                      "selectionExtent": 0,
+                      "selectionAffinity": "TextAffinity.downstream",
+                      "selectionIsDirectional": false,
+                      "composingBase": -1,
+                      "composingExtent": -1
+                    },
+                    "hintText": "Write a message"
+                  },
+                  "enableDeltaModel": false,
+                  "hintLocales": null
+                }
+              ],
+              "time": 1791347589218000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditableSizeAndTransform",
+              "arguments": {
+                "width": 294,
+                "height": 24,
+                "transform": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  48,
+                  668,
+                  0,
+                  1
+                ]
+              },
+              "time": 1791347589219000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setMarkedTextRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setStyle",
+              "arguments": {
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeightIndex": 3,
+                "textAlignIndex": 4,
+                "textDirectionIndex": 1
+              },
+              "time": 1791347589220000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditingState",
+              "arguments": {
+                "text": "",
+                "selectionBase": 0,
+                "selectionExtent": 0,
+                "selectionAffinity": "TextAffinity.downstream",
+                "selectionIsDirectional": false,
+                "composingBase": -1,
+                "composingExtent": -1
+              },
+              "time": 1791347589221000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589221000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.requestAutofill",
+              "arguments": null,
+              "time": 1791347589226000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589230000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "O",
+                  "selectionBase": 1,
+                  "selectionExtent": 1,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589268000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 12,
+                "y": 0
+              },
+              "time": 1791347589289000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Or",
+                  "selectionBase": 2,
+                  "selectionExtent": 2,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589312000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 18,
+                "y": 0
+              },
+              "time": 1791347589333000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Ori",
+                  "selectionBase": 3,
+                  "selectionExtent": 3,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589363000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 22,
+                "y": 0
+              },
+              "time": 1791347589385000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Orig",
+                  "selectionBase": 4,
+                  "selectionExtent": 4,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589414000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 32,
+                "y": 0
+              },
+              "time": 1791347589450000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origi",
+                  "selectionBase": 5,
+                  "selectionExtent": 5,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589479000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 36,
+                "y": 0
+              },
+              "time": 1791347589496000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origin",
+                  "selectionBase": 6,
+                  "selectionExtent": 6,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589512000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 45,
+                "y": 0
+              },
+              "time": 1791347589539000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Origina",
+                  "selectionBase": 7,
+                  "selectionExtent": 7,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589554000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 54,
+                "y": 0
+              },
+              "time": 1791347589576000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Original",
+                  "selectionBase": 8,
+                  "selectionExtent": 8,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589587000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 59,
+                "y": 0
+              },
+              "time": 1791347589608000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                1,
+                {
+                  "text": "Original",
+                  "selectionBase": 0,
+                  "selectionExtent": 8,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589631000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589658000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.clearClient",
+              "arguments": null,
+              "time": 1791347589889000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.hide",
+              "arguments": null,
+              "time": 1791347589893000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setClient",
+              "arguments": [
+                2,
+                {
+                  "viewId": 0,
+                  "inputType": {
+                    "name": "TextInputType.multiline",
+                    "signed": null,
+                    "decimal": null
+                  },
+                  "readOnly": false,
+                  "obscureText": false,
+                  "autocorrect": true,
+                  "smartDashesType": "1",
+                  "smartQuotesType": "1",
+                  "enableSuggestions": true,
+                  "enableInteractiveSelection": true,
+                  "actionLabel": null,
+                  "inputAction": "TextInputAction.send",
+                  "textCapitalization": "TextCapitalization.none",
+                  "keyboardAppearance": "Brightness.light",
+                  "enableIMEPersonalizedLearning": true,
+                  "contentCommitMimeTypes": [],
+                  "autofill": {
+                    "uniqueIdentifier": "EditableText-516347554",
+                    "hints": [],
+                    "editingValue": {
+                      "text": "Original",
+                      "selectionBase": 0,
+                      "selectionExtent": 8,
+                      "selectionAffinity": "TextAffinity.downstream",
+                      "selectionIsDirectional": false,
+                      "composingBase": -1,
+                      "composingExtent": -1
+                    },
+                    "hintText": "Write a message"
+                  },
+                  "enableDeltaModel": false,
+                  "hintLocales": null
+                }
+              ],
+              "time": 1791347589899000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditableSizeAndTransform",
+              "arguments": {
+                "width": 294,
+                "height": 24,
+                "transform": [
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1,
+                  0,
+                  48,
+                  668,
+                  0,
+                  1
+                ]
+              },
+              "time": 1791347589900000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setMarkedTextRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589900000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 0,
+                "y": 0
+              },
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setStyle",
+              "arguments": {
+                "fontFamily": "Roboto",
+                "fontSize": 16,
+                "fontWeightIndex": 3,
+                "textAlignIndex": 4,
+                "textDirectionIndex": 1
+              },
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setEditingState",
+              "arguments": {
+                "text": "Original",
+                "selectionBase": 0,
+                "selectionExtent": 8,
+                "selectionAffinity": "TextAffinity.downstream",
+                "selectionIsDirectional": false,
+                "composingBase": -1,
+                "composingExtent": -1
+              },
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.show",
+              "arguments": null,
+              "time": 1791347589901000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.requestAutofill",
+              "arguments": null,
+              "time": 1791347589902000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X",
+                  "selectionBase": 1,
+                  "selectionExtent": 1,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347589929000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 11,
+                "y": 0
+              },
+              "time": 1791347589942000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X ",
+                  "selectionBase": 2,
+                  "selectionExtent": 2,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347590243000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 15,
+                "y": 0
+              },
+              "time": 1791347590261000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X n",
+                  "selectionBase": 3,
+                  "selectionExtent": 3,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347590277000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 25,
+                "y": 0
+              },
+              "time": 1791347590289000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X ne",
+                  "selectionBase": 4,
+                  "selectionExtent": 4,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347590307000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 34,
+                "y": 0
+              },
+              "time": 1791347590323000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X nex",
+                  "selectionBase": 5,
+                  "selectionExtent": 5,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347590336000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 42,
+                "y": 0
+              },
+              "time": 1791347590360000
+            },
+            {
+              "direction": "in",
+              "method": "TextInputClient.updateEditingState",
+              "arguments": [
+                2,
+                {
+                  "text": "X next",
+                  "selectionBase": 6,
+                  "selectionExtent": 6,
+                  "composingBase": -1,
+                  "composingExtent": -1
+                }
+              ],
+              "time": 1791347590371000
+            },
+            {
+              "direction": "out",
+              "method": "TextInput.setCaretRect",
+              "arguments": {
+                "width": 2,
+                "height": 24,
+                "x": 48,
+                "y": 0
+              },
+              "time": 1791347590393000
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            6,
+            6
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{\"tenant-composer/user-composer/probe-device/queuedDraftIntents\":{\"schemaVersion\":1,\"kind\":\"queued_draft_intents\",\"identity\":{\"tenantId\":\"tenant-composer\",\"userId\":\"user-composer\",\"deviceId\":\"probe-device\"},\"payload\":{\"intents\":[{\"contractVersion\":1,\"enqueueOrder\":3,\"enqueuedAt\":\"2026-10-07T04:33:10.575Z\",\"operation\":\"synchronize_draft\",\"intent\":\"replace\",\"conversationId\":\"conversation-composer\",\"baseRevision\":2,\"deviceMutationId\":\"probe-draft-5\",\"idempotencyKey\":\"probe-key-6\",\"content\":{\"format\":\"markdown\",\"text\":\"**X** next\",\"attachments\":[]}}]}}}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": "**X** next",
+          "pending": true,
+          "requests": [
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "X next",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              6,
+              6
+            ]
+          },
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              null,
+              null
+            ]
+          }
+        ]
+      },
+      "inputAccepted": true,
+      "formatted": "**X**",
+      "afterAck": {
+        "geometry": {
+          "editor": [
+            32,
+            656,
+            326,
+            48
+          ],
+          "bold": [
+            72,
+            712,
+            40,
+            32
+          ],
+          "boldFocused": false
+        },
+        "text": "X next",
+        "control": null,
+        "bold": false,
+        "trace": [
+          {
+            "event": "controller",
+            "time": 1791347588728000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "BODY"
+          },
+          {
+            "event": "focus",
+            "time": 1791347589216000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLUTTER-VIEW"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589269000,
+            "text": "O",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589313000,
+            "text": "Or",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589363000,
+            "text": "Ori",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589414000,
+            "text": "Orig",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589479000,
+            "text": "Origi",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589512000,
+            "text": "Origin",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589554000,
+            "text": "Origina",
+            "selection": [
+              7,
+              7
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589587000,
+            "text": "Original",
+            "selection": [
+              8,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589631000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791347589633000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "focus",
+            "time": 1791347589886000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "focus",
+            "time": 1791347589897000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589929000,
+            "text": "X",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791347590086000,
+            "text": "X",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590243000,
+            "text": "X ",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590277000,
+            "text": "X n",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590307000,
+            "text": "X ne",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590337000,
+            "text": "X nex",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590371000,
+            "text": "X next",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791347590753000,
+            "text": "X next",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          }
+        ],
+        "inputMessages": [
+          {
+            "direction": "out",
+            "method": "TextInput.setClient",
+            "arguments": [
+              1,
+              {
+                "viewId": 0,
+                "inputType": {
+                  "name": "TextInputType.multiline",
+                  "signed": null,
+                  "decimal": null
+                },
+                "readOnly": false,
+                "obscureText": false,
+                "autocorrect": true,
+                "smartDashesType": "1",
+                "smartQuotesType": "1",
+                "enableSuggestions": true,
+                "enableInteractiveSelection": true,
+                "actionLabel": null,
+                "inputAction": "TextInputAction.send",
+                "textCapitalization": "TextCapitalization.none",
+                "keyboardAppearance": "Brightness.light",
+                "enableIMEPersonalizedLearning": true,
+                "contentCommitMimeTypes": [],
+                "autofill": {
+                  "uniqueIdentifier": "EditableText-516347554",
+                  "hints": [],
+                  "editingValue": {
+                    "text": "",
+                    "selectionBase": 0,
+                    "selectionExtent": 0,
+                    "selectionAffinity": "TextAffinity.downstream",
+                    "selectionIsDirectional": false,
+                    "composingBase": -1,
+                    "composingExtent": -1
+                  },
+                  "hintText": "Write a message"
+                },
+                "enableDeltaModel": false,
+                "hintLocales": null
+              }
+            ],
+            "time": 1791347589218000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditableSizeAndTransform",
+            "arguments": {
+              "width": 294,
+              "height": 24,
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                48,
+                668,
+                0,
+                1
+              ]
+            },
+            "time": 1791347589219000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setMarkedTextRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589220000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589220000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setStyle",
+            "arguments": {
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeightIndex": 3,
+              "textAlignIndex": 4,
+              "textDirectionIndex": 1
+            },
+            "time": 1791347589220000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditingState",
+            "arguments": {
+              "text": "",
+              "selectionBase": 0,
+              "selectionExtent": 0,
+              "selectionAffinity": "TextAffinity.downstream",
+              "selectionIsDirectional": false,
+              "composingBase": -1,
+              "composingExtent": -1
+            },
+            "time": 1791347589221000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.show",
+            "arguments": null,
+            "time": 1791347589221000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.requestAutofill",
+            "arguments": null,
+            "time": 1791347589226000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.show",
+            "arguments": null,
+            "time": 1791347589230000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "O",
+                "selectionBase": 1,
+                "selectionExtent": 1,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589268000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 12,
+              "y": 0
+            },
+            "time": 1791347589289000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Or",
+                "selectionBase": 2,
+                "selectionExtent": 2,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589312000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 18,
+              "y": 0
+            },
+            "time": 1791347589333000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Ori",
+                "selectionBase": 3,
+                "selectionExtent": 3,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589363000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 22,
+              "y": 0
+            },
+            "time": 1791347589385000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Orig",
+                "selectionBase": 4,
+                "selectionExtent": 4,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589414000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 32,
+              "y": 0
+            },
+            "time": 1791347589450000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Origi",
+                "selectionBase": 5,
+                "selectionExtent": 5,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589479000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 36,
+              "y": 0
+            },
+            "time": 1791347589496000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Origin",
+                "selectionBase": 6,
+                "selectionExtent": 6,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589512000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 45,
+              "y": 0
+            },
+            "time": 1791347589539000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Origina",
+                "selectionBase": 7,
+                "selectionExtent": 7,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589554000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 54,
+              "y": 0
+            },
+            "time": 1791347589576000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Original",
+                "selectionBase": 8,
+                "selectionExtent": 8,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589587000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 59,
+              "y": 0
+            },
+            "time": 1791347589608000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Original",
+                "selectionBase": 0,
+                "selectionExtent": 8,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589631000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589658000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.clearClient",
+            "arguments": null,
+            "time": 1791347589889000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.hide",
+            "arguments": null,
+            "time": 1791347589893000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setClient",
+            "arguments": [
+              2,
+              {
+                "viewId": 0,
+                "inputType": {
+                  "name": "TextInputType.multiline",
+                  "signed": null,
+                  "decimal": null
+                },
+                "readOnly": false,
+                "obscureText": false,
+                "autocorrect": true,
+                "smartDashesType": "1",
+                "smartQuotesType": "1",
+                "enableSuggestions": true,
+                "enableInteractiveSelection": true,
+                "actionLabel": null,
+                "inputAction": "TextInputAction.send",
+                "textCapitalization": "TextCapitalization.none",
+                "keyboardAppearance": "Brightness.light",
+                "enableIMEPersonalizedLearning": true,
+                "contentCommitMimeTypes": [],
+                "autofill": {
+                  "uniqueIdentifier": "EditableText-516347554",
+                  "hints": [],
+                  "editingValue": {
+                    "text": "Original",
+                    "selectionBase": 0,
+                    "selectionExtent": 8,
+                    "selectionAffinity": "TextAffinity.downstream",
+                    "selectionIsDirectional": false,
+                    "composingBase": -1,
+                    "composingExtent": -1
+                  },
+                  "hintText": "Write a message"
+                },
+                "enableDeltaModel": false,
+                "hintLocales": null
+              }
+            ],
+            "time": 1791347589899000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditableSizeAndTransform",
+            "arguments": {
+              "width": 294,
+              "height": 24,
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                48,
+                668,
+                0,
+                1
+              ]
+            },
+            "time": 1791347589900000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setMarkedTextRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589900000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setStyle",
+            "arguments": {
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeightIndex": 3,
+              "textAlignIndex": 4,
+              "textDirectionIndex": 1
+            },
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditingState",
+            "arguments": {
+              "text": "Original",
+              "selectionBase": 0,
+              "selectionExtent": 8,
+              "selectionAffinity": "TextAffinity.downstream",
+              "selectionIsDirectional": false,
+              "composingBase": -1,
+              "composingExtent": -1
+            },
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.show",
+            "arguments": null,
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.requestAutofill",
+            "arguments": null,
+            "time": 1791347589902000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X",
+                "selectionBase": 1,
+                "selectionExtent": 1,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589929000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 11,
+              "y": 0
+            },
+            "time": 1791347589942000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X ",
+                "selectionBase": 2,
+                "selectionExtent": 2,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590243000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 15,
+              "y": 0
+            },
+            "time": 1791347590261000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X n",
+                "selectionBase": 3,
+                "selectionExtent": 3,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590277000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 25,
+              "y": 0
+            },
+            "time": 1791347590289000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X ne",
+                "selectionBase": 4,
+                "selectionExtent": 4,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590307000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 34,
+              "y": 0
+            },
+            "time": 1791347590323000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X nex",
+                "selectionBase": 5,
+                "selectionExtent": 5,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590336000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 42,
+              "y": 0
+            },
+            "time": 1791347590360000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next",
+                "selectionBase": 6,
+                "selectionExtent": 6,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590371000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 48,
+              "y": 0
+            },
+            "time": 1791347590393000
+          }
+        ],
+        "primary": null,
+        "conversation": "conversation-composer",
+        "visible": true,
+        "account": 0,
+        "outsideFocus": false,
+        "focusChanges": [
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          }
+        ],
+        "selection": [
+          6,
+          6
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": true,
+        "canRequestFocus": true,
+        "disabledObserved": false,
+        "durable": "{}",
+        "canonical": [],
+        "acceptedCanonicalMessages": [],
+        "sending": false,
+        "draft": "**X** next",
+        "pending": false,
+        "requests": [
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 0,
+            "deviceMutationId": "probe-draft-1",
+            "idempotencyKey": "probe-key-2",
+            "content": {
+              "format": "plain",
+              "text": "Original",
+              "attachments": []
+            }
+          },
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 1,
+            "deviceMutationId": "probe-draft-3",
+            "idempotencyKey": "probe-key-4",
+            "content": {
+              "format": "markdown",
+              "text": "**X**",
+              "attachments": []
+            }
+          },
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 2,
+            "deviceMutationId": "probe-draft-5",
+            "idempotencyKey": "probe-key-6",
+            "content": {
+              "format": "markdown",
+              "text": "**X** next",
+              "attachments": []
+            }
+          }
+        ]
+      },
+      "repeated": {
+        "geometry": {
+          "editor": [
+            32,
+            656,
+            326,
+            48
+          ],
+          "bold": [
+            72,
+            712,
+            40,
+            32
+          ],
+          "boldFocused": false
+        },
+        "text": "X next again",
+        "control": null,
+        "bold": false,
+        "trace": [
+          {
+            "event": "controller",
+            "time": 1791347588728000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "BODY"
+          },
+          {
+            "event": "focus",
+            "time": 1791347589216000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLUTTER-VIEW"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589269000,
+            "text": "O",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589313000,
+            "text": "Or",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589363000,
+            "text": "Ori",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589414000,
+            "text": "Orig",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589479000,
+            "text": "Origi",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589512000,
+            "text": "Origin",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589554000,
+            "text": "Origina",
+            "selection": [
+              7,
+              7
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589587000,
+            "text": "Original",
+            "selection": [
+              8,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589631000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791347589633000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "focus",
+            "time": 1791347589886000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "focus",
+            "time": 1791347589897000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347589929000,
+            "text": "X",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791347590086000,
+            "text": "X",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590243000,
+            "text": "X ",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590277000,
+            "text": "X n",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590307000,
+            "text": "X ne",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590337000,
+            "text": "X nex",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590371000,
+            "text": "X next",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791347590753000,
+            "text": "X next",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590895000,
+            "text": "X next ",
+            "selection": [
+              7,
+              7
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590919000,
+            "text": "X next a",
+            "selection": [
+              8,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590944000,
+            "text": "X next ag",
+            "selection": [
+              9,
+              9
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347590971000,
+            "text": "X next aga",
+            "selection": [
+              10,
+              10
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347591002000,
+            "text": "X next agai",
+            "selection": [
+              11,
+              11
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791347591031000,
+            "text": "X next again",
+            "selection": [
+              12,
+              12
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          }
+        ],
+        "inputMessages": [
+          {
+            "direction": "out",
+            "method": "TextInput.setClient",
+            "arguments": [
+              1,
+              {
+                "viewId": 0,
+                "inputType": {
+                  "name": "TextInputType.multiline",
+                  "signed": null,
+                  "decimal": null
+                },
+                "readOnly": false,
+                "obscureText": false,
+                "autocorrect": true,
+                "smartDashesType": "1",
+                "smartQuotesType": "1",
+                "enableSuggestions": true,
+                "enableInteractiveSelection": true,
+                "actionLabel": null,
+                "inputAction": "TextInputAction.send",
+                "textCapitalization": "TextCapitalization.none",
+                "keyboardAppearance": "Brightness.light",
+                "enableIMEPersonalizedLearning": true,
+                "contentCommitMimeTypes": [],
+                "autofill": {
+                  "uniqueIdentifier": "EditableText-516347554",
+                  "hints": [],
+                  "editingValue": {
+                    "text": "",
+                    "selectionBase": 0,
+                    "selectionExtent": 0,
+                    "selectionAffinity": "TextAffinity.downstream",
+                    "selectionIsDirectional": false,
+                    "composingBase": -1,
+                    "composingExtent": -1
+                  },
+                  "hintText": "Write a message"
+                },
+                "enableDeltaModel": false,
+                "hintLocales": null
+              }
+            ],
+            "time": 1791347589218000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditableSizeAndTransform",
+            "arguments": {
+              "width": 294,
+              "height": 24,
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                48,
+                668,
+                0,
+                1
+              ]
+            },
+            "time": 1791347589219000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setMarkedTextRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589220000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589220000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setStyle",
+            "arguments": {
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeightIndex": 3,
+              "textAlignIndex": 4,
+              "textDirectionIndex": 1
+            },
+            "time": 1791347589220000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditingState",
+            "arguments": {
+              "text": "",
+              "selectionBase": 0,
+              "selectionExtent": 0,
+              "selectionAffinity": "TextAffinity.downstream",
+              "selectionIsDirectional": false,
+              "composingBase": -1,
+              "composingExtent": -1
+            },
+            "time": 1791347589221000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.show",
+            "arguments": null,
+            "time": 1791347589221000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.requestAutofill",
+            "arguments": null,
+            "time": 1791347589226000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.show",
+            "arguments": null,
+            "time": 1791347589230000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "O",
+                "selectionBase": 1,
+                "selectionExtent": 1,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589268000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 12,
+              "y": 0
+            },
+            "time": 1791347589289000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Or",
+                "selectionBase": 2,
+                "selectionExtent": 2,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589312000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 18,
+              "y": 0
+            },
+            "time": 1791347589333000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Ori",
+                "selectionBase": 3,
+                "selectionExtent": 3,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589363000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 22,
+              "y": 0
+            },
+            "time": 1791347589385000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Orig",
+                "selectionBase": 4,
+                "selectionExtent": 4,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589414000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 32,
+              "y": 0
+            },
+            "time": 1791347589450000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Origi",
+                "selectionBase": 5,
+                "selectionExtent": 5,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589479000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 36,
+              "y": 0
+            },
+            "time": 1791347589496000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Origin",
+                "selectionBase": 6,
+                "selectionExtent": 6,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589512000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 45,
+              "y": 0
+            },
+            "time": 1791347589539000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Origina",
+                "selectionBase": 7,
+                "selectionExtent": 7,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589554000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 54,
+              "y": 0
+            },
+            "time": 1791347589576000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Original",
+                "selectionBase": 8,
+                "selectionExtent": 8,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589587000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 59,
+              "y": 0
+            },
+            "time": 1791347589608000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              1,
+              {
+                "text": "Original",
+                "selectionBase": 0,
+                "selectionExtent": 8,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589631000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589658000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.clearClient",
+            "arguments": null,
+            "time": 1791347589889000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.hide",
+            "arguments": null,
+            "time": 1791347589893000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setClient",
+            "arguments": [
+              2,
+              {
+                "viewId": 0,
+                "inputType": {
+                  "name": "TextInputType.multiline",
+                  "signed": null,
+                  "decimal": null
+                },
+                "readOnly": false,
+                "obscureText": false,
+                "autocorrect": true,
+                "smartDashesType": "1",
+                "smartQuotesType": "1",
+                "enableSuggestions": true,
+                "enableInteractiveSelection": true,
+                "actionLabel": null,
+                "inputAction": "TextInputAction.send",
+                "textCapitalization": "TextCapitalization.none",
+                "keyboardAppearance": "Brightness.light",
+                "enableIMEPersonalizedLearning": true,
+                "contentCommitMimeTypes": [],
+                "autofill": {
+                  "uniqueIdentifier": "EditableText-516347554",
+                  "hints": [],
+                  "editingValue": {
+                    "text": "Original",
+                    "selectionBase": 0,
+                    "selectionExtent": 8,
+                    "selectionAffinity": "TextAffinity.downstream",
+                    "selectionIsDirectional": false,
+                    "composingBase": -1,
+                    "composingExtent": -1
+                  },
+                  "hintText": "Write a message"
+                },
+                "enableDeltaModel": false,
+                "hintLocales": null
+              }
+            ],
+            "time": 1791347589899000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditableSizeAndTransform",
+            "arguments": {
+              "width": 294,
+              "height": 24,
+              "transform": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                48,
+                668,
+                0,
+                1
+              ]
+            },
+            "time": 1791347589900000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setMarkedTextRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589900000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 0,
+              "y": 0
+            },
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setStyle",
+            "arguments": {
+              "fontFamily": "Roboto",
+              "fontSize": 16,
+              "fontWeightIndex": 3,
+              "textAlignIndex": 4,
+              "textDirectionIndex": 1
+            },
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setEditingState",
+            "arguments": {
+              "text": "Original",
+              "selectionBase": 0,
+              "selectionExtent": 8,
+              "selectionAffinity": "TextAffinity.downstream",
+              "selectionIsDirectional": false,
+              "composingBase": -1,
+              "composingExtent": -1
+            },
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.show",
+            "arguments": null,
+            "time": 1791347589901000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.requestAutofill",
+            "arguments": null,
+            "time": 1791347589902000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X",
+                "selectionBase": 1,
+                "selectionExtent": 1,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347589929000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 11,
+              "y": 0
+            },
+            "time": 1791347589942000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X ",
+                "selectionBase": 2,
+                "selectionExtent": 2,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590243000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 15,
+              "y": 0
+            },
+            "time": 1791347590261000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X n",
+                "selectionBase": 3,
+                "selectionExtent": 3,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590277000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 25,
+              "y": 0
+            },
+            "time": 1791347590289000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X ne",
+                "selectionBase": 4,
+                "selectionExtent": 4,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590307000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 34,
+              "y": 0
+            },
+            "time": 1791347590323000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X nex",
+                "selectionBase": 5,
+                "selectionExtent": 5,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590336000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 42,
+              "y": 0
+            },
+            "time": 1791347590360000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next",
+                "selectionBase": 6,
+                "selectionExtent": 6,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590371000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 48,
+              "y": 0
+            },
+            "time": 1791347590393000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next ",
+                "selectionBase": 7,
+                "selectionExtent": 7,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590895000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 52,
+              "y": 0
+            },
+            "time": 1791347590906000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next a",
+                "selectionBase": 8,
+                "selectionExtent": 8,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590919000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 61,
+              "y": 0
+            },
+            "time": 1791347590931000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next ag",
+                "selectionBase": 9,
+                "selectionExtent": 9,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590944000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 71,
+              "y": 0
+            },
+            "time": 1791347590955000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next aga",
+                "selectionBase": 10,
+                "selectionExtent": 10,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347590971000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 80,
+              "y": 0
+            },
+            "time": 1791347590992000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next agai",
+                "selectionBase": 11,
+                "selectionExtent": 11,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347591002000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 84,
+              "y": 0
+            },
+            "time": 1791347591022000
+          },
+          {
+            "direction": "in",
+            "method": "TextInputClient.updateEditingState",
+            "arguments": [
+              2,
+              {
+                "text": "X next again",
+                "selectionBase": 12,
+                "selectionExtent": 12,
+                "composingBase": -1,
+                "composingExtent": -1
+              }
+            ],
+            "time": 1791347591031000
+          },
+          {
+            "direction": "out",
+            "method": "TextInput.setCaretRect",
+            "arguments": {
+              "width": 2,
+              "height": 24,
+              "x": 94,
+              "y": 0
+            },
+            "time": 1791347591041000
+          }
+        ],
+        "primary": null,
+        "conversation": "conversation-composer",
+        "visible": true,
+        "account": 0,
+        "outsideFocus": false,
+        "focusChanges": [
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          }
+        ],
+        "selection": [
+          12,
+          12
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": true,
+        "canRequestFocus": true,
+        "disabledObserved": false,
+        "durable": "{\"tenant-composer/user-composer/probe-device/queuedDraftIntents\":{\"schemaVersion\":1,\"kind\":\"queued_draft_intents\",\"identity\":{\"tenantId\":\"tenant-composer\",\"userId\":\"user-composer\",\"deviceId\":\"probe-device\"},\"payload\":{\"intents\":[{\"contractVersion\":1,\"enqueueOrder\":1,\"enqueuedAt\":\"2026-10-07T04:33:11.233Z\",\"operation\":\"synchronize_draft\",\"intent\":\"replace\",\"conversationId\":\"conversation-composer\",\"baseRevision\":3,\"deviceMutationId\":\"probe-draft-7\",\"idempotencyKey\":\"probe-key-8\",\"content\":{\"format\":\"markdown\",\"text\":\"**X** next again\",\"attachments\":[]}}]}}}",
+        "canonical": [],
+        "acceptedCanonicalMessages": [],
+        "sending": false,
+        "draft": "**X** next again",
+        "pending": true,
+        "requests": [
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 0,
+            "deviceMutationId": "probe-draft-1",
+            "idempotencyKey": "probe-key-2",
+            "content": {
+              "format": "plain",
+              "text": "Original",
+              "attachments": []
+            }
+          },
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 1,
+            "deviceMutationId": "probe-draft-3",
+            "idempotencyKey": "probe-key-4",
+            "content": {
+              "format": "markdown",
+              "text": "**X**",
+              "attachments": []
+            }
+          },
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 2,
+            "deviceMutationId": "probe-draft-5",
+            "idempotencyKey": "probe-key-6",
+            "content": {
+              "format": "markdown",
+              "text": "**X** next",
+              "attachments": []
+            }
+          },
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 3,
+            "deviceMutationId": "probe-draft-7",
+            "idempotencyKey": "probe-key-8",
+            "content": {
+              "format": "markdown",
+              "text": "**X** next again",
+              "attachments": []
+            }
+          }
+        ]
+      },
+      "browserTrace": [
+        {
+          "type": "focusin",
+          "time": 700.3000001907349,
+          "tag": "FLUTTER-VIEW",
+          "role": null,
+          "label": null,
+          "active": "FLUTTER-VIEW",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at a2W.a5U (http://127.0.0.1:37193/main.dart.js:44581:77)\n    at SW.aA1 (http://127.0.0.1:37193/main.dart.js:106204:9)\n    at tear_off.<anonymous> (http://127.0.0.1:37193/main.dart.js:3860:79)\n    at nz.aA (http://127.0.0.1:37193/main.dart.js:59842:14)\n    at nz.N4 (http://127.0.0.1:37193/main.dart.js:93246:3)\n    at Jn.Fz (http://127.0.0.1:37193/main.dart.js:93354:99)\n    at tear_off.<anonymous> (http://127.0.0.1:37193/main.dart.js:3860:79)\n    at Object.bAQ (http://127.0.0.1:37193/main.dart.js:5202:5)\n    at a1X.bBY (http://127.0.0.1:37193/main.dart.js:5204:7)"
+        },
+        {
+          "type": "pointerdown",
+          "time": 1158.6999998092651,
+          "tag": "FLUTTER-VIEW",
+          "role": null,
+          "label": null,
+          "active": "FLUTTER-VIEW"
+        },
+        {
+          "type": "focusout",
+          "time": 1169.8000001907349,
+          "tag": "FLUTTER-VIEW",
+          "role": null,
+          "label": null,
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at Yc.lY (http://127.0.0.1:37193/main.dart.js:48021:5)\n    at Yc.A7 (http://127.0.0.1:37193/main.dart.js:48114:11)\n    at Yc.vZ (http://127.0.0.1:37193/main.dart.js:48076:10)\n    at Yc.Qt (http://127.0.0.1:37193/main.dart.js:48261:3)\n    at asI.aBn (http://127.0.0.1:37193/main.dart.js:48576:3)\n    at aF3.j7 (http://127.0.0.1:37193/main.dart.js:48485:17)\n    at aEM.aJM (http://127.0.0.1:37193/main.dart.js:48554:10)\n    at XF.aAo (http://127.0.0.1:37193/main.dart.js:44217:39)\n    at aLi.x4 (http://127.0.0.1:37193/main.dart.js:87436:8)"
+        },
+        {
+          "type": "focusin",
+          "time": 1171,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "",
+          "active": "TEXTAREA",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at Yc.lY (http://127.0.0.1:37193/main.dart.js:48021:5)\n    at Yc.A7 (http://127.0.0.1:37193/main.dart.js:48114:11)\n    at Yc.vZ (http://127.0.0.1:37193/main.dart.js:48076:10)\n    at Yc.Qt (http://127.0.0.1:37193/main.dart.js:48261:3)\n    at asI.aBn (http://127.0.0.1:37193/main.dart.js:48576:3)\n    at aF3.j7 (http://127.0.0.1:37193/main.dart.js:48485:17)\n    at aEM.aJM (http://127.0.0.1:37193/main.dart.js:48554:10)\n    at XF.aAo (http://127.0.0.1:37193/main.dart.js:44217:39)\n    at aLi.x4 (http://127.0.0.1:37193/main.dart.js:87436:8)"
+        },
+        {
+          "type": "pointerup",
+          "time": 1174.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1212.4000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "O",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1212.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "O",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1213.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "O",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1256,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "O",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1257.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "r",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1257.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "r",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1257.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "r",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1291,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "r",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1307.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1307.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1308.1000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1339.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1358.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1358.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1359.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1407,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1424.1000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1424.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1424.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1453.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1457.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1457.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1457.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1495.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1498.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1498.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1499.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1529.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1531.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "l",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1531.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "l",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1532.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "l",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1562.4000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "l",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1570,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "Control",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1571.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "A",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1572.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "A",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1573.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "Control",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "pointerdown",
+          "time": 1829.1000003814697,
+          "tag": "FLUTTER-VIEW",
+          "role": null,
+          "label": null,
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "pointerup",
+          "time": 1839.6999998092651,
+          "tag": "FLUTTER-VIEW",
+          "role": null,
+          "label": null,
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "focusout",
+          "time": 1844.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "Original",
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at Object.br1 (http://127.0.0.1:37193/main.dart.js:1234:16)\n    at Object.bcM (http://127.0.0.1:37193/main.dart.js:1316:5)\n    at aEM.aJM (http://127.0.0.1:37193/main.dart.js:48520:17)\n    at XF.aAo (http://127.0.0.1:37193/main.dart.js:44217:39)\n    at aLi.x4 (http://127.0.0.1:37193/main.dart.js:87436:8)\n    at azy.x4 (http://127.0.0.1:37193/main.dart.js:134003:15)\n    at http://127.0.0.1:37193/main.dart.js:87919:11\n    at b2p.a (http://127.0.0.1:37193/main.dart.js:5055:63)\n    at b2p.$2 (http://127.0.0.1:37193/main.dart.js:52119:14)"
+        },
+        {
+          "type": "focusin",
+          "time": 1847.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "Original",
+          "active": "TEXTAREA",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at Yc.lY (http://127.0.0.1:37193/main.dart.js:48021:5)\n    at Yc.A7 (http://127.0.0.1:37193/main.dart.js:48114:11)\n    at Yc.vZ (http://127.0.0.1:37193/main.dart.js:48076:10)\n    at Yc.Qt (http://127.0.0.1:37193/main.dart.js:48261:3)\n    at asI.aBn (http://127.0.0.1:37193/main.dart.js:48576:3)\n    at aF3.j7 (http://127.0.0.1:37193/main.dart.js:48485:17)\n    at aEM.aJM (http://127.0.0.1:37193/main.dart.js:48554:10)\n    at XF.aAo (http://127.0.0.1:37193/main.dart.js:44217:39)\n    at aLi.x4 (http://127.0.0.1:37193/main.dart.js:87436:8)"
+        },
+        {
+          "type": "keydown",
+          "time": 1873.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "X",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1873.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "X",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1874.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "X",
+          "value": "X",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1965.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "X",
+          "value": "X",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2188.199999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": " ",
+          "value": "X",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2188.199999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": " ",
+          "value": "X",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2188.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": " ",
+          "value": "X ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2220.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": " ",
+          "value": "X ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2221.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "X ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2221.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "X ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2222,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "X n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2250.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "X n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2251.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "e",
+          "value": "X n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2251.800000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "e",
+          "value": "X n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2252.199999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "e",
+          "value": "X ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2280.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "e",
+          "value": "X ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2281.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "x",
+          "value": "X ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2281.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "x",
+          "value": "X ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2282,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "x",
+          "value": "X nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2314.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "x",
+          "value": "X nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2315.699999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "t",
+          "value": "X nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2315.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "t",
+          "value": "X nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2316.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "t",
+          "value": "X next",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2345.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "t",
+          "value": "X next",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2839.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": " ",
+          "value": "X next",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2840,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": " ",
+          "value": "X next",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2840.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": " ",
+          "value": "X next ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2863.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": " ",
+          "value": "X next ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2864.4000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "X next ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2864.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "X next ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2864.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "X next a",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2888.1000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "X next a",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2889.1000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "X next a",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2889.199999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "X next a",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2889.6000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "X next ag",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2914.1000003814697,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "X next ag",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2915.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "X next ag",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2915.4000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "X next ag",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2916,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "X next aga",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2945.699999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "X next aga",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2946.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "X next aga",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2947,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "X next aga",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2947.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "X next agai",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2975,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "X next agai",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2976.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "X next agai",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2976.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "X next agai",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2976.9000005722046,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "X next again",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2999,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "X next again",
+          "active": "TEXTAREA"
+        }
+      ]
+    }
+  ]
+}

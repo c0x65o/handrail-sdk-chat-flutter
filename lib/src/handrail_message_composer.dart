@@ -278,6 +278,8 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
   var _localDraftDirty = false;
   var _typingStarted = false;
   var _pickingAttachment = false;
+  var _editingLink = false;
+  var _linkEditGeneration = 0;
   var _sending = false;
   var _restoringMentions = false;
   var _disposed = false;
@@ -326,6 +328,10 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
         oldWidget.controller != widget.controller ||
         oldWidget.focusNode != widget.focusNode) {
       ++_sendFocusGeneration;
+    }
+    if (oldWidget.enabled != widget.enabled ||
+        oldWidget.controller != widget.controller) {
+      ++_linkEditGeneration;
     }
     if (oldWidget.controller != widget.controller) {
       _hostTextController?.removeListener(_handleHostControllerChanged);
@@ -402,6 +408,7 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
       if (state == _conversationState) return;
       setState(() {
         _conversationState = state;
+        if (!_canInteract) ++_linkEditGeneration;
         if (_pruneTrackedMentions()) {
           _localDraftDirty = true;
           _scheduleDraftSynchronization();
@@ -414,7 +421,10 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
     _timelineSubscription = _timeline!.states.listen((state) {
       if (_disposed || generation != _bindingGeneration) return;
       if (identical(state, _timelineState)) return;
-      setState(() => _timelineState = state);
+      setState(() {
+        _timelineState = state;
+        if (!_canInteract) ++_linkEditGeneration;
+      });
       if (!state.isReady) _stopTyping();
     });
   }
@@ -492,6 +502,7 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
   }) {
     _draftTimer?.cancel();
     _draftEditingActor = _currentDraftActor;
+    ++_linkEditGeneration;
     _setReplyReference(replyTo);
     _clearMentionState();
     _programmaticTextChange = true;
@@ -1035,68 +1046,32 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
 
   Future<void> _editLink() async {
     final selection = _textController.linkEditingSelection;
-    if (selection == null || !_canInteract || _sending) return;
+    if (selection == null || !_canInteract || _sending || _editingLink) return;
+    final generation = ++_linkEditGeneration;
+    final composition = _compositionGeneration;
+    final actor = _currentDraftActor;
     final existing = _textController.linkAtSelection;
-    final destination = TextEditingController(text: existing?.href ?? '');
-    String? error;
-    final result = await showDialog<_LinkEditResult>(
-      context: context,
-      builder: (context) => StatefulBuilder(
-        builder: (context, setDialogState) => AlertDialog(
-          title: Text(existing == null ? 'Add link' : 'Edit link'),
-          content: TextField(
-            key: const ValueKey('handrail-message-composer-link-destination'),
-            controller: destination,
-            autofocus: true,
-            keyboardType: TextInputType.url,
-            textInputAction: TextInputAction.done,
-            decoration: InputDecoration(
-              labelText: 'Link destination',
-              hintText: 'https://example.com',
-              errorText: error,
-            ),
-            onSubmitted: (_) {
-              final href = sanitizeComposerMarkdownLink(destination.text);
-              if (href == null) {
-                setDialogState(
-                    () => error = 'Enter a safe web, email, or relative link.');
-                return;
-              }
-              Navigator.of(context).pop(_LinkEditResult(href: href));
-            },
-          ),
-          actions: [
-            if (existing != null)
-              TextButton(
-                key: const ValueKey('handrail-message-composer-link-remove'),
-                onPressed: () => Navigator.of(context).pop(
-                  const _LinkEditResult(remove: true),
-                ),
-                child: const Text('Remove link'),
-              ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
-            ),
-            FilledButton(
-              key: const ValueKey('handrail-message-composer-link-apply'),
-              onPressed: () {
-                final href = sanitizeComposerMarkdownLink(destination.text);
-                if (href == null) {
-                  setDialogState(() =>
-                      error = 'Enter a safe web, email, or relative link.');
-                  return;
-                }
-                Navigator.of(context).pop(_LinkEditResult(href: href));
-              },
-              child: const Text('Apply'),
-            ),
-          ],
-        ),
-      ),
-    );
-    destination.dispose();
-    if (result == null || !mounted) return;
+    _editingLink = true;
+    _LinkEditResult? result;
+    try {
+      result = await showDialog<_LinkEditResult>(
+        context: context,
+        builder: (_) => _LinkEditDialog(href: existing?.href),
+      );
+    } finally {
+      _editingLink = false;
+    }
+    // The modal may outlive this draft or its editing authority. Selection-only
+    // changes and matching draft acknowledgements still use the opening range.
+    if (result == null ||
+        !mounted ||
+        generation != _linkEditGeneration ||
+        composition != _compositionGeneration ||
+        actor != _currentDraftActor ||
+        !_canInteract ||
+        _sending) {
+      return;
+    }
     final changed = result.remove
         ? _textController.removeLink(selection)
         : _textController.setLink(selection, result.href!);
@@ -1927,18 +1902,20 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
     required bool selected,
     required VoidCallback? onPressed,
   }) =>
-      Semantics(
-        selected: selected,
-        button: true,
-        label: tooltip,
-        child: IconButton(
-          key: ValueKey('handrail-message-composer-format-$keyName'),
-          tooltip: tooltip,
-          isSelected: selected,
-          onPressed: onPressed,
-          visualDensity: VisualDensity.compact,
-          selectedIcon: Icon(icon),
-          icon: Icon(icon),
+      MergeSemantics(
+        child: Semantics(
+          // Material 2 needs this state; merge it into the native button's
+          // label, enabled state and action rather than adding another button.
+          selected: selected,
+          child: IconButton(
+            key: ValueKey('handrail-message-composer-format-$keyName'),
+            tooltip: tooltip,
+            isSelected: selected,
+            onPressed: onPressed,
+            visualDensity: VisualDensity.compact,
+            selectedIcon: Icon(icon),
+            icon: Icon(icon),
+          ),
         ),
       );
 
@@ -2102,6 +2079,80 @@ final class _TrackedMention {
 }
 
 enum _ComposerBlockType { unorderedList, orderedList, codeBlock }
+
+// The route's result resolves before its reverse transition finishes. Keep the
+// field controller owned by the dialog State until the field is unmounted.
+class _LinkEditDialog extends StatefulWidget {
+  const _LinkEditDialog({required this.href});
+
+  final String? href;
+
+  @override
+  State<_LinkEditDialog> createState() => _LinkEditDialogState();
+}
+
+class _LinkEditDialogState extends State<_LinkEditDialog> {
+  late final _destination = TextEditingController(text: widget.href ?? '');
+  String? _error;
+  bool _closing = false;
+
+  void _finish([_LinkEditResult? result]) {
+    if (_closing || ModalRoute.of(context)?.isCurrent != true) return;
+    _closing = true;
+    Navigator.of(context).pop(result);
+  }
+
+  void _apply() {
+    if (_closing || ModalRoute.of(context)?.isCurrent != true) return;
+    final href = sanitizeComposerMarkdownLink(_destination.text);
+    if (href == null) {
+      setState(() => _error = 'Enter a safe web, email, or relative link.');
+      return;
+    }
+    _finish(_LinkEditResult(href: href));
+  }
+
+  @override
+  void dispose() {
+    _destination.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AlertDialog(
+        title: Text(widget.href == null ? 'Add link' : 'Edit link'),
+        content: TextField(
+          key: const ValueKey('handrail-message-composer-link-destination'),
+          controller: _destination,
+          autofocus: true,
+          keyboardType: TextInputType.url,
+          textInputAction: TextInputAction.done,
+          decoration: InputDecoration(
+            labelText: 'Link destination',
+            hintText: 'https://example.com',
+            error: _error == null ? null : Text(_error!),
+          ),
+          onSubmitted: (_) => _apply(),
+        ),
+        actions: [
+          if (widget.href != null)
+            TextButton(
+              key: const ValueKey('handrail-message-composer-link-remove'),
+              onPressed: () => _finish(const _LinkEditResult(remove: true)),
+              child: const Text('Remove link'),
+            ),
+          TextButton(
+            onPressed: _finish,
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            key: const ValueKey('handrail-message-composer-link-apply'),
+            onPressed: _apply,
+            child: const Text('Apply'),
+          ),
+        ],
+      );
+}
 
 final class _LinkEditResult {
   const _LinkEditResult({this.href, this.remove = false});

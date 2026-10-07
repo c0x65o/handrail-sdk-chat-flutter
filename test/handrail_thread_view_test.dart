@@ -3,14 +3,18 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:handrail_chat/ui.dart';
+
+import 'widget_evidence.dart';
 
 import 'fixtures/thread_creation_fixtures.dart';
 import 'fixtures/draft_mutation_fixtures.dart';
 import 'fixtures/thread_follow_mutation_fixtures.dart';
 import 'fixtures/conversation_preference_fixtures.dart';
 
+part 'handrail_thread_header_cases.dart';
 part 'handrail_thread_lifecycle_cases.dart';
 part 'handrail_thread_subscription_cases.dart';
 
@@ -23,6 +27,7 @@ const _tenantId = 'tenant-from-session';
 const _now = '2026-08-26T16:00:00.000Z';
 
 void main() {
+  _threadHeaderTests();
   _lifecycleTests();
   _subscriptionTests();
   testWidgets(

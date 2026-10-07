@@ -1,0 +1,196 @@
+Native delegated cgroup: 0::/user.slice/user-993.slice/user@993.service/handrail.slice/handrail-workers.slice/handrail-codex-07e1a178-2844-4e5e-9f33-6ae76d8a98e9.scope/handrail-heavy/link-polish-validation
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_message_composer_test.dart
+00:00 +0: link validation wraps at 320.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-320.0-1.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 320.0 with text scale 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: link validation wraps at 320.0 with text scale 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 320.0 with text scale 1.0
+  
+00:01 +0 -1: link validation wraps at 320.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-320.0-2.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 320.0 with text scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -2: link validation wraps at 320.0 with text scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 320.0 with text scale 2.0
+  
+00:02 +0 -2: link validation wraps at 320.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-320.0-3.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 320.0 with text scale 3.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -3: link validation wraps at 320.0 with text scale 3.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 320.0 with text scale 3.0
+  
+00:03 +0 -3: link validation wraps at 390.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-390.0-1.0.png
+00:03 +1 -3: link validation wraps at 390.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-390.0-2.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 390.0 with text scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +1 -4: link validation wraps at 390.0 with text scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 390.0 with text scale 2.0
+  
+00:03 +1 -4: link validation wraps at 390.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-390.0-3.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 390.0 with text scale 3.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +1 -5: link validation wraps at 390.0 with text scale 3.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 390.0 with text scale 3.0
+  
+00:04 +1 -5: link validation wraps at 900.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-900.0-1.0.png
+00:04 +2 -5: link validation wraps at 900.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-900.0-2.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 900.0 with text scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +2 -6: link validation wraps at 900.0 with text scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 900.0 with text scale 2.0
+  
+00:05 +2 -6: link validation wraps at 900.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/before-layout/link-validation-900.0-3.0.png
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+The complete actionable validation message must render.
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 900.0 with text scale 3.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +2 -7: link validation wraps at 900.0 with text scale 3.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 900.0 with text scale 3.0
+  
+00:05 +2 -7: Some tests failed.

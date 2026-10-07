@@ -1,0 +1,103 @@
+{
+  "candidate-link-cancel": {
+    "exit": 1,
+    "seconds": 4.93,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "--name",
+      "retained baseline link Cancel"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "baseline-link-cancel": {
+    "exit": 1,
+    "seconds": 4.93,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "--name",
+      "retained baseline link Cancel"
+    ],
+    "fixture": "baseline",
+    "timeout_seconds": 300
+  },
+  "isolated-lifetime": {
+    "exit": 1,
+    "seconds": 3.72,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/dialog_lifetime_test.dart"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "platform-connection": {
+    "exit": 0,
+    "seconds": 7.83,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "--name",
+      "toolbar retains platform editing"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "scoped-analysis-final": {
+    "exit": 0,
+    "seconds": 17.31,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "analyze",
+      "--no-pub",
+      "lib/src/handrail_message_composer.dart",
+      "lib/src/handrail_thread_view.dart",
+      "lib/src/handrail_chat_workspace.dart",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "test/handrail_thread_view_test.dart"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "candidate-release-build": {
+    "exit": 0,
+    "seconds": 40.02,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "build",
+      "web",
+      "--release",
+      "--no-pub",
+      "--no-web-resources-cdn",
+      "--target",
+      "tool/ui_probe.dart"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  }
+}

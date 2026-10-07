@@ -1,0 +1,26 @@
+{
+  "runtime_files": {
+    "lib/src/handrail_chat_workspace.dart": "3105d2ec80f4b62bf59a7380a301fe0e3bda084f8180ac40f6a813c8adee085f",
+    "lib/src/handrail_message_composer.dart": "9afd36dadd0284e986bfe50d52d0e0df5110a4212bf17d374d21f438fb65c964",
+    "lib/src/handrail_thread_view.dart": "40215ed47a9f6fffdc74e3b5b7184825d1ac704d0be2df3cbcef6dce64cfdf94"
+  },
+  "source_files": {
+    "lib/src/handrail_chat_workspace.dart": "3105d2ec80f4b62bf59a7380a301fe0e3bda084f8180ac40f6a813c8adee085f",
+    "lib/src/handrail_message_composer.dart": "9afd36dadd0284e986bfe50d52d0e0df5110a4212bf17d374d21f438fb65c964",
+    "lib/src/handrail_thread_view.dart": "40215ed47a9f6fffdc74e3b5b7184825d1ac704d0be2df3cbcef6dce64cfdf94",
+    "test/handrail_chat_workspace_test.dart": "403cf53b8d7d2aff7919dbb45f1aba4bdd68827dc8bfbb218d01b55b95bcb43d",
+    "test/handrail_message_composer_test.dart": "0246b39474c76d1dd5738e842f8ff03220de5bf5bc43c25ebf45532c299f8470",
+    "test/handrail_named_thread_cases.dart": "d1648c75dfa61624b31fc5dcb7a12aa7fd9ebcdfa9c72e49c7403ae65003735f",
+    "test/handrail_thread_view_test.dart": "c2b9682c0f7f729d51e6f47fe9f5c4b08f9eb8e36b5b938219405378d2333c83",
+    "test/handrail_control_hierarchy_cases.dart": "17cc03553bd3eefeec494724b6f5f496bf80e6136c00a94e05b7e419f3ed4460",
+    "test/handrail_format_semantics_cases.dart": "8d4c6900e723c20a2457d52876eee70d7b2de6de4fd84177a34cbf84cdda998e",
+    "test/handrail_thread_header_cases.dart": "2c50b8a69fd76e8c1006a182a56c8c1a5e2f50e81ac10134659066a0d6c4499e"
+  },
+  "source_diff_sha256": "16378ba34a226a2c53e7769a6d45531f2a6fa3f12d67129197ee62ff0836ac88",
+  "prior_added_test_lines": 87,
+  "prior_added_test_block_preserved": true,
+  "qualification_runtime_matches_workspace": {
+    "candidate": true,
+    "minimum": true
+  }
+}

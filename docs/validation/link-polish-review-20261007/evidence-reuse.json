@@ -1,0 +1,16 @@
+{
+  "prior_manifest_entries": 429,
+  "mismatches": [],
+  "writer_composer_sha256": "edc9a41893cde2be83c0afd6c8b208eff47752761cc70dfd386c2f2c747b3919",
+  "writer_diff_sha256": "29b9e9a5029a98cbdbe6ee9d678e01c277c7017f08a56c2aad0f522f7c166e1e",
+  "current_composer_sha256": "dad95ddbbb4a885a8ab0984b907a8f7f36e776351c1c77cc6ae43fed9bb72289",
+  "runtime_delta_sha256": "03a200ff72d39de1fc5dc27443abd19c22a4043a41e4add500e66ed52edb403b",
+  "reused_logs": {
+    "current-native-tests.txt": "04a5d5b211d7035d1396dd4409143becaad817049666a939ca2ea2becb0eddd7",
+    "minimum-tests-final.txt": "018693c383521ab36d24f83cd239d8a96cc061635fcbc95b7985a4b2a6e47b53",
+    "current-scoped-analysis.txt": "9c62b86db8be45b3b74cad01e260d0ac5e655f3bf10834cc48e91942bd3226c8",
+    "minimum-scoped-analysis.txt": "0268816f3643d6f849fb4669b2215ec60808c2eec7caffdf2258125b2bc5fa99",
+    "current-analysis.txt": "70eb538bb3be592ba814e735441a5dc0beff33b28b7127127af17c9ac3d1871f",
+    "minimum-analysis-final.txt": "751f497d51984bffcb9d35a04013ce9beb1e0a4df7490132e060064993dcc046"
+  }
+}

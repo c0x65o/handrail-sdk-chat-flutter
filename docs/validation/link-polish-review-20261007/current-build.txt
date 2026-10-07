@@ -1,0 +1,14 @@
+Native delegated cgroup: 0::/user.slice/user-993.slice/user@993.service/handrail.slice/handrail-workers.slice/handrail-codex-07e1a178-2844-4e5e-9f33-6ae76d8a98e9.scope/handrail-heavy/link-polish-validation
+Compiling tool/ui_probe.dart for the Web...                     
+Wasm dry run findings:
+Found incompatibilities with WebAssembly.
+
+file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/tool/toolbar_probe.dart 5:1 - dart:html unsupported (0)
+
+Consider addressing these issues to enable wasm builds. See docs for more info: https://docs.flutter.dev/platform-integration/web/wasm
+
+Use --no-wasm-dry-run to disable these warnings.
+Expected to find fonts for (MaterialIcons, packages/cupertino_icons/CupertinoIcons), but found (MaterialIcons). This usually means you are referring to font families in an IconData class but not including them in the assets section of your pubspec.yaml, are missing the package that would include them, or are missing "uses-material-design: true".
+Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 13704 bytes (99.2% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+Compiling tool/ui_probe.dart for the Web...                        40.9s
+✓ Built build/web

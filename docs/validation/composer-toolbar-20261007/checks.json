@@ -1,0 +1,44 @@
+{
+  "verdict": "not fixed; runtime publication hold",
+  "runtime_changed": false,
+  "composer_sha256": "0ce967b86b4b1914c2eb3da4e8be3bc7be6f16819cacf91cdc7c6b0982cf36c6",
+  "test_sha256": "3068e28e78e6010dc0b5c29b87f645027705dd286a5fd69d44f598a89d9c5a07",
+  "diff_sha256": "5391e09863341075e50ef068a26105507f8d3679dd5b9da4263b9c765adebd01",
+  "current_tests": 218,
+  "minimum_tests": 218,
+  "source_analysis": "both scoped clean",
+  "full_analysis": "same 13 baseline findings on both toolchains",
+  "full_suite": "not rerun; prior 2471 passed / 7 failed retained",
+  "source_custody": "all original files match except intentionally changed composer test; all repository heads unchanged",
+  "browser": {
+    "matched": {
+      "cases": 12,
+      "passed": 4,
+      "failed": 8,
+      "exit": 1,
+      "cases_without_page_errors": 12
+    },
+    "formats": {
+      "cases": 30,
+      "passed": 14,
+      "failed": 16,
+      "exit": 1,
+      "cases_without_page_errors": 30
+    },
+    "minimum": {
+      "cases": 4,
+      "passed": 2,
+      "failed": 2,
+      "exit": 1,
+      "cases_without_page_errors": 4
+    },
+    "published_postsend": {
+      "cases": 9,
+      "passed": 9,
+      "failed": 0,
+      "exit": 0
+    }
+  },
+  "ime": "real browser/system IME unverified",
+  "remaining": "Supported focus/editing correction must pass immediate first key and continued durable input for pointer and keyboard, followed by remaining rendered lifecycle/attachment/mention and release consumer gates."
+}

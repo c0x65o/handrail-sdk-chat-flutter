@@ -1,0 +1,24 @@
+{
+  "baseline_prior_archive_match": true,
+  "baseline_prior_member_hashes_verified": 334,
+  "qualification_prior_archive_match": true,
+  "qualification_prior_member_hashes_verified": 334,
+  "minimum_prior_archive_match": true,
+  "minimum_prior_member_hashes_verified": 334,
+  "inherited_87_line_block_present": true,
+  "editLink_identical_before_after": true,
+  "editLink_sha256": "d6a60b52c5f45bbfdc17f48ed9b421a853c2679ec3296ee94611c374b8018c4f",
+  "candidate_retained_js_sha256": "8a8f10d25fb8404a48541d6755f36763349bb5f4020d95cbfbadad7c73a2b0eb",
+  "candidate_retained_js_hash_recorded": true,
+  "minimum_retained_js_sha256": "15aac5b24ddc6723dba9158d92bf0ba06069aa536d38e3614e0d236b013bb92a",
+  "minimum_retained_js_hash_recorded": true,
+  "runtime_retained_js_sha256": "5bfcdae81e48c93a22e00562a3120378ddad37d696996ee9bcf00ac4f3d24fbc",
+  "runtime_retained_js_hash_recorded": true,
+  "newer_retained_js_sha256": "a8ac8718d332142bc88ce472bc8aed207a57a7393552777548ea40f37d875d68",
+  "newer_retained_js_hash_recorded": true,
+  "heads": {
+    "handrail-sdk-chat-flutter": "2d095ba5a0f86e4aa0b12ba8432500e3edfb576f",
+    "handrail-sdk-chat-js": "248fb8890b8e7e1ba15799aff06ef48156cca451",
+    "handrail-chat-preview-flutter": "9dabb1c666443ed913d0400698beabfe6a7509a1"
+  }
+}

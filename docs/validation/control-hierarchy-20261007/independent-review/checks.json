@@ -1,0 +1,105 @@
+{
+  "baseline-resolve": {
+    "exit": 0,
+    "seconds": 0.47,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "pub",
+      "get",
+      "--no-example"
+    ],
+    "fixture": "baseline",
+    "timeout_seconds": 300
+  },
+  "candidate-regressions": {
+    "exit": 0,
+    "seconds": 18.76,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "test/handrail_thread_view_test.dart",
+      "--name",
+      "single format action|one thread dismissal hierarchy|standalone thread title|format toolbar render"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "baseline-regressions": {
+    "exit": 1,
+    "seconds": 21.37,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "test/handrail_thread_view_test.dart",
+      "--name",
+      "single format action|one thread dismissal hierarchy|standalone thread title|format toolbar render"
+    ],
+    "fixture": "baseline",
+    "timeout_seconds": 300
+  },
+  "candidate-boundaries": {
+    "exit": 0,
+    "seconds": 17.16,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "test/handrail_thread_view_test.dart",
+      "--name",
+      "authority|revok|account|logout|identity|close callback|focus restoration|system Back|Escape|named thread|preferences|subscriptions"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "durable-reducer": {
+    "exit": 0,
+    "seconds": 2.97,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/durable_resource_event_reducer_test.dart"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  },
+  "scoped-analysis": {
+    "exit": 1,
+    "seconds": 0.31,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "analyze",
+      "--no-pub",
+      "lib/src/handrail_message_composer.dart",
+      "lib/src/handrail_thread_view.dart",
+      "lib/src/handrail_chat_workspace.dart",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "test/handrail_thread_view_test.dart"
+    ],
+    "fixture": "candidate",
+    "timeout_seconds": 300
+  }
+}

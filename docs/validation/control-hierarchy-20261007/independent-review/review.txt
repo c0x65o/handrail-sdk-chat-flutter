@@ -1,0 +1,74 @@
+Independent review — Flutter Chat control hierarchy
+Work request 3ad5399d-132d-4d49-ab81-22527d619ee6
+Reviewed writer: 40c0737a-59dd-419e-a2c8-b430df27ce83
+Reviewer run: fcc2ea23-2c25-4cde-aef8-2db8d419786a
+
+Recommendation: accept the three production deltas for separately scoped SDK publication review. No new scoped release blocker was found. This is NOT overall Preview readiness, a toolbar-typing fix, native qualification, or authorization to publish. The owning workflow must reconcile the final candidate and any native version bump, then verify actual public-HTTPS-Git-SHA consumers with matching locks. No publication action was performed.
+
+Scope and custody
+
+Read the attached KB/requirements, current Handrail MCP context (including the recovered run), Flutter README and docs/releasing.md, sibling JS release guidance, CI workflows, current checkout, qualification.md and preceding composer-toolbar qualification/diagnostics. No applicable AGENTS.md was found in accessible ancestor/repository paths. Requirements snapshot 08346f8bc724 remains authoritative; no authentication or native scaffold work is implicated.
+
+Verified run-only source.diff SHA-256:
+16378ba34a226a2c53e7769a6d45531f2a6fa3f12d67129197ee62ff0836ac88
+
+Current SDK HEAD remains 2d095ba5a0f86e4aa0b12ba8432500e3edfb576f (0.1.32). JS and companion HEADs match the writer's recorded SHAs. All ten recorded source/test hashes match the checkout. All 128 library files in candidate and minimum source archives match the checkout; baseline/runtime/newer-runtime differ only in the three reviewed runtime files. Verified all 294 entries in the candidate evidence hash manifest, all three preceding composer-toolbar source archive digests and 334 recorded members per archive, and the inherited 87-line test block verbatim. Verified all four retained decompressed compiled-JS digests against their build manifests. Final custody compares 3,395 incoming source/evidence paths across the three repositories: ZERO changed or removed. New artifacts are confined to this independent-review directory; isolated fixtures/tooling were placed in this run's scratch space.
+
+The independently rebuilt candidate release JS is byte-identical to the writer's candidate:
+8a8f10d25fb8404a48541d6755f36763349bb5f4020d95cbfbadad7c73a2b0eb
+The private resolved lock is unchanged from candidate-sources.tar.gz. See custody-verification.json, extended-custody.json, custody-final.json and incoming-sha256.json.
+
+Review of the three deltas
+
+1. lib/src/handrail_thread_view.dart:84,149,458 (_buildHeader / headerActions).
+   Optional headerActions defaults to const []; existing constructor calls, title, onClose and standalone header remain supported. The original standalone close key and callback are retained. Subscription widgets remain keyed to client/thread; lifecycle controller ownership, capability gates and stale-menu checks at _buildLifecycleMenu:571 are unchanged. Only title semantics carries the heading flag. Below 400 available logical pixels, title and actions occupy separate rows; the title permits two lines and ellipsis, and narrow actions wrap. Desktop Workspace's narrow side panel correctly follows its own available width. Existing caller-owned handle test confirms dismissal does not release a host retain or perform shared lifecycle writes.
+
+2. lib/src/handrail_chat_workspace.dart:1235,1287,1350 (_buildPanel, _panelDismissButton, _buildPanelBody).
+   Workspace removes only its thread shell heading/divider, supplies settings/navigation to ThreadView, and stops supplying a second onClose action. Settings uses the same _settingsButton:410, FocusNode and overlay callback (_showSettings:376); it does not replace the thread or draft. Non-thread panel headings remain. Dismissal still calls _backPanel:757: discovery Back returns to retained thread discovery, releases the open handle, and restores row focus; ordinary Close calls _closePanel:826. Discovery Escape still uses that callback at line 1240; the change does not add a new ordinary-thread Escape behavior. “Close panel” is navigation, distinct from “Close shared thread,” lock, archive or delete. Existing permissions, authority changes, generation checks and system Back behavior are retained. Independent semantic activation of the single Back action also returned to discovery without a thread write.
+
+3. lib/src/handrail_message_composer.dart:1923 (_formatButton).
+   MergeSemantics combines the wrapper's selected flag with IconButton's native label, enabled state and tap action; it removes the duplicate wrapper role/label. The native button, key, tooltip, callback and focus behavior remain. Material 2 and 3 tests independently exercise all seven controls' single exported node and disabled absence of tap; six direct format actions check accessibility activation, selected state, touch toggle, focus and canonical draft writes. Additional review tests restore an existing Link under both themes, verify selected semantics, and activate Edit link through the semantics owner. Link dismissal remains a separate failure. Keyboard traversal exposes clipped actions at 320px, and six inherited touch/keyboard platform-connection controls pass. No changed actor, draft synchronization, send identity or authority implementation was found.
+
+Actionable open findings (pre-existing; not introduced by this diff)
+
+P1 — Accessible browser continued typing remains a finish-line gate.
+Location: lib/src/handrail_message_composer.dart:1030,1033 (_formattingChanged / synchronous requestFocus); retained browser/engine diagnostics in ../composer-toolbar-20261007/qualification.md and stack-browser.json.
+The independently rebuilt candidate exports one actionable Bold button with native selected state, yet an actual pointer activation at 390px followed immediately by X and then “ next” leaves controller text “Original” in semantics-enabled CanvasKit. The check correctly exits 1, with no page exception. The matched ordinary-mode run accepts “X next” and validates draft persistence/continued editing. Thus activation is not swallowed by this merge, but continued accessible typing is still broken. Retained candidate/baseline/plain Flutter comparisons establish this is not newly introduced here. The retained isolated official 3.47.6 comparison also fails (3 passes / 5 failures; all pointer cases fail), whereas its ordinary mode passes. No toolchain upgrade is qualified. We verified source/compiled archives and the retained release-manifest record; we did not download or rerun that vendor SDK archive in this review.
+Action: keep the supported semantics-enabled focus/editing repair as a separate gate, with immediate first-character, continued text, durable draft and actor checks. Do not relabel widget/platform-channel successes as browser or native IME proof.
+
+P2 — Link Cancel disposes a controller before its dialog finishes using it.
+Location: lib/src/handrail_message_composer.dart:1040,1042,1098 (_editLink, destination controller creation/showDialog/disposal).
+SDK Cancel reproductions fail on BOTH candidate and original baseline with “A TextEditingController was used after being disposed,” followed by framework teardown assertions. _editLink is byte-identical before/after (function SHA-256 d6a60b52c5f45bbfdc17f48ed9b421a853c2679ec3296ee94611c374b8018c4f). The route result resolves on pop before reverse-transition teardown; Flutter's local TransitionRoute documentation at packages/flutter/lib/src/widgets/routes.dart:115 distinguishes popped from completed.
+Smallest correct owner: a private stateful Link-dialog widget owns the destination TextEditingController from init/state creation until that dialog State.dispose. Keep it alive through Cancel, barrier/Escape/system Back, Apply/Remove and route removal. Do not solve this with an arbitrary delay, an outer composer-lifetime controller or a focus workaround. Isolated plain-Flutter proof reproduces the early-disposal failure and passes with dialog-State ownership in separate clean test processes. This proves the lifetime mechanism, NOT a repaired SDK. A subsequent bounded runtime fix should preserve validation, result semantics, draft/selection and current actor/authority boundaries, then qualify all dismissal paths and parent disposal. No runtime repair was made here.
+
+No P0/P1/P2 finding was identified in the new three-delta implementation itself. Both findings above remain open; neither is waived by this scoped recommendation. Native OS IME/device behavior, complete post-toolbar Link/attachment/mention/lifecycle qualification, consumer installation, Preview and live staging acceptance remain unverified or blocked as recorded previously.
+
+Independent checks (Flutter 3.41.7 / Dart 3.11.5; sequential; two test workers; 300-second command caps)
+
+- New paired regression selection: candidate 23/23 pass; baseline 4 pass / 19 FAIL, exit 1. Failure split agrees with the underlying assertions: 14 duplicate-format nodes, 3 duplicate dismissals, 2 narrow-title layout failures.
+- Selected actor/authority, logout/account, subscription/preferences, focus restoration, dismissal and navigation boundaries: 52 pass.
+- Suggested durable_resource_event_reducer_test.dart: 45 pass.
+- Inherited toolbar platform editing connection: 6 pass.
+- core_import_boundary_test.dart plus realtime_session_transport_test.dart: 21 pass; version/declaration guard remains intact.
+- Review-specific restored-Link semantics (M2/M3) and exported Workspace heading/semantic Back: 3 pass.
+- SDK Link Cancel: baseline FAIL and candidate FAIL, each exit 1, as required to retain this open regression.
+- Isolated lifetime proof: early disposal FAIL, route-owned controller 1 pass in a clean process.
+- Scoped runtime/parent-test analysis: pass, no issues.
+- Release CanvasKit UI probe build: pass, exact candidate JS hash match. Existing Wasm-dry-run/dart:html and unused Cupertino-font warnings do not establish Wasm support.
+- Native Chromium accessibility: pass, one Bold button, aria-current false -> true (Flutter selected semantics; not aria-pressed).
+- Browser 390px SDK pointer Bold: semantics FAIL; ordinary pass. Real browser keyboard input, no post-action refocus or text assignment; local fixture blocks live-service traffic.
+- git diff --check: pass.
+
+The historical 360 current/minimum passes and minimum builds were inspected, not rerun as a complete matrix. Compared actual retained full-analysis lines independently: exactly the same 13 baseline infos on current and minimum; full analysis remains nonzero. The historical full suite's 2,471 passes / 7 known failures remains failed and was not rerun. No CI/autoskip configuration changed, and no full-CI claim is made.
+
+Pixels actually inspected
+
+images-inspected.json records 19 exact image paths and hashes. Opened the before/after Workspace captures at 320, 390 and 1400; standalone long-title captures at 320, 390 and 900; after-denial standalone 320; before/current and candidate browser 390 captures; keyboard-scrolled toolbar 320; and both independently reproduced browser outcomes. The paired pixels show the duplicate shell title/back/close removed, useful canonical title retained, settings/subscription still visible, long titles above actions at phone widths, and draft retained under HTTP 403. Wide standalone layout remains effectively unchanged. Test debug ribbons obscure a few upper-right title glyphs in retained widget captures; they are fixture artifacts, not release decoration. The code-block widget raster has fallback monospace glyphs, so browser images are the typography reference. The fresh semantics failure visibly retains selected “Original”; the fresh ordinary image shows “X next.” These are fixture/CanvasKit captures, not Preview screenshots or physical-phone evidence.
+
+Reproduction and limitations of the review harness
+
+Original candidate/baseline archives remain untouched. Extract them into empty private directories, resolve their retained locks, and use the named selections in run_review.py. review-test-additions.tar.gz overlays only evidence-test files into a private candidate fixture; it includes the three review-specific cases, isolated dialog proof and retained SDK Link Cancel hook. run_followups.py, run_final_checks.py and run_browser.py record exact commands; JSON sidecars record terminal exit codes and durations. Run the two isolated lifetime branches separately to prevent a deliberately failing framework teardown from contaminating the control. Browser tooling uses the retained package/lock and installed Chromium 151.0.7922.34, with loopback fixtures only.
+
+Setup failures are retained truthfully. An initial whole-SDK private copy exhausted available disk; only this run's partial scratch copy was deleted, and a smaller private runner uses read-only vendor artifacts. No global toolchain change occurred. Early setup assumed a nonexistent version file and a newer Python tar extraction argument; these were corrected in scratch. Initial scoped analysis failed because the private Flutter examples directory was absent, then passed after linking the read-only installed examples. The first combined lifetime run contaminated the following control with teardown assertions; separate clean processes resolve that ambiguity. The first review heading test set viewport size before a helper reset it to desktop, so its “one heading in the whole screen” assertion saw three legitimate desktop headings; applying 390px after the helper produced the intended one-heading check and passed. Raw failed logs remain and no runtime source was altered to make a check pass.
+
+The worker made no runtime, consumer, global toolchain, version, credential, database/queue, commit/push, PR or deployment change. Finish-line work and actual publication decisions remain with the owning workflow.

@@ -1,0 +1,11 @@
+--- link-review-baseline/lib/src/handrail_message_composer.dart
++++ polished/lib/src/handrail_message_composer.dart
+@@ -2130,7 +2130,7 @@
+           decoration: InputDecoration(
+             labelText: 'Link destination',
+             hintText: 'https://example.com',
+-            errorText: _error,
++            error: _error == null ? null : Text(_error!),
+           ),
+           onSubmitted: (_) => _apply(),
+         ),

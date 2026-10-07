@@ -1,0 +1,13 @@
+{
+  "exit": 0,
+  "seconds": 0.92,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/flutter_tools.snapshot",
+    "pub",
+    "get",
+    "--no-example"
+  ],
+  "fixture": "before",
+  "timeout_seconds": 300
+}

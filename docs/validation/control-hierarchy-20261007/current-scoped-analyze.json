@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/flutter-current/bin/flutter",
+    "analyze",
+    "--no-pub",
+    "lib/src/handrail_chat_workspace.dart",
+    "lib/src/handrail_thread_view.dart",
+    "lib/src/handrail_message_composer.dart",
+    "test/handrail_chat_workspace_test.dart",
+    "test/handrail_thread_view_test.dart",
+    "test/handrail_message_composer_test.dart"
+  ],
+  "source": "candidate",
+  "exit": 1,
+  "seconds": 0.21472492162138224
+}

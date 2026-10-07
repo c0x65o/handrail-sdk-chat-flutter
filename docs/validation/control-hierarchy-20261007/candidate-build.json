@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/flutter-current/bin/flutter",
+    "build",
+    "web",
+    "--release",
+    "--no-pub",
+    "--no-web-resources-cdn",
+    "--target",
+    "tool/ui_probe.dart"
+  ],
+  "source": "candidate",
+  "exit": 0,
+  "seconds": 38.70941430982202
+}

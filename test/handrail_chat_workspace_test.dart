@@ -20,6 +20,7 @@ import 'fixtures/message_search_fixtures.dart';
 import 'fixtures/thread_creation_fixtures.dart';
 import 'fixtures/draft_mutation_fixtures.dart';
 
+part 'handrail_control_hierarchy_cases.dart';
 part 'handrail_reply_routing_cases.dart';
 part 'handrail_named_thread_cases.dart';
 part 'handrail_thread_discovery_cases.dart';
@@ -33,6 +34,7 @@ const _user = 'user-current';
 const _now = '2026-08-26T23:30:00.000Z';
 
 void main() {
+  _controlHierarchyTests();
   replyRoutingTests();
   namedThreadTests();
   threadDiscoveryTests();

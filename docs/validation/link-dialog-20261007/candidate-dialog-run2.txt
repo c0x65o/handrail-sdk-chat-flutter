@@ -1,0 +1,57 @@
+1050 cancel FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+1050 barrier FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+1050 escape FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+1050 apply FAIL AssertionError [ERR_ASSERTION]: canonical draft contains continued input
+1050 done FAIL AssertionError [ERR_ASSERTION]: canonical draft contains continued input
+1050 invalid FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+1050 remove PASS 
+320 cancel FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+320 barrier FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+320 escape FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+320 apply FAIL AssertionError [ERR_ASSERTION]: canonical draft contains continued input
+320 done FAIL AssertionError [ERR_ASSERTION]: canonical draft contains continued input
+320 invalid FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+320 remove PASS 
+390 cancel FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+390 barrier FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+390 escape FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+390 apply FAIL AssertionError [ERR_ASSERTION]: canonical draft contains continued input
+390 done FAIL AssertionError [ERR_ASSERTION]: canonical draft contains continued input
+390 invalid FAIL AssertionError [ERR_ASSERTION]: continued ordinary typing without harness refocus
+
+false !== true
+
+390 remove PASS 

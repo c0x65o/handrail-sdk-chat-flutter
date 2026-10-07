@@ -1,0 +1,23 @@
+{
+  "exit": 0,
+  "seconds": 43.05,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--concurrency=2",
+    "--reporter=expanded",
+    "test/core_import_boundary_test.dart",
+    "test/handrail_message_composer_test.dart",
+    "test/handrail_chat_workspace_test.dart",
+    "test/handrail_thread_view_test.dart",
+    "test/durable_resource_event_reducer_test.dart",
+    "test/realtime_session_transport_test.dart",
+    "test/draft_runtime_test.dart",
+    "test/offline_send_message_queue_test.dart",
+    "test/offline_send_message_queue_pump_test.dart"
+  ],
+  "fixture": "candidate",
+  "timeout_seconds": 300
+}

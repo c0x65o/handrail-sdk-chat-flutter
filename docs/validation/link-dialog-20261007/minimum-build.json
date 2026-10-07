@@ -1,0 +1,19 @@
+{
+  "exit": 0,
+  "seconds": 46.72,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/minimum-flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/minimum-flutter/bin/cache/flutter_tools.snapshot",
+    "build",
+    "web",
+    "--release",
+    "--no-pub",
+    "--no-web-resources-cdn",
+    "--web-renderer",
+    "canvaskit",
+    "--target",
+    "tool/ui_probe.dart"
+  ],
+  "fixture": "minimum",
+  "timeout_seconds": 300
+}

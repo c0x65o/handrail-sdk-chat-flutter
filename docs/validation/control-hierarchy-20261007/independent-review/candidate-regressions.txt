@@ -1,0 +1,25 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 320.0
+00:01 +1: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:01 +2: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +3: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +4: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:03 +5: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: single format action italic Material3=false
+00:03 +6: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+00:03 +7: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+00:03 +8: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+00:03 +9: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: single format action ordered-list Material3=false
+00:03 +10: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +11: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +12: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +13: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +14: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: single format action italic Material3=true
+00:04 +15: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: single format action link Material3=true
+00:05 +16: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: single format action unordered-list Material3=true
+00:05 +17: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:05 +18: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:05 +19: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:05 +20: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:07 +21: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 390.0
+00:07 +22: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 900.0
+00:08 +23: All tests passed!

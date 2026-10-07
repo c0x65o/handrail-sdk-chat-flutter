@@ -1,0 +1,5 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: review restored Link selected semantics Material3=false
+00:01 +1: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: review exported heading and semantic Back action
+00:01 +2: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: review exported heading and semantic Back action
+00:02 +3: All tests passed!

@@ -1,0 +1,13 @@
+{
+  "exit": 1,
+  "seconds": 182.88,
+  "command": [
+    "node",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/browser_review.mjs",
+    "/opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/before/build/web",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007",
+    "before"
+  ],
+  "overrides": [],
+  "timeout_seconds": 300
+}

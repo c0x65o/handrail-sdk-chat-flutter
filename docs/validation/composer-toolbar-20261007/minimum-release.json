@@ -1,0 +1,11 @@
+{
+  "base_url": "https://storage.googleapis.com/flutter_infra_release/releases",
+  "hash": "bae5e49bc2a867403c43b2aae2de8f8c33b037e4",
+  "channel": "stable",
+  "version": "3.19.0",
+  "dart_sdk_version": "3.3.0",
+  "dart_sdk_arch": "x64",
+  "release_date": "2024-02-15T19:22:40.743196Z",
+  "archive": "stable/linux/flutter_linux_3.19.0-stable.tar.xz",
+  "sha256": "4cc1706fbd6e2a5c0ee34a6f8de875aae20904c9f47e18c88d2fcb25d9ea1a79"
+}

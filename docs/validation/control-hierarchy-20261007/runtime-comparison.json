@@ -1,0 +1,413 @@
+{
+  "newer-semantics": {
+    "cases": 8,
+    "passed": 3,
+    "failed": 5,
+    "semantics": true,
+    "browser": "151.0.7922.34",
+    "cases_by_input": [
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 2
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 2
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      }
+    ]
+  },
+  "newer-ordinary": {
+    "cases": 8,
+    "passed": 8,
+    "failed": 0,
+    "semantics": false,
+    "browser": "151.0.7922.34",
+    "cases_by_input": [
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      }
+    ]
+  },
+  "current-semantics": {
+    "cases": 8,
+    "passed": 1,
+    "failed": 7,
+    "semantics": true,
+    "browser": "151.0.7922.34",
+    "cases_by_input": [
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 2
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 2
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      }
+    ]
+  },
+  "current-ordinary": {
+    "cases": 8,
+    "passed": 8,
+    "failed": 0,
+    "semantics": false,
+    "browser": "151.0.7922.34",
+    "cases_by_input": [
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sync",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      }
+    ]
+  },
+  "candidate-semantics": {
+    "cases": 6,
+    "passed": 0,
+    "failed": 6,
+    "semantics": true,
+    "browser": "151.0.7922.34",
+    "cases_by_input": [
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 320,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": 1
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 320,
+        "inputAccepted": false,
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+        "formatSemanticNodes": null
+      }
+    ]
+  },
+  "candidate-ordinary": {
+    "cases": 6,
+    "passed": 6,
+    "failed": 0,
+    "semantics": false,
+    "browser": "151.0.7922.34",
+    "cases_by_input": [
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "pointer",
+        "width": 320,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 1050,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 390,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      },
+      {
+        "mode": "sdk",
+        "activation": "keyboard",
+        "width": 320,
+        "inputAccepted": true,
+        "error": null,
+        "formatSemanticNodes": null
+      }
+    ]
+  },
+  "unchanged_runtime_comparison": {
+    "all_lib_hashes_equal": true,
+    "probe_hash_equal": true,
+    "composer_sha256": "0ce967b86b4b1914c2eb3da4e8be3bc7be6f16819cacf91cdc7c6b0982cf36c6"
+  }
+}

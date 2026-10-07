@@ -1,0 +1,19 @@
+{
+  "exit": 0,
+  "seconds": 3.021671086549759,
+  "command": [
+    "flutter",
+    "build",
+    "web",
+    "--release",
+    "--no-pub",
+    "--no-web-resources-cdn",
+    "--web-renderer",
+    "canvaskit",
+    "--target",
+    "tool/toolbar_probe.dart"
+  ],
+  "source": "minimum-source",
+  "toolchain": "minimum",
+  "cap": 300
+}

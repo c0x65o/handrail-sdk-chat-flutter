@@ -1,0 +1,102 @@
+part of 'handrail_message_composer_test.dart';
+
+void _independentLinkReview() {
+  for (final action in ['apply', 'remove']) {
+    for (final boundary in ['client', 'draft', 'authority', 'account']) {
+      testWidgets('independent link review: $action after $boundary', (tester) async {
+        final first = _Harness(storage: InMemoryApplicationChatStorage());
+        final second = _Harness(storage: InMemoryApplicationChatStorage());
+        addTearDown(() => _disposeHarness(tester, first));
+        addTearDown(() => _disposeHarness(tester, second));
+        final host = TextEditingController();
+        addTearDown(host.dispose);
+        final key = GlobalKey<HandrailMessageComposerState>();
+        Future<void> pump(_Harness h) async {
+          await tester.pumpWidget(MaterialApp(home: ChatScope(client: h.client,
+            child: Scaffold(body: HandrailMessageComposer(key: key,
+              conversationId: _conversationId, controller: host, draftDebounce: Duration.zero)))));
+          await _pumpUntil(tester, () => tester.widget<TextField>(find.byKey(_input)).enabled == true);
+        }
+        await pump(first);
+        await tester.enterText(find.byKey(_input), 'Original');
+        await _selectText(tester, 'Original');
+        await _openLink(tester);
+        await tester.enterText(find.byKey(_linkDestination), '/existing');
+        await tester.tap(find.byKey(_linkApply));
+        await tester.pumpAndSettle();
+        expect(_linkDraft(first), '[Original](/existing)');
+        final state = key.currentState;
+        await _openLink(tester);
+        await tester.enterText(find.byKey(_linkDestination), '/late');
+        switch (boundary) {
+          case 'client':
+            await pump(second);
+            expect(identical(key.currentState, state), isTrue,
+                reason: 'Exercise rebinding, not protection from remounting.');
+            host.value = const TextEditingValue(text: 'Second draft',
+              selection: TextSelection.collapsed(offset: 12));
+          case 'draft':
+            first.client.reconcileDraftEvent(_draftEvent('**Original**',
+                baseRevision: first.client.draftFor(_conversationId)!.revision));
+          case 'authority':
+            var done = false;
+            first.transport.conversationStatus = 403;
+            first.client.conversations.forConversation(_conversationId).refresh().then((_) => done = true);
+            await _pumpUntil(tester, () => done);
+            expect(tester.widget<TextField>(find.byKey(_input)).enabled, isFalse);
+            first.transport.conversationStatus = 200;
+            done = false;
+            first.client.conversations.forConversation(_conversationId).refresh().then((_) => done = true);
+            await _pumpUntil(tester, () => done);
+            expect(tester.widget<TextField>(find.byKey(_input)).enabled, isTrue);
+          case 'account':
+            var done = false;
+            first.client.activateStorageIdentity(ApplicationChatStorageIdentity(
+              tenantId: _storageIdentity.tenantId, userId: const UserId('other'),
+              deviceId: _storageIdentity.deviceId)).then((_) => done = true);
+            await _pumpUntil(tester, () => done);
+        }
+        await tester.pumpAndSettle();
+        final before = host.value;
+        final firstDraft = _linkDraft(first);
+        final secondDraft = _linkDraft(second);
+        await tester.tap(find.byKey(action == 'apply' ? _linkApply :
+            const ValueKey('handrail-message-composer-link-remove')));
+        await tester.pumpAndSettle();
+        expect(host.value, before);
+        expect(_linkDraft(first), firstDraft);
+        expect(_linkDraft(second), secondDraft);
+        expect(first.transport.operations('send'), isEmpty);
+        expect(second.transport.operations('send'), isEmpty);
+        expect(tester.takeException(), isNull);
+      });
+    }
+  }
+  testWidgets('independent link review: closing route cannot Remove twice or Apply', (tester) async {
+    final harness = _Harness();
+    addTearDown(() => _disposeHarness(tester, harness));
+    await _pumpComposer(tester, harness);
+    await tester.enterText(find.byKey(_input), 'Original');
+    await _selectText(tester, 'Original');
+    await _openLink(tester);
+    await tester.enterText(find.byKey(_linkDestination), '/safe');
+    await tester.tap(find.byKey(_linkApply));
+    await tester.pumpAndSettle();
+    final destination = await _openLink(tester);
+    final remove = tester.widget<TextButton>(find.byKey(
+        const ValueKey('handrail-message-composer-link-remove'))).onPressed!;
+    final apply = tester.widget<FilledButton>(find.byKey(_linkApply)).onPressed!;
+    await tester.tap(find.byKey(const ValueKey('handrail-message-composer-link-remove')));
+    remove();
+    apply();
+    await tester.pump();
+    void listener() {}
+    destination.addListener(listener);
+    destination.removeListener(listener);
+    await tester.pumpAndSettle();
+    expect(_linkDraft(harness), 'Original');
+    expect(find.byKey(_input), findsOneWidget);
+    expect(() => destination.addListener(listener), throwsFlutterError);
+    expect(tester.takeException(), isNull);
+  });
+}

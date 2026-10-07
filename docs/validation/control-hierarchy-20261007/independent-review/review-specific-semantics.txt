@@ -1,0 +1,34 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_message_composer_test.dart: review restored Link selected semantics Material3=false
+00:01 +1: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: review exported heading and semantic Back action
+00:01 +2: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: review exported heading and semantic Back action
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: ['Canonical launch']
+  Actual: MappedIterable<SemanticsNode, String>:[
+            'Public channels',
+            'Alpha',
+            'Canonical launch'
+          ]
+   Which: at location [0] is 'Public channels' instead of 'Canonical launch'
+
+When the exception was thrown, this was the stack:
+#4      reviewWorkspaceSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/workspace_semantics_cases.dart:28:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/workspace_semantics_cases.dart line 28
+The test description was:
+  review exported heading and semantic Back action
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +2 -1: /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/handrail_chat_workspace_test.dart: review exported heading and semantic Back action [E]
+  Test failed. See exception logs above.
+  The test description was: review exported heading and semantic Back action
+  
+00:03 +2 -1: Some tests failed.

@@ -1,0 +1,629 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/core_import_boundary_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/core_import_boundary_test.dart: public package version matches the canonical manifest before generation
+00:00 +1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/core_import_boundary_test.dart: native version mirror targets the exported Dart constant
+00:00 +2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/core_import_boundary_test.dart: core.dart has a pure-Dart import graph
+00:00 +3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/toolbar-320.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/toolbar-scrolled-320.png
+00:02 +4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/toolbar-390.png
+00:03 +4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/thread-320.png
+00:03 +4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/toolbar-scrolled-390.png
+00:03 +5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:03 +5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 1050.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/toolbar-1050.png
+00:03 +6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 1050.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/toolbar-scrolled-1050.png
+00:03 +7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/thread-390.png
+00:04 +8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+00:04 +9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action italic Material3=false
+00:04 +10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +11: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/thread-1400.png
+00:05 +12: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:05 +13: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action ordered-list Material3=false
+00:05 +14: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing unknown capability updates and detaches on client rebinding
+00:05 +15: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action inline-code Material3=false
+00:05 +16: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing excludes pending and deleted sources including an open menu
+00:05 +17: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action code-block Material3=false
+00:05 +18: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing channel summary=false sends Friday in place
+00:06 +19: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing channel summary=false sends Friday in place
+00:06 +20: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action italic Material3=true
+00:06 +21: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing channel summary=true sends Friday in place
+00:06 +22: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing channel summary=true sends Friday in place
+00:06 +23: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action unordered-list Material3=true
+00:07 +24: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing direct summary=false sends Friday in place
+00:07 +25: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action ordered-list Material3=true
+00:07 +26: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing direct summary=true sends Friday in place
+00:07 +27: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action inline-code Material3=true
+00:07 +28: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action inline-code Material3=true
+00:07 +29: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing group_direct summary=true sends Friday in place
+00:07 +30: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing group_direct summary=true sends Friday in place
+00:07 +31: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: toolbar retains platform editing connection (bold, keyboard=false)
+00:08 +32: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing existing thread uses its own composer and ID
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/discord-thread-reply-widget.png
+00:08 +33: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing existing thread uses its own composer and ID
+00:08 +34: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: toolbar retains platform editing connection (italic, keyboard=false)
+00:08 +35: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current in thread saved=null inline=false keeps composition
+00:08 +36: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: toolbar retains platform editing connection (italic, keyboard=true)
+00:08 +37: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current in thread saved=null inline=true keeps composition
+00:09 +38: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current in thread saved=null inline=true keeps composition
+00:09 +39: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: toolbar retains platform editing connection (inline-code, keyboard=true)
+00:09 +39: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current in thread saved=current inline=false keeps composition
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/current-thread-reply-widget.png
+00:09 +40: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current in thread saved=current inline=false keeps composition
+00:09 +41: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: disabled send frame restores accepted input (success=true)
+00:09 +42: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current in thread saved=current inline=true keeps composition
+00:09 +43: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: disabled send frame restores accepted input (success=false)
+00:09 +44: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current standalone thread never creates a nested thread
+00:10 +45: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current standalone thread never creates a nested thread
+00:10 +46: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects channel
+00:10 +47: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current saved=null retains thread behavior
+00:10 +48: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects thread
+00:10 +49: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing Current saved=current retains thread behavior
+00:10 +50: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects enabled cycle
+00:10 +51: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing absent preference API still allows supported inline replies
+00:10 +52: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects focus replacement
+00:10 +53: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing missing capability disables without thread fallback
+00:10 +54: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects controller replacement
+00:11 +55: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: reply routing keyboard and long press retain composition across styles
+00:11 +56: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects account cycle
+00:11 +57: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: send focus restoration respects account cycle
+00:11 +58: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft
+00:11 +59: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft
+00:11 +60: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft
+00:11 +61: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft
+00:12 +62: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft
+00:12 +63: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'handrail-thread-close'>]: []" (used in a call to "tap()")
+could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2090:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1942:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1075:7)
+#3      namedThreadTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_named_thread_cases.dart:45:20)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  named thread current creates canonical discussion without changing draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:12 +63 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: onSent focus navigation wins over deferred restoration
+00:12 +63 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread current creates canonical discussion without changing draft [E]
+  Test failed. See exception logs above.
+  The test description was: named thread current creates canonical discussion without changing draft
+  
+00:12 +64 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread discord creates canonical discussion without changing draft
+00:12 +65 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread discord creates canonical discussion without changing draft
+00:12 +66 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread discord creates canonical discussion without changing draft
+00:13 +67 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread discord creates canonical discussion without changing draft
+00:13 +68 -1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread discord creates canonical discussion without changing draft
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'handrail-thread-close'>]: []" (used in a call to "tap()")
+could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2090:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1942:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1075:7)
+#3      namedThreadTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_named_thread_cases.dart:45:20)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  named thread discord creates canonical discussion without changing draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:13 +68 -2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: composer exposes one labeled actionable editable semantic node
+00:13 +68 -2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread discord creates canonical discussion without changing draft [E]
+  Test failed. See exception logs above.
+  The test description was: named thread discord creates canonical discussion without changing draft
+  
+00:13 +69 -2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread server existing-root reconciliation never renames
+00:13 +70 -2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread server existing-root reconciliation never renames
+00:13 +71 -2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread server existing-root reconciliation never renames
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'handrail-thread-close'>]: []" (used in a call to "tap()")
+could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2090:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1942:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1075:7)
+#3      namedThreadTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_named_thread_cases.dart:73:18)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  named thread server existing-root reconciliation never renames
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:14 +71 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: delayed draft echo preserves editing state (rich=true, ime=false)
+00:14 +71 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread server existing-root reconciliation never renames [E]
+  Test failed. See exception logs above.
+  The test description was: named thread server existing-root reconciliation never renames
+  
+00:14 +72 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread compact validation keyboard semantics and cancel restores focus
+00:14 +73 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: delayed draft echo preserves editing state (rich=true, ime=true)
+00:14 +74 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: delayed draft echo preserves editing state (rich=true, ime=true)
+00:14 +75 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread failed create retry freezes payload and preserves inline draft
+00:14 +76 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread failed create retry freezes payload and preserves inline draft
+00:14 +77 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread failed create retry freezes payload and preserves inline draft
+00:14 +78 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: equal drafts across channels reset editing state
+00:14 +79 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread pending cancel ignores late completion
+00:15 +80 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: equal drafts across thread/main reset editing state
+00:15 +81 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread pending switch ignores late completion
+00:15 +82 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread pending switch ignores late completion
+00:15 +83 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: logout and new client with equal draft reset editing state
+00:15 +84 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread pending dispose ignores late completion
+00:15 +85 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: offline Send persists one reply intent before reconnect (retries=0)
+00:15 +86 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread unavailable capability keeps existing and Current entry points
+00:15 +87 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread unavailable capability keeps existing and Current entry points
+00:16 +88 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread unavailable capability keeps existing and Current entry points
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'handrail-thread-close'>]: []" (used in a call to "tap()")
+could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2090:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1942:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1075:7)
+#3      namedThreadTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_named_thread_cases.dart:244:18)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  named thread unavailable capability keeps existing and Current entry points
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:16 +88 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: offline Send retains editable reply on storage failure ApplicationChatStorageRecordKind.queuedSendMessageIntents
+00:16 +88 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread unavailable capability keeps existing and Current entry points [E]
+  Test failed. See exception logs above.
+  The test description was: named thread unavailable capability keeps existing and Current entry points
+  
+00:16 +89 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread excludes deleted optimistic and newly deleted roots
+00:16 +90 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: local persistence pending keeps content and freezes binding across style changes
+00:16 +91 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread legacy header custom builders and caller handle ownership
+00:16 +92 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: deferred online draft cleanup preserves the next composition
+00:16 +93 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open
+00:16 +94 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open
+00:16 +95 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open
+00:17 +96 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open
+00:17 +97 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open
+00:17 +98 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'handrail-thread-close'>]: []" (used in a call to "tap()")
+could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2090:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1942:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1075:7)
+#3      namedThreadTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_named_thread_cases.dart:351:18)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  named thread parent context redacts on denied access and deleted roots stay open
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:17 +98 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: same-thread failed send and retry freeze destination and reference
+00:17 +98 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread parent context redacts on denied access and deleted roots stay open [E]
+  Test failed. See exception logs above.
+  The test description was: named thread parent context redacts on denied access and deleted roots stay open
+  
+00:17 +99 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread failed cancel keeps attachment draft and a new intent gets a new key
+00:17 +100 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread failed cancel keeps attachment draft and a new intent gets a new key
+00:17 +101 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: pending send rebind preserves new draft (success=false)
+00:17 +102 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread host delegate failure=false releases its retain
+00:17 +103 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: source errors deletion revocation and identity changes redact preview with recovery
+00:18 +104 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread host delegate failure=true releases its retain
+00:18 +105 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: typed reply builder exposes live context and keyboard cancellation
+00:18 +106 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread compact success keeps header close and returns to parent draft
+00:18 +107 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread compact success keeps header close and returns to parent draft
+00:18 +108 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread compact success keeps header close and returns to parent draft
+00:18 +109 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread compact success keeps header close and returns to parent draft
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+The finder "Found 0 widgets with key [<'handrail-thread-close'>]: []" (used in a call to "tap()")
+could not find any matching widgets.
+
+When the exception was thrown, this was the stack:
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2090:7)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1942:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1075:7)
+#3      namedThreadTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_named_thread_cases.dart:471:18)
+<asynchronous suspension>
+#4      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#5      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  named thread compact success keeps header close and returns to parent draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:18 +109 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: late source lookup cannot restore a revoked preview
+00:18 +109 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread compact success keeps header close and returns to parent draft [E]
+  Test failed. See exception logs above.
+  The test description was: named thread compact success keeps header close and returns to parent draft
+  
+00:18 +110 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread disposal during host navigation releases before late delegate returns
+00:18 +111 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: named thread disposal during host navigation releases before late delegate returns
+00:18 +112 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: restores markdown draft, debounces changes, and clears on send
+00:18 +113 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery current opens unfollowed canonical deleted-root history without writes
+00:19 +114 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery current opens unfollowed canonical deleted-root history without writes
+00:19 +115 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: plain unformatted entry keeps the plain payload contract
+00:19 +116 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery discord opens unfollowed canonical deleted-root history without writes
+00:19 +117 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery discord opens unfollowed canonical deleted-root history without writes
+00:19 +118 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery discord opens unfollowed canonical deleted-root history without writes
+00:19 +119 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery discord opens unfollowed canonical deleted-root history without writes
+00:19 +120 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: uploads a host-selected source and includes its attachment
+00:19 +121 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery compact keyboard back restores row and channel focus and draft
+00:19 +122 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery compact keyboard back restores row and channel focus and draft
+00:19 +123 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery compact keyboard back restores row and channel focus and draft
+00:19 +124 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: enforces UTF-8 and attachment limits
+00:20 +125 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery pagination retry follow unread and supported filters
+00:20 +126 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: renders loading, disabled, access-revoked, and error states
+00:20 +127 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery unsupported filters empty initial retry and denied state
+00:20 +128 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: filters active members and keyboard selection sends one canonical mention
+00:20 +129 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery parent revocation closes and releases open history
+00:20 +130 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: Escape preserves text and token edits remove stale metadata
+00:20 +131 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery stale list cannot display previous channel
+00:21 +132 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery stale list cannot display previous channel
+00:21 +133 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery stale list cannot display previous channel
+00:21 +134 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery stale list cannot display previous channel
+00:21 +135 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery stale list cannot display previous channel
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following assertion was thrown running a test:
+pumpAndSettle timed out
+
+When the exception was thrown, this was the stack:
+#0      WidgetTester.pumpAndSettle.<anonymous closure> (package:flutter_test/src/widget_tester.dart:717:11)
+<asynchronous suspension>
+#1      TestAsyncUtils.guard.<anonymous closure> (package:flutter_test/src/test_async_utils.dart:130:27)
+<asynchronous suspension>
+#2      threadDiscoveryTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_discovery_cases.dart:217:5)
+<asynchronous suspension>
+#3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+The test description was:
+  thread discovery stale list cannot display previous channel
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:23 +135 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:23 +135 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery stale list cannot display previous channel [E]
+  Test failed. See exception logs above.
+  The test description was: thread discovery stale list cannot display previous channel
+  
+00:23 +136 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/standalone-320.png
+00:23 +137 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:23 +138 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:24 +139 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:24 +140 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:24 +141 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+
+When the exception was thrown, this was the stack:
+#4      _threadHeaderTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_header_cases.dart:64:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_header_cases.dart line 64
+The test description was:
+  standalone thread title actions and permissions at 320.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:24 +141 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery client replacement releases history and Escape returns to channel
+00:24 +141 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0 [E]
+  Test failed. See exception logs above.
+  The test description was: standalone thread title actions and permissions at 320.0
+  
+00:24 +142 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: thread discovery pending list rejects revoked and changed identity authority
+00:24 +143 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 390.0
+00:24 +144 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/standalone-390.png
+00:25 +145 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 390.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+
+When the exception was thrown, this was the stack:
+#4      _threadHeaderTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_header_cases.dart:64:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_header_cases.dart line 64
+The test description was:
+  standalone thread title actions and permissions at 390.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:25 +145 -9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: full workspace header fits and preserves navigation at 390.0
+00:25 +145 -9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 390.0 [E]
+  Test failed. See exception logs above.
+  The test description was: standalone thread title actions and permissions at 390.0
+  
+00:25 +145 -9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 900.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/current-focused/standalone-900.png
+00:26 +146 -9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 900.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: false
+  Actual: <true>
+
+When the exception was thrown, this was the stack:
+#4      _threadHeaderTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_header_cases.dart:64:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_header_cases.dart line 64
+The test description was:
+  standalone thread title actions and permissions at 900.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:26 +146 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: full workspace header fits and preserves navigation at 1400.0
+00:26 +146 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 900.0 [E]
+  Test failed. See exception logs above.
+  The test description was: standalone thread title actions and permissions at 900.0
+  
+00:26 +147 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: host parent archive gates composition and stale open menus cannot dispatch
+00:26 +148 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: host parent archive gates composition and stale open menus cannot dispatch
+00:26 +149 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: settings overlay retains composition, thread and queued intents at 1100.0
+00:26 +150 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: settings overlay retains composition, thread and queued intents at 1100.0
+00:27 +151 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: lifecycle menu separates navigation and state-appropriate transitions
+00:27 +152 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: lifecycle menu separates navigation and state-appropriate transitions
+00:27 +153 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: negotiated client search appears after readiness, paginates, and opens hits
+00:27 +154 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: unsupported or missing authority hides actions without breaking legacy composition
+00:27 +155 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: unsupported or missing authority hides actions without breaking legacy composition
+00:27 +156 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: default search stays absent when capability is not negotiated
+00:27 +157 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: send authority does not imply management or membership-based permission
+00:28 +158 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: send authority does not imply management or membership-based permission
+00:28 +159 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: send authority does not imply management or membership-based permission
+00:28 +160 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: searches one user, creates a direct, and navigates narrow layout to the authoritative ID
+00:28 +161 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: searches one user, creates a direct, and navigates narrow layout to the authoritative ID
+00:29 +162 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: searches one user, creates a direct, and navigates narrow layout to the authoritative ID
+00:29 +163 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: searches one user, creates a direct, and navigates narrow layout to the authoritative ID
+00:29 +164 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: remote lock retains mounted draft/reference/attachments and destination in ReplyStyle.discord
+00:29 +165 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: existing equivalent direct selects the returned authoritative ID on wide layouts
+00:29 +166 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: remote thread archive retains mounted draft/reference/attachments and destination in ReplyStyle.discord
+00:29 +167 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: remote thread archive retains mounted draft/reference/attachments and destination in ReplyStyle.discord
+00:29 +168 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: remote thread archive retains mounted draft/reference/attachments and destination in ReplyStyle.discord
+00:30 +169 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: creates a group direct once and navigates narrow layout to the authoritative ID
+00:30 +170 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: remote parent archive retains mounted draft/reference/attachments and destination in ReplyStyle.discord
+00:30 +171 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: group-direct pending state suppresses duplicates and failures remain retryable
+00:30 +172 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: denied command sanitizes feedback and retains draft and original destination
+00:30 +173 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: denied command sanitizes feedback and retains draft and original destination
+00:30 +174 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: creates an entity-scoped public channel and selects its authoritative ID on narrow layouts
+00:30 +175 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: compact keyboard menu retries exact ambiguous request and restores focus
+00:30 +176 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: creates a private channel with the exact authored request
+00:30 +177 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: conflict shows canonical state without blind retry
+00:31 +178 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: conflict shows canonical state without blind retry
+00:31 +179 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: selects deterministically, switches channels, and adapts without routing
+00:31 +180 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: selects deterministically, switches channels, and adapts without routing
+00:31 +181 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: compact initial loading failure offers a working read retry
+00:31 +182 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: supports 320px workspace navigation at 200 percent text scale
+00:31 +183 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions map follow and unfollow for style null
+00:31 +184 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: opens a thread panel from a zero-reply message
+00:31 +185 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions map follow and unfollow for style ReplyStyle.current
+00:31 +186 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions map follow and unfollow for style ReplyStyle.current
+00:32 +187 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: forward sends exact identities once and selects authoritative result
+00:32 +188 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions map follow and unfollow for style ReplyStyle.discord
+00:32 +189 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions map follow and unfollow for style ReplyStyle.discord
+00:32 +190 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: forwards host mention configuration to the composer
+00:32 +191 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions independently save every notification and mute choice retaining stars
+00:32 +192 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: propagates overrides and exposes configured search, member, reaction, huddle, and thread surfaces
+00:32 +193 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions failed Leave retries at compact width retaining draft read and open state
+00:33 +194 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions failed Leave retries at compact width retaining draft read and open state
+00:33 +195 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: keeps keyboard traversal ordered from navigation through actions
+00:33 +196 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions reconcile preference conflict and explicitly retry only the selected field
+00:33 +197 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions reconcile preference conflict and explicitly retry only the selected field
+00:33 +198 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions follow conflict requires explicit retry and style changes preserve the open composer
+00:34 +199 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +200 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +201 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +202 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +203 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +204 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +205 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +206 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +207 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +208 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +209 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +210 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +211 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +212 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions unavailable canonical preferences load and retry without invented defaults
+00:34 +213 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/durable_resource_event_reducer_test.dart: conversation.read_cursor_updated stream clock collisions tied clock preserves per-conversation reads and replay
+00:34 +214 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +215 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +216 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +217 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +218 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +219 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +220 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +221 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +222 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +223 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +224 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +225 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +226 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +227 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +228 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +229 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +230 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +231 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +232 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +233 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +234 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +235 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +236 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +237 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +238 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +239 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +240 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +241 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +242 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +243 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +244 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:34 +245 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: subscriptions ignore stale popup callbacks and late results after scope replacement and disposal
+00:35 +246 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: renders a caller-owned existing thread, root, replies, composer, and close callback
+00:35 +247 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: hides cached archived replies after HTTP 401 until recovery
+00:35 +248 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: hides cached archived replies after HTTP 403 until recovery
+00:35 +249 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: opens and creates a canonical thread then releases its retain
+00:35 +250 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: opens and creates a canonical thread then releases its retain
+00:35 +251 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/realtime_session_transport_test.dart: ChatRealtimeSessionTransport constructs ordered protocols, sends handshake, and accepts session
+00:35 +252 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +253 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +254 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +255 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +256 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +257 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +258 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +259 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: projects unavailable, access-denied, and general error states
+00:35 +260 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/realtime_session_transport_test.dart: ChatRealtimeSessionTransport uses bounded deterministic backoff and resets after acceptance
+00:35 +261 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +262 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +263 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +264 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +265 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +266 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +267 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +268 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +269 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: applies root/message builders and Handrail theme tokens
+00:35 +270 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: is safe under narrow, wide, and unbounded-height constraints
+00:35 +271 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: rebinds controllers and releases a stale asynchronously opened handle
+00:36 +272 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: remote event cannot imply local durability: cancel=false
+00:36 +273 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: channel-1, notifyAuthor=true
+00:36 +274 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: channel-1, notifyAuthor=true
+00:36 +275 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: channel-1, notifyAuthor=true
+00:36 +276 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: channel-1, notifyAuthor=true
+00:36 +277 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: cancellation settles local completion before a delayed write returns
+00:36 +278 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: channel-1, notifyAuthor=false
+00:36 +279 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: channel-1, notifyAuthor=false
+00:36 +280 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply-only replacements emit and retain the exact complete draft
+00:36 +281 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: thread-1, notifyAuthor=true
+00:36 +282 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply draft survives client restart and exact retained retries
+00:36 +283 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply round trip: thread-1, notifyAuthor=false
+00:36 +284 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: retained conflict preserves local and canonical reply metadata
+00:36 +285 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence malformed reply is quarantined: null
+00:36 +286 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply drafts isolate delayed HTTP across other-tenant/user-1
+00:36 +287 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply drafts isolate delayed HTTP across other-tenant/user-1
+00:36 +288 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply drafts isolate delayed HTTP across other-tenant/user-1
+00:36 +289 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence malformed reply is quarantined: {"messageId":"source-message"}
+00:36 +290 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply drafts isolate delayed HTTP across tenant-1/other-user
+00:36 +291 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: reply drafts isolate delayed HTTP across tenant-1/other-user
+00:36 +292 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence malformed reply is quarantined: {"messageId":"source-message","notifyAuthor":false,"accessToken":"hidden"}
+00:36 +293 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: retains generated identities and the body across safe retries
+00:36 +294 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply metadata counts toward the intent byte limit
+00:36 +295 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence reply metadata counts toward the intent byte limit
+00:36 +296 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: serializes per conversation while unrelated conversations progress
+00:36 +297 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence validates generated identities before storage access
+00:36 +298 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence validates generated identities before storage access
+00:36 +299 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: newer private durable event wins over an older in-flight response
+00:36 +300 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence persists before publishing or returning queued state
+00:36 +301 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence persists before publishing or returning queued state
+00:36 +302 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: persists exact correlation before projection and transport
+00:36 +303 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence two queue instances preserve concurrent distinct sends
+00:36 +304 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: coalescing and event settlement preserve newer exact intents
+00:36 +305 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent duplicate correlations yield one durable winner
+00:36 +306 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/draft_runtime_test.dart: concurrent runtimes atomically retain different conversations
+00:36 +307 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +308 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +309 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +310 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +311 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +312 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +313 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +314 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +315 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +316 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:36 +317 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +318 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +319 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +320 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +321 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +322 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +323 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +324 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +325 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +326 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +327 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +328 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence concurrent sends re-check durable capacity after contention
+00:37 +329 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +330 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +331 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +332 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +333 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +334 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +335 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +336 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump replays channel-1 reply unchanged after restart, style switch and retry (notifyAuthor=true)
+00:37 +337 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence queued send intent capacity rejects enqueue without replacing or publishing
+00:37 +338 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence queued send intent capacity rejects enqueue without replacing or publishing
+00:37 +339 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence queued send intent capacity rejects enqueue without replacing or publishing
+00:37 +340 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence queued send intent capacity rejects enqueue without replacing or publishing
+00:37 +341 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_test.dart: offline send-message persistence queued send intent capacity rejects enqueue without replacing or publishing
+00:37 +342 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump settles matching realtime events before and after HTTP exactly once
+00:38 +343 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump ignores teammate in the same conversation before matching acknowledgement
+00:38 +344 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump ignores teammate in another conversation before matching acknowledgement
+00:38 +345 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump ignores own author in another conversation before matching acknowledgement
+00:38 +346 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump ignores unmatched client ID before matching acknowledgement
+00:38 +347 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump auth and transport failures retain FIFO state across manual backoff
+00:38 +348 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump removes terminal rejection and stops subsequent dispatch offline
+00:38 +349 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/offline_send_message_queue_pump_test.dart: persisted send-message queue pump close preserves in-flight and remaining intents for restart
+00:38 +350 -10: Some tests failed.

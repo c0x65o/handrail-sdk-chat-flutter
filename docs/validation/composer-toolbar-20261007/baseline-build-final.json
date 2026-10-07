@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "seconds": 38.21051245648414,
+  "command": [
+    "flutter",
+    "build",
+    "web",
+    "--release",
+    "--no-pub",
+    "--no-web-resources-cdn",
+    "--target",
+    "tool/toolbar_probe.dart"
+  ],
+  "source": "baseline",
+  "toolchain": "current",
+  "cap": 300
+}

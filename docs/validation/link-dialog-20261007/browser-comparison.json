@@ -1,0 +1,242 @@
+{
+  "cases": [
+    {
+      "width": 1050,
+      "action": "cancel",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 1050,
+      "action": "barrier",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 1050,
+      "action": "escape",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 1050,
+      "action": "apply",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "[X](https://example.com) next",
+      "after_continued_draft": "[X](https://example.com) next"
+    },
+    {
+      "width": 1050,
+      "action": "done",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "[X](https://example.com) next",
+      "after_continued_draft": "[X](https://example.com) next"
+    },
+    {
+      "width": 1050,
+      "action": "invalid",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 1050,
+      "action": "remove",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "X next",
+      "after_continued_draft": "X next"
+    },
+    {
+      "width": 320,
+      "action": "cancel",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 320,
+      "action": "barrier",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 320,
+      "action": "escape",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 320,
+      "action": "apply",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "[X](https://example.com) next",
+      "after_continued_draft": "[X](https://example.com) next"
+    },
+    {
+      "width": 320,
+      "action": "done",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "[X](https://example.com) next",
+      "after_continued_draft": "[X](https://example.com) next"
+    },
+    {
+      "width": 320,
+      "action": "invalid",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 320,
+      "action": "remove",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "X next",
+      "after_continued_draft": "X next"
+    },
+    {
+      "width": 390,
+      "action": "cancel",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 390,
+      "action": "barrier",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 390,
+      "action": "escape",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 390,
+      "action": "apply",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "[X](https://example.com) next",
+      "after_continued_draft": "[X](https://example.com) next"
+    },
+    {
+      "width": 390,
+      "action": "done",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "[X](https://example.com) next",
+      "after_continued_draft": "[X](https://example.com) next"
+    },
+    {
+      "width": 390,
+      "action": "invalid",
+      "before_passed": false,
+      "after_passed": false,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "Original",
+      "after_continued_text": "Original",
+      "before_continued_draft": "Original",
+      "after_continued_draft": "Original"
+    },
+    {
+      "width": 390,
+      "action": "remove",
+      "before_passed": true,
+      "after_passed": true,
+      "opening_dialog_geometry_equal": true,
+      "before_continued_text": "X next",
+      "after_continued_text": "X next",
+      "before_continued_draft": "X next",
+      "after_continued_draft": "X next"
+    }
+  ],
+  "per_phase": {
+    "opened_and_dismissed_without_browser_errors": 21,
+    "continued_typing_pass": 9,
+    "continued_typing_fail": 12
+  },
+  "semantics_toolbar_input_accepted": 0,
+  "ordinary_toolbar_input_accepted": 3
+}

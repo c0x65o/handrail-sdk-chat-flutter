@@ -1,0 +1,66 @@
+{
+  "lifetime-route-owned-clean": {
+    "exit": 0,
+    "seconds": 3.22,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/dialog_lifetime_test.dart",
+      "--name",
+      "routeOwnsController=true"
+    ],
+    "timeout_seconds": 300
+  },
+  "lifetime-early-dispose-clean": {
+    "exit": 1,
+    "seconds": 2.97,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/dialog_lifetime_test.dart",
+      "--name",
+      "routeOwnsController=false"
+    ],
+    "timeout_seconds": 300
+  },
+  "review-specific-semantics": {
+    "exit": 1,
+    "seconds": 7.93,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "--name",
+      "review restored Link|review exported heading"
+    ],
+    "timeout_seconds": 300
+  },
+  "version-and-realtime": {
+    "exit": 0,
+    "seconds": 2.92,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/core_import_boundary_test.dart",
+      "test/realtime_session_transport_test.dart"
+    ],
+    "timeout_seconds": 300
+  }
+}

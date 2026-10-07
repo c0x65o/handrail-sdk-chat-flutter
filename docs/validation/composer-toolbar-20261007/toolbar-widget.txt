@@ -1,0 +1,8 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/a513dfca-7c7e-4792-a352-4079ce95a3e1/tmp/toolbar/baseline/test/handrail_message_composer_test.dart
+00:00 +0: toolbar retains platform editing connection (bold, keyboard=false)
+00:01 +1: toolbar retains platform editing connection (bold, keyboard=true)
+00:02 +2: toolbar retains platform editing connection (italic, keyboard=false)
+00:02 +3: toolbar retains platform editing connection (italic, keyboard=true)
+00:03 +4: toolbar retains platform editing connection (inline-code, keyboard=false)
+00:03 +5: toolbar retains platform editing connection (inline-code, keyboard=true)
+00:04 +6: All tests passed!

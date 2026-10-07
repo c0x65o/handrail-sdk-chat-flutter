@@ -1,0 +1,47 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/test/durable_resource_event_reducer_test.dart
+00:00 +0: unloaded private resources identify the snapshot needed for recovery
+00:00 +1: conversation membership observer clock collisions tied clock applies revision 6 leave and replay
+00:00 +2: conversation membership observer clock collisions tied clock rejects equal revision conflict atomically
+00:00 +3: conversation membership observer clock collisions tied clock rejects wrong stream identities atomically
+00:00 +4: conversation membership observer clock collisions 1ms older clock applies revision 6 leave and replay
+00:00 +5: conversation membership observer clock collisions 1ms older clock rejects equal revision conflict atomically
+00:00 +6: conversation membership observer clock collisions 1ms older clock rejects wrong stream identities atomically
+00:00 +7: conversation.membership.updated stream clock collisions tied clock applies leave revision and replay
+00:00 +8: conversation.membership.updated stream clock collisions tied clock applies remove_member revision and replay
+00:00 +9: conversation.membership.updated stream clock collisions tied clock rejects a wrong membership user atomically
+00:00 +10: conversation.membership.updated stream clock collisions 1ms older clock applies leave revision and replay
+00:00 +11: conversation.membership.updated stream clock collisions 1ms older clock applies remove_member revision and replay
+00:00 +12: conversation.membership.updated stream clock collisions 1ms older clock rejects a wrong membership user atomically
+00:00 +13: conversation.read_cursor_updated stream clock collisions tied clock preserves per-conversation reads and replay
+00:00 +14: conversation.read_cursor_updated stream clock collisions tied clock rejects a wrong read actor atomically
+00:00 +15: conversation.read_cursor_updated stream clock collisions 1ms older clock preserves per-conversation reads and replay
+00:00 +16: conversation.read_cursor_updated stream clock collisions 1ms older clock rejects a wrong read actor atomically
+00:00 +17: saved_message.updated stream clock collisions tied clock preserves per-message revisions and replay
+00:00 +18: saved_message.updated stream clock collisions tied malformed state is rejected atomically
+00:00 +19: saved_message.updated stream clock collisions tied wrong actor is rejected atomically
+00:00 +20: saved_message.updated stream clock collisions tied equal revision conflict is rejected atomically
+00:00 +21: saved_message.updated stream clock collisions 1ms older clock preserves per-message revisions and replay
+00:00 +22: saved_message.updated stream clock collisions 1ms older malformed state is rejected atomically
+00:00 +23: saved_message.updated stream clock collisions 1ms older wrong actor is rejected atomically
+00:00 +24: saved_message.updated stream clock collisions 1ms older equal revision conflict is rejected atomically
+00:00 +25: preference.updated stream clock collisions tied clock preserves independent revisions and replay
+00:00 +26: preference.updated stream clock collisions tied clock does not hide a wrong actor
+00:00 +27: preference.updated stream clock collisions 1ms older clock preserves independent revisions and replay
+00:00 +28: preference.updated stream clock collisions 1ms older clock does not hide a wrong actor
+00:00 +29: draft.updated stream clock collisions tied clock accepts draft after draft
+00:00 +30: draft.updated stream clock collisions tied clock accepts draft after preference
+00:00 +31: draft.updated stream clock collisions tied lower draft revision is consumed without overwriting
+00:00 +32: draft.updated stream clock collisions tied draft clock does not hide a wrong actor
+00:00 +33: draft.updated stream clock collisions 1ms older clock accepts draft after draft
+00:00 +34: draft.updated stream clock collisions 1ms older clock accepts draft after preference
+00:00 +35: draft.updated stream clock collisions 1ms older lower draft revision is consumed without overwriting
+00:00 +36: draft.updated stream clock collisions 1ms older draft clock does not hide a wrong actor
+00:00 +37: attachment.updated durable reduction enriches metadata, settles upload, persists, and stays immutable
+00:00 +38: attachment.updated durable reduction allows metadata to lead its message, gaps missing references, and rejects regression
+00:00 +39: huddle.updated durable reduction accepts stable states and direct starting-to-ended transition
+00:00 +40: huddle.updated durable reduction accepts legal lifecycle, participant, and replacement transitions
+00:00 +41: huddle.updated durable reduction accepts a renewed participant join and ignores its duplicate replay
+00:00 +42: huddle.updated durable reduction rejects missing baselines, illegal sessions, and participant rewrites
+00:00 +43: huddle.updated durable reduction controller hydration does not advance ordered state past queued events
+00:00 +44: huddle.updated durable reduction client settlement prevents an older command response from winning
+00:00 +45: All tests passed!

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/flutter-current/bin/flutter",
+    "test",
+    "--no-pub",
+    "--concurrency=2",
+    "--reporter=expanded",
+    "test/handrail_message_composer_test.dart",
+    "--name",
+    "retained baseline link Cancel"
+  ],
+  "source": "baseline",
+  "exit": 1,
+  "seconds": 5.026818608865142
+}

@@ -1,0 +1,154 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_message_composer_test.dart
+00:00 +0: retained baseline link Cancel controller lifetime
+00:01 +1: link dialog lifetime: Cancel preserves selection and draft
+00:02 +2: link dialog lifetime: barrier preserves selection and draft
+00:02 +3: link dialog lifetime: Escape preserves selection and draft
+00:02 +4: link dialog lifetime: system Back preserves selection and draft
+00:02 +5: link dialog lifetime: Apply inserts and persists markdown
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: contains 'https://example.com'
+  Actual: 'null'
+   Which: does not contain 'https://example.com'
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart:95:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart line 95
+The test description was:
+  link dialog lifetime: Apply inserts and persists markdown
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +5 -1: link dialog lifetime: Apply inserts and persists markdown [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: Apply inserts and persists markdown
+  
+00:03 +5 -1: link dialog lifetime: done inserts and persists markdown
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: contains 'https://example.com'
+  Actual: 'null'
+   Which: does not contain 'https://example.com'
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart:95:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart line 95
+The test description was:
+  link dialog lifetime: done inserts and persists markdown
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +5 -2: link dialog lifetime: done inserts and persists markdown [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: done inserts and persists markdown
+  
+00:04 +5 -2: link dialog lifetime: semantics inserts and persists markdown
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: contains 'https://example.com'
+  Actual: 'null'
+   Which: does not contain 'https://example.com'
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart:95:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart line 95
+The test description was:
+  link dialog lifetime: semantics inserts and persists markdown
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +5 -3: link dialog lifetime: semantics inserts and persists markdown [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: semantics inserts and persists markdown
+  
+00:04 +5 -3: link dialog lifetime: validation then correction and Remove link
+00:04 +6 -3: link dialog lifetime: repeated opens and double actions
+00:05 +7 -3: link dialog lifetime: rejects late result after disabled
+00:05 +8 -3: link dialog lifetime: rejects late result after disable then enable
+00:05 +9 -3: link dialog lifetime: rejects late result after conversation
+00:06 +10 -3: link dialog lifetime: rejects late result after account
+00:06 +11 -3: link dialog lifetime: rejects late result after account cycle
+00:06 +12 -3: link dialog lifetime: rejects late result after host controller
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: 'Original'
+  Actual: 'Replacement'
+   Which: is different.
+          Expected: Original
+            Actual: Replacemen ...
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart:231:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart line 231
+The test description was:
+  link dialog lifetime: rejects late result after host controller
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:07 +12 -4: link dialog lifetime: rejects late result after host controller [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: rejects late result after host controller
+  
+00:07 +12 -4: link dialog lifetime: rejects late result after host text
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: TextEditingValue:<TextEditingValue(text: ┤Replacement├, selection: TextSelection.invalid,
+composing: TextRange(start: -1, end: -1))>
+  Actual: TextEditingValue:<TextEditingValue(text: ┤Replacement├, selection:
+TextSelection.collapsed(offset: 11, affinity: TextAffinity.downstream, isDirectional: false),
+composing: TextRange(start: -1, end: -1))>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart:230:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_link_dialog_cases.dart line 230
+The test description was:
+  link dialog lifetime: rejects late result after host text
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:07 +12 -5: link dialog lifetime: rejects late result after host text [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: rejects late result after host text
+  
+00:07 +12 -5: link dialog lifetime: rejects late result after remote replacement
+00:08 +13 -5: link dialog lifetime: rejects late result after same-text formatting
+00:08 +14 -5: link dialog lifetime: rejects late result after host disposal
+00:08 +15 -5: link dialog lifetime: matching acknowledgement and selection-only change keep opening range
+00:08 +16 -5: Some tests failed.

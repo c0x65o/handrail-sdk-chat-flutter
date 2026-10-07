@@ -1,0 +1,89 @@
+Flutter Link dialog lifetime — workspace qualification
+Work request: 1147cedb-8097-41d7-a069-839cb61f0592
+Worker: 66ec554d-e3e7-4fa0-a4be-5a8d60746df6
+
+The controller lifetime defect is fixed and the stale-result boundary is covered. Recommend this narrow repair for the parent's final source review and combined Flutter-only publication review. No newly introduced regression was found in the exercised scope. This is NOT overall Preview acceptance or authorization to publish. The ordinary cancellation continuation limitation newly demonstrated below and the existing semantics-enabled toolbar input gate remain open. Parent owns final source review, combined publication and exact installed Preview acceptance.
+
+Changes and source review
+
+Only lib/src/handrail_message_composer.dart changes at runtime. A private StatefulWidget owns the destination TextEditingController through its State.dispose, keeping the TextField's controller alive throughout reverse-route teardown. showDialog's result no longer owns disposal. It uses public Flutter APIs, with the existing modal route defaults, autofocus, URL keyboard, Done action, keys, title, buttons, sanitizer and validation text unchanged.
+
+The composer rejects a result after replacement of its draft/controller, account or conversation; authored content changes; unmounting; a current send; or loss of editing readiness/host enablement. An invalidated result stays invalid even when authority or the original account returns. Matching draft acknowledgements and selection-only changes remain valid and apply to the range captured at opening. The existing markdown operation, draft synchronization and successful-result focus behavior are retained. No new focus workaround is installed.
+
+One outstanding dialog per composer and a one-shot route completion guard prevent repeated activation from opening stacked dialogs or popping the underlying route twice. The destination controller is neither shared with the composer nor leaked. There is no timer-based disposal, private framework/engine API, remount, or swallowed framework exception.
+
+24 new shipping widget cases live in test/handrail_link_dialog_cases.dart, included by the existing composer suite. The parent test's transport status fields become mutable solely to exercise actual HTTP 403 and restoration through public controller refresh. All previous test bodies, including the inherited toolbar tests, remain unchanged. The previously reviewed formatter semantics implementation is byte-identical; Workspace and ThreadView library files are wholly unchanged from incoming source. Reviewed the run-only source.diff, not just the combined dirty diff against HEAD. git diff --check passes.
+
+Exact source SHA-256
+
+Composer: edc9a41893cde2be83c0afd6c8b208eff47752761cc70dfd386c2f2c747b3919
+Composer parent test: eeea5fc21ec6602eb5b9f974f08267551b2e97e005454c2c9ff8ea0c26a42668
+New Link test cases: ffd37d020d6b566bd0dd7981913a0a9a9db4460c54929cf631a92e7bfa988dfd
+Run-only source.diff: 29b9e9a5029a98cbdbe6ee9d678e01c277c7017f08a56c2aad0f522f7c166e1e
+Incoming composer: 9afd36dadd0284e986bfe50d52d0e0df5110a4212bf17d374d21f438fb65c964
+
+source-hashes.json includes the unchanged Workspace, ThreadView, manifest, lock, version mirror and package metadata. candidate-artifact.json includes hashes for all 128 library files; every one matches the final workspace. minimum-sources.tar.gz contains the same runtime source. The SDK remains 0.1.32 / 2d095ba5a0f86e4aa0b12ba8432500e3edfb576f.
+
+Reproduction and tests
+
+- Incoming candidate, unchanged: retained Link Cancel reproduction FAILS, exit 1, with “A TextEditingController was used after being disposed.” See before-cancel.txt.
+- Original .32 runtime from the retained baseline source archive: the same reproduction FAILS, exit 1. See baseline32-cancel.txt. All 128 baseline library files match the unchanged .32 commit exactly (baseline32-library-verification.json). The original and incoming _editLink function bytes are identical, as recorded by baseline-link-function.json (that file hashes its own whitespace-delimited extraction).
+- Final candidate: retained reproduction PASSES on both current and minimum, within the complete focused matrices below.
+- Flutter 3.41.7 / Dart 3.11.5: 385/385 pass. A final run in the native delegated resource leaf also passes 385/385 (current-native-tests.txt).
+- Flutter 3.19.0 / Dart 3.3.0: 385/385 pass (minimum-tests-final.txt).
+
+Each matrix contains the prior 360 focused cases, 24 shipping Link cases and the unchanged evidence-only Cancel reproduction. It covers composer, control hierarchy/Workspace/ThreadView, the 45 durable reducer cases, realtime transport, pure-Dart/version guard, draft runtime and offline send queue/pump. All use two test workers.
+
+New cases cover Cancel, barrier, Escape and system Back; controller usability during closing animation and disposal afterwards; pointer Apply, keyboard Done and semantics activation; empty/unsafe URL validation and correction; editing/removing links; repeated opens and double callbacks; host disposal; host/controller/text/remote-draft replacement; same-visible-text formatting replacement; conversation changes; account changes and return; host disabling and re-enabling; conversation/timeline HTTP 403 and restoration; and matching acknowledgement plus selection-only changes. They assert persisted SDK draft behavior, no accidental send and no framework exception. Storage tests use the existing InMemoryApplicationChatStorage adapter and actual SDK serialization/queues, with the existing HTTP boundary fixture; they do not invent a database implementation. Browser successes additionally inspect actual localStorage queue serialization and subsequent acknowledgement.
+
+Scoped analysis of the runtime composer and its parent/new tests PASSES on both toolchains. Full lib/test analysis remains NONZERO on exactly the same 13 pre-existing infos, byte-compared by diagnostic text with the prior final report. Initial minimum analysis also had six missing fixture-example imports; after copying only the required example Dart sources into the private fixture, those six errors disappeared. See minimum-analysis.txt versus minimum-analysis-final.txt and preservation-checks.json. There are no new final analysis diagnostics.
+
+Release web compilation retaining the composer plus Workspace/ThreadView PASSES on current and minimum. The current renderer fixture's Material asset setting was restored before final captures, without changing the SDK manifest. Existing dart:html/Wasm-dry-run and unused Cupertino-font warnings remain; no Wasm qualification is claimed.
+
+The historical full suite remains 2,471 passed / 7 FAILED, not rerun and not relabelled. No full-CI success or automatic skip event is claimed. Full-CI/autoskip configuration is unchanged; commands were bounded to 300 seconds and expensive checks were sequential.
+
+Rendered ordinary-browser results and newly demonstrated continuation gap
+
+Chromium 151.0.7922.34, release CanvasKit, 1050x780, 320x780 and 390x780, loopback fixture only. before-dialog-browser.json and after-dialog-browser.json contain matched real browser keyboard/pointer actions. No post-action focus request, editor click, text assignment or remount is used to make continuation pass. Holding/releasing the fixture HTTP acknowledgement only exposes queued draft persistence; it does not manipulate input. Live-service traffic is blocked.
+
+All 21 cases per phase open the dialog and dismiss it without page or browser-console errors. Validation rejects unsafe input and leaves the composer unchanged. All opening dialog geometries match before/after. The full continued-typing assertion remains 9 PASS / 12 FAIL on BOTH sources, exit 1 retained for both runs:
+
+- Apply, keyboard Done and Remove: 9/9 pass across the three widths, including immediate X, continued “ next”, markdown draft, serialized queued storage and acknowledgement.
+- Cancel, barrier, Escape and invalid-input-then-Cancel: 12/12 fail immediate continued typing. Composer text and draft remain “Original”, opening selection remains 0..8, and editor focus is false after dismissal. Focus telemetry shows a focus scope, not the editor. This behavior is independently reproduced on the unchanged incoming source, and is not introduced by State-owned disposal. It is a newly demonstrated ordinary-mode continuation gap, distinct from the existing semantics-enabled input failure. The null-result path intentionally retains its prior behavior in this lifetime-only repair. A separate bounded follow-up should review cancellation focus restoration with current actor/draft authority intact; this report does not claim that gate passes.
+
+Release captures do not replace debug widget lifecycle assertions: release Flutter does not expose the same debug use-after-dispose assertion. The baseline widget reproduction remains failed even though these release dialogs render and close.
+
+The separate retained Bold toolbar harness yields 0/3 PASS with semantics enabled (exit 1) and 3/3 PASS in ordinary mode (exit 0), at the same three widths. Semantics-enabled input retains “Original” despite selected Bold and Flutter editor focus; it is still the known framework/input finish-line gate. Do not treat successful widget/platform-channel actions, successful Link insertion, or ordinary-mode typing as its resolution.
+
+Pixels
+
+images-inspected.json records 20 images actually opened, including the initial asset-deficient fixture diagnostic and final before/after dialog opening, validation, dismissal, successful continued typing and semantics/ordinary toolbar outcomes. Final Material icons render. Dialog layout, labels, buttons and placement remain consistent. At 320px, the inherited single-line validation helper ellipsizes; it does so on both sources. Some captures differ in caret/error-animation phase, not layout. Continued successful input visibly reads “X next”; cancellation remains “Original” without editor focus. These are browser viewport captures, not installed Preview or physical-phone/native-IME evidence.
+
+Artifacts and custody
+
+Current final compiled JS SHA-256: e82b455daf3263e22e9cc8d73492b83e6f9f6f2a7fbb7cb6461afdbb2d0ccbd5
+Before compiled JS SHA-256: 7cc97b59655ee9fd9e170f10a3279bbcf148cd6b9d409bf4cc9e69c65e057328
+Minimum compiled JS SHA-256: 6deda12d06940b708de505f445f4502dbb160a8247cd7f7fc1bd44d75bd21b6c
+Candidate source archive SHA-256: ef93f2e4ff1f462a21fbb0403330cc8b0be38414fefc197247c1b19deddc84d5
+Before source archive SHA-256: 9127cc3f634e2ed03cba9d5cd14e760c6c24b15fd0ef704cde1eebb2be42f7fa
+Minimum source archive SHA-256: 18c39c2110525b587bdfeac11ad364d4a231af80e01be79ba5d51dfd5de11836
+
+The three *-sources.tar.gz files, exact private locks, compressed compiled JS, artifact manifests, command JSON sidecars, raw logs, browser JSON and images are retained here. Source fixture archives are qualification inputs, not SDK installations or publication. Current browser fixtures retain the previous public-API probe and add only read-only dialog geometry/error telemetry. Rejected experimental control modes inherited from that fixture are not used (all browser runs select SDK mode). Current/before fixture manifests add only the original uses-material-design asset setting for rendering. The minimum archive captures the exact manifest used for its compile/test run, without that optional rendering setting. Minimum browser pixels were not claimed.
+
+custody-final.json verifies all 3,446 incoming tracked/untracked source and evidence paths across the three repos: ZERO removed, and only the intended existing composer runtime and parent test changed. No prior evidence file changed. The incoming control-hierarchy candidate, its independent review, and the prior composer evidence remain intact. All JS and companion files are unchanged. Their HEADs remain 248fb8890b8e7e1ba15799aff06ef48156cca451 and 9dabb1c666443ed913d0400698beabfe6a7509a1 respectively. evidence-sha256.json hashes every new retained artifact except the manifest itself.
+
+Reproduction setup and retained unsuccessful attempts
+
+Use empty private source fixture directories; do not overwrite a shared checkout. Extract before/candidate/minimum archives, resolve their retained locks with the corresponding Flutter, and run the commands in the JSON sidecars. Copy run.py into the fixture parent or adjust its base/output paths. The baseline-only command selects “retained baseline link Cancel”; the shipping cases select “link dialog lifetime”. The current/minimum test command lists the nine focused suites explicitly. The browser runner uses the retained locked Playwright package and installed Chromium, a short scratch path and a loopback server. browser_check.mjs runs seven dialog actions at three widths; the previous runtime_browser_check.mjs separately runs Bold in semantics on/off modes. Exact commands and terminal exits accompany every final check.
+
+Minimum official archive SHA-256 was independently streamed and verified as 4cc1706fbd6e2a5c0ee34a6f8de875aae20904c9f47e18c88d2fcb25d9ea1a79; version/framework identity and download receipt are retained. Limited free disk required selective private SDK extraction and removal of only this run's vendor copy/test caches after evidence was retained. The global Flutter SDK was read-only throughout.
+
+Initial new-test attempts wrongly checked an already-drained draft queue (then a normalized snapshot that excludes private drafts) and captured a host edit before its synchronization settled. The final cases hold the HTTP acknowledgement and inspect the real queued serialized record, use a valid selection and allow ordinary synchronization to settle. Those raw failed logs remain; no runtime change was made to satisfy those incorrect expectations. A deprecated semantics test API is explicitly retained for minimum compatibility with the same ignore pattern as existing tests. A formatter invocation encountered the incoming workspace's stale package-config path; formatting then ran successfully in the resolved private fixture. An initial browser process failed because its socket path was too long; the short scratch path resolves it. The first browser matrix also lacked the fixture's Material font declaration and expected contiguous plain text inside markdown; final matched runs fix only those fixture assertions/assets and preserve the real cancellation failures.
+
+Heavy checks used shared native command-slot locks and two test workers. The initial attempt to join the delegated cgroup root returned EBUSY because it enables subtree controllers; a proper child leaf fixes placement without changing resource limits. The final full focused current rerun ran in that native leaf and passed. Native peak was 1,614,925,824 bytes (about 1.50 GiB) with 45 tasks, zero memory high/max/oom/oom_kill events and no throttling. The prior bounded minimum/browser results remain valid but are not misrepresented as leaf-placed runs. No resource configuration, full-CI setting or global toolchain setting was changed.
+
+Scope and remaining work
+
+Read the attached KB and effective requirements, Handrail current context/check configuration, Flutter README/release guidance, sibling release guidance, accessible AGENTS locations (none found), and the terminal independent-review/review.txt plus prior qualification. No native scaffold or authentication change is implicated. All work stayed local: no commit, push, PR, deployment, database/queue write, consumer edit, credential/access change, live API effect or external message.
+
+Parent must review this exact source together with the incoming Flutter UI changes, decide scoped publication, and perform the later full-public-HTTPS-Git-SHA install with matching lock and exact installed Preview acceptance. Overall finish-line acceptance remains blocked by the separately retained semantics input gate and unmet immediate continuation after no-result Link dismissal. Native iOS/Android/device IME, installed consumer and live Preview acceptance are unverified here. No owner decision was needed to finish this bounded repair and report.

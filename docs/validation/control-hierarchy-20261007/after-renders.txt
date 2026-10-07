@@ -1,0 +1,42 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/toolbar-320.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/toolbar-scrolled-320.png
+00:01 +1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:02 +1: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/toolbar-390.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/toolbar-scrolled-390.png
+00:02 +2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/thread-320.png
+00:02 +2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: format toolbar render and keyboard scroll at 1050.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/toolbar-1050.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/toolbar-scrolled-1050.png
+00:03 +3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 320.0
+00:03 +4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action bold Material3=false
+00:03 +5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/thread-390.png
+00:03 +6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 390.0
+00:04 +7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action link Material3=false
+00:04 +8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/thread-1400.png
+00:04 +10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:04 +11: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_chat_workspace_test.dart: one thread dismissal hierarchy at 1400.0
+00:05 +12: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action code-block Material3=false
+00:05 +13: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action bold Material3=true
+00:05 +14: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_message_composer_test.dart: single format action italic Material3=true
+00:05 +15: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:05 +16: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:06 +17: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:06 +18: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:06 +19: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+00:06 +20: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 320.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/standalone-320.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/standalone-denied-320.png
+00:08 +21: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 390.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/standalone-390.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/standalone-denied-390.png
+00:08 +22: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/candidate/test/handrail_thread_view_test.dart: standalone thread title actions and permissions at 900.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/standalone-900.png
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/after-renders/standalone-denied-900.png
+00:09 +23: All tests passed!

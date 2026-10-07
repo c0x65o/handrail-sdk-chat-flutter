@@ -1,0 +1,9 @@
+{
+  "incoming_files_checked": 3395,
+  "incoming_files_changed": [],
+  "candidate_library_files_matching_workspace": 128,
+  "private_resolved_lock_matches_candidate_archive": true,
+  "new_release_js_sha256": "8a8f10d25fb8404a48541d6755f36763349bb5f4020d95cbfbadad7c73a2b0eb",
+  "new_release_bootstrap_sha256": "b1cb12f9053b53400157cca2a5d61e8904f5b92e65034aabde066653de11247f",
+  "review_test_additions_sha256": "a94732e4b9a808abd9c83ff6805ae45946d9e3be662f280fca4125e14f289046"
+}

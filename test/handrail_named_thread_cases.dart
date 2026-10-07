@@ -42,7 +42,7 @@ void namedThreadTests() {
       expect(find.byKey(const ValueKey('handrail-create-thread-thread-reply')),
           findsNothing);
       final writes = http.requests.where((r) => r.method != 'GET').length;
-      await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
+      await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
       await tester.pump();
       expect(handle.isReleased, isTrue);
       expect(http.requests.where((r) => r.method != 'GET').length, writes);
@@ -70,7 +70,7 @@ void namedThreadTests() {
         .openHandle!;
     expect(handle.state.reconciliationStatus,
         ThreadCreationReconciliationStatus.existingForRoot);
-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
+    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
     await tester.pump();
     await tester.tap(find.byKey(const ValueKey('handrail-thread-root-alpha')));
     await _pumpUntil(
@@ -241,7 +241,7 @@ void namedThreadTests() {
     await _pumpUntil(
         tester, () => find.byType(HandrailThreadView).evaluate().isNotEmpty);
     expect(_requestBody(http.threadRequests.single).containsKey('name'), false);
-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
+    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
     await tester.pump();
     expect(find.byKey(const ValueKey('handrail-thread-root-alpha')),
         findsOneWidget);
@@ -348,7 +348,7 @@ void namedThreadTests() {
     expect(find.text('In Alpha'), findsNothing);
     expect(find.text('Parent conversation unavailable'), findsOneWidget);
     expect(find.text('Root message unavailable'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
+    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
     await tester.pump();
     // Cached canonical IDs do not bypass fresh existing-thread authorization.
     final timeline = tester
@@ -468,7 +468,7 @@ void namedThreadTests() {
     await tester.pumpAndSettle();
     expect(find.text('Canonical launch'), findsOneWidget);
     expect(find.text('In Alpha'), findsOneWidget);
-    await tester.tap(find.byKey(const ValueKey('handrail-thread-close')));
+    await tester.tap(find.byKey(const ValueKey('handrail-workspace-close-panel')));
     await _pumpUntil(
         tester, () => find.text('Parent plan').evaluate().isNotEmpty);
     expect(find.byType(HandrailThreadView), findsNothing);

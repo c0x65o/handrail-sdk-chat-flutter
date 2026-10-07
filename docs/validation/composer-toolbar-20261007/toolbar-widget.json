@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "seconds": 16.053479513153434,
+  "command": [
+    "flutter",
+    "test",
+    "--no-pub",
+    "--concurrency=2",
+    "--reporter=expanded",
+    "test/handrail_message_composer_test.dart",
+    "--plain-name",
+    "toolbar retains platform editing connection"
+  ],
+  "source": "baseline",
+  "toolchain": "current",
+  "cap": 300
+}

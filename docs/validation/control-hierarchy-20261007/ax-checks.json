@@ -1,0 +1,13 @@
+{
+  "before": {
+    "exit": 1,
+    "reason": "expected one accessible Bold button; found two"
+  },
+  "candidate": {
+    "exit": 0,
+    "nodes": 1,
+    "label": "Bold",
+    "selected_state": "aria-current false -> true (native Flutter selected flag)"
+  },
+  "script": "semantic_state_check.mjs"
+}

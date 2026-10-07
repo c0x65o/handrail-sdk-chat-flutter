@@ -1,0 +1,311 @@
+Native delegated cgroup: 0::/user.slice/user-993.slice/user@993.service/handrail.slice/handrail-workers.slice/handrail-codex-07e1a178-2844-4e5e-9f33-6ae76d8a98e9.scope/handrail-heavy/link-polish-validation
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/handrail_message_composer_test.dart
+00:00 +0: independent link review: apply after client
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: apply after client
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: independent link review: apply after client [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: apply after client
+  
+00:01 +0 -1: independent link review: apply after draft
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: apply after draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -2: independent link review: apply after draft [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: apply after draft
+  
+00:02 +0 -2: independent link review: apply after authority
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: apply after authority
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -3: independent link review: apply after authority [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: apply after authority
+  
+00:02 +0 -3: independent link review: apply after account
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: apply after account
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -4: independent link review: apply after account [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: apply after account
+  
+00:03 +0 -4: independent link review: remove after client
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: remove after client
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -5: independent link review: remove after client [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: remove after client
+  
+00:03 +0 -5: independent link review: remove after draft
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: remove after draft
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -6: independent link review: remove after draft [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: remove after draft
+  
+00:03 +0 -6: independent link review: remove after authority
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: remove after authority
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -7: independent link review: remove after authority [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: remove after authority
+  
+00:04 +0 -7: independent link review: remove after account
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: '[Original](/existing)'
+  Actual: 'Original'
+   Which: is different.
+          Expected: [Original] ...
+            Actual: Original
+                    ^
+           Differ at offset 0
+
+When the exception was thrown, this was the stack:
+#4      _independentLinkReview.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart:27:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/independent_link_review.dart line 27
+The test description was:
+  independent link review: remove after account
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -8: independent link review: remove after account [E]
+  Test failed. See exception logs above.
+  The test description was: independent link review: remove after account
+  
+00:04 +0 -8: independent link review: closing route cannot Remove twice or Apply
+00:04 +1 -8: link validation wraps at 320.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-320.0-1.0.png
+00:05 +2 -8: link validation wraps at 320.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-320.0-2.0.png
+00:05 +3 -8: link validation wraps at 320.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-320.0-3.0.png
+00:05 +4 -8: link validation wraps at 390.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-390.0-1.0.png
+00:05 +5 -8: link validation wraps at 390.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-390.0-2.0.png
+00:06 +6 -8: link validation wraps at 390.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-390.0-3.0.png
+00:06 +7 -8: link validation wraps at 900.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-900.0-1.0.png
+00:06 +8 -8: link validation wraps at 900.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-900.0-2.0.png
+00:06 +9 -8: link validation wraps at 900.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/current-focused/link-validation-900.0-3.0.png
+00:06 +10 -8: link dialog lifetime: Cancel preserves selection and draft
+00:07 +11 -8: link dialog lifetime: barrier preserves selection and draft
+00:07 +12 -8: link dialog lifetime: Escape preserves selection and draft
+00:07 +13 -8: link dialog lifetime: system Back preserves selection and draft
+00:07 +14 -8: link dialog lifetime: Apply inserts and persists markdown
+00:07 +15 -8: link dialog lifetime: done inserts and persists markdown
+00:08 +16 -8: link dialog lifetime: semantics inserts and persists markdown
+00:08 +17 -8: link dialog lifetime: validation then correction and Remove link
+00:08 +18 -8: link dialog lifetime: repeated opens and double actions
+00:08 +19 -8: link dialog lifetime: rejects late result after disabled
+00:09 +20 -8: link dialog lifetime: rejects late result after disable then enable
+00:09 +21 -8: link dialog lifetime: rejects late result after conversation
+00:09 +22 -8: link dialog lifetime: rejects late result after account
+00:09 +23 -8: link dialog lifetime: rejects late result after account cycle
+00:10 +24 -8: link dialog lifetime: rejects late result after host controller
+00:10 +25 -8: link dialog lifetime: rejects late result after host text
+00:10 +26 -8: link dialog lifetime: rejects late result after remote replacement
+00:10 +27 -8: link dialog lifetime: rejects late result after same-text formatting
+00:10 +28 -8: link dialog lifetime: rejects late result after host disposal
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TypeWidgetFinder:<Found 0 widgets with type "AlertDialog": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/handrail_link_dialog_cases.dart:335:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/candidate/test/handrail_link_dialog_cases.dart line 335
+The test description was:
+  link dialog lifetime: rejects late result after host disposal
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:10 +28 -9: link dialog lifetime: rejects late result after host disposal [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: rejects late result after host disposal
+  
+00:10 +28 -9: link dialog lifetime: rejects late result after conversation revoked
+00:11 +29 -9: link dialog lifetime: rejects late result after conversation restored
+00:11 +30 -9: link dialog lifetime: rejects late result after timeline revoked
+00:11 +31 -9: link dialog lifetime: rejects late result after timeline restored
+00:11 +32 -9: link dialog lifetime: matching acknowledgement and selection-only change keep opening range
+00:12 +33 -9: Some tests failed.

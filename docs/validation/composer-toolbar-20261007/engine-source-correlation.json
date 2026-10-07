@@ -1,0 +1,64 @@
+{
+  "engine/src/flutter/lib/web_ui/lib/src/engine/semantics/text_field.dart": {
+    "sha256": "45282a40a9d077df12570d38b29834404d94c94b4007a6fb8189b28686be7599",
+    "excerpts": [
+      {
+        "start_line": 44,
+        "end_line": 123,
+        "text": "  /// If this field is null, no editing takes place.\n  SemanticTextField? activeTextField;\n\n  /// Current input configuration supplied by the \"flutter/textinput\" channel.\n  InputConfiguration? inputConfig;\n\n  /// The semantics implementation does not operate on DOM nodes, but only\n  /// remembers the config and callbacks. This is because the DOM nodes are\n  /// supplied in the semantics update and enabled by [activate].\n  @override\n  void enable(\n    InputConfiguration inputConfig, {\n    required OnChangeCallback onChange,\n    required OnActionCallback onAction,\n  }) {\n    this.inputConfig = inputConfig;\n    this.onChange = onChange;\n    this.onAction = onAction;\n  }\n\n  /// Attaches the DOM element owned by [textField] to the text editing\n  /// strategy.\n  ///\n  /// This method must be called after [enable] to name sure that [inputConfig],\n  /// [onChange], and [onAction] are not null.\n  void activate(SemanticTextField textField) {\n    assert(\n      inputConfig != null && onChange != null && onAction != null,\n      '\"enable\" should be called before \"enableFromSemantics\" and initialize input configuration',\n    );\n\n    if (activeTextField == textField) {\n      // The specified field is already active. Skip.\n      return;\n    } else if (activeTextField != null) {\n      // Another text field is currently active. Deactivate it before switching.\n      disable();\n    }\n\n    activeTextField = textField;\n    domElement = textField.editableElement;\n    _syncStyle();\n    super.enable(inputConfig!, onChange: onChange!, onAction: onAction!);\n  }\n\n  /// Detaches the DOM element owned by [textField] from this text editing\n  /// strategy.\n  ///\n  /// Typically at this point the element loses focus (blurs) and stops being\n  /// used for editing.\n  void deactivate(SemanticTextField textField) {\n    if (activeTextField == textField) {\n      disable();\n    }\n  }\n\n  @override\n  void disable() {\n    // We don't want to remove the DOM element because the caller is responsible\n    // for that. However we still want to stop editing, cleanup the handlers.\n    if (!isEnabled) {\n      return;\n    }\n\n    isEnabled = false;\n    style = null;\n    geometry = null;\n\n    for (var i = 0; i < subscriptions.length; i++) {\n      subscriptions[i].cancel();\n    }\n    subscriptions.clear();\n    lastEditingState = null;\n    EnginePlatformDispatcher.instance.viewManager.safeBlur(activeDomElement);\n    domElement = null;\n    activeTextField = null;\n    _queuedStyle = null;\n  }\n\n  @override"
+      },
+      {
+        "start_line": 303,
+        "end_line": 333,
+        "text": "        editableElement.focusWithoutScroll();\n      }),\n    );\n    editableElement.addEventListener(\n      'blur',\n      createDomEventListener((DomEvent event) {\n        SemanticsTextEditingStrategy._instance?.deactivate(this);\n      }),\n    );\n  }\n\n  @override\n  void update() {\n    super.update();\n\n    _updateEnabledState();\n    editableElement.style\n      ..width = '${semanticsObject.rect!.width}px'\n      ..height = '${semanticsObject.rect!.height}px';\n\n    if (semanticsObject.hasFocus) {\n      if (domDocument.activeElement != editableElement && semanticsObject.isEnabled) {\n        semanticsObject.owner.addOneTimePostUpdateCallback(() {\n          editableElement.focusWithoutScroll();\n        });\n      }\n      SemanticsTextEditingStrategy._instance?.activate(this);\n    }\n\n    if (semanticsObject.hasLabel) {\n      if (semanticsObject.isLabelDirty) {"
+      }
+    ]
+  },
+  "engine/src/flutter/lib/web_ui/lib/src/engine/view_embedder/flutter_view_manager.dart": {
+    "sha256": "bd6f552760daead02ee9b9ffb00a34644a732a6192c3037a9672dfa9f65bb117",
+    "excerpts": [
+      {
+        "start_line": 122,
+        "end_line": 135,
+        "text": "\n  /// Blurs [element] by transferring its focus to its [EngineFlutterView]\n  /// `rootElement`.\n  ///\n  /// This operation is asynchronous, but happens as soon as possible\n  /// (see [Timer.run]).\n  Future<void> safeBlur(DomElement element) {\n    return Future<void>(() {\n      _transferFocusToViewRoot(element);\n    });\n  }\n\n  /// Removes [element] after transferring its focus to its [EngineFlutterView]\n  /// `rootElement`."
+      },
+      {
+        "start_line": 171,
+        "end_line": 186,
+        "text": "  /// See: https://jsfiddle.net/ditman/1e2swpno for a JS focus transfer demo.\n  void _transferFocusToViewRoot(DomElement element, {bool removeElement = false}) {\n    final DomElement? activeElement = domDocument.activeElement;\n    // If the element we're operating on is not active anymore (it can happen\n    // when this method is called asynchronously), OR the element that we want\n    // to remove *contains* the `activeElement`.\n    if (element == activeElement || removeElement && element.contains(activeElement)) {\n      // Transfer the browser focus to the `rootElement` of the\n      // [EngineFlutterView] that contains `element`\n      final EngineFlutterView? view = findViewForElement(element);\n      view?.dom.rootElement.focusWithoutScroll();\n    }\n    if (removeElement) {\n      element.remove();\n    }\n  }"
+      }
+    ]
+  },
+  "packages/flutter/lib/src/widgets/editable_text.dart": {
+    "sha256": "bd71737ff6b268d0bdb8ae6677fe62bc8fa5edfb95f550f6a85e50f17b934a21",
+    "excerpts": [
+      {
+        "start_line": 3950,
+        "end_line": 4002,
+        "text": "      // discouraged.\n      //\n      // In case the autofillScope changes from a non-null value to null, or\n      // _needsAutofill changes to false from true, the platform needs to be\n      // notified to exclude this field from the autofill context. So we need to\n      // provide the autofillId.\n      _textInputConnection = _needsAutofill && currentAutofillScope != null\n          ? currentAutofillScope!.attach(this, _effectiveAutofillClient.textInputConfiguration)\n          : TextInput.attach(this, _effectiveAutofillClient.textInputConfiguration);\n      _updateSizeAndTransform();\n      _schedulePeriodicPostFrameCallbacks();\n      _textInputConnection!\n        ..setStyle(\n          fontFamily: _style.fontFamily,\n          fontSize: _style.fontSize,\n          fontWeight: _style.fontWeight,\n          textDirection: _textDirection,\n          textAlign: widget.textAlign,\n        )\n        ..setEditingState(localValue)\n        ..show();\n      if (_needsAutofill) {\n        // Request autofill AFTER the size and the transform have been sent to\n        // the platform text input plugin.\n        _textInputConnection!.requestAutofill();\n      }\n      _lastKnownRemoteTextEditingValue = localValue;\n    } else {\n      _textInputConnection!.show();\n    }\n  }\n\n  void _closeInputConnectionIfNeeded() {\n    if (_hasInputConnection) {\n      _textInputConnection!.close();\n      _textInputConnection = null;\n      _lastKnownRemoteTextEditingValue = null;\n      _scribbleCacheKey = null;\n      removeTextPlaceholder();\n    }\n  }\n\n  void _openOrCloseInputConnectionIfNeeded() {\n    if (_hasFocus && widget.focusNode.consumeKeyboardToken()) {\n      _openInputConnection();\n    } else if (!_hasFocus) {\n      _closeInputConnectionIfNeeded();\n      widget.controller.clearComposing();\n    }\n  }\n\n  bool _restartConnectionScheduled = false;\n  void _scheduleRestartConnection() {"
+      },
+      {
+        "start_line": 4077,
+        "end_line": 4096,
+        "text": "\n  /// Express interest in interacting with the keyboard.\n  ///\n  /// If this control is already attached to the keyboard, this function will\n  /// request that the keyboard become visible. Otherwise, this function will\n  /// ask the focus system that it become focused. If successful in acquiring\n  /// focus, the control will then attach to the keyboard and request that the\n  /// keyboard become visible.\n  void requestKeyboard() {\n    if (_hasFocus) {\n      _openInputConnection();\n    } else {\n      _flagInternalFocus();\n      widget.focusNode\n          .requestFocus(); // This eventually calls _openInputConnection also, see _handleFocusChanged.\n    }\n  }\n\n  void _updateOrDisposeSelectionOverlayIfNeeded() {\n    if (_selectionOverlay != null) {"
+      }
+    ]
+  },
+  "packages/flutter/lib/src/widgets/focus_manager.dart": {
+    "sha256": "35a8424b49904b3cac9b17b1d4c4ed35384781c953f4055b3adaeca55145453b",
+    "excerpts": [
+      {
+        "start_line": 1934,
+        "end_line": 1956,
+        "text": "  /// Applies any pending focus changes and notifies listeners that the focus\n  /// has changed.\n  ///\n  /// Must not be called during the build phase. This method is meant to be\n  /// called in a post-frame callback or microtask when the pending focus\n  /// changes need to be resolved before something else occurs.\n  ///\n  /// It can't be called during the build phase because not all listeners are\n  /// safe to be called with an update during a build.\n  ///\n  /// Typically, this is called automatically by the [FocusManager], but\n  /// sometimes it is necessary to ensure that no focus changes are pending\n  /// before executing an action. For example, the [MenuAnchor] class uses this\n  /// to make sure that the previous focus has been restored before executing a\n  /// menu callback when a menu item is selected.\n  ///\n  /// It is safe to call this if no focus changes are pending.\n  void applyFocusChangesIfNeeded() {\n    assert(\n      SchedulerBinding.instance.schedulerPhase != SchedulerPhase.persistentCallbacks,\n      'applyFocusChangesIfNeeded() should not be called during the build phase.',\n    );\n"
+      }
+    ]
+  },
+  "diagnostic-build": {
+    "sha256": "4acfee15ffcc826e07d6b495a12b7b08583a0bc95c08e045b81538b56011023b",
+    "safeBlur_stack_mapping": {
+      "stack_function": "QD.Hx -> QD.alo -> adH.$0",
+      "lines_42679_42689": "Ms(a){return A.aMe(new A.adH(this,a),t.H)},\na0R(a){return A.aMe(new A.adI(this,a),t.H)},\nHx(a,b){var s,r,q=v.G.document.activeElement\nif(!J.e(a,q))s=b&&a.contains(q)\nelse s=!0\nif(s){r=this.vO(a)\nif(r!=null)r.ghd().a.focus($.f6())}if(b)a.remove()},\nalo(a){return this.Hx(a,!1)}}\nA.adH.prototype={\n$0(){this.a.alo(this.b)},\n$S:6}"
+    }
+  }
+}

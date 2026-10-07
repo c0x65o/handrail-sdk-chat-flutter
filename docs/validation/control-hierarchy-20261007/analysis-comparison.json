@@ -1,0 +1,44 @@
+{
+  "current": {
+    "baseline_file": "../composer-toolbar-20261007/current-analyze-final.txt",
+    "count": 13,
+    "baseline_count": 13,
+    "same_as_retained_baseline": true,
+    "findings": [
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 lib/src/generated/durable_events.dart:878:7 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 lib/src/generated/durable_events.dart:892:9 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 lib/src/generated/durable_events.dart:900:9 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:100:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:109:13 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:62:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:65:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:68:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:80:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:83:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:94:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:97:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/realtime_durable_recovery_test.dart:16:13 \u2022 curly_braces_in_flow_control_structures"
+    ]
+  },
+  "minimum": {
+    "baseline_file": "../composer-toolbar-20261007/minimum-analyze.txt",
+    "count": 13,
+    "baseline_count": 13,
+    "same_as_retained_baseline": true,
+    "findings": [
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 lib/src/generated/durable_events.dart:878:7 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 lib/src/generated/durable_events.dart:892:9 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 lib/src/generated/durable_events.dart:900:9 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:100:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:109:13 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:62:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:65:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:68:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:80:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:83:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:94:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/huddle_recovery_test.dart:97:11 \u2022 curly_braces_in_flow_control_structures",
+      "info \u2022 Statements in an if should be enclosed in a block \u2022 test/realtime_durable_recovery_test.dart:16:13 \u2022 curly_braces_in_flow_control_structures"
+    ]
+  }
+}

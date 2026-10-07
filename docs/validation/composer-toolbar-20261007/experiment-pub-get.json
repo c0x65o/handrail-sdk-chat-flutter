@@ -1,0 +1,13 @@
+{
+  "exit": 0,
+  "seconds": 0.5653610154986382,
+  "command": [
+    "flutter",
+    "pub",
+    "get",
+    "--no-example"
+  ],
+  "source": "experiment",
+  "toolchain": "current",
+  "cap": 300
+}

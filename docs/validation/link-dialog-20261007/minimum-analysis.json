@@ -1,0 +1,14 @@
+{
+  "exit": 1,
+  "seconds": 22.43,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/minimum-flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/minimum-flutter/bin/cache/flutter_tools.snapshot",
+    "analyze",
+    "--no-pub",
+    "lib",
+    "test"
+  ],
+  "fixture": "minimum",
+  "timeout_seconds": 300
+}

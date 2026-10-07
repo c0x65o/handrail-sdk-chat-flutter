@@ -1,0 +1,3633 @@
+{
+  "phase": "minimum",
+  "browser": "151.0.7922.34",
+  "cases": [
+    {
+      "mode": "sdk",
+      "format": "Bold",
+      "activation": "pointer",
+      "width": 1050,
+      "errors": [],
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('textarea').last()\u001b[22m\n\u001b[2m    - locator resolved to <textarea autocorrect=\"off\" spellcheck=\"false\" autocomplete=\"off\" data-semantics-role=\"text-field\" aria-label=\"Message composer↵Message input↵Write a message\"></textarea>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <flutter-view flt-view-id=\"0\">…</flutter-view> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <flutter-view flt-view-id=\"0\">…</flutter-view> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <flutter-view flt-view-id=\"0\">…</flutter-view> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "final": {
+        "text": "",
+        "control": null,
+        "bold": false,
+        "trace": [
+          {
+            "event": "controller",
+            "time": 1791344200259000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "BODY"
+          }
+        ],
+        "primary": null,
+        "conversation": "conversation-composer",
+        "visible": true,
+        "account": 0,
+        "outsideFocus": false,
+        "focusChanges": [
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          }
+        ],
+        "selection": [
+          0,
+          0
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": false,
+        "canRequestFocus": true,
+        "disabledObserved": false,
+        "durable": "{}",
+        "canonical": [],
+        "acceptedCanonicalMessages": [],
+        "sending": false,
+        "draft": null,
+        "pending": null,
+        "requests": []
+      },
+      "browserTrace": [
+        {
+          "type": "focusin",
+          "time": 741.0999994277954,
+          "tag": "FLT-SEMANTICS",
+          "role": "text",
+          "label": "Public composer editing probe",
+          "active": "FLT-SEMANTICS",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at a9m.kt (http://127.0.0.1:43663/main.dart.js:36827:3)\n    at a6d.$1 (http://127.0.0.1:43663/main.dart.js:36374:10)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37036:7)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37039:56)\n    at Mz.acs (http://127.0.0.1:43663/main.dart.js:36344:14)\n    at a6e.$0 (http://127.0.0.1:43663/main.dart.js:36369:8)\n    at a85.LG (http://127.0.0.1:43663/main.dart.js:37105:3)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37188:17)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)"
+        }
+      ]
+    },
+    {
+      "mode": "sdk",
+      "format": "Bold",
+      "activation": "keyboard",
+      "width": 1050,
+      "errors": [],
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('textarea').last()\u001b[22m\n\u001b[2m    - locator resolved to <textarea autocorrect=\"off\" spellcheck=\"false\" autocomplete=\"off\" data-semantics-role=\"text-field\" aria-label=\"Message composer↵Message input↵Write a message\"></textarea>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <flutter-view flt-view-id=\"0\">…</flutter-view> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <flutter-view flt-view-id=\"0\">…</flutter-view> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    13 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <flutter-view flt-view-id=\"0\">…</flutter-view> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "final": {
+        "text": "",
+        "control": null,
+        "bold": false,
+        "trace": [
+          {
+            "event": "controller",
+            "time": 1791344208389000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "BODY"
+          }
+        ],
+        "primary": null,
+        "conversation": "conversation-composer",
+        "visible": true,
+        "account": 0,
+        "outsideFocus": false,
+        "focusChanges": [
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          }
+        ],
+        "selection": [
+          0,
+          0
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": false,
+        "canRequestFocus": true,
+        "disabledObserved": false,
+        "durable": "{}",
+        "canonical": [],
+        "acceptedCanonicalMessages": [],
+        "sending": false,
+        "draft": null,
+        "pending": null,
+        "requests": []
+      },
+      "browserTrace": [
+        {
+          "type": "focusin",
+          "time": 741.6999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "text",
+          "label": "Public composer editing probe",
+          "active": "FLT-SEMANTICS",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at a9m.kt (http://127.0.0.1:43663/main.dart.js:36827:3)\n    at a6d.$1 (http://127.0.0.1:43663/main.dart.js:36374:10)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37036:7)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37039:56)\n    at Mz.acs (http://127.0.0.1:43663/main.dart.js:36344:14)\n    at a6e.$0 (http://127.0.0.1:43663/main.dart.js:36369:8)\n    at a85.LG (http://127.0.0.1:43663/main.dart.js:37105:3)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37188:17)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)"
+        }
+      ]
+    },
+    {
+      "mode": "sync",
+      "format": "Bold",
+      "activation": "pointer",
+      "width": 1050,
+      "errors": [],
+      "before": {
+        "accepted": {
+          "text": "Original",
+          "control": "sync",
+          "bold": false,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791344216729000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344216731000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216844000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216882000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216929000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216959000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216989000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217018000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217054000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217087000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217142000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344217165000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            0,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              0
+            ]
+          },
+          {
+            "value": "Original",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              0,
+              8
+            ]
+          }
+        ]
+      },
+      "canvasKit": [
+        "http://127.0.0.1:43663/canvaskit/chromium/canvaskit.js",
+        "http://127.0.0.1:43663/canvaskit/chromium/canvaskit.wasm"
+      ],
+      "first": {
+        "accepted": {
+          "text": "Original",
+          "control": "sync",
+          "bold": true,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791344216729000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344216731000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216844000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216882000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216929000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216959000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216989000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217018000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217054000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217087000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217142000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344217165000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "bold-before",
+              "time": 1791344217275000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "bold-after",
+              "time": 1791344217275000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "command",
+              "time": 1791344217394000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            0,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              0
+            ]
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              8
+            ]
+          }
+        ]
+      },
+      "continued": {
+        "accepted": {
+          "text": "Original",
+          "control": "sync",
+          "bold": true,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791344216729000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344216731000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216844000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216882000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216929000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216959000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344216989000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217018000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217054000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217087000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344217142000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344217165000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "bold-before",
+              "time": 1791344217275000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "bold-after",
+              "time": 1791344217275000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "command",
+              "time": 1791344217394000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "command",
+              "time": 1791344218058000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            0,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              0
+            ]
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              8
+            ]
+          }
+        ]
+      },
+      "inputAccepted": false,
+      "formatted": true,
+      "browserTrace": [
+        {
+          "type": "focusin",
+          "time": 638.1999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "text",
+          "label": "Public composer editing probe",
+          "active": "FLT-SEMANTICS",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at a9m.kt (http://127.0.0.1:43663/main.dart.js:36827:3)\n    at a6d.$1 (http://127.0.0.1:43663/main.dart.js:36374:10)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37036:7)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37039:56)\n    at Mz.acs (http://127.0.0.1:43663/main.dart.js:36344:14)\n    at a6e.$0 (http://127.0.0.1:43663/main.dart.js:36369:8)\n    at a85.LG (http://127.0.0.1:43663/main.dart.js:37105:3)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37188:17)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)"
+        },
+        {
+          "type": "pointerdown",
+          "time": 832,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "value": "",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "focusout",
+          "time": 840.6999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "text",
+          "label": "Public composer editing probe",
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)"
+        },
+        {
+          "type": "focusin",
+          "time": 840.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "value": "",
+          "active": "TEXTAREA",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)"
+        },
+        {
+          "type": "pointerup",
+          "time": 841.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 948.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "key": "O",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 948.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "data": "O",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 949.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "data": "O",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 986.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "O",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 987.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "r",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 987.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "r",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 988.0999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "r",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1020.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "r",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1034.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1034.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1034.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1062.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1064.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1064.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1064.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1092.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1094.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1094.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1094.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1122.0999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1123.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1123.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1123.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1157.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1159.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1159.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1159.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1191.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1192.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "l",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1192.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "l",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1192.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "l",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1224.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "l",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1245.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "Control",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1246.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "A",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1249.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "A",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1250,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "Control",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "pointerdown",
+          "time": 1378.5999994277954,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "focusout",
+          "time": 1378.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "Original",
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)"
+        },
+        {
+          "type": "focusin",
+          "time": 1379.3000001907349,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "active": "FLT-SEMANTICS",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)"
+        },
+        {
+          "type": "pointerup",
+          "time": 1379.5,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1383.6999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "X",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1384.5,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "X",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1652.1999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": " ",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1685.8999996185303,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": " ",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1687.3000001907349,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "n",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1717.8999996185303,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "n",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1719.0999994277954,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "e",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1752.1999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "e",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1753.5,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "x",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1783.3999996185303,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "x",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1784.5,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "t",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1811.1999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "t",
+          "active": "FLT-SEMANTICS"
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+      "final": {
+        "text": "Original",
+        "control": "sync",
+        "bold": true,
+        "trace": [
+          {
+            "event": "controller",
+            "time": 1791344216729000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "focus",
+            "time": 1791344216731000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "controller",
+            "time": 1791344216844000,
+            "text": "O",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344216882000,
+            "text": "Or",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344216929000,
+            "text": "Ori",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344216959000,
+            "text": "Orig",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344216989000,
+            "text": "Origi",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344217018000,
+            "text": "Origin",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344217054000,
+            "text": "Origina",
+            "selection": [
+              7,
+              7
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344217087000,
+            "text": "Original",
+            "selection": [
+              8,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344217142000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791344217165000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "bold-before",
+            "time": 1791344217275000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "bold-after",
+            "time": 1791344217275000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "command",
+            "time": 1791344217394000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "command",
+            "time": 1791344218058000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          }
+        ],
+        "primary": null,
+        "conversation": "conversation-composer",
+        "visible": true,
+        "account": 0,
+        "outsideFocus": false,
+        "focusChanges": [
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          }
+        ],
+        "selection": [
+          0,
+          8
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": true,
+        "canRequestFocus": true,
+        "disabledObserved": false,
+        "durable": "{}",
+        "canonical": [],
+        "acceptedCanonicalMessages": [],
+        "sending": false,
+        "draft": null,
+        "pending": null,
+        "requests": []
+      }
+    },
+    {
+      "mode": "sync",
+      "format": "Bold",
+      "activation": "keyboard",
+      "width": 1050,
+      "errors": [],
+      "before": {
+        "accepted": {
+          "text": "Original",
+          "control": "sync",
+          "bold": false,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791344219664000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344219665000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219756000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219812000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219863000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219892000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219921000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219950000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219979000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220007000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220066000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344220067000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            0,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              0
+            ]
+          },
+          {
+            "value": "Original",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              0,
+              8
+            ]
+          }
+        ]
+      },
+      "canvasKit": [
+        "http://127.0.0.1:43663/canvaskit/chromium/canvaskit.js",
+        "http://127.0.0.1:43663/canvaskit/chromium/canvaskit.wasm"
+      ],
+      "navigation": [
+        {
+          "tag": "FLT-SEMANTICS",
+          "label": "TARGET"
+        }
+      ],
+      "first": {
+        "accepted": {
+          "text": "Original",
+          "control": "sync",
+          "bold": true,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791344219664000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344219665000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219756000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219812000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219863000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219892000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219921000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219950000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219979000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220007000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220066000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344220067000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "focus",
+              "time": 1791344220169000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "bold-before",
+              "time": 1791344220255000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "bold-after",
+              "time": 1791344220255000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344220255000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "command",
+              "time": 1791344220294000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Bold",
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            0,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              0
+            ]
+          },
+          {
+            "value": "Original",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              0,
+              8
+            ]
+          }
+        ]
+      },
+      "continued": {
+        "accepted": {
+          "text": " next",
+          "control": "sync",
+          "bold": true,
+          "trace": [
+            {
+              "event": "controller",
+              "time": 1791344219664000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344219665000,
+              "text": "",
+              "selection": [
+                0,
+                0
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219756000,
+              "text": "O",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219812000,
+              "text": "Or",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219863000,
+              "text": "Ori",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219892000,
+              "text": "Orig",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219921000,
+              "text": "Origi",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219950000,
+              "text": "Origin",
+              "selection": [
+                6,
+                6
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344219979000,
+              "text": "Origina",
+              "selection": [
+                7,
+                7
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220007000,
+              "text": "Original",
+              "selection": [
+                8,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220066000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344220067000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "focus",
+              "time": 1791344220169000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "bold-before",
+              "time": 1791344220255000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "bold-after",
+              "time": 1791344220255000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": false,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "focus",
+              "time": 1791344220255000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "FLT-SEMANTICS"
+            },
+            {
+              "event": "command",
+              "time": 1791344220294000,
+              "text": "Original",
+              "selection": [
+                0,
+                8
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220446000,
+              "text": " ",
+              "selection": [
+                1,
+                1
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220479000,
+              "text": " n",
+              "selection": [
+                2,
+                2
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220511000,
+              "text": " ne",
+              "selection": [
+                3,
+                3
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220545000,
+              "text": " nex",
+              "selection": [
+                4,
+                4
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "controller",
+              "time": 1791344220578000,
+              "text": " next",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            },
+            {
+              "event": "command",
+              "time": 1791344220961000,
+              "text": " next",
+              "selection": [
+                5,
+                5
+              ],
+              "focus": true,
+              "primary": null,
+              "dom": "TEXTAREA"
+            }
+          ],
+          "primary": null,
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Bold",
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            }
+          ],
+          "selection": [
+            5,
+            5
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": true,
+          "canRequestFocus": true,
+          "disabledObserved": false,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": null,
+          "pending": null,
+          "requests": []
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false,
+            "selection": [
+              0,
+              0
+            ]
+          },
+          {
+            "value": " next",
+            "focused": true,
+            "disabled": false,
+            "selection": [
+              5,
+              5
+            ]
+          }
+        ]
+      },
+      "inputAccepted": false,
+      "formatted": true,
+      "browserTrace": [
+        {
+          "type": "focusin",
+          "time": 682.5,
+          "tag": "FLT-SEMANTICS",
+          "role": "text",
+          "label": "Public composer editing probe",
+          "active": "FLT-SEMANTICS",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at a9m.kt (http://127.0.0.1:43663/main.dart.js:36827:3)\n    at a6d.$1 (http://127.0.0.1:43663/main.dart.js:36374:10)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37036:7)\n    at ub.EL (http://127.0.0.1:43663/main.dart.js:37039:56)\n    at Mz.acs (http://127.0.0.1:43663/main.dart.js:36344:14)\n    at a6e.$0 (http://127.0.0.1:43663/main.dart.js:36369:8)\n    at a85.LG (http://127.0.0.1:43663/main.dart.js:37105:3)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37188:17)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)"
+        },
+        {
+          "type": "pointerdown",
+          "time": 1371.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "value": "",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "focusout",
+          "time": 1379.6999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "text",
+          "label": "Public composer editing probe",
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)"
+        },
+        {
+          "type": "focusin",
+          "time": 1379.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "value": "",
+          "active": "TEXTAREA",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)"
+        },
+        {
+          "type": "pointerup",
+          "time": 1380.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1464.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "key": "O",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1464.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "data": "O",
+          "value": "",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1465.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "data": "O",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1507.0999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": "Write a message",
+          "key": "O",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1522.0999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "r",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1522.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "r",
+          "value": "O",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1522.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "r",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1557.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "r",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1572.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1572.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Or",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1573,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1600.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1601.6999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1601.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "Ori",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1602.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "g",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1629.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "g",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1630.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1630.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Orig",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1631,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "i",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1658.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "i",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1659.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1659.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "Origi",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1660.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1687.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1688.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1688.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "Origin",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1689.0999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "a",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1716.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "a",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1717.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "l",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 1717.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "l",
+          "value": "Origina",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 1717.8000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "l",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1744.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "l",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1765.1999998092651,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "Control",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 1766.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "A",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1767.3000001907349,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "A",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 1768,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "Control",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "focusout",
+          "time": 1880,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "Original",
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at aiy.i8 (http://127.0.0.1:43663/main.dart.js:37364:14)\n    at ajR.hq (http://127.0.0.1:43663/main.dart.js:38412:9)\n    at ajE.ak2 (http://127.0.0.1:43663/main.dart.js:38469:10)\n    at MU.OK (http://127.0.0.1:43663/main.dart.js:35596:39)\n    at ao8.B7 (http://127.0.0.1:43663/main.dart.js:66075:8)\n    at http://127.0.0.1:43663/main.dart.js:66556:11\n    at azP.a (http://127.0.0.1:43663/main.dart.js:4370:63)\n    at azP.$2 (http://127.0.0.1:43663/main.dart.js:40638:14)\n    at Object.w (http://127.0.0.1:43663/main.dart.js:4356:10)"
+        },
+        {
+          "type": "focusin",
+          "time": 1898.1999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "active": "FLT-SEMANTICS",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at a1v.$0 (http://127.0.0.1:43663/main.dart.js:36449:8)\n    at a85.LG (http://127.0.0.1:43663/main.dart.js:37105:3)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37188:17)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)\n    at EA.We (http://127.0.0.1:43663/main.dart.js:65706:42)\n    at nW.Sz (http://127.0.0.1:43663/main.dart.js:61047:31)\n    at Ue.Sz (http://127.0.0.1:43663/main.dart.js:61050:3)\n    at Sm.G_ (http://127.0.0.1:43663/main.dart.js:58837:168)\n    at Sm.G_ (http://127.0.0.1:43663/main.dart.js:68844:3)"
+        },
+        {
+          "type": "keyup",
+          "time": 1900.8999996185303,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "Tab",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1968.3999996185303,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "Enter",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keydown",
+          "time": 1969.5,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "X",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "keyup",
+          "time": 1970.6999998092651,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "key": "X",
+          "active": "FLT-SEMANTICS"
+        },
+        {
+          "type": "focusout",
+          "time": 1999.8000001907349,
+          "tag": "FLT-SEMANTICS",
+          "role": "button",
+          "label": "Bold",
+          "active": "BODY",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at aiy.G2 (http://127.0.0.1:43663/main.dart.js:38187:5)\n    at aiy.jt (http://127.0.0.1:43663/main.dart.js:37354:3)\n    at ajI.f4 (http://127.0.0.1:43663/main.dart.js:37476:14)\n    at ub.aes (http://127.0.0.1:43663/main.dart.js:36974:30)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37169:27)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)\n    at EA.We (http://127.0.0.1:43663/main.dart.js:65706:42)\n    at nW.Sz (http://127.0.0.1:43663/main.dart.js:61047:31)\n    at Ue.Sz (http://127.0.0.1:43663/main.dart.js:61050:3)"
+        },
+        {
+          "type": "focusin",
+          "time": 2000.5999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "value": "Original",
+          "active": "TEXTAREA",
+          "stack": "Error\n    at HTMLDocument.<anonymous> (<anonymous>:5:274)\n    at aiy.G2 (http://127.0.0.1:43663/main.dart.js:38187:5)\n    at aiy.jt (http://127.0.0.1:43663/main.dart.js:37354:3)\n    at ajI.f4 (http://127.0.0.1:43663/main.dart.js:37476:14)\n    at ub.aes (http://127.0.0.1:43663/main.dart.js:36974:30)\n    at a85.aos (http://127.0.0.1:43663/main.dart.js:37169:27)\n    at ah8.$1 (http://127.0.0.1:43663/main.dart.js:58847:23)\n    at EA.We (http://127.0.0.1:43663/main.dart.js:65706:42)\n    at nW.Sz (http://127.0.0.1:43663/main.dart.js:61047:31)\n    at Ue.Sz (http://127.0.0.1:43663/main.dart.js:61050:3)"
+        },
+        {
+          "type": "keydown",
+          "time": 2155.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": " ",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2156,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": " ",
+          "value": "Original",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2156.800000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": " ",
+          "value": " ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2187,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": " ",
+          "value": " ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2188,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": " ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2188,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": " ",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2189.0999994277954,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "n",
+          "value": " n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2220.300000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "n",
+          "value": " n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2221.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "e",
+          "value": " n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2221.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "e",
+          "value": " n",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2221.800000190735,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "e",
+          "value": " ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2253.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "e",
+          "value": " ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2254.5,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "x",
+          "value": " ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2254.699999809265,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "x",
+          "value": " ne",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2255,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "x",
+          "value": " nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2286.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "x",
+          "value": " nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keydown",
+          "time": 2288,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "t",
+          "value": " nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "beforeinput",
+          "time": 2288,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "t",
+          "value": " nex",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "input",
+          "time": 2288.3999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "data": "t",
+          "value": " next",
+          "active": "TEXTAREA"
+        },
+        {
+          "type": "keyup",
+          "time": 2319.8999996185303,
+          "tag": "TEXTAREA",
+          "role": null,
+          "label": null,
+          "key": "t",
+          "value": " next",
+          "active": "TEXTAREA"
+        }
+      ],
+      "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n",
+      "final": {
+        "text": " next",
+        "control": "sync",
+        "bold": true,
+        "trace": [
+          {
+            "event": "controller",
+            "time": 1791344219664000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "focus",
+            "time": 1791344219665000,
+            "text": "",
+            "selection": [
+              0,
+              0
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219756000,
+            "text": "O",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219812000,
+            "text": "Or",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219863000,
+            "text": "Ori",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219892000,
+            "text": "Orig",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219921000,
+            "text": "Origi",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219950000,
+            "text": "Origin",
+            "selection": [
+              6,
+              6
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344219979000,
+            "text": "Origina",
+            "selection": [
+              7,
+              7
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220007000,
+            "text": "Original",
+            "selection": [
+              8,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220066000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791344220067000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "focus",
+            "time": 1791344220169000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "bold-before",
+            "time": 1791344220255000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "bold-after",
+            "time": 1791344220255000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": false,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "focus",
+            "time": 1791344220255000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "FLT-SEMANTICS"
+          },
+          {
+            "event": "command",
+            "time": 1791344220294000,
+            "text": "Original",
+            "selection": [
+              0,
+              8
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220446000,
+            "text": " ",
+            "selection": [
+              1,
+              1
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220479000,
+            "text": " n",
+            "selection": [
+              2,
+              2
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220511000,
+            "text": " ne",
+            "selection": [
+              3,
+              3
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220545000,
+            "text": " nex",
+            "selection": [
+              4,
+              4
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "controller",
+            "time": 1791344220578000,
+            "text": " next",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          },
+          {
+            "event": "command",
+            "time": 1791344220961000,
+            "text": " next",
+            "selection": [
+              5,
+              5
+            ],
+            "focus": true,
+            "primary": null,
+            "dom": "TEXTAREA"
+          }
+        ],
+        "primary": null,
+        "conversation": "conversation-composer",
+        "visible": true,
+        "account": 0,
+        "outsideFocus": false,
+        "focusChanges": [
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": true,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          },
+          {
+            "editor": false,
+            "outside": false,
+            "scope": false,
+            "button": "Bold",
+            "canRequestFocus": true
+          },
+          {
+            "editor": true,
+            "outside": false,
+            "scope": false,
+            "button": null,
+            "canRequestFocus": true
+          }
+        ],
+        "selection": [
+          5,
+          5
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": true,
+        "canRequestFocus": true,
+        "disabledObserved": false,
+        "durable": "{}",
+        "canonical": [],
+        "acceptedCanonicalMessages": [],
+        "sending": false,
+        "draft": null,
+        "pending": null,
+        "requests": []
+      }
+    }
+  ]
+}

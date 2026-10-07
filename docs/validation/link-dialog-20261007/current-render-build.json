@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "seconds": 37.36,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/flutter_tools.snapshot",
+    "build",
+    "web",
+    "--release",
+    "--no-pub",
+    "--no-web-resources-cdn",
+    "--target",
+    "tool/ui_probe.dart"
+  ],
+  "fixture": "candidate",
+  "timeout_seconds": 300
+}

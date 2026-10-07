@@ -1,0 +1,494 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart
+test/handrail_control_hierarchy_cases.dart:32:28: Error: Undefined name 'HandrailSettingsPanel'.
+        expect(find.byType(HandrailSettingsPanel), findsOneWidget);
+                           ^^^^^^^^^^^^^^^^^^^^^
+00:00 +0: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action bold Material3=false
+00:00 +0 -1: loading /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_chat_workspace_test.dart [E]
+  Failed to load "/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_chat_workspace_test.dart":
+  Compilation failed for testPath=/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_chat_workspace_test.dart: test/handrail_control_hierarchy_cases.dart:32:28: Error: Undefined name 'HandrailSettingsPanel'.
+          expect(find.byType(HandrailSettingsPanel), findsOneWidget);
+                             ^^^^^^^^^^^^^^^^^^^^^
+  .
+00:00 +0 -2: loading /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart [E]
+  Error: The Dart compiler exited unexpectedly.
+  package:flutter_tools/src/base/common.dart 34:3  throwToolExit
+  package:flutter_tools/src/compile.dart 939:11    DefaultResidentCompiler._compile.<fn>
+  dart:async/zone_root.dart 48:47                  _rootRunUnary
+  dart:async/zone.dart 733:19                      _CustomZone.runUnary
+  dart:async/future_impl.dart 948:45               Future._propagateToListeners.handleValueCallback
+  dart:async/future_impl.dart 977:13               Future._propagateToListeners
+  dart:async/future_impl.dart 862:9                Future._propagateToListeners
+  dart:async/future_impl.dart 720:5                Future._completeWithValue
+  dart:async/future_impl.dart 804:7                Future._asyncCompleteWithValue.<fn>
+  dart:async/zone_root.dart 35:13                  _rootRun
+  dart:async/zone.dart 726:19                      _CustomZone.run
+  dart:async/zone.dart 625:7                       _CustomZone.runGuarded
+  dart:async/zone.dart 666:23                      _CustomZone.bindCallbackGuarded.<fn>
+  dart:async/schedule_microtask.dart 40:35         _microtaskLoop
+  dart:async/schedule_microtask.dart 49:5          _startMicrotaskLoop
+  dart:isolate-patch/isolate_patch.dart 127:13     _runPendingImmediateCallback
+  dart:isolate-patch/isolate_patch.dart 194:5      _RawReceivePort._handleMessage
+  
+00:01 +0 -2: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action bold Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#8(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Bold", textDirection: ltr),
+            SemanticsNode:SemanticsNode#9(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#35039, tooltip: "Bold", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action bold Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action bold Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action bold Material3=false
+  
+00:01 +0 -3: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action italic Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#10(Rect.fromLTRB(40.0, 0.0, 80.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Italic", textDirection: ltr),
+            SemanticsNode:SemanticsNode#11(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#d01bf, tooltip: "Italic", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action italic Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action italic Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action italic Material3=false
+  
+00:02 +0 -4: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action link Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#12(Rect.fromLTRB(80.0, 0.0, 120.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Link", textDirection: ltr),
+            SemanticsNode:SemanticsNode#13(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#d9753, tooltip: "Link", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action link Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action link Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action link Material3=false
+  
+00:02 +0 -5: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action unordered-list Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#14(Rect.fromLTRB(120.0, 0.0, 160.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Bulleted list", textDirection: ltr),
+            SemanticsNode:SemanticsNode#15(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#27314, tooltip: "Bulleted list", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action unordered-list Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action unordered-list Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action unordered-list Material3=false
+  
+00:02 +0 -6: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action ordered-list Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#16(Rect.fromLTRB(160.0, 0.0, 200.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Numbered list", textDirection: ltr),
+            SemanticsNode:SemanticsNode#17(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#e9a06, tooltip: "Numbered list", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action ordered-list Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action ordered-list Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action ordered-list Material3=false
+  
+00:02 +0 -7: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action inline-code Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#18(Rect.fromLTRB(200.0, 0.0, 240.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Inline code", textDirection: ltr),
+            SemanticsNode:SemanticsNode#19(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#8914a, tooltip: "Inline code", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action inline-code Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action inline-code Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action inline-code Material3=false
+  
+00:03 +0 -8: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action code-block Material3=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#20(Rect.fromLTRB(240.0, 0.0, 280.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Code block", textDirection: ltr),
+            SemanticsNode:SemanticsNode#21(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable], traversalParentIdentifier:
+_OverlayPortalState#d374a, tooltip: "Code block", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action code-block Material3=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action code-block Material3=false [E]
+  Test failed. See exception logs above.
+  The test description was: single format action code-block Material3=false
+  
+00:03 +0 -9: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action bold Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#8(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Bold", textDirection: ltr),
+            SemanticsNode:SemanticsNode#9(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#be0af, tooltip: "Bold", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action bold Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action bold Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action bold Material3=true
+  
+00:03 +0 -10: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action italic Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#10(Rect.fromLTRB(40.0, 0.0, 80.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Italic", textDirection: ltr),
+            SemanticsNode:SemanticsNode#11(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#c923f, tooltip: "Italic", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action italic Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -11: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action italic Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action italic Material3=true
+  
+00:04 +0 -11: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action link Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#12(Rect.fromLTRB(80.0, 0.0, 120.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Link", textDirection: ltr),
+            SemanticsNode:SemanticsNode#13(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#b6dbc, tooltip: "Link", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action link Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -12: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action link Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action link Material3=true
+  
+00:04 +0 -12: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action unordered-list Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#14(Rect.fromLTRB(120.0, 0.0, 160.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Bulleted list", textDirection: ltr),
+            SemanticsNode:SemanticsNode#15(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#98646, tooltip: "Bulleted list", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action unordered-list Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -13: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action unordered-list Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action unordered-list Material3=true
+  
+00:04 +0 -13: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action ordered-list Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#16(Rect.fromLTRB(160.0, 0.0, 200.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Numbered list", textDirection: ltr),
+            SemanticsNode:SemanticsNode#17(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#097e0, tooltip: "Numbered list", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action ordered-list Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +0 -14: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action ordered-list Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action ordered-list Material3=true
+  
+00:05 +0 -14: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action inline-code Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#18(Rect.fromLTRB(200.0, 0.0, 240.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Inline code", textDirection: ltr),
+            SemanticsNode:SemanticsNode#19(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#3f6cd, tooltip: "Inline code", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action inline-code Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +0 -15: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action inline-code Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action inline-code Material3=true
+  
+00:05 +0 -15: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action code-block Material3=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: an object with length of <1>
+  Actual: [
+            SemanticsNode:SemanticsNode#20(Rect.fromLTRB(240.0, 0.0, 280.0, 40.0), flags: [isButton,
+hasSelectedState], label: "Code block", textDirection: ltr),
+            SemanticsNode:SemanticsNode#21(Rect.fromLTRB(0.0, 0.0, 40.0, 40.0), actions: [focus,
+tap], flags: [isButton, hasEnabledState, isEnabled, isFocusable, hasSelectedState],
+traversalParentIdentifier: _OverlayPortalState#fc399, tooltip: "Code block", textDirection: ltr)
+          ]
+   Which: has length of <2>
+one labelled native action, no wrapper button
+
+When the exception was thrown, this was the stack:
+#4      _formatSemanticsTests.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart:41:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_format_semantics_cases.dart line 41
+The test description was:
+  single format action code-block Material3=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:05 +0 -16: /opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/baseline/test/handrail_message_composer_test.dart: single format action code-block Material3=true [E]
+  Test failed. See exception logs above.
+  The test description was: single format action code-block Material3=true
+  
+00:05 +0 -16: Some tests failed.

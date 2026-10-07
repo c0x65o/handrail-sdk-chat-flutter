@@ -1,0 +1,18 @@
+Analyzing 2 items...                                            
+
+   info • Statements in an if should be enclosed in a block • lib/src/generated/durable_events.dart:878:7 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/src/generated/durable_events.dart:892:9 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • lib/src/generated/durable_events.dart:900:9 • curly_braces_in_flow_control_structures
+   info • 'hasFlag' is deprecated and shouldn't be used. Use flagsCollection instead. This feature was deprecated after v3.32.0-0.0.pre • test/handrail_format_semantics_cases.dart:158:22 • deprecated_member_use
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:62:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:65:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:68:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:80:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:83:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:94:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:97:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:100:11 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/huddle_recovery_test.dart:109:13 • curly_braces_in_flow_control_structures
+   info • Statements in an if should be enclosed in a block • test/realtime_durable_recovery_test.dart:16:13 • curly_braces_in_flow_control_structures
+
+14 issues found. (ran in 27.8s)

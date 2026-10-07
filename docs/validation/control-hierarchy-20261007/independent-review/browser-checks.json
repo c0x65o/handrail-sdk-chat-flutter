@@ -1,0 +1,63 @@
+{
+  "review-specific-semantics-final": {
+    "exit": 0,
+    "seconds": 5.38,
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "--name",
+      "review restored Link|review exported heading"
+    ],
+    "environment_overrides": {},
+    "timeout_seconds": 300
+  },
+  "native-ax": {
+    "exit": 0,
+    "seconds": 3.27,
+    "command": [
+      "node",
+      "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/semantic_state_check.mjs",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/build/web",
+      "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/independent-review",
+      "review"
+    ],
+    "environment_overrides": {},
+    "timeout_seconds": 300
+  },
+  "browser-semantics": {
+    "exit": 1,
+    "seconds": 3.57,
+    "command": [
+      "node",
+      "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/runtime_browser_check.mjs",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/build/web",
+      "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/independent-review",
+      "review-semantics"
+    ],
+    "environment_overrides": {
+      "SEMANTICS": "on"
+    },
+    "timeout_seconds": 300
+  },
+  "browser-ordinary": {
+    "exit": 0,
+    "seconds": 4.12,
+    "command": [
+      "node",
+      "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/runtime_browser_check.mjs",
+      "/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/candidate/build/web",
+      "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/independent-review",
+      "review-ordinary"
+    ],
+    "environment_overrides": {
+      "SEMANTICS": "off"
+    },
+    "timeout_seconds": 300
+  }
+}

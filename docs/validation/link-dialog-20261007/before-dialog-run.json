@@ -1,0 +1,13 @@
+{
+  "exit": 1,
+  "seconds": 77.44,
+  "command": [
+    "node",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-dialog-20261007/browser_check.mjs",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/before/build/web",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-dialog-20261007",
+    "before-dialog"
+  ],
+  "overrides": [],
+  "timeout_seconds": 300
+}

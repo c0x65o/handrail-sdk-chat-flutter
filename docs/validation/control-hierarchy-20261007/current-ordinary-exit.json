@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/runtime_browser_check.mjs",
+    "/opt/handrail/.handrail/codex-runs/0b2d46f1-607c-47c4-aca0-5c42b74eb46a/tmp/polish/runtime/build/web",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007",
+    "current-ordinary"
+  ],
+  "exit": 0,
+  "seconds": 24.57424344494939
+}

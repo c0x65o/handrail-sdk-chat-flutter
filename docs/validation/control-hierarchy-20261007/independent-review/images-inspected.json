@@ -1,0 +1,21 @@
+{
+  "before-renders/thread-320.png": "bb63ca59a912fd0bddbbe096d6bf538c63df97c758acc99e6906c7b409208101",
+  "after-renders/thread-320.png": "274a6bb4d8cb29011d00405ba864c8b1c1c15a762a63a5da55ef0e9d22e721b3",
+  "before-renders/thread-390.png": "4dfa91dad095ae771e17a7b90663e76ec5a3d933bce7b8cd1441658886f3d4b0",
+  "after-renders/thread-390.png": "3106ea6b6d2ad55bc5b6bdcfcdb32c421fa21506bf2b4999183630dd9d0dc76c",
+  "before-renders/thread-1400.png": "eabd8ef53059a27ada27a8a7b0fe1d75964823fdc621079c2ef300b7ed2988a5",
+  "after-renders/thread-1400.png": "8554accca0622af0f4e0566f7f39082229e1a066098704e5af6591b033b8a4b4",
+  "before-renders/standalone-320.png": "523f2a4186f65b4e3a008de070a5434d866264bb33b893a934bf07c79f97409d",
+  "after-renders/standalone-320.png": "45a4ad5c4eaa2df01461631fa09c45209ba4546f66625e1ad67e8ef2f6b17ab5",
+  "before-renders/standalone-390.png": "2629b2857a177599291e4105a142a145a0a724813c0aaf35f2ebf5c2eb20749f",
+  "after-renders/standalone-390.png": "4ebd82a3e0f532b39ea76d57a0a71b4b613d8271a0918ce85beca2f61f18082e",
+  "before-renders/standalone-900.png": "05757525867938a22898755a6e8acf0338640564e3d8f1c6036270bebde78ff6",
+  "after-renders/standalone-900.png": "05757525867938a22898755a6e8acf0338640564e3d8f1c6036270bebde78ff6",
+  "after-renders/standalone-denied-320.png": "84fe29c8b186aa3e3cd4eecc5f9b197dac1db36fddbd10560272f2c60cb69274",
+  "current-semantics-sdk-bold-pointer-390-before.png": "14861a1d8057c06c62e2d7b97fb1014a19758ab4ead1c2d552d58d9b29c65ca9",
+  "candidate-semantics-sdk-bold-pointer-390-continued.png": "7b7c0057a888fa7a346650cecbef23c19146a2db98a48213d123136820e7bd1e",
+  "candidate-ordinary-sdk-bold-pointer-390-continued.png": "72d1bdef743b850af61bb81bc8064ad68be263075cd872be98ecc125d5ca9a0f",
+  "after-renders/toolbar-scrolled-320.png": "ff6c7c3b5862004ee8cde7489fc59d93e0499b923bd5d412c8d6d1bf5516bda9",
+  "independent-review/review-semantics-sdk-bold-pointer-390-continued.png": "7b7c0057a888fa7a346650cecbef23c19146a2db98a48213d123136820e7bd1e",
+  "independent-review/review-ordinary-sdk-bold-pointer-390-continued.png": "72d1bdef743b850af61bb81bc8064ad68be263075cd872be98ecc125d5ca9a0f"
+}

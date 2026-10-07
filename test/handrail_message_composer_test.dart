@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show RenderParagraph;
 import 'package:flutter/services.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,8 +10,13 @@ import 'package:handrail_chat/ui.dart';
 import 'package:handrail_chat/testing.dart'
     show FakeChatRealtimeNetwork, InMemoryApplicationChatStorage;
 
+import 'widget_evidence.dart';
+
 import 'fixtures/conversation_membership_fixtures.dart';
 import 'fixtures/draft_mutation_fixtures.dart';
+
+part 'handrail_format_semantics_cases.dart';
+part 'handrail_link_dialog_cases.dart';
 
 final _storageIdentity = ApplicationChatStorageIdentity(
   tenantId: const TenantId(_tenantId),
@@ -52,6 +58,95 @@ const _outsider = HandrailMemberDirectoryRow(
 );
 
 void main() {
+  _formatSemanticsTests();
+  _linkDialogTests();
+  // Platform-channel controls, not evidence of browser/OS keyboard or IME input.
+  // The paired CanvasKit reproduction lives in composer-toolbar-20261007.
+  for (final format in ['bold', 'italic', 'inline-code']) {
+    for (final keyboard in [false, true]) {
+      testWidgets(
+        'toolbar retains platform editing connection ($format, keyboard=$keyboard)',
+        (tester) async {
+          final storage = InMemoryApplicationChatStorage();
+          final harness = _Harness(storage: storage);
+          addTearDown(() => _disposeHarness(tester, harness));
+          final focus = FocusNode();
+          final host = TextEditingController();
+          addTearDown(focus.dispose);
+          addTearDown(host.dispose);
+          await _pumpComposer(tester, harness,
+              focusNode: focus, controller: host);
+          await tester.enterText(find.byKey(_input), 'Original');
+          tester.testTextInput.updateEditingValue(const TextEditingValue(
+            text: 'Original',
+            selection: TextSelection(baseOffset: 0, extentOffset: 8),
+          ));
+          await tester.pump();
+          final editable = tester.state<EditableTextState>(
+              find.descendant(of: find.byKey(_input), matching: find.byType(EditableText)));
+          final before = tester.testTextInput.log.length;
+          final button = find.byKey(ValueKey('handrail-message-composer-format-$format'));
+          if (keyboard) {
+            var reached = false;
+            for (var i = 0; i < 10; i++) {
+              await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+              await tester.pump();
+              final primary = FocusManager.instance.primaryFocus;
+              primary?.context?.visitAncestorElements((element) {
+                if (element.widget.key == tester.widget(button).key) reached = true;
+                return !reached;
+              });
+              if (reached) break;
+            }
+            expect(reached, isTrue, reason: 'format control must be Tab reachable');
+            await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+            await tester.pump();
+          } else {
+            await tester.ensureVisible(button);
+            await tester.tap(button);
+            await tester.pump();
+            expect(tester.testTextInput.log.skip(before).map((call) => call.method),
+                isNot(contains('TextInput.hide')),
+                reason: 'native touch formatting must not hide the keyboard');
+          }
+          expect(focus.hasFocus, isTrue);
+          expect(tester.testTextInput.hasAnyClients, isTrue);
+          expect(host.selection, const TextSelection(baseOffset: 0, extentOffset: 8));
+          expect(tester.state<EditableTextState>(find.descendant(
+              of: find.byKey(_input), matching: find.byType(EditableText))), same(editable));
+          final pending = Completer<void>();
+          harness.transport.pendingDraft = pending;
+          // Continue on the existing input connection; do not reacquire it.
+          for (final text in ['X', 'X next']) {
+            tester.testTextInput.updateEditingValue(TextEditingValue(
+              text: text,
+              selection: TextSelection.collapsed(offset: text.length),
+            ));
+            await tester.pump();
+            expect(host.text, text);
+          }
+          final wire = switch (format) {
+            'bold' => '**X** next',
+            'italic' => '*X* next',
+            _ => '`X` next',
+          };
+          await _pumpUntil(tester, () =>
+              (harness.client.draftFor(_conversationId)?.draft is CanonicalReplacedDraft) &&
+              (harness.client.draftFor(_conversationId)!.draft as CanonicalReplacedDraft).content.text == wire);
+          final encoded = await storage.readEncoded(
+              _storageIdentity, ApplicationChatStorageRecordKind.queuedDraftIntents);
+          expect(encoded, contains(wire));
+          pending.complete();
+          await _pumpUntil(tester,
+              () => harness.client.draftFor(_conversationId)?.isPending == false);
+          expect(host.text, 'X next');
+          expect(host.selection, const TextSelection.collapsed(offset: 6));
+          expect(harness.transport.operations('send'), isEmpty);
+        },
+      );
+    }
+  }
+
   for (final succeeds in [true, false]) {
     testWidgets(
       'disabled send frame restores accepted input (success=$succeeds)',
@@ -2426,8 +2521,8 @@ Future<void> _pumpComposer(
   HandrailMessageComposerReplyBuilder? replyBuilder,
 }) async {
   await tester.pumpWidget(
-    MaterialApp(
-      theme: theme,
+    widgetEvidenceBoundary(MaterialApp(
+      theme: theme ?? widgetEvidenceTheme,
       home: ChatScope(
         key: ValueKey<_Harness>(harness),
         client: harness.client,
@@ -2460,7 +2555,7 @@ Future<void> _pumpComposer(
           ),
         ),
       ),
-    ),
+    )),
   );
   if (waitUntilReady) {
     await _pumpUntil(
@@ -2746,8 +2841,8 @@ final class _ComposerTransport implements HandrailChatHttpTransport {
 
   int sendFailuresRemaining;
   int sendFailureStatus = 500;
-  final int conversationStatus;
-  final int timelineStatus;
+  int conversationStatus;
+  int timelineStatus;
   final bool hangQueries;
   final List<HandrailChatHttpRequest> requests = [];
   Map<String, Object?>? pendingAttachment;

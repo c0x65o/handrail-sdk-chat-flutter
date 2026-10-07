@@ -81,6 +81,7 @@ final class HandrailThreadView extends StatefulWidget {
     this.lifecycleController,
     this.onClose,
     this.title,
+    this.headerActions = const [],
     this.builders = const ChatWidgetBuilders(),
     this.delegates = const ChatApplicationDelegates(),
     this.rootBuilder,
@@ -139,6 +140,13 @@ final class HandrailThreadView extends StatefulWidget {
   /// Host-owned navigation callback. No route or navigator behavior is assumed.
   final VoidCallback? onClose;
   final Widget? title;
+
+  /// Host-owned actions beside subscription and lifecycle controls.
+  ///
+  /// Embedding panels can supply settings and navigation here instead of
+  /// surrounding the view with a second heading. Omit [onClose] when supplying
+  /// a custom dismissal action. The standalone header is retained by default.
+  final List<Widget> headerActions;
   final ChatWidgetBuilders builders;
   final ChatApplicationDelegates delegates;
   final HandrailThreadRootBuilder? rootBuilder;
@@ -450,7 +458,6 @@ final class _HandrailThreadViewState extends State<HandrailThreadView> {
   Widget _buildHeader(BuildContext context, HandrailChatThemeData tokens) {
     Widget header(Widget? menu, Widget? status) => Semantics(
           container: true,
-          header: true,
           child: Padding(
             padding: EdgeInsetsDirectional.only(
               start: tokens.spacing.medium,
@@ -461,26 +468,43 @@ final class _HandrailThreadViewState extends State<HandrailThreadView> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(children: [
-                    Expanded(
+                  LayoutBuilder(builder: (context, constraints) {
+                    final title = Semantics(
+                      container: true,
+                      header: true,
                       child: DefaultTextStyle(
                         style: tokens.typography.conversationTitle,
-                        maxLines: 1,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         child: widget.title ??
                             Text(_handle?.conversation.name ?? 'Thread'),
                       ),
-                    ),
-                    if (menu != null) menu,
-                    if (_handle != null) _buildLifecycleMenu(),
-                    if (widget.onClose case final onClose?)
-                      IconButton(
-                        key: const ValueKey<String>('handrail-thread-close'),
-                        tooltip: 'Close panel',
-                        onPressed: onClose,
-                        icon: const Icon(Icons.close),
-                      ),
-                  ]),
+                    );
+                    final actions = Wrap(
+                      alignment: WrapAlignment.end,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        if (menu != null) menu,
+                        if (_handle != null) _buildLifecycleMenu(),
+                        ...widget.headerActions,
+                        if (widget.onClose case final onClose?)
+                          IconButton(
+                            key:
+                                const ValueKey<String>('handrail-thread-close'),
+                            tooltip: 'Close panel',
+                            onPressed: onClose,
+                            icon: const Icon(Icons.close),
+                          ),
+                      ],
+                    );
+                    if (constraints.maxWidth < 400) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [title, actions],
+                      );
+                    }
+                    return Row(children: [Expanded(child: title), actions]);
+                  }),
                   if (status != null) status,
                 ]),
           ),

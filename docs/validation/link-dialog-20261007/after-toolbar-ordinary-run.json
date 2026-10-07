@@ -1,0 +1,15 @@
+{
+  "exit": 0,
+  "seconds": 10.49,
+  "command": [
+    "node",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/control-hierarchy-20261007/runtime_browser_check.mjs",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/build/web",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-dialog-20261007",
+    "after-toolbar-ordinary"
+  ],
+  "overrides": [
+    "SEMANTICS=off"
+  ],
+  "timeout_seconds": 300
+}

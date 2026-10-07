@@ -1,0 +1,7 @@
+{
+  "url": "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.0-stable.tar.xz",
+  "expected_sha256": "4cc1706fbd6e2a5c0ee34a6f8de875aae20904c9f47e18c88d2fcb25d9ea1a79",
+  "actual_sha256": "4cc1706fbd6e2a5c0ee34a6f8de875aae20904c9f47e18c88d2fcb25d9ea1a79",
+  "bytes": 663422132,
+  "selected_files": 9665
+}

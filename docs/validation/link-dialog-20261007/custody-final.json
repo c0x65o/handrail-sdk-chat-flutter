@@ -1,0 +1,16 @@
+{
+  "incoming_paths": 3446,
+  "changed": [
+    "handrail-sdk-chat-flutter/lib/src/handrail_message_composer.dart",
+    "handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart"
+  ],
+  "missing": [],
+  "prior_evidence_changed": false,
+  "all_candidate_library_files_match_workspace": 128,
+  "repo_heads": {
+    "handrail-sdk-chat-js": "248fb8890b8e7e1ba15799aff06ef48156cca451",
+    "handrail-chat-preview-flutter": "9dabb1c666443ed913d0400698beabfe6a7509a1",
+    "handrail-sdk-chat-flutter": "2d095ba5a0f86e4aa0b12ba8432500e3edfb576f"
+  },
+  "all_minimum_library_files_match_workspace": 128
+}

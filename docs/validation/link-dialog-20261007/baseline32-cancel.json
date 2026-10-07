@@ -1,0 +1,17 @@
+{
+  "exit": 1,
+  "seconds": 13.42,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/flutter/bin/cache/flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--concurrency=2",
+    "--reporter=expanded",
+    "test/handrail_message_composer_test.dart",
+    "--name",
+    "retained baseline link Cancel"
+  ],
+  "fixture": "baseline",
+  "timeout_seconds": 300
+}

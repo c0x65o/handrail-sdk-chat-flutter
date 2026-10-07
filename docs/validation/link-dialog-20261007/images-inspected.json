@@ -1,0 +1,22 @@
+{
+  "candidate-dialog-run2-1050-cancel-open.png": "80b8cce79923449307efa214c6728a2551adbe4fd5097826ba98bded41db9b22",
+  "candidate-dialog-run2-1050-invalid-invalid.png": "502c3f22c200a383851f337e965f3ce787175272a86507145c20de21ded1e598",
+  "candidate-dialog-run2-320-cancel-open.png": "2c5c8e5d2b3e338a59571afda030598a24eeb267ddde1903b34bf7aaef84dd4c",
+  "after-dialog-320-invalid-invalid.png": "786727940796d8d31d4bb6602f775addc303faa3c1868f55456702332c2e047f",
+  "after-dialog-390-apply-open.png": "82a182598d053f975c02bc9ecd93086a5d13f728da083ec0ef3b837058c01eb7",
+  "after-dialog-390-apply-continued.png": "7965be1a094f7da3935617406f90a3143eb6037b928c26ddabcafa2544c7c6c3",
+  "after-dialog-1050-remove-continued.png": "d80693e7f6b94590b8dfa8c4b2556a85fce189e6245ffa7d480f9217e09f7125",
+  "before-dialog-1050-invalid-invalid.png": "f79f2f3825e0436728f959ae757cc29f270f7f1e37079928345822d62f060653",
+  "before-dialog-320-invalid-invalid.png": "cc4af247d494305a6492d0a39495c0b1947bb1ecf6a90270a8b96c2e43f98500",
+  "before-dialog-320-apply-continued.png": "f345edf577e90869c34db1dfc1c5654cccfaa3e332b792da2155a12799231acb",
+  "before-dialog-1050-cancel-continued.png": "a88775f9653fe770c2dd375a5adc7441a5ec9c5fc9226789acc109d351dc3c04",
+  "before-dialog-390-apply-open.png": "82a182598d053f975c02bc9ecd93086a5d13f728da083ec0ef3b837058c01eb7",
+  "before-dialog-390-invalid-invalid.png": "a55b74d9ab786339b6c2b13fde8c28710853a5f44a6977f4eed09d7d67b311ae",
+  "after-dialog-390-invalid-invalid.png": "2e50bfd75f4588dcf022968ac54f1c167abd1484f4c6037d07c8db2e91d02219",
+  "after-dialog-1050-invalid-invalid.png": "05e7cb07feda09aac302afd1cf8ae02a59f69ec0a0a86ba05a31264c15465361",
+  "after-dialog-1050-cancel-continued.png": "a88775f9653fe770c2dd375a5adc7441a5ec9c5fc9226789acc109d351dc3c04",
+  "after-dialog-320-cancel-open.png": "7b77578d6d4c730bc716ac81fc5b5577f04168ff4d532ade3f0c225eb9e4c019",
+  "after-toolbar-semantics-sdk-bold-pointer-390-continued.png": "7b7c0057a888fa7a346650cecbef23c19146a2db98a48213d123136820e7bd1e",
+  "after-toolbar-ordinary-sdk-bold-pointer-390-continued.png": "72d1bdef743b850af61bb81bc8064ad68be263075cd872be98ecc125d5ca9a0f",
+  "before-dialog-390-apply-continued.png": "7965be1a094f7da3935617406f90a3143eb6037b928c26ddabcafa2544c7c6c3"
+}

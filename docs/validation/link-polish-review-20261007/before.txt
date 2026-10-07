@@ -1,0 +1,27 @@
+320 pointer cancel PASS 
+320 pointer escape FAIL TimeoutError: page.waitForFunction: Timeout 10000ms exceeded.
+320 pointer barrier PASS 
+320 keyboard cancel FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+320 keyboard escape FAIL TimeoutError: page.waitForFunction: Timeout 10000ms exceeded.
+320 keyboard barrier FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+390 pointer cancel PASS 
+390 pointer escape FAIL TimeoutError: page.waitForFunction: Timeout 10000ms exceeded.
+390 pointer barrier PASS 
+390 keyboard cancel FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+390 keyboard escape FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+390 keyboard barrier FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+900 pointer cancel PASS 
+900 pointer escape FAIL TimeoutError: page.waitForFunction: Timeout 10000ms exceeded.
+900 pointer barrier PASS 
+900 keyboard cancel FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+900 keyboard escape FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+900 keyboard barrier FAIL AssertionError [ERR_ASSERTION]: Link remains keyboard accessible
+layout 320 1 FAIL
+layout 320 2 FAIL
+layout 320 3 FAIL
+layout 390 1 PASS
+layout 390 2 FAIL
+layout 390 3 FAIL
+layout 900 1 PASS
+layout 900 2 FAIL
+layout 900 3 FAIL

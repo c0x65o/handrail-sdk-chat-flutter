@@ -1,0 +1,24 @@
+Delegated cgroup unavailable: [Errno 16] Device or resource busy
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/candidate/test/handrail_message_composer_test.dart
+00:00 +0: retained baseline link Cancel controller lifetime
+00:01 +1: link dialog lifetime: Cancel preserves selection and draft
+00:02 +2: link dialog lifetime: barrier preserves selection and draft
+00:02 +3: link dialog lifetime: Escape preserves selection and draft
+00:03 +4: link dialog lifetime: system Back preserves selection and draft
+00:03 +5: link dialog lifetime: Apply inserts and persists markdown
+00:03 +6: link dialog lifetime: done inserts and persists markdown
+00:04 +7: link dialog lifetime: semantics inserts and persists markdown
+00:04 +8: link dialog lifetime: validation then correction and Remove link
+00:04 +9: link dialog lifetime: repeated opens and double actions
+00:05 +10: link dialog lifetime: rejects late result after disabled
+00:05 +11: link dialog lifetime: rejects late result after disable then enable
+00:06 +12: link dialog lifetime: rejects late result after conversation
+00:06 +13: link dialog lifetime: rejects late result after account
+00:06 +14: link dialog lifetime: rejects late result after account cycle
+00:07 +15: link dialog lifetime: rejects late result after host controller
+00:07 +16: link dialog lifetime: rejects late result after host text
+00:07 +17: link dialog lifetime: rejects late result after remote replacement
+00:07 +18: link dialog lifetime: rejects late result after same-text formatting
+00:08 +19: link dialog lifetime: rejects late result after host disposal
+00:08 +20: link dialog lifetime: matching acknowledgement and selection-only change keep opening range
+00:08 +21: All tests passed!

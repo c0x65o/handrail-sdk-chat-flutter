@@ -1,0 +1,3 @@
+{"mode":"sdk","format":"Bold","activation":"pointer","width":1050,"accepted":true,"first":"X","focus":true,"dom":[{"value":"X","focused":true,"disabled":false,"selection":[1,1]},{"value":"","focused":false,"disabled":false,"selection":[null,null]}]}
+{"mode":"sdk","format":"Bold","activation":"pointer","width":320,"accepted":true,"first":"X","focus":true,"dom":[{"value":"X","focused":true,"disabled":false,"selection":[1,1]},{"value":"","focused":false,"disabled":false,"selection":[null,null]}]}
+{"mode":"sdk","format":"Bold","activation":"pointer","width":390,"accepted":true,"first":"X","focus":true,"dom":[{"value":"X","focused":true,"disabled":false,"selection":[1,1]},{"value":"","focused":false,"disabled":false,"selection":[null,null]}]}

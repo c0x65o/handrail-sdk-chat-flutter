@@ -1,0 +1,40 @@
+
+PathNotFoundException: Directory listing failed, path = '/opt/handrail/.handrail/codex-runs/fcc2ea23-2c25-4cde-aef8-2db8d419786a/tmp/review/flutter/examples/' (OS Error: No such file or directory, errno = 2)
+#0      _Directory._fillWithDirectoryListing (dart:io-patch/directory_patch.dart:49:4)
+#1      _Directory.listSync (dart:io/directory_impl.dart:259:5)
+#2      ForwardingDirectory.listSync (package:file/src/forwarding/forwarding_directory.dart:43:12)
+#3      ForwardingDirectory.listSync (package:file/src/forwarding/forwarding_directory.dart:43:12)
+#4      FlutterCommandRunner._gatherProjectPaths (package:flutter_tools/src/runner/flutter_command_runner.dart:525:10)
+#5      FlutterCommandRunner.getRepoPackages.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:513:42)
+#6      ExpandIterator.moveNext (dart:_internal/iterable.dart:510:31)
+#7      MappedIterator.moveNext (dart:_internal/iterable.dart:419:19)
+#8      new _GrowableList._ofOther (dart:core-patch/growable_array.dart:207:26)
+#9      new _GrowableList.of (dart:core-patch/growable_array.dart:156:26)
+#10     new List.of (dart:core-patch/array_patch.dart:39:18)
+#11     Iterable.toList (dart:core/iterable.dart:517:7)
+#12     FlutterCommandRunner.getRepoPackages (package:flutter_tools/src/runner/flutter_command_runner.dart:515:10)
+#13     AnalyzeCommand.runCommand (package:flutter_tools/src/commands/analyze.dart:383:17)
+#14     FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:1938:12)
+<asynchronous suspension>
+#15     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1590:27)
+<asynchronous suspension>
+#16     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#17     CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+<asynchronous suspension>
+#18     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:496:9)
+<asynchronous suspension>
+#19     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#20     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:431:5)
+<asynchronous suspension>
+#21     FlutterCommandRunner.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:307:33)
+<asynchronous suspension>
+#22     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:104:11)
+<asynchronous suspension>
+#23     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+<asynchronous suspension>
+#24     main (package:flutter_tools/executable.dart:103:3)
+<asynchronous suspension>
+
+Feature flags enabled: enable-web, enable-linux-desktop, enable-macos-desktop, enable-windows-desktop, enable-android, enable-ios, cli-animations, enable-native-assets, omit-legacy-version-file, enable-lldb-debugging, enable-uiscene-migration

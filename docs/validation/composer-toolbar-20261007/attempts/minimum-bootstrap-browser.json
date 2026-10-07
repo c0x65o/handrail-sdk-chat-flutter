@@ -1,0 +1,46 @@
+{
+  "phase": "minimum",
+  "browser": "151.0.7922.34",
+  "cases": [
+    {
+      "mode": "sdk",
+      "format": "Bold",
+      "activation": "pointer",
+      "width": 1050,
+      "errors": [],
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('textarea').last()\u001b[22m\n",
+      "final": null,
+      "browserTrace": []
+    },
+    {
+      "mode": "sdk",
+      "format": "Bold",
+      "activation": "keyboard",
+      "width": 1050,
+      "errors": [],
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('textarea').last()\u001b[22m\n",
+      "final": null,
+      "browserTrace": []
+    },
+    {
+      "mode": "sync",
+      "format": "Bold",
+      "activation": "pointer",
+      "width": 1050,
+      "errors": [],
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('textarea').last()\u001b[22m\n",
+      "final": null,
+      "browserTrace": []
+    },
+    {
+      "mode": "sync",
+      "format": "Bold",
+      "activation": "keyboard",
+      "width": 1050,
+      "errors": [],
+      "error": "TimeoutError: locator.click: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('textarea').last()\u001b[22m\n",
+      "final": null,
+      "browserTrace": []
+    }
+  ]
+}

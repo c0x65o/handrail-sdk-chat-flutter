@@ -1,0 +1,31 @@
+{
+  "handrail-sdk-chat-js": {
+    "head": "248fb8890b8e7e1ba15799aff06ef48156cca451",
+    "checked_files": 2009,
+    "changed_or_missing": [],
+    "status": "",
+    "head_unchanged": true
+  },
+  "handrail-chat-preview-flutter": {
+    "head": "9dabb1c666443ed913d0400698beabfe6a7509a1",
+    "checked_files": 30,
+    "changed_or_missing": [],
+    "status": "",
+    "head_unchanged": true
+  },
+  "handrail-sdk-chat-flutter": {
+    "head": "2d095ba5a0f86e4aa0b12ba8432500e3edfb576f",
+    "checked_files": 1068,
+    "changed_or_missing": [
+      "lib/src/handrail_chat_workspace.dart",
+      "lib/src/handrail_message_composer.dart",
+      "lib/src/handrail_thread_view.dart",
+      "test/handrail_chat_workspace_test.dart",
+      "test/handrail_message_composer_test.dart",
+      "test/handrail_named_thread_cases.dart",
+      "test/handrail_thread_view_test.dart"
+    ],
+    "status": " M lib/src/handrail_chat_workspace.dart\n M lib/src/handrail_message_composer.dart\n M lib/src/handrail_thread_view.dart\n M test/handrail_chat_workspace_test.dart\n M test/handrail_message_composer_test.dart\n M test/handrail_named_thread_cases.dart\n M test/handrail_thread_view_test.dart\n?? docs/validation/composer-toolbar-20261007/\n?? docs/validation/control-hierarchy-20261007/\n?? test/handrail_control_hierarchy_cases.dart\n?? test/handrail_format_semantics_cases.dart\n?? test/handrail_thread_header_cases.dart\n",
+    "head_unchanged": true
+  }
+}
