@@ -1,0 +1,97 @@
+Independent Link ownership review and final layout polish — 2026-10-07
+Work request ac633d2b-52ed-4fc9-8b07-8fb861dc0167
+Continued worker 6857a7d8-2ed5-4df2-be80-b608fe13d7f1; interrupted worker 07e1a178-2844-4e5e-9f33-6ae76d8a98e9.
+
+Verdict
+
+No new lifecycle, stale-result, authority, selection or repeated-action defect was found in the bounded Link repair. The original controller-disposal finding is resolved by dialog-State ownership. The remaining narrow layout change is implemented and current-toolchain checks pass. Source/current review supports this scoped implementation, but minimum runtime qualification of the FINAL layout code is still UNVERIFIED. Do not treat this report as unconditional combined release or consumer acceptance.
+
+Native finalization during the hold already published Flutter 0.1.33 at 996d83d37632615df4c94fca83ff4c33ebe48227. It includes the earlier reviewed UI/lifetime work and the interrupted wrapping implementation. We inspected that exact committed diff; we did not reapply or republish it. This continuation leaves only a bounded compatibility adjustment and a rendered style assertion uncommitted, plus new evidence. Parent must first complete minimum verification and reconcile this correction through its authorized release workflow. Then install the resulting full public HTTPS Git SHA with matching locks for consumer qualification. Existing .33 alone does not contain this continuation's final correction. No Preview/JS consumer was changed.
+
+Preflight, capacity and custody
+
+Read-only inspection BEFORE edits/heavy commands: 44,836,114,432 available filesystem bytes; 67,744,634 available inodes. All three repositories were clean at the expected SHAs. Visible processes belonged to UID 993 in this resumed worker's control cgroup; no prior worker scope/process was visible in the sandbox. This is namespace-scoped observation, not host-wide process assurance. The former 07e1 and 66ec temporary compiler directories were absent from the permitted mounts. See preflight.json.
+
+The original 05:24 ENOSPC/failed-run history and the owner's supplied 13:46 acknowledgement remain recorded. The retained current-configured.txt contains the earlier filesystem copy failure; it lacks a terminal result sidecar because the worker was interrupted. It is not relabelled a test pass. The completed retry is separately named current-frozen-checks.
+
+No cleanup, shared-cache deletion, infrastructure change, SDK binary copy, duplicate SDK download, engine modification, or global-toolchain write occurred in this continuation. Current Dart, compiler snapshot, framework, engine and dependencies are reused through read-only symlinks with private mutable cache metadata. Offline dependency resolution initially selected newer cached Dart dependencies; that result/lock remains recorded. We then restored the retained lock only in this run's private fixture, resolved with --enforce-lockfile, and reran the affected check with the exact repository lock.
+
+End receipt: 44,312,018,944 available bytes and 67,740,466 inodes; native heavy-leaf peak 2,499,022,848 bytes, zero high/max/OOM events. Commands were sequential, bounded to 300 seconds, and Flutter tests used two workers. No full CI ran, no auto-skip event is claimed, and the five-minute/full-CI policy was not changed.
+
+Custody verifies all 3,998 incoming continuation paths: none removed; only the composer and Link test part changed. All 3,877 interrupted-review paths and all 3,446 writer-incoming paths still exist. Their source differences are the documented Link/test work and native .32-to-.33 manifest/metadata bump; no old evidence changed. All 429 writer artifact-manifest entries verify. JS remains 1.0.54 / 248fb8890b8e7e1ba15799aff06ef48156cca451; companion remains 0.1.21 / 9dabb1c666443ed913d0400698beabfe6a7509a1, both clean. No commit, push, PR, deployment, database/queue write, credential/access/provider effect, DEV reset or external message was performed.
+
+Readable-source findings
+
+Resolved P2 — early dialog controller disposal.
+lib/src/handrail_message_composer.dart:2085,2094,2116. _LinkEditDialogState owns the destination controller and disposes it in State.dispose. The popped result no longer disposes it. The field remains valid while the reverse route transition is mounted, including composer unmount and cancellation. Reviewed the actual code, the writer's isolated diff and test bodies, not just hashes. The writer's original .32/incoming Cancel reproductions remain FAILED with use-after-dispose; final public-widget cases pass and explicitly check controller usability during closing and disposal afterwards.
+
+No blocking finding — stale Apply/Remove boundary.
+Composer lines 330,372,411,426,447,497,529,922,1047-1078. Host enable/controller changes invalidate the Link generation. Client/conversation rebinding necessarily replaces authored content, also invalidating it. Draft restoration distinguishes matching acknowledgements from replacement, including same-visible-text formatting changes. Account projection clearing/actor changes and authority-loss stream states invalidate an open result; restoration does not revive it. Authored edits increment composition generation, while selection-only notifications do not. After await, both result branches share mounted, Link generation, composition, actor, current readiness and sending checks before mutation. Client replacement was exercised with the SAME composer State, not accidentally proved by remounting. Apply and Remove after client, draft, restored authority and account replacement preserve the new draft. No send is issued.
+
+No blocking finding — repeated actions, formatting and selection.
+Composer lines 1049-1063,2099-2112,2397,2427,2448. _editingLink prevents a second outstanding result; _closing plus current-route checks make callbacks one-shot and stop callbacks on a popping route from popping a newer/underlying route. A closing controller remains alive. Selection/acknowledgement preservation uses the captured range; setLink/removeLink change the relevant Link marks and restore that range. Other formatting metadata is retained. The existing sanitizer is still used both at dialog submission and setLink. No validation/security rule, text meaning, persistence format or successful-result editor-focus behavior changed.
+
+Resolved P2 polish — truncated actionable validation.
+Composer lines 2130-2135; test/handrail_link_dialog_cases.dart:16-59. Relative to the writer's edc9 baseline the FINAL runtime delta is exactly one added property: errorMaxLines: 8. It keeps errorText and the existing message. The interrupted implementation used a custom Text error widget. Source inspection at the official Flutter 3.19 framework revision shows _HelperErrorState._buildError inserts custom error widgets without applying errorStyle, whereas errorText gets the framework's themed error style. This is a source-established compatibility problem; no minimum pixels are claimed. The final property preserves the original error styling/semantics and wraps the unchanged message at the tested widths/scales. A rendered assertion checks the theme error color as well as complete paragraph layout and bounds.
+
+Minimum source reference: https://raw.githubusercontent.com/flutter/flutter/bae5e49bc2a867403c43b2aae2de8f8c33b037e4/packages/flutter/lib/src/material/input_decorator.dart (415,2582,2877). minimum-api-source.json records the exact source hash and excerpts. Fetching this one source file is not a minimum SDK installation or runtime check.
+
+Focus assessment — no forced editor focus and no demonstrated focus trap
+
+Reused the completed ordinary Chromium 151.0.7922.34 / release CanvasKit matrix: 18/18 dismissal/traversal cases at 320,390,900. The independently rebuilt committed .33 probe JS is byte-identical to this qualified probe. The final correction only changes invalid-field decoration; lifecycle/focus code is unchanged.
+
+For keyboard-opened Link, keyboard Cancel/Enter, Escape and pointer barrier dismissal return FocusManager's primary focus to the actual Link IconButton. Shift+Tab reaches Italic, Tab returns to Link, and Enter reopens the dialog. For pointer-opened Link, Cancel/Escape/barrier restore the route FocusScope rather than the trigger/editor. Normal Tab reaches the outside field, then editor at Tab 3 (browser active element TEXTAREA), then Link at Tab 7; Enter reopens it. Immediately after dismissal the browser active element is FLUTTER-VIEW in both opening modes, so DOM activeElement alone cannot identify the Flutter button. Ancestor/key telemetry distinguishes Link from the scope. See reused-focus-summary.json and ../current-browser.json.
+
+Pointer trigger focus is not restored directly, but focus is keyboard-accessible, not stranded. The earlier immediate-typing-after-Cancel assertion therefore does not by itself establish a required editor-focus defect. Cancel intentionally returns immediately; successful Apply/Remove call _formattingChanged at line 1041 to focus the editor. No runtime or harness refocus was added. The retained writer browser matrix's Apply/Done/Remove continuation is 9/9 passing across its three widths; its cancellation typing failures remain recorded without being promoted to a focus-trap finding.
+
+The initial ../before-browser.json remains 6/18 focus assertions passing: its broad traversal-cycle expectation failed even when keyboard dismissal already returned to Link, and some repeated dismissal actions preceded normal route settlement. The corrected current matrix observes returned-trigger focus and natural traversal. We do not relabel the original failed run or claim a completed matched corrected-before focus matrix. Its actual dismissal telemetry, unchanged focus source and completed current matrix support the assessment above.
+
+Separate open P1 — semantics-enabled CanvasKit toolbar continued typing.
+Composer _formattingChanged:1041 and prior control-hierarchy/composer-toolbar reports. The earlier semantics-enabled pointer toolbar check still fails despite accepted formatting/focus; ordinary-mode success does not resolve it. This continuation did not repeat failed timing workarounds or claim accessibility acceptance. Physical iOS/Android, native IME/device, budget/full Preview, read-ack contract and actual installed-consumer acceptance remain separate/unverified gates.
+
+Checks and pixels
+
+REUSED, hash-verified: writer 385/385 focused cases on Flutter 3.41.7/Dart 3.11.5 and 385/385 on Flutter 3.19.0/Dart 3.3.0, covering the ownership baseline. ../evidence-reuse.json records exact log hashes. These do NOT qualify the newly added multiline property on minimum. The earlier 42/42 current review cases and scoped analysis also remain intact.
+
+Fresh continuation, current Flutter 3.41.7/Dart 3.11.5:
+- current-frozen-checks: 66/66 pass — configured durable reducer 45 plus import/version and realtime cases 21, repository's exact lock. This resolves the prior ENOSPC check attempt.
+- final-current-links: 33/33 pass — 24 writer lifecycle cases plus nine independent Apply/Remove/client/authority/draft/account and closing-route cases.
+- final-themed-layout: 9/9 pass — 320/390/900 widths at text scale 1/2/3, complete rendered paragraph, dialog/viewport bounds, unchanged draft, theme error color and no framework exception.
+- final-scoped-analysis: pass, no issues in composer and parent/Link/review tests.
+- final-current-build: release web compile passes, including composer, Workspace and ThreadView.
+- final-browser: 9/9 actual ordinary CanvasKit layout cases pass at the same widths/scales. Browser uses a tall 1800px fixture viewport to accommodate the fixture's scaled surrounding controls; widget captures use 1000px. These are width/text-scale checks, not physical phone or software-keyboard-height acceptance.
+- git diff --check passes.
+
+The before widget matrix remains 2 pass / 7 FAIL on the exact writer baseline. Its complete-message assertion fails for truncation. Initial before browser layout is likewise 2/9 passing. Pixels actually inspected show the original 320px message ending in ellipsis; final 320px shows the full message including “relative link.”; at 3x it wraps across several lines within the dialog. The 390px 2x and 900px 3x messages also fit. Large-scale destination-label ellipsis remains an ordinary single-line field-label behavior outside this validation-message fix. Material icons render in browser captures. images-inspected.json identifies 13 files actually opened across the uninterrupted conversation.
+
+Useful actual images, paths relative to this report:
+- ../before-layout/link-validation-320.0-1.0.png
+- final-browser-validation-320-1.png
+- final-browser-validation-320-3.png
+- final-browser-validation-390-2.png
+- final-themed-layout/link-validation-900.0-3.0.png
+- ../current-320-keyboard-cancel-dismissed.png
+- ../current-320-pointer-cancel-dismissed.png
+
+Minimum FINAL-code test/analysis/build: UNVERIFIED. Capacity is now sufficient, but no Flutter 3.19 binary/compiler exists in accessible permitted mounts; prior temporary copies are unavailable. The explicit resume instruction prohibits duplicate SDK downloads/copies. Current-toolchain success, old minimum success, API inspection and matching source are not a substitute. Make an existing official minimum SDK available to the bounded runner and run the final 42 Link/layout cases, scoped analysis, version/import guard and release compile before accepting minimum support. No owner product decision is required; this is an execution dependency. See minimum-availability.json.
+
+The unchanged 13 historical analysis infos remain nonzero in the prior full-analysis logs; historical full suite remains 2,471 pass / 7 FAILED. Neither was rerun or relabelled. Existing dart:html/Wasm-dry-run and unused-font web warnings are retained; no Wasm qualification is claimed.
+
+Exact identities
+
+Writer composer baseline: edc9a41893cde2be83c0afd6c8b208eff47752761cc70dfd386c2f2c747b3919
+Writer ownership source.diff: 29b9e9a5029a98cbdbe6ee9d678e01c277c7017f08a56c2aad0f522f7c166e1e
+Committed .33 composer: dad95ddbbb4a885a8ab0984b907a8f7f36e776351c1c77cc6ae43fed9bb72289
+FINAL composer: 6a56f0b06e576ac1ebb906d7255ac83f7a474c6dc230721772e61d41dcc29ebf
+FINAL one-property diff vs writer: cc99c084b3dae1b71a1b025bf6d7a7adbedae9b016e0bf944a8ef6c20df348a1
+Continuation runtime diff vs .33: 837b60ccf0074ad267d732b4811a6ec0b2916d3f654e282d1efc88ec9adc0192
+FINAL Link tests: c24261fe23478e988f68315cb5a3e6cbddc3d6927486a4b08b0cfedc7d3422fc
+Exact repository/private lock: 3ca8f57c1367c9c888f4aec41551eab1ba9c15cf8f2255515686d46743bb6bbe
+Committed .33 rebuilt probe JS (same as interrupted qualified current): e7a2a7b2f63c92a3c1018e663d0671d05f33f475835abb46bbdf653dad7905a9
+FINAL current compiled JS: 7f07a08bcc63a40cd210398fd2477dcc7768be4a86a1667ae7bc291a5ca152e7
+FINAL source fixture archive: 9f72aaafdcb21ee2f637598678df73260c1fb333ade2c2b0ef6c6a0a4054c400
+Minimum final build hash: unavailable; do not substitute the earlier writer build.
+
+final-artifact.json hashes all 128 library files against the actual final workspace. Only package metadata differed between the incoming .33 libraries and interrupted qualified current artifact; the continuation then adds the documented composer property adjustment. Fixture archives include the exact read-only telemetry/evidence-only tests and private rendering manifest, not an SDK installation. JSON sidecars contain exact commands, timeouts, elapsed times and exit codes. evidence-sha256.json hashes this continuation's retained artifacts.
+
+Read KB/effective requirements, current Handrail context, configured checks, accessible AGENTS locations (none found), README/release guidance, writer report and earlier independent control-hierarchy review. No native scaffold or authentication change is implicated. No pending owner question is needed. Execution reporting is complete; minimum/consumer and broader acceptance decisions remain with the owning workflow.

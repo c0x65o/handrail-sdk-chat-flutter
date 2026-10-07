@@ -1,0 +1,12 @@
+{
+  "exit": 1,
+  "seconds": 0.52,
+  "command": [
+    "node",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/browser_layout.mjs",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum/build/web",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007",
+    "minimum-browser"
+  ],
+  "timeout_seconds": 300
+}

@@ -1,0 +1,8 @@
+{
+  "free_bytes": 44312018944,
+  "free_inodes": 67740466,
+  "memory_peak_bytes": 2499022848,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "cleanup_in_resume": "none",
+  "global_sdk_or_engine_changes": "none"
+}

@@ -1,0 +1,296 @@
+{
+  "browser": "151.0.7922.34",
+  "mode": "ordinary CanvasKit; semantics off",
+  "cases": [
+    {
+      "width": 320,
+      "opening": "pointer",
+      "dismissal": "cancel",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 320,
+      "opening": "pointer",
+      "dismissal": "escape",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 320,
+      "opening": "pointer",
+      "dismissal": "barrier",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 320,
+      "opening": "keyboard",
+      "dismissal": "cancel",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 320,
+      "opening": "keyboard",
+      "dismissal": "escape",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 320,
+      "opening": "keyboard",
+      "dismissal": "barrier",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 390,
+      "opening": "pointer",
+      "dismissal": "cancel",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 390,
+      "opening": "pointer",
+      "dismissal": "escape",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 390,
+      "opening": "pointer",
+      "dismissal": "barrier",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 390,
+      "opening": "keyboard",
+      "dismissal": "cancel",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 390,
+      "opening": "keyboard",
+      "dismissal": "escape",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 390,
+      "opening": "keyboard",
+      "dismissal": "barrier",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 900,
+      "opening": "pointer",
+      "dismissal": "cancel",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 900,
+      "opening": "pointer",
+      "dismissal": "escape",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 900,
+      "opening": "pointer",
+      "dismissal": "barrier",
+      "passed": true,
+      "returned_to_link": false,
+      "primary_scope": true,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": 3,
+      "tabs_to_link": 7,
+      "reopened": true
+    },
+    {
+      "width": 900,
+      "opening": "keyboard",
+      "dismissal": "cancel",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 900,
+      "opening": "keyboard",
+      "dismissal": "escape",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    },
+    {
+      "width": 900,
+      "opening": "keyboard",
+      "dismissal": "barrier",
+      "passed": true,
+      "returned_to_link": true,
+      "primary_scope": false,
+      "active_element": {
+        "tag": "FLUTTER-VIEW",
+        "role": null,
+        "label": null
+      },
+      "tabs_to_editor": null,
+      "tabs_to_link": 1,
+      "reopened": true
+    }
+  ],
+  "layout_passes": 9,
+  "source": "../current-browser.json"
+}

@@ -1,0 +1,3 @@
+00:00 +0: loading /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_message_composer_test.dart
+00:00 +0: link dialog lifetime: rejects late result after host disposal
+00:01 +1: All tests passed!

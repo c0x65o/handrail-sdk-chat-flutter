@@ -1,0 +1,36 @@
+Native delegated cgroup: 0::/user.slice/user-993.slice/user@993.service/handrail.slice/handrail-workers.slice/handrail-codex-6857a7d8-2ed5-4df2-be80-b608fe13d7f1.scope/handrail-heavy/link-polish-validation
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/candidate/test/handrail_message_composer_test.dart
+00:00 +0: independent link review: apply after client
+00:02 +1: independent link review: apply after draft
+00:02 +2: independent link review: apply after authority
+00:03 +3: independent link review: apply after account
+00:03 +4: independent link review: remove after client
+00:04 +5: independent link review: remove after draft
+00:04 +6: independent link review: remove after authority
+00:04 +7: independent link review: remove after account
+00:05 +8: independent link review: closing route cannot Remove twice or Apply
+00:05 +9: link dialog lifetime: Cancel preserves selection and draft
+00:06 +10: link dialog lifetime: barrier preserves selection and draft
+00:06 +11: link dialog lifetime: Escape preserves selection and draft
+00:06 +12: link dialog lifetime: system Back preserves selection and draft
+00:06 +13: link dialog lifetime: Apply inserts and persists markdown
+00:07 +14: link dialog lifetime: done inserts and persists markdown
+00:07 +15: link dialog lifetime: semantics inserts and persists markdown
+00:07 +16: link dialog lifetime: validation then correction and Remove link
+00:07 +17: link dialog lifetime: repeated opens and double actions
+00:08 +18: link dialog lifetime: rejects late result after disabled
+00:08 +19: link dialog lifetime: rejects late result after disable then enable
+00:08 +20: link dialog lifetime: rejects late result after conversation
+00:09 +21: link dialog lifetime: rejects late result after account
+00:09 +22: link dialog lifetime: rejects late result after account cycle
+00:09 +23: link dialog lifetime: rejects late result after host controller
+00:09 +24: link dialog lifetime: rejects late result after host text
+00:10 +25: link dialog lifetime: rejects late result after remote replacement
+00:10 +26: link dialog lifetime: rejects late result after same-text formatting
+00:10 +27: link dialog lifetime: rejects late result after host disposal
+00:10 +28: link dialog lifetime: rejects late result after conversation revoked
+00:10 +29: link dialog lifetime: rejects late result after conversation restored
+00:11 +30: link dialog lifetime: rejects late result after timeline revoked
+00:11 +31: link dialog lifetime: rejects late result after timeline restored
+00:11 +32: link dialog lifetime: matching acknowledgement and selection-only change keep opening range
+00:11 +33: All tests passed!

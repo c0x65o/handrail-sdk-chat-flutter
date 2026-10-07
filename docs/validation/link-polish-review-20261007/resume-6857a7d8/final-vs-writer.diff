@@ -1,0 +1,10 @@
+--- writer/lib/src/handrail_message_composer.dart
++++ final/lib/src/handrail_message_composer.dart
+@@ -2131,6 +2131,7 @@
+             labelText: 'Link destination',
+             hintText: 'https://example.com',
+             errorText: _error,
++            errorMaxLines: 8,
+           ),
+           onSubmitted: (_) => _apply(),
+         ),

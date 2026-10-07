@@ -1,0 +1,16 @@
+{
+  "initial_free_bytes": 44836114432,
+  "initial_free_inodes": 67744634,
+  "uid": 993,
+  "worker_run": "6857a7d8-2ed5-4df2-be80-b608fe13d7f1",
+  "scope": "ac633d2b-52ed-4fc9-8b07-8fb861dc0167",
+  "process_observation": "Only this resumed worker control process and read-only inspection process visible in namespace; no other worker scope visible. Not host-wide process assurance. Prior 07e1 and 66ec temp toolchain paths are absent.",
+  "historical_enospc": "05:24 failure preserved; owner supplied 13:46 acknowledgement retained, no queue or DB changes.",
+  "heads": {
+    "handrail-sdk-chat-flutter": "996d83d37632615df4c94fca83ff4c33ebe48227",
+    "handrail-sdk-chat-js": "248fb8890b8e7e1ba15799aff06ef48156cca451",
+    "handrail-chat-preview-flutter": "9dabb1c666443ed913d0400698beabfe6a7509a1"
+  },
+  "clean_start": true,
+  "tracked_and_prior_files": 3998
+}

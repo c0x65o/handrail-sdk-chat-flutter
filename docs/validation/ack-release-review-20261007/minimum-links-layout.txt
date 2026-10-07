@@ -1,0 +1,108 @@
+
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║                 Welcome to Flutter! - https://flutter.dev                  ║
+  ║                                                                            ║
+  ║ The Flutter tool uses Google Analytics to anonymously report feature usage ║
+  ║ statistics and basic crash reports. This data is used to help improve      ║
+  ║ Flutter tools over time.                                                   ║
+  ║                                                                            ║
+  ║ Flutter tool analytics are not sent on the very first run. To disable      ║
+  ║ reporting, type 'flutter config --no-analytics'. To display the current    ║
+  ║ setting, type 'flutter config'. If you opt out of analytics, an opt-out    ║
+  ║ event will be sent, and then no further information will be sent by the    ║
+  ║ Flutter tool.                                                              ║
+  ║                                                                            ║
+  ║ By downloading the Flutter SDK, you agree to the Google Terms of Service.  ║
+  ║ The Google Privacy Policy describes how data is handled in this service.   ║
+  ║                                                                            ║
+  ║ Moreover, Flutter includes the Dart SDK, which may send usage metrics and  ║
+  ║ crash reports to Google.                                                   ║
+  ║                                                                            ║
+  ║ Read about data we send with crash reports:                                ║
+  ║ https://flutter.dev/docs/reference/crash-reporting                         ║
+  ║                                                                            ║
+  ║ See Google's privacy policy:                                               ║
+  ║ https://policies.google.com/privacy                                        ║
+  ║                                                                            ║
+  ║ To disable animations in this tool, use                                    ║
+  ║ 'flutter config --no-cli-animations'.                                      ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+
+00:00 +0: loading /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum/test/handrail_message_composer_test.dart
+00:00 +0: independent link review: apply after client
+00:01 +1: independent link review: apply after draft
+00:01 +2: independent link review: apply after authority
+00:02 +3: independent link review: apply after account
+00:02 +4: independent link review: remove after client
+00:03 +5: independent link review: remove after draft
+00:03 +6: independent link review: remove after authority
+00:03 +7: independent link review: remove after account
+00:03 +8: independent link review: closing route cannot Remove twice or Apply
+00:04 +9: link validation wraps at 320.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-320.0-1.0.png
+00:04 +10: link validation wraps at 320.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-320.0-2.0.png
+00:04 +11: link validation wraps at 320.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-320.0-3.0.png
+00:04 +12: link validation wraps at 390.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-390.0-1.0.png
+00:04 +13: link validation wraps at 390.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-390.0-2.0.png
+00:05 +14: link validation wraps at 390.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-390.0-3.0.png
+00:05 +15: link validation wraps at 900.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-900.0-1.0.png
+00:05 +16: link validation wraps at 900.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-900.0-2.0.png
+00:05 +17: link validation wraps at 900.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/ack-release-review-20261007/minimum-links-layout/link-validation-900.0-3.0.png
+00:06 +18: link dialog lifetime: Cancel preserves selection and draft
+00:06 +19: link dialog lifetime: barrier preserves selection and draft
+00:06 +20: link dialog lifetime: Escape preserves selection and draft
+00:06 +21: link dialog lifetime: system Back preserves selection and draft
+00:06 +22: link dialog lifetime: Apply inserts and persists markdown
+00:07 +23: link dialog lifetime: done inserts and persists markdown
+00:07 +24: link dialog lifetime: semantics inserts and persists markdown
+00:07 +25: link dialog lifetime: validation then correction and Remove link
+00:07 +26: link dialog lifetime: repeated opens and double actions
+00:07 +27: link dialog lifetime: rejects late result after disabled
+00:08 +28: link dialog lifetime: rejects late result after disable then enable
+00:08 +29: link dialog lifetime: rejects late result after conversation
+00:08 +30: link dialog lifetime: rejects late result after account
+00:08 +31: link dialog lifetime: rejects late result after account cycle
+00:08 +32: link dialog lifetime: rejects late result after host controller
+00:08 +33: link dialog lifetime: rejects late result after host text
+00:08 +34: link dialog lifetime: rejects late result after remote replacement
+00:09 +35: link dialog lifetime: rejects late result after same-text formatting
+00:09 +36: link dialog lifetime: rejects late result after host disposal
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TypeWidgetFinder:<Found 0 widgets with type "AlertDialog": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum/test/handrail_link_dialog_cases.dart:337:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum/test/handrail_link_dialog_cases.dart line 337
+The test description was:
+  link dialog lifetime: rejects late result after host disposal
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:09 +36 -1: link dialog lifetime: rejects late result after host disposal [E]
+  Test failed. See exception logs above.
+  The test description was: link dialog lifetime: rejects late result after host disposal
+  
+00:09 +36 -1: link dialog lifetime: rejects late result after conversation revoked
+00:09 +37 -1: link dialog lifetime: rejects late result after conversation restored
+00:09 +38 -1: link dialog lifetime: rejects late result after timeline revoked
+00:09 +39 -1: link dialog lifetime: rejects late result after timeline restored
+00:10 +40 -1: link dialog lifetime: matching acknowledgement and selection-only change keep opening range
+00:10 +41 -1: Some tests failed.

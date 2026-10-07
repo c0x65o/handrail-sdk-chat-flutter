@@ -1,0 +1,257 @@
+
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║                 Welcome to Flutter! - https://flutter.dev                  ║
+  ║                                                                            ║
+  ║ The Flutter tool uses Google Analytics to anonymously report feature usage ║
+  ║ statistics and basic crash reports. This data is used to help improve      ║
+  ║ Flutter tools over time.                                                   ║
+  ║                                                                            ║
+  ║ Flutter tool analytics are not sent on the very first run. To disable      ║
+  ║ reporting, type 'flutter config --no-analytics'. To display the current    ║
+  ║ setting, type 'flutter config'. If you opt out of analytics, an opt-out    ║
+  ║ event will be sent, and then no further information will be sent by the    ║
+  ║ Flutter tool.                                                              ║
+  ║                                                                            ║
+  ║ By downloading the Flutter SDK, you agree to the Google Terms of Service.  ║
+  ║ The Google Privacy Policy describes how data is handled in this service.   ║
+  ║                                                                            ║
+  ║ Moreover, Flutter includes the Dart SDK, which may send usage metrics and  ║
+  ║ crash reports to Google.                                                   ║
+  ║                                                                            ║
+  ║ Read about data we send with crash reports:                                ║
+  ║ https://flutter.dev/docs/reference/crash-reporting                         ║
+  ║                                                                            ║
+  ║ See Google's privacy policy:                                               ║
+  ║ https://policies.google.com/privacy                                        ║
+  ║                                                                            ║
+  ║ To disable animations in this tool, use                                    ║
+  ║ 'flutter config --no-cli-animations'.                                      ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+
+00:00 +0: loading /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_message_composer_test.dart
+00:00 +0: link validation wraps at 320.0 with text scale 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 320.0 with text scale 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: link validation wraps at 320.0 with text scale 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 320.0 with text scale 1.0
+  
+00:01 +0 -1: link validation wraps at 320.0 with text scale 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 320.0 with text scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -2: link validation wraps at 320.0 with text scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 320.0 with text scale 2.0
+  
+00:01 +0 -2: link validation wraps at 320.0 with text scale 3.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 320.0 with text scale 3.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -3: link validation wraps at 320.0 with text scale 3.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 320.0 with text scale 3.0
+  
+00:02 +0 -3: link validation wraps at 390.0 with text scale 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 390.0 with text scale 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -4: link validation wraps at 390.0 with text scale 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 390.0 with text scale 1.0
+  
+00:02 +0 -4: link validation wraps at 390.0 with text scale 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 390.0 with text scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -5: link validation wraps at 390.0 with text scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 390.0 with text scale 2.0
+  
+00:02 +0 -5: link validation wraps at 390.0 with text scale 3.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 390.0 with text scale 3.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -6: link validation wraps at 390.0 with text scale 3.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 390.0 with text scale 3.0
+  
+00:03 +0 -6: link validation wraps at 900.0 with text scale 1.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 900.0 with text scale 1.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -7: link validation wraps at 900.0 with text scale 1.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 900.0 with text scale 1.0
+  
+00:03 +0 -7: link validation wraps at 900.0 with text scale 2.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 900.0 with text scale 2.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -8: link validation wraps at 900.0 with text scale 2.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 900.0 with text scale 2.0
+  
+00:03 +0 -8: link validation wraps at 900.0 with text scale 3.0
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: Color:<Color(0xffb3261e)>
+  Actual: Color:<Color(0xff1c1b1f)>
+
+When the exception was thrown, this was the stack:
+#4      _linkDialogTests.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart:44:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:183:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1017:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum-baseline/test/handrail_link_dialog_cases.dart line 44
+The test description was:
+  link validation wraps at 900.0 with text scale 3.0
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -9: link validation wraps at 900.0 with text scale 3.0 [E]
+  Test failed. See exception logs above.
+  The test description was: link validation wraps at 900.0 with text scale 3.0
+  
+00:04 +0 -9: Some tests failed.

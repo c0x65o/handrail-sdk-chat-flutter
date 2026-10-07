@@ -1,0 +1,12 @@
+--- committed33/lib/src/handrail_message_composer.dart
++++ candidate/lib/src/handrail_message_composer.dart
+@@ -2130,7 +2130,8 @@
+           decoration: InputDecoration(
+             labelText: 'Link destination',
+             hintText: 'https://example.com',
+-            error: _error == null ? null : Text(_error!),
++            errorText: _error,
++            errorMaxLines: 8,
+           ),
+           onSubmitted: (_) => _apply(),
+         ),

@@ -1,0 +1,209 @@
+Minimum-runtime qualification of the final Link decoration — 2026-10-07
+Work request 1b3be8da-b67d-415f-b065-a246efa7b9f1
+
+Verdict: the exact pending decoration correction is qualified for scoped
+publication on Flutter 3.19.0/Dart 3.3.0 and Flutter 3.41.7/Dart 3.11.5. The
+previous minimum-runtime gap is closed. No production or existing test source
+was edited in this review. Published .33 alone still has the wrong minimum-
+runtime error style; publish the reviewed correction through the parent's
+normal exact-SHA workflow. This is not approval of full Flutter/Preview/native
+acceptance, and it does not clear the JS shared-contract release gate.
+
+Source and independent findings
+
+Base .33: 996d83d37632615df4c94fca83ff4c33ebe48227.
+The existing pending delta replaces custom error: Text(_error!) with errorText:
+_error and errorMaxLines: 8 in lib/src/handrail_message_composer.dart:2130-2135.
+The test adds the theme error-color assertion. All 128 library files and the
+source/lock/test hashes match the resumed review's final-artifact.json. All 79
+entries in that review's evidence manifest verify unchanged. This review
+preserves its failed and passing history.
+
+P2 styling defect confirmed against unchanged .33 on minimum: all nine new
+color assertions fail (minimum-baseline-decoration.txt), expected 0xffb3261e,
+actual 0xff1c1b1f. The baseline fixture composer is byte-identical to committed
+.33 (dad95ddb...72289); it uses the same current assertion. The final candidate
+passes all nine with the same validation wording, themed error color, complete
+paragraph, dialog bounds, unchanged draft and no framework exceptions.
+This independently confirms the source finding: the older InputDecorator does
+not apply errorText's style to the supplied custom Text widget. The final
+errorText/errorMaxLines properties use the framework's normal style/semantics.
+No sanitizer, successful-result focus, storage, message meaning or SDK floor
+change is needed.
+
+The retained State-owned destination controller and one-shot route completion
+remain sound. Inspection confirmed the controller is disposed with dialog State;
+Apply/Remove share the post-await mounted/generation/composition/actor/readiness
+checks. The new decoration changes none of those boundaries. The prior source
+review and current focus/lifetime evidence are reused with exact hashes; the
+minimum also freshly passes all 33 Link/lifetime/independent-review cases. No
+new stale-result or lifetime blocker was found.
+
+Runtime matrix
+
+Check                              Flutter 3.19.0       Flutter 3.41.7
+Link/lifetime/independent cases     33 PASS, fresh        33 PASS, hash-reused
+Decoration widths/scales           9 PASS, fresh         9 PASS, hash-reused
+Scoped composer/test analysis      PASS, fresh           PASS, hash-reused
+Reducer/import/version/realtime    66 PASS, fresh        66 PASS, fresh
+Release web compile, UI probe      PASS, fresh           PASS, hash-reused
+Ordinary CanvasKit browser layout  9 PASS, fresh         9 PASS, hash-reused
+
+The 66-case run includes the configured 45 durable-resource-reducer cases and
+21 import/version/realtime checks. Both private fixtures retain .handrail and
+exact frozen lockfiles, resolved with --enforce-lockfile. Tests use --no-pub and
+two workers. Analysis/compilation actually ran on the official minimum binary;
+this is no longer only API-source compatibility evidence. The current release
+compile, 42 scoped cases and 9 browser layouts are the previously completed
+resumed-review artifacts; no claim is made that these were freshly rebuilt here.
+Source/lock/evidence equality justifies that reuse instead of another broad run.
+
+The fixture's current-style index.html references flutter_bootstrap.js, which
+3.19 does not emit. To render the already compiled minimum artifact, a fixture-
+only static index adapter uses the official 3.19 template's loadEntrypoint /
+initializeEngine / runApp flow, selecting the local CanvasKit bytes. Original
+index retained as minimum-index-before.txt; adapter is minimum-index-adapter.html.
+No compiled Dart/SDK code was modified for browser execution. The telemetry,
+transport fixtures and browser driver otherwise reuse the retained source.
+
+Pixels actually inspected
+
+Opened minimum widget renders at 320px, scale 1 and 3; minimum ordinary-browser
+renders at 320px scale 1 and 3 and 900px scale 3; prior final current-browser
+renders at 320px scale 3 and 390px scale 2. images-inspected.json lists exact
+paths/hashes. The entire error message, including “relative link.”, remains
+visible and in error color at minimum 320px/3x. Buttons remain inside the dialog.
+The browser matrix covers 320/390/900 widths and scale 1/2/3, 9/9 passing, with
+Chromium 151.0.7922.34. Widgets use 1000px height; the existing browser fixture
+uses 1800px to fit its scaled surrounding content. These are width/text-scale
+checks, not physical-phone or keyboard-open-height acceptance. Large-text field
+label truncation remains outside the validation-message correction.
+
+Read acknowledgement/visibility is separately verified by the JS review's
+fresh 56 PostgreSQL/HTTP/public-client checks, including unchanged published
+Flutter .32 live runtime. The .32 read cursor runtime, visibility coordinator
+and generated parser are byte-identical to .33 and this final candidate;
+final-hashes.json records all three comparisons. Validated consumed success
+removes the needless 2s retry; lost/malformed/wrong-user/denied controls preserve
+their bounded retry, 429 preserves Retry-After, and disposal drains scheduling.
+No visibility cadence or parser was changed here. The retained 94 published-.32
+tests are hash-verified reused evidence, not a new installed SDK run.
+
+Failed attempts are retained and classified
+
+- minimum-links-layout.txt: 41 PASS / 1 FAILED. Screenshot mode wraps MaterialApp
+  in a RepaintBoundary. The host-disposal test then pumpWidgets a bare MaterialApp,
+  replacing that root and destroying its Navigator/dialog; its expectation of
+  a surviving AlertDialog fails. minimum-baseline-layout-disposal.txt reproduces
+  the same failure on unchanged .33. Both baseline and final isolated disposal
+  tests PASS without screenshot mode. Existing separate invocations—33 Link
+  cases without captures, 9 layout cases with captures—PASS on final minimum.
+  No assertion or production code was weakened. The combined screenshot-mode
+  attempt remains FAILED; it is not a 42/42 passing run.
+- minimum-baseline-decoration.txt: 0 PASS / 9 FAILED, the intended .33 styling
+  negative control described above. It stays failed.
+- current-resolve.txt: offline --enforce-lockfile failed because not every exact
+  locked hosted version was in the mounted cache. current-resolve-frozen.txt
+  uses ordinary resolution with --enforce-lockfile and passes without changing
+  the lock. Minimum frozen resolution also passes. Hosted dependency bytes and
+  private cache bookkeeping are within the fixture; no package minimum changed.
+- minimum-browser.txt: Chromium launch failed because the test's Unix socket
+  path was too long. A shorter permitted project-local temporary directory
+  resolves it; minimum-browser-qualified.txt is the distinct 9/9 completed run.
+- Initial official metadata/archive URL probes omitted/added a wrong URL path
+  segment and returned 404. The actual downloaded URL was taken from the
+  official release manifest and verified before extraction. No denied path was
+  retried through an alternate access route.
+
+Capacity, toolchain bytes and custody
+
+Fresh start observation: 42,278,027,264 available bytes, 67,696,419 free inodes.
+Immediately before download: 42,272,989,184 available bytes, 67,696,431 free
+inodes; reserved budget 6,442,450,944 bytes. Namespace-visible processes were
+only the worker/shell/probes; this is not a host-wide custody assertion. Searched
+the workspace, permitted global Flutter SDK and permitted corepack cache; only
+the current SDK executable was found, no reusable 3.19 archive/toolchain.
+No excluded/denied former-worker location was accessed or permissions changed.
+
+One necessary official archive was downloaded once and retained at
+  ../.huddle-tmp/ack-review-toolchains/flutter_linux_3.19.0-stable.tar.xz
+relative to the Flutter repository. Reusable extracted SDK is sibling flutter/.
+Official URL:
+https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.0-stable.tar.xz
+Manifest URL:
+https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json
+Archive logical bytes: 663,422,132.
+SHA-256: 4cc1706fbd6e2a5c0ee34a6f8de875aae20904c9f47e18c88d2fcb25d9ea1a79.
+Framework revision: bae5e49bc2a867403c43b2aae2de8f8c33b037e4.
+Initial extracted allocation: 1,633,263,616 bytes.
+Final SDK allocation: 1,633,689,600 bytes (mutable tool metadata added).
+Archive/SDK/official manifest directory allocation: 2,297,397,248 bytes.
+
+No duplicate full SDK copy, global Flutter write, minimum bump, access change,
+newer runtime download, or cleanup of other data was performed. Current runtime
+reuses read-only mounted binaries/framework through symlinks and private mutable
+metadata. The source fixture copies are small source consumers, not SDK copies.
+
+capacity-final.json records measured allocations: 387,284,992 bytes Flutter
+fixtures/cache/builds, 10,133,504 JS baseline runtime fixture, 2,842,624 shared-
+snapshot fixtures, 352,026,624 retained test-owned PostgreSQL artifacts, plus
+review evidence and the short browser temp directory. The recorded subtotal
+including evidence at measurement is 3,051,728,896 bytes; later report/manifest
+bytes are recorded in capacity-end.json. All owned PostgreSQL clusters are
+stopped, with no postmaster PID files; no shared database was used. Available
+space at that checkpoint: 39,065,849,856 bytes, 67,654,856 free inodes. Changes
+to global free space can include other sessions; allocated-path totals are the
+bounded review cost. Owner retains responsibility for any later cleanup.
+Native heavy leaf peak: 1,144,356,864 bytes; zero high/max/OOM events. Expensive
+commands were sequential with 300s bounds. No full CI ran or auto-skip event is
+claimed; the five-minute full-CI policy remains unchanged.
+
+Exact final identities
+
+Final composer SHA-256:
+6a56f0b06e576ac1ebb906d7255ac83f7a474c6dc230721772e61d41dcc29ebf
+Final Link test SHA-256:
+c24261fe23478e988f68315cb5a3e6cbddc3d6927486a4b08b0cfedc7d3422fc
+Runtime diff vs .33 SHA-256:
+837b60ccf0074ad267d732b4811a6ec0b2916d3f654e282d1efc88ec9adc0192
+Retained final source fixture archive:
+9f72aaafdcb21ee2f637598678df73260c1fb333ade2c2b0ef6c6a0a4054c400
+Minimum final main.dart.js:
+38bcc036617b8f6320d1604ca386ce1e6dc509c90e0ff325dff6bb0343df4742
+Current final main.dart.js (reused):
+7f07a08bcc63a40cd210398fd2477dcc7768be4a86a1667ae7bc291a5ca152e7
+Current repository/private lock:
+3ca8f57c1367c9c888f4aec41551eab1ba9c15cf8f2255515686d46743bb6bbe
+Minimum locked dependency identity and all 128 library hashes: final-hashes.json.
+The minimum lock is the retained writer's minimum-pubspec.lock, frozen unchanged.
+No package metadata, source version or Git SHA was pre-incremented.
+
+Remaining gates and recommendation
+
+The known 13 baseline analysis infos remain a nonzero historical full-analysis
+result. Historical full suite remains 2,471 PASS / 7 FAILED. Neither broad suite
+was rerun or relabelled; scoped analysis success is not full-analysis success.
+Separate P1 semantics-enabled CanvasKit toolbar continued-typing failure remains
+open. Ordinary browser focus evidence does not clear that failure. Physical
+iOS/Android, native IME/device, live staging/provider, installed-consumer and
+unchanged-driver acceptance remain unverified here. Full Preview 126/120 remains
+separate. Current web Wasm-dry-run/dart:html and unused-font warnings are not
+Wasm acceptance and remain in the reused build logs.
+
+The sibling JS shared-contract check fails identically on current and unchanged
+.54/.33 sources: two missing Flutter copies of JS browser fixtures plus the
+shared lock. That is a separate FAILED required pair/conformance gate, not a
+decoration runtime failure. The configured Handrail reducer check passes on
+both toolchains; it does not substitute for this gate. Parent must reconcile
+the pair's sync/rollout conditions before combined publication. See JS
+docs/validation/ack-release-review-20261007/review.txt for exact scope and the
+old-client/candidate-server matrix.
+
+Recommendation: accept this exact Flutter decoration change for scoped source
+publication once parent-owned release conditions are reconciled; do not block
+it on the now-completed minimum runtime task or present it as full acceptance.
+Parent publishes only reconciled qualified sources, validates the native version
+mirror in the actual commit, installs public HTTPS full-SHA pins with matching
+locks, and runs the combined installed consumer/unchanged driver. No owner
+product decision is missing. No commit/push/deploy/Preview/auth/provider or
+Handrail database/queue change was performed.

@@ -1,0 +1,32 @@
+{
+  "resume": {
+    "count": 3998,
+    "missing": [],
+    "changed": [
+      "handrail-sdk-chat-flutter/lib/src/handrail_message_composer.dart",
+      "handrail-sdk-chat-flutter/test/handrail_link_dialog_cases.dart"
+    ]
+  },
+  "interrupted_review": {
+    "count": 3877,
+    "missing": [],
+    "changed": [
+      "handrail-sdk-chat-flutter/test/handrail_link_dialog_cases.dart",
+      "handrail-sdk-chat-flutter/lib/src/handrail_message_composer.dart",
+      "handrail-sdk-chat-flutter/lib/src/package_metadata.dart",
+      "handrail-sdk-chat-flutter/pubspec.yaml",
+      "handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart"
+    ]
+  },
+  "link_writer": {
+    "count": 3446,
+    "missing": [],
+    "changed": [
+      "handrail-sdk-chat-flutter/lib/src/handrail_message_composer.dart",
+      "handrail-sdk-chat-flutter/lib/src/package_metadata.dart",
+      "handrail-sdk-chat-flutter/pubspec.yaml",
+      "handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart"
+    ]
+  },
+  "writer_evidence_manifest_verified": 429
+}

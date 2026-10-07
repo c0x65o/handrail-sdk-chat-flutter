@@ -1,0 +1,19 @@
+{
+  "status": "unverified",
+  "capacity_blocker_resolved": true,
+  "required_version": "Flutter 3.19.0 / Dart 3.3.0",
+  "available_version": "Flutter 3.41.7 / Dart 3.11.5",
+  "absent_paths": [
+    "/opt/handrail/.handrail/codex-runs/07e1a178-2844-4e5e-9f33-6ae76d8a98e9/tmp/review/minimum-flutter",
+    "/opt/handrail/.handrail/codex-runs/66ec554d-e3e7-4fa0-a4be-5a8d60746df6/tmp/link/minimum-flutter"
+  ],
+  "searched_roots": [
+    "permitted /opt/handrail/.handrail mounts",
+    "workspace .handrail and .huddle-tmp",
+    "installed Flutter cache",
+    "permitted corepack cache"
+  ],
+  "constraint": "Resume instruction prohibits duplicate SDK downloads/copies; none performed. Previous SDK directories are not accessible in the current permitted mounts.",
+  "source_only_verification": "minimum-api-source.json verifies public API and original error styling at official framework bae5e49bc2a867403c43b2aae2de8f8c33b037e4; this is not runtime qualification.",
+  "remaining": "Use an existing official 3.19.0 SDK made available to the bounded runner; run final Link/layout tests, scoped analysis, version/import guard and release compile. Preserve exact frozen locks and source hashes."
+}

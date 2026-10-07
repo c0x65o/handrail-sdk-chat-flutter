@@ -1,0 +1,21 @@
+Native delegated cgroup: 0::/user.slice/user-993.slice/user@993.service/handrail.slice/handrail-workers.slice/handrail-codex-6857a7d8-2ed5-4df2-be80-b608fe13d7f1.scope/handrail-heavy/link-polish-validation
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/candidate/test/handrail_message_composer_test.dart
+00:00 +0: link validation wraps at 320.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-320.0-1.0.png
+00:01 +1: link validation wraps at 320.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-320.0-2.0.png
+00:02 +2: link validation wraps at 320.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-320.0-3.0.png
+00:02 +3: link validation wraps at 390.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-390.0-1.0.png
+00:02 +4: link validation wraps at 390.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-390.0-2.0.png
+00:03 +5: link validation wraps at 390.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-390.0-3.0.png
+00:03 +6: link validation wraps at 900.0 with text scale 1.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-900.0-1.0.png
+00:03 +7: link validation wraps at 900.0 with text scale 2.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-900.0-2.0.png
+00:04 +8: link validation wraps at 900.0 with text scale 3.0
+Widget fixture render (not runtime UI): /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-polish-review-20261007/resume-6857a7d8/final-current-layout/link-validation-900.0-3.0.png
+00:04 +9: All tests passed!

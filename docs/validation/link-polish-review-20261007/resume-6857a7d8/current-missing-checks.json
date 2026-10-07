@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "seconds": 11.52,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--concurrency=2",
+    "--reporter=expanded",
+    "test/core_import_boundary_test.dart",
+    "test/durable_resource_event_reducer_test.dart",
+    "test/realtime_session_transport_test.dart"
+  ],
+  "fixture": "candidate",
+  "timeout_seconds": 300
+}

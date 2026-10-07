@@ -1,0 +1,13 @@
+{
+  "available_bytes": 42272989184,
+  "available_inodes": 67696431,
+  "visible_processes": "    PID    PPID     ELAPSED   RSS COMMAND\n      1       0       00:00 18788 codex-linux-san\n      2       1       00:00  2996 bash\n      3       2       00:00 15028 python3\n      4       3       00:00  4620 ps\n",
+  "archive_expected_bytes": 663422132,
+  "reservation_bytes": 6442450944,
+  "searched_roots": [
+    "workspace",
+    "permitted global Flutter SDK",
+    "permitted corepack cache"
+  ],
+  "no_reusable_minimum_found": true
+}

@@ -1,0 +1,18 @@
+{
+  "availableBytes": 39063629824,
+  "availableInodes": 67653379,
+  "allocatedBytesByPath": {
+    ".huddle-tmp/ack-review-toolchains": 2297397248,
+    ".huddle-tmp/a8336": 4096,
+    "handrail-sdk-chat-flutter/build/ack-release-review": 387284992,
+    "handrail-sdk-chat-js/build/ack-review-baseline": 10133504,
+    "handrail-sdk-chat-js/build/ack-review-sync": 2842624
+  },
+  "ownedPgAllocatedBytes": 352026624,
+  "evidenceAllocatedBytes": {
+    "handrail-sdk-chat-js": 172032,
+    "handrail-sdk-chat-flutter": 1912832
+  },
+  "totalMeasuredAllocatedBytes": 3051773952,
+  "note": "Allocated paths measured after review reports/checks were written, before this receipt and final digest manifests. Filesystem availability also reflects other sessions."
+}

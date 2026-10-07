@@ -1,0 +1,38 @@
+Native delegated cgroup: 0::/user.slice/user-993.slice/user@993.service/handrail.slice/handrail-workers.slice/handrail-codex-6857a7d8-2ed5-4df2-be80-b608fe13d7f1.scope/handrail-heavy/link-polish-validation
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 93.0.0 (105.0.0 available)
+  analyzer 10.0.1 (14.1.0 available)
+  async 2.11.0 (2.13.1 available)
+  boolean_selector 2.1.1 (2.1.2 available)
+> convert 3.1.2 (was 3.1.1)
+> crypto 3.0.7 (was 3.0.3)
+  flutter_lints 4.0.0 (6.0.0 available)
+> frontend_server_client 4.0.0 (was 3.2.0)
+> http_parser 4.1.2 (was 4.0.2)
+> io 1.1.0 (was 1.0.4)
+  lints 4.0.0 (6.1.0 available)
+> logging 1.3.0 (was 1.2.0)
+  matcher 0.12.19 (0.12.20 available)
+  meta 1.17.0 (1.19.0 available)
+> package_config 2.2.0 (was 2.1.0) (3.0.0 available)
+> pool 1.5.3 (was 1.5.1)
+> pub_semver 2.2.1 (was 2.1.4)
+> shelf 1.4.2 (was 1.4.1)
+> shelf_web_socket 3.0.0 (was 1.0.4)
+  source_span 1.10.0 (1.10.2 available)
+  stack_trace 1.12.1 (1.12.2 available)
+  string_scanner 1.2.0 (1.4.1 available)
+  term_glyph 1.2.1 (1.2.2 available)
+  test 1.30.0 (1.31.2 available)
+  test_api 0.7.10 (0.7.13 available)
+  test_core 0.6.16 (0.6.19 available)
+> typed_data 1.4.0 (was 1.3.2)
+  vm_service 13.0.0 (15.3.0 available)
+> watcher 1.2.1 (was 1.1.4)
+  web 0.5.1 (1.1.1 available)
++ web_socket 1.0.1
+> web_socket_channel 3.0.3 (was 2.4.5)
+Changed 15 dependencies!
+18 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.

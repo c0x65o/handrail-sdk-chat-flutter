@@ -2130,7 +2130,8 @@ class _LinkEditDialogState extends State<_LinkEditDialog> {
           decoration: InputDecoration(
             labelText: 'Link destination',
             hintText: 'https://example.com',
-            error: _error == null ? null : Text(_error!),
+            errorText: _error,
+            errorMaxLines: 8,
           ),
           onSubmitted: (_) => _apply(),
         ),

@@ -1,0 +1,32 @@
+{
+  "url": "https://raw.githubusercontent.com/flutter/flutter/bae5e49bc2a867403c43b2aae2de8f8c33b037e4/packages/flutter/lib/src/material/input_decorator.dart",
+  "sha256": "8eca5a99f48a3839747ed4a317fab0e6743a8b7a4e529ca922a48137fb0a5473",
+  "bytes": 183127,
+  "matches": [
+    {
+      "line": 312,
+      "excerpt": "    this.helperStyle,\n    this.helperMaxLines,\n    this.error,\n    this.errorText,\n    this.errorStyle,\n    this.errorMaxLines,\n  });\n\n  final TextAlign? textAlign;\n  final String? helperText;\n  final TextStyle? helperStyle;\n  final int? helperMaxLines;\n  final Widget? error;\n  final String? errorText;\n  final TextStyle? errorStyle;\n  final int? errorMaxLines;\n\n  @override\n  _HelperErrorState createState() => _HelperErrorState();\n}\n\nclass _HelperErrorState extends State<_HelperError> with SingleTickerProviderStateMixin {\n  // If the height of this widget and the counter are zero (\"empty\") at\n  // layout time, no space is allocated for the subtext.\n  static const Widget empty = SizedBox.shrink();\n"
+    },
+    {
+      "line": 322,
+      "excerpt": "  final TextStyle? helperStyle;\n  final int? helperMaxLines;\n  final Widget? error;\n  final String? errorText;\n  final TextStyle? errorStyle;\n  final int? errorMaxLines;\n\n  @override\n  _HelperErrorState createState() => _HelperErrorState();\n}\n\nclass _HelperErrorState extends State<_HelperError> with SingleTickerProviderStateMixin {\n  // If the height of this widget and the counter are zero (\"empty\") at\n  // layout time, no space is allocated for the subtext.\n  static const Widget empty = SizedBox.shrink();\n\n  late AnimationController _controller;\n  Widget? _helper;\n  Widget? _error;\n\n  bool get _hasError => widget.errorText != null || widget.error != null;\n\n  @override\n  void initState() {\n    super.initState();\n    _controller = AnimationController("
+    },
+    {
+      "line": 415,
+      "excerpt": "  }\n\n  Widget _buildError() {\n    assert(widget.error != null || widget.errorText != null);\n    return Semantics(\n      container: true,\n      child: FadeTransition(\n        opacity: _controller,\n        child: FractionalTranslation(\n          translation: Tween<Offset>(\n            begin: const Offset(0.0, -0.25),\n            end: Offset.zero,\n          ).evaluate(_controller.view),\n          child: widget.error ?? Text(\n            widget.errorText!,\n            style: widget.errorStyle,\n            textAlign: widget.textAlign,\n            overflow: TextOverflow.ellipsis,\n            maxLines: widget.errorMaxLines,\n          ),\n        ),\n      ),\n    );\n  }\n\n  @override"
+    },
+    {
+      "line": 2582,
+      "excerpt": "    this.hintMaxLines,\n    this.hintFadeDuration,\n    this.error,\n    this.errorText,\n    this.errorStyle,\n    this.errorMaxLines,\n    this.floatingLabelBehavior,\n    this.floatingLabelAlignment,\n    this.isCollapsed,\n    this.isDense,\n    this.contentPadding,\n    this.prefixIcon,\n    this.prefixIconConstraints,\n    this.prefix,\n    this.prefixText,\n    this.prefixStyle,\n    this.prefixIconColor,\n    this.suffixIcon,\n    this.suffix,\n    this.suffixText,\n    this.suffixStyle,\n    this.suffixIconColor,\n    this.suffixIconConstraints,\n    this.counter,\n    this.counterText,\n    this.counterStyle,"
+    },
+    {
+      "line": 2877,
+      "excerpt": "  ///\n  /// Only one of [error] and [errorText] can be specified.\n  final Widget? error;\n\n  /// Text that appears below the [InputDecorator.child] and the border.\n  ///\n  /// If non-null, the border's color animates to red and the [helperText] is\n  /// not shown.\n  ///\n  /// In a [TextFormField], this is overridden by the value returned from\n  /// [TextFormField.validator], if that is not null.\n  ///\n  /// If a more elaborate error is required, consider using [error] instead.\n  ///\n  /// Only one of [error] and [errorText] can be specified.\n  final String? errorText;\n\n  /// {@template flutter.material.inputDecoration.errorStyle}\n  /// The style to use for the [InputDecoration.errorText].\n  ///\n  /// If null, defaults of a value derived from the base [TextStyle] for the\n  /// input field and the current [Theme].\n  ///\n  /// By default the color of style will be used by the label of\n  /// [InputDecoration] if [InputDecoration.errorText] is not null. See\n  /// [InputDecoration.labelStyle] or [InputDecoration.floatingLabelStyle] for"
+    },
+    {
+      "line": 3580,
+      "excerpt": "      hintMaxLines: hintMaxLines ?? this.hintMaxLines,\n      hintFadeDuration: hintFadeDuration ?? this.hintFadeDuration,\n      error: error ?? this.error,\n      errorText: errorText ?? this.errorText,\n      errorStyle: errorStyle ?? this.errorStyle,\n      errorMaxLines: errorMaxLines ?? this.errorMaxLines,\n      floatingLabelBehavior: floatingLabelBehavior ?? this.floatingLabelBehavior,\n      floatingLabelAlignment: floatingLabelAlignment ?? this.floatingLabelAlignment,\n      isCollapsed: isCollapsed ?? this.isCollapsed,\n      isDense: isDense ?? this.isDense,\n      contentPadding: contentPadding ?? this.contentPadding,\n      prefixIcon: prefixIcon ?? this.prefixIcon,\n      prefix: prefix ?? this.prefix,\n      prefixText: prefixText ?? this.prefixText,\n      prefixStyle: prefixStyle ?? this.prefixStyle,\n      prefixIconColor: prefixIconColor ?? this.prefixIconColor,\n      prefixIconConstraints: prefixIconConstraints ?? this.prefixIconConstraints,\n      suffixIcon: suffixIcon ?? this.suffixIcon,\n      suffix: suffix ?? this.suffix,\n      suffixText: suffixText ?? this.suffixText,\n      suffixStyle: suffixStyle ?? this.suffixStyle,\n      suffixIconColor: suffixIconColor ?? this.suffixIconColor,\n      suffixIconConstraints: suffixIconConstraints ?? this.suffixIconConstraints,\n      counter: counter ?? this.counter,\n      counterText: counterText ?? this.counterText,\n      counterStyle: counterStyle ?? this.counterStyle,"
+    }
+  ],
+  "qualification": "Source API inspection only; not a minimum runtime test/build. No SDK downloaded."
+}

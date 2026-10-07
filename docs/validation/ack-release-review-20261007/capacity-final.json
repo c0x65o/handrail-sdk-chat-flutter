@@ -1,0 +1,66 @@
+{
+  "availableBytes": 39065849856,
+  "availableInodes": 67654856,
+  "retainedAllocatedBytesByPath": {
+    ".huddle-tmp/ack-review-toolchains": 2297397248,
+    ".huddle-tmp/a8336": 4096,
+    "handrail-sdk-chat-flutter/build/ack-release-review": 387284992,
+    "handrail-sdk-chat-js/build/ack-review-baseline": 10133504,
+    "handrail-sdk-chat-js/build/ack-review-sync": 2842624
+  },
+  "retainedMeasuredTotal": 2697662464,
+  "toolchainExtractedFinalAllocatedBytes": 1633689600,
+  "visibleProcesses": "    PID    PPID     ELAPSED   RSS COMMAND\n      1       0       00:00 18728 codex-linux-san\n      2       1       00:00  3048 bash\n      3       2       00:00 16612 python3\n     18       3       00:00  4584 ps\n",
+  "heavyLeaf": {
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+    "memory.peak": "1144356864\n"
+  },
+  "ownedPgArtifacts": [
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.21vRac",
+      "allocatedBytes": 41254912,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.9ykN8i",
+      "allocatedBytes": 41250816,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.HvymNx",
+      "allocatedBytes": 41246720,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.Jdl3sb",
+      "allocatedBytes": 41246720,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.OHQlal",
+      "allocatedBytes": 41254912,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.s66gsJ",
+      "allocatedBytes": 62431232,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.u02e52",
+      "allocatedBytes": 42094592,
+      "postmasterPidExists": false
+    },
+    {
+      "path": "handrail-sdk-chat-js/build/ack-pg.yK1NP6",
+      "allocatedBytes": 41246720,
+      "postmasterPidExists": false
+    }
+  ],
+  "ownedPgAllocatedBytes": 352026624,
+  "reviewEvidenceAllocatedBytes": {
+    "handrail-sdk-chat-js": 151552,
+    "handrail-sdk-chat-flutter": 1888256
+  },
+  "measuredAllocatedTotalIncludingPgAndEvidence": 3051728896
+}

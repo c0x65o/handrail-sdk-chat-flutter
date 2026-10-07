@@ -1,0 +1,7 @@
+{
+  "source": "/opt/handrail/.handrail/flutter-sdk",
+  "adapter": "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter",
+  "binary_copy_count": 0,
+  "sdk_download_count": 0,
+  "note": "Read-only symlinks reuse installed framework, Dart/engine, compiler snapshot and packages; only mutable Flutter cache metadata/locks are private."
+}

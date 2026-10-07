@@ -1,0 +1,35 @@
+00:00 +0: loading /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/minimum/test/handrail_message_composer_test.dart
+00:00 +0: independent link review: apply after client
+00:01 +1: independent link review: apply after draft
+00:02 +2: independent link review: apply after authority
+00:02 +3: independent link review: apply after account
+00:02 +4: independent link review: remove after client
+00:03 +5: independent link review: remove after draft
+00:03 +6: independent link review: remove after authority
+00:03 +7: independent link review: remove after account
+00:03 +8: independent link review: closing route cannot Remove twice or Apply
+00:04 +9: link dialog lifetime: Cancel preserves selection and draft
+00:04 +10: link dialog lifetime: barrier preserves selection and draft
+00:04 +11: link dialog lifetime: Escape preserves selection and draft
+00:04 +12: link dialog lifetime: system Back preserves selection and draft
+00:05 +13: link dialog lifetime: Apply inserts and persists markdown
+00:05 +14: link dialog lifetime: done inserts and persists markdown
+00:05 +15: link dialog lifetime: semantics inserts and persists markdown
+00:05 +16: link dialog lifetime: validation then correction and Remove link
+00:05 +17: link dialog lifetime: repeated opens and double actions
+00:06 +18: link dialog lifetime: rejects late result after disabled
+00:06 +19: link dialog lifetime: rejects late result after disable then enable
+00:06 +20: link dialog lifetime: rejects late result after conversation
+00:06 +21: link dialog lifetime: rejects late result after account
+00:07 +22: link dialog lifetime: rejects late result after account cycle
+00:07 +23: link dialog lifetime: rejects late result after host controller
+00:07 +24: link dialog lifetime: rejects late result after host text
+00:07 +25: link dialog lifetime: rejects late result after remote replacement
+00:07 +26: link dialog lifetime: rejects late result after same-text formatting
+00:07 +27: link dialog lifetime: rejects late result after host disposal
+00:08 +28: link dialog lifetime: rejects late result after conversation revoked
+00:08 +29: link dialog lifetime: rejects late result after conversation restored
+00:08 +30: link dialog lifetime: rejects late result after timeline revoked
+00:08 +31: link dialog lifetime: rejects late result after timeline restored
+00:08 +32: link dialog lifetime: matching acknowledgement and selection-only change keep opening range
+00:08 +33: All tests passed!

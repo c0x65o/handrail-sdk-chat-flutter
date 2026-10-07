@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "seconds": 14.82,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+    "test",
+    "--no-pub",
+    "--concurrency=2",
+    "--reporter=expanded",
+    "test/handrail_message_composer_test.dart",
+    "--name",
+    "link dialog lifetime|independent link review"
+  ],
+  "fixture": "candidate",
+  "timeout_seconds": 300
+}

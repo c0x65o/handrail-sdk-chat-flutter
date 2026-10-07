@@ -1,0 +1,121 @@
+[
+  {
+    "check": "minimum-resolve",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-resolve.txt"
+  },
+  {
+    "check": "minimum-links",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-links.txt"
+  },
+  {
+    "check": "minimum-layout",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-layout.txt"
+  },
+  {
+    "check": "minimum-scoped-analysis",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-scoped-analysis.txt"
+  },
+  {
+    "check": "minimum-configured",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-configured.txt"
+  },
+  {
+    "check": "minimum-build",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-build.txt"
+  },
+  {
+    "check": "current-resolve",
+    "result": "failed",
+    "exit": 65,
+    "evidence": "current-resolve.txt"
+  },
+  {
+    "check": "current-resolve-frozen",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "current-resolve-frozen.txt"
+  },
+  {
+    "check": "current-configured",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "current-configured.txt"
+  },
+  {
+    "check": "minimum-links-layout",
+    "result": "failed",
+    "exit": 1,
+    "evidence": "minimum-links-layout.txt"
+  },
+  {
+    "check": "minimum-baseline-layout-disposal",
+    "result": "failed",
+    "exit": 1,
+    "evidence": "minimum-baseline-layout-disposal.txt"
+  },
+  {
+    "check": "minimum-baseline-disposal",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-baseline-disposal.txt"
+  },
+  {
+    "check": "minimum-isolated-disposal",
+    "result": "passed",
+    "exit": 0,
+    "evidence": "minimum-isolated-disposal.txt"
+  },
+  {
+    "check": "minimum-baseline-decoration",
+    "result": "failed",
+    "exit": 1,
+    "evidence": "minimum-baseline-decoration.txt"
+  },
+  {
+    "check": "minimum-browser",
+    "result": "failed",
+    "evidence": "minimum-browser.txt"
+  },
+  {
+    "check": "minimum-browser-qualified",
+    "result": "passed",
+    "cases": 9,
+    "evidence": "minimum-browser-qualified-browser.json"
+  },
+  {
+    "check": "current Link33/layout9/scoped analysis/release build/browser9",
+    "result": "passed_reused",
+    "evidence": "source-reuse.json / evidence-reuse.json"
+  },
+  {
+    "check": "full analysis baseline",
+    "result": "historical_nonzero_not_rerun",
+    "infos": 13
+  },
+  {
+    "check": "full suite baseline",
+    "result": "historical_failed_not_rerun",
+    "passed": 2471,
+    "failed": 7
+  },
+  {
+    "check": "semantics-enabled CanvasKit continued typing",
+    "result": "historical_failed_separate_P1"
+  },
+  {
+    "check": "physical native/IME/provider/staging/installed consumer/unchanged Preview driver",
+    "result": "unverified_not_run"
+  }
+]

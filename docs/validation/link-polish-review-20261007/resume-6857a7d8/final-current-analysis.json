@@ -1,0 +1,16 @@
+{
+  "exit": 0,
+  "seconds": 18.42,
+  "command": [
+    "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/.handrail/codex-runs/6857a7d8-2ed5-4df2-be80-b608fe13d7f1/tmp/review/flutter/bin/cache/flutter_tools.snapshot",
+    "analyze",
+    "--no-pub",
+    "lib/src/handrail_message_composer.dart",
+    "test/handrail_message_composer_test.dart",
+    "test/handrail_link_dialog_cases.dart",
+    "test/independent_link_review.dart"
+  ],
+  "fixture": "candidate",
+  "timeout_seconds": 300
+}

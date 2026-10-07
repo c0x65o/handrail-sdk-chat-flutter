@@ -1,0 +1,37 @@
+[
+  {
+    "path": "docs/validation/ack-release-review-20261007/minimum-layout/link-validation-320.0-1.0.png",
+    "sha256": "ac6ee028111521ae5835ad4b7974e440e3d5e30df039ea50920b8bfe59901355",
+    "actuallyOpened": true
+  },
+  {
+    "path": "docs/validation/ack-release-review-20261007/minimum-layout/link-validation-320.0-3.0.png",
+    "sha256": "af55b8f772667db74d422a57d9612d03c77b09c84ec289b3f29242ba8c32a05a",
+    "actuallyOpened": true
+  },
+  {
+    "path": "docs/validation/link-polish-review-20261007/resume-6857a7d8/final-browser-validation-320-3.png",
+    "sha256": "06943bc8968df86732649666240ea86ec2c95c2751bfcc78e14d88c15d6d6fb1",
+    "actuallyOpened": true
+  },
+  {
+    "path": "docs/validation/ack-release-review-20261007/minimum-browser-qualified-validation-320-1.png",
+    "sha256": "ba50f80d27f19bab95bcbcdd102346b71def6238c60b3c058f685e33d9a9de4b",
+    "actuallyOpened": true
+  },
+  {
+    "path": "docs/validation/ack-release-review-20261007/minimum-browser-qualified-validation-320-3.png",
+    "sha256": "45c7879705ff1b0f15be635f724b95d3c6b752e98a1d4c4db056d368f272ebf4",
+    "actuallyOpened": true
+  },
+  {
+    "path": "docs/validation/ack-release-review-20261007/minimum-browser-qualified-validation-900-3.png",
+    "sha256": "b4696254d334fd91e6c23982dcbb0e0fce32e5106cd7b9c99873979d50fbde67",
+    "actuallyOpened": true
+  },
+  {
+    "path": "docs/validation/link-polish-review-20261007/resume-6857a7d8/final-browser-validation-390-2.png",
+    "sha256": "04de46ec20d9842043889f910a644fb13ae751072dc0a2b7923eefea4b019e7c",
+    "actuallyOpened": true
+  }
+]

@@ -1,0 +1,13 @@
+diff --git a/test/handrail_link_dialog_cases.dart b/test/handrail_link_dialog_cases.dart
+index 5aea0fa..cfe1ffc 100644
+--- a/test/handrail_link_dialog_cases.dart
++++ b/test/handrail_link_dialog_cases.dart
+@@ -41,6 +41,8 @@ void _linkDialogTests() {
+             tester, 'link-validation-$width-$scale.png');
+         final error = find.text('Enter a safe web, email, or relative link.');
+         final paragraph = tester.renderObject<RenderParagraph>(error);
++        expect(paragraph.text.style?.color,
++            Theme.of(tester.element(error)).colorScheme.error);
+         expect(paragraph.didExceedMaxLines, isFalse,
+             reason: 'The complete actionable validation message must render.');
+         final rect = tester.getRect(error);

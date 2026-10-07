@@ -1,0 +1,8 @@
+{
+  "composer_sha256": "dad95ddbbb4a885a8ab0984b907a8f7f36e776351c1c77cc6ae43fed9bb72289",
+  "prior_artifact_library_changes": [
+    "lib/src/package_metadata.dart"
+  ],
+  "prior_artifact_sha256": "5f0636ed429e7e0060845b23d740dabe0ae45e20f52bc99c8649f71c645bdf42",
+  "all_prior_review_files_count": 98
+}

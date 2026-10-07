@@ -1,0 +1,55 @@
+Flutter release conformance completion — 2026-10-07
+Work request 082b1fdd-3b3f-49e0-84fa-85228215b0b5
+
+Recommend scoped source publication of the exact independently reviewed Flutter
+decoration correction plus this canonical snapshot sync and release guidance.
+This is not full Flutter/Preview/product acceptance.
+
+JS's canonical scripts/sync-flutter-contracts.mjs synchronized 114 files after
+inspection proved zero removals/unknown destination edits and exactly three
+deltas: add test/shared-fixtures/composer-layout-browser.mjs (1,877 bytes) and
+sender-layout-browser.mjs (4,419 bytes), and add their two SHA256 entries to
+shared-contracts.lock.json. No generated Dart, source fixtures, validators,
+expected results or runtime bytes changed. docs/releasing.md adds bounded
+qualification/upgrade guidance. No lock was hand-edited.
+
+The paired workspace now passes check:flutter-contracts, check:capabilities
+(7/7), bounded check:conformance (4/4 in 16.56s), canonical read-cursor generation,
+paired JS 14/14 and Dart 6/6 generated-contract checks, scoped JS typecheck and
+both whitespace checks. Flutter frozen offline resolution and the pre-generation
+import/version guard also pass. Full receipts and exact generated/doc patches:
+  sibling handrail-sdk-chat-js/docs/validation/ack-release-conformance-20261007/
+  report.txt, checks.json, sync-plan.json, flutter-generated-doc.patch,
+  preservation.json, package-fingerprints.json, capacity-final.json
+The initial documentation example compiler invocation failed TS5112; a separate
+corrected invocation passes. Both receipts remain, as does the freshly reproduced
+pre-sync failure. Prior failed independent sync and conformance receipts remain
+failed; that review reproduced drift on unchanged JS .54/Flutter .33 heads too.
+
+Base remains 996d83d37632615df4c94fca83ff4c33ebe48227 (0.1.33).
+Exact independent final-hashes.json SHA256:
+00256cb1fd469b314946dd59829d87d084ea418acd68b851ae8f4f6fe3428151
+All 128 library hashes and nine named final source/lock/test identities match.
+Composer SHA256: 6a56f0b06e576ac1ebb906d7255ac83f7a474c6dc230721772e61d41dcc29ebf
+Link test SHA256: c24261fe23478e988f68315cb5a3e6cbddc3d6927486a4b08b0cfedc7d3422fc
+Shared lock SHA256: 7a976c19b2382704a4e310671636c2d113ffd9e3db34ea84dedf05c47e5df6bc
+The 83 independent and 79 resumed-review evidence entries verify unchanged,
+including the retained source archive and compiled output. Minimum/current
+layout/lifetime/compiler/browser and configured reducer qualification is REUSED.
+Only the existing Flutter 3.19 toolchain and current binaries/private metadata
+are retained/reused; no download/copy or full suite/analysis rerun occurred.
+
+Published Flutter .32 already requires the full canonical HTTP outcome; the
+read runtime/parser/visibility sources are identical in .33/candidate. It needs
+the corrected JS server. JS .54 non-durable readers reject that server and must
+upgrade first or together; the candidate non-durable reader works with the old
+server. Durable JS still rejects the old incomplete producer. Full eight-case
+HTTP matrix and strict Result/event projection guidance are in JS releasing.md.
+
+Parent owns repo-scoped native publication, immutable commit/version-mirror
+verification and exact installed full-SHA public HTTPS Git consumers/locks.
+The separate frozen sdk-compatibility.json CI pin was not requalified here.
+Preview root server/React upgrade and unchanged combined driver remain parent
+work. No Preview edits, commit/push/deploy or 126/120 cure. Historical 13 analysis
+infos, seven full-suite failures, semantics-enabled toolbar typing failure and
+device/staging/provider/installed-consumer acceptance remain separate/open.
