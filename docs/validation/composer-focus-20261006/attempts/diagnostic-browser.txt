@@ -1,0 +1,18 @@
+FOCUS_EVENT false false false false false true
+FOCUS_RESTORE mounted=true current=true generation=true client=true node=true interact=true sending=false moved=true can=true
+FOCUS_EVENT false false false false false true
+FOCUS_RESTORE mounted=true current=true generation=true client=true node=true interact=true sending=false moved=true can=true
+[
+  {
+    "failure": false,
+    "accepted": false,
+    "first": "",
+    "focus": false
+  },
+  {
+    "failure": true,
+    "accepted": false,
+    "first": "Original",
+    "focus": false
+  }
+]

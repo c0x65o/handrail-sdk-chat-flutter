@@ -1,0 +1,197 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart
+00:00 +0: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: same
+00:00 +1: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: starting
+00:00 +2: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: absent
+00:00 +3: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: older-left
+00:00 +4: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: left
+00:00 +5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: rejoined
+00:00 +6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: session
+00:00 +7: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation foreground event-first join keeps only current private material: identity
+00:00 +8: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation HTTP-first join survives earlier ordered actor-absent events
+00:00 +9: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation tracks joined to left canonical updates independently of media
+00:00 +10: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation distinguishes an absent actor from non-live canonical state
+00:00 +11: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation participants, cached current user and opaque token are not identity
+00:00 +12: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation activation and account changes never reuse prior participation
+00:00 +13: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation is unavailable after controller disposal
+00:00 +14: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation is unavailable after client disposal
+00:00 +15: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: current actor huddle participation repeated reads preserve state, media descriptor and command queue
+00:00 +16: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery concurrent conversations survive a stale read and retry
+00:01 +17: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves channel reply and jumps, loaded=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Reply to alice: Which launch date?": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart:86:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart line 86
+The test description was:
+  backend host resolves channel reply and jumps, loaded=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +17 -1: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery same-lane retry coalesces at the committed FIFO position
+00:01 +17 -1: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves channel reply and jumps, loaded=true [E]
+  Test failed. See exception logs above.
+  The test description was: backend host resolves channel reply and jumps, loaded=true
+  
+00:01 +18 -1: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves channel reply and jumps, loaded=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Reply to alice: Which launch date?": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart:86:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart line 86
+The test description was:
+  backend host resolves channel reply and jumps, loaded=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +18 -2: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery stale settlement preserves new-key replacement and peer commands
+00:02 +18 -2: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves channel reply and jumps, loaded=false [E]
+  Test failed. See exception logs above.
+  The test description was: backend host resolves channel reply and jumps, loaded=false
+  
+00:02 +19 -2: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves direct reply and jumps, loaded=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Reply to alice: Which launch date?": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart:86:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart line 86
+The test description was:
+  backend host resolves direct reply and jumps, loaded=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +19 -3: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery stale settlement preserves same-key replacement and peer commands
+00:02 +19 -3: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves direct reply and jumps, loaded=true [E]
+  Test failed. See exception logs above.
+  The test description was: backend host resolves direct reply and jumps, loaded=true
+  
+00:02 +20 -3: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves direct reply and jumps, loaded=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Reply to alice: Which launch date?": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart:86:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart line 86
+The test description was:
+  backend host resolves direct reply and jumps, loaded=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +20 -4: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery stale settlement preserves same-request replacement and peer commands
+00:03 +20 -4: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves direct reply and jumps, loaded=false [E]
+  Test failed. See exception logs above.
+  The test description was: backend host resolves direct reply and jumps, loaded=false
+  
+00:03 +21 -4: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=true
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Reply to alice: Which launch date?": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart:86:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart line 86
+The test description was:
+  backend host resolves thread reply and jumps, loaded=true
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +21 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery absent settlement target still publishes the committed peer queue
+00:03 +21 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=true [E]
+  Test failed. See exception logs above.
+  The test description was: backend host resolves thread reply and jumps, loaded=true
+  
+00:03 +22 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+00:03 +23 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+00:03 +24 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+00:03 +25 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+00:03 +26 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+00:03 +27 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+00:03 +28 -5: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: exactly one matching candidate
+  Actual: _TextWidgetFinder:<Found 0 widgets with text "Reply to alice: Which launch date?": []>
+   Which: means none were found but one was expected
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart:86:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart line 86
+The test description was:
+  backend host resolves thread reply and jumps, loaded=false
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +28 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery settles already-equal authority and event-first commands
+00:03 +28 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/backend_lab_reply_contexts_test.dart: backend host resolves thread reply and jumps, loaded=false [E]
+  Test failed. See exception logs above.
+  The test description was: backend host resolves thread reply and jumps, loaded=false
+  
+00:03 +29 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery retains divergent authority as an explicit conflict
+00:03 +30 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery pauses in background and retries transient failures with backoff
+00:03 +31 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery waits for trusted identity and for online realtime readiness
+00:03 +32 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery identity generations cannot dispatch or project stale recovery
+00:03 +33 -6: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery removes terminal outcomes but retains post-dispatch cancellation and disposal
+00:33 +33 -7: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery removes terminal outcomes but retains post-dispatch cancellation and disposal [E]
+  TimeoutException after 0:00:30.000000: Test timed out after 30 seconds. See https://pub.dev/packages/test#timeouts
+  dart:isolate  _RawReceivePort._handleMessage
+  
+00:33 +33 -7: /opt/handrail/.handrail/codex-runs/a2fa9fd9-c25b-4895-85c2-eab322a096ae/tmp/composer/before-browser/test/huddle_recovery_test.dart: durable huddle recovery quarantines corrupt records with credential-safe diagnostics
+00:33 +34 -7: Some tests failed.

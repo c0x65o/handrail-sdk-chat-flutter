@@ -1,0 +1,14 @@
+{
+  "before": {
+    "lib/src/handrail_message_composer.dart": "c1aca1bb5cab419b8de9cae955e933317fece95f72abe507fb48a6d42290919f",
+    "lib/main.dart": "a5a96b827b27960fe511a24c1f03956ef87ac931fa8cd4db539db6111f7afdb8",
+    "build/web/main.dart.js": "f191b37130f2d3035af2237c0cb4262f7426128dde5e7a0b82b93104b7419ca5",
+    "build/web/flutter_bootstrap.js": "568962c01e52d74203879c2da84b790dcf3f99dde3b2dfa5ae5611dc09ee8468"
+  },
+  "after": {
+    "lib/src/handrail_message_composer.dart": "ce09e82b71238a641a5c3d17f78b75a1e63d35887605aae80cbf1557ed733295",
+    "lib/main.dart": "284af7cd42cf7f065dffffc4144ef8f0e8ea3cad4e2d69559de2153d94a8db2e",
+    "build/web/main.dart.js": "8d6dc236d5e92db9ad835e71760ca4910ce6c88a3b93d29e63adacad0137687d",
+    "build/web/flutter_bootstrap.js": "1b098a1cae94f131229795d4a0783b89aeba050fa900d58210659593e3e6a642"
+  }
+}

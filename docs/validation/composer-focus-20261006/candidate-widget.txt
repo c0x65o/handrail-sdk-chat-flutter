@@ -1,0 +1,4 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/candidate/test/handrail_message_composer_test.dart
+00:00 +0: disabled send frame restores accepted input (success=true)
+00:01 +1: disabled send frame restores accepted input (success=false)
+00:02 +2: All tests passed!

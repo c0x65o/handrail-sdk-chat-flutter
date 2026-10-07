@@ -1,0 +1,12 @@
+{
+  "same_failures": true,
+  "tests": [
+    "backend host resolves channel reply and jumps, loaded=false",
+    "backend host resolves channel reply and jumps, loaded=true",
+    "backend host resolves direct reply and jumps, loaded=false",
+    "backend host resolves direct reply and jumps, loaded=true",
+    "backend host resolves thread reply and jumps, loaded=false",
+    "backend host resolves thread reply and jumps, loaded=true",
+    "durable huddle recovery removes terminal outcomes but retains post-dispatch cancellation and disposal"
+  ]
+}

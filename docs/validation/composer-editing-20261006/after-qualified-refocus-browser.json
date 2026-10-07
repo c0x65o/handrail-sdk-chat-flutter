@@ -1,0 +1,557 @@
+{
+  "phase": "after-qualified-refocus",
+  "errors": [],
+  "initial": {
+    "state": {
+      "text": "",
+      "selection": [
+        0,
+        0
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": false,
+      "draft": null,
+      "pending": null,
+      "requests": []
+    },
+    "fields": [
+      {
+        "label": "Message input\nWrite a message",
+        "role": null,
+        "value": "",
+        "focused": false,
+        "selection": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "editableCount": 1,
+  "targets": [
+    {
+      "state": {
+        "text": "Draft editing",
+        "selection": [
+          13,
+          13
+        ],
+        "composing": [
+          -1,
+          -1
+        ],
+        "focus": true,
+        "draft": "Draft editing",
+        "pending": true,
+        "requests": [
+          {
+            "operation": "synchronize_draft",
+            "intent": "replace",
+            "conversationId": "conversation-composer",
+            "baseRevision": 0,
+            "deviceMutationId": "probe-draft-1",
+            "idempotencyKey": "probe-key-2",
+            "content": {
+              "format": "plain",
+              "text": "Draft editing",
+              "attachments": []
+            }
+          }
+        ]
+      },
+      "fields": [
+        {
+          "label": "Message input",
+          "role": null,
+          "value": "Draft editing",
+          "focused": true,
+          "selection": [
+            13,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "beforeAck": {
+    "state": {
+      "text": "Draft editing",
+      "selection": [
+        4,
+        6
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": "Draft editing",
+      "pending": true,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Draft editing",
+        "focused": true,
+        "selection": [
+          4,
+          6
+        ]
+      }
+    ]
+  },
+  "afterAck": {
+    "state": {
+      "text": "Draft editing",
+      "selection": [
+        4,
+        6
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": "Draft editing",
+      "pending": false,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 1,
+          "deviceMutationId": "probe-draft-3",
+          "idempotencyKey": "probe-key-4",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Draft editing",
+        "focused": true,
+        "selection": [
+          4,
+          6
+        ]
+      }
+    ]
+  },
+  "beforeClearAck": {
+    "state": {
+      "text": "Newer accepted edit",
+      "selection": [
+        19,
+        19
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": "Newer accepted edit",
+      "pending": true,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 1,
+          "deviceMutationId": "probe-draft-3",
+          "idempotencyKey": "probe-key-4",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "send",
+          "conversationId": "conversation-composer",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          },
+          "clientMessageId": "probe-message-7",
+          "idempotencyKey": "probe-key-8"
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 2,
+          "deviceMutationId": "probe-draft-5",
+          "idempotencyKey": "probe-key-6",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Newer accepted edit",
+        "focused": true,
+        "selection": [
+          19,
+          19
+        ]
+      }
+    ]
+  },
+  "afterClearAck": {
+    "state": {
+      "text": "Newer accepted edit",
+      "selection": [
+        19,
+        19
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": "Newer accepted edit",
+      "pending": false,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 1,
+          "deviceMutationId": "probe-draft-3",
+          "idempotencyKey": "probe-key-4",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "send",
+          "conversationId": "conversation-composer",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          },
+          "clientMessageId": "probe-message-7",
+          "idempotencyKey": "probe-key-8"
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 2,
+          "deviceMutationId": "probe-draft-5",
+          "idempotencyKey": "probe-key-6",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "clear",
+          "conversationId": "conversation-composer",
+          "baseRevision": 3,
+          "deviceMutationId": "probe-draft-9",
+          "idempotencyKey": "probe-key-10"
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 4,
+          "deviceMutationId": "probe-draft-11",
+          "idempotencyKey": "probe-key-12",
+          "content": {
+            "format": "plain",
+            "text": "Newer accepted edit",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Newer accepted edit",
+        "focused": true,
+        "selection": [
+          19,
+          19
+        ]
+      }
+    ]
+  },
+  "richNativeRange": {
+    "state": {
+      "text": "Draft editing",
+      "selection": [
+        4,
+        6
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": "**Draft** editing",
+      "pending": true,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Draft editing",
+        "focused": true,
+        "selection": [
+          4,
+          6
+        ]
+      }
+    ]
+  },
+  "richBefore": {
+    "state": {
+      "text": "Draft editing",
+      "selection": [
+        4,
+        6
+      ],
+      "composing": [
+        3,
+        8
+      ],
+      "focus": true,
+      "draft": "**Draft** editing",
+      "pending": true,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Draft editing",
+        "focused": true,
+        "selection": [
+          4,
+          6
+        ]
+      }
+    ]
+  },
+  "richAfter": {
+    "state": {
+      "text": "Draft editing",
+      "selection": [
+        4,
+        6
+      ],
+      "composing": [
+        3,
+        8
+      ],
+      "focus": true,
+      "draft": "**Draft** editing",
+      "pending": false,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 1,
+          "deviceMutationId": "probe-draft-3",
+          "idempotencyKey": "probe-key-4",
+          "content": {
+            "format": "markdown",
+            "text": "**Draft** editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Draft editing",
+        "focused": true,
+        "selection": [
+          4,
+          6
+        ]
+      }
+    ]
+  },
+  "final": {
+    "state": {
+      "text": "Draft editing",
+      "selection": [
+        4,
+        6
+      ],
+      "composing": [
+        3,
+        8
+      ],
+      "focus": true,
+      "draft": "**Draft** editing",
+      "pending": false,
+      "requests": [
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 0,
+          "deviceMutationId": "probe-draft-1",
+          "idempotencyKey": "probe-key-2",
+          "content": {
+            "format": "plain",
+            "text": "Draft editing",
+            "attachments": []
+          }
+        },
+        {
+          "operation": "synchronize_draft",
+          "intent": "replace",
+          "conversationId": "conversation-composer",
+          "baseRevision": 1,
+          "deviceMutationId": "probe-draft-3",
+          "idempotencyKey": "probe-key-4",
+          "content": {
+            "format": "markdown",
+            "text": "**Draft** editing",
+            "attachments": []
+          }
+        }
+      ]
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Draft editing",
+        "focused": true,
+        "selection": [
+          4,
+          6
+        ]
+      }
+    ]
+  }
+}

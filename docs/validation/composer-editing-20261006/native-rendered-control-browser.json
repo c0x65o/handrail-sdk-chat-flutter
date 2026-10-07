@@ -1,0 +1,149 @@
+{
+  "phase": "native-rendered-control",
+  "errors": [],
+  "initial": {
+    "state": {
+      "text": "",
+      "selection": [
+        -1,
+        -1
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": false,
+      "draft": null,
+      "pending": null,
+      "requests": []
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "",
+        "focused": false,
+        "selection": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "beforeSend": {
+    "state": {
+      "text": "Native control input",
+      "selection": [
+        20,
+        20
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": null,
+      "pending": null,
+      "requests": []
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Native control input",
+        "focused": true,
+        "selection": [
+          20,
+          20
+        ]
+      }
+    ]
+  },
+  "cleared": {
+    "state": {
+      "text": "",
+      "selection": [
+        0,
+        0
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": null,
+      "pending": null,
+      "requests": []
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "",
+        "focused": false,
+        "selection": [
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "afterSend": {
+    "state": {
+      "text": "",
+      "selection": [
+        0,
+        0
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": null,
+      "pending": null,
+      "requests": []
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Following native input",
+        "focused": true,
+        "selection": [
+          22,
+          22
+        ]
+      }
+    ]
+  },
+  "refocused": {
+    "state": {
+      "text": "Refocused native input",
+      "selection": [
+        22,
+        22
+      ],
+      "composing": [
+        -1,
+        -1
+      ],
+      "focus": true,
+      "draft": null,
+      "pending": null,
+      "requests": []
+    },
+    "fields": [
+      {
+        "label": "Message input",
+        "role": null,
+        "value": "Refocused native input",
+        "focused": true,
+        "selection": [
+          22,
+          22
+        ]
+      }
+    ]
+  }
+}

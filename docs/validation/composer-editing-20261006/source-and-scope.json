@@ -1,0 +1,42 @@
+{
+  "handrail-sdk-chat-flutter": {
+    "head": "51cf4d55ea147fd71267787b774585278ed1f55a",
+    "status": " M lib/src/handrail_message_composer.dart\n M test/handrail_message_composer_test.dart\n?? docs/validation/composer-editing-20261006/\n"
+  },
+  "handrail-sdk-chat-js": {
+    "head": "5cc37c0aad6bf4f74c4e849f62ae51badb124dca",
+    "status": "?? docs/validation/published-consumers-20261006/\n"
+  },
+  "handrail-chat-preview-flutter": {
+    "head": "b48bf8418702f3acf3b12b8e401749e7ff3a63fb",
+    "status": ""
+  },
+  "source": {
+    "lib/src/handrail_message_composer.dart": {
+      "baseline_sha256": "c1aca1bb5cab419b8de9cae955e933317fece95f72abe507fb48a6d42290919f",
+      "candidate_sha256": "ce09e82b71238a641a5c3d17f78b75a1e63d35887605aae80cbf1557ed733295"
+    },
+    "test/handrail_message_composer_test.dart": {
+      "baseline_sha256": "7735a9ab1fba21cd6c8cbbe089e03c6a9fa20ea1442af971b1ffa10bf5493d17",
+      "candidate_sha256": "0e27e035929318ee6e6be32a9e1d02c8829c1c012c60d6a6ad6ce0a048a5e45e"
+    },
+    "pubspec.yaml": {
+      "baseline_sha256": "4619d027f5c4a83f7f28d05468c165de8d8d99058004c1ca736fe65e409f5138",
+      "candidate_sha256": "4619d027f5c4a83f7f28d05468c165de8d8d99058004c1ca736fe65e409f5138"
+    },
+    "pubspec.lock": {
+      "baseline_sha256": "3ca8f57c1367c9c888f4aec41551eab1ba9c15cf8f2255515686d46743bb6bbe",
+      "candidate_sha256": "3ca8f57c1367c9c888f4aec41551eab1ba9c15cf8f2255515686d46743bb6bbe"
+    },
+    "lib/src/package_metadata.dart": {
+      "baseline_sha256": "ee5cbeeee2fcef360621b8365927fed4f023f116b244a204a03e3081e4163f6f",
+      "candidate_sha256": "ee5cbeeee2fcef360621b8365927fed4f023f116b244a204a03e3081e4163f6f"
+    },
+    ".handrail/version-mirrors.json": {
+      "baseline_sha256": "d9682a9e07b56f91292864b89193faa01a27e7f3f8bd16629fe26bf13e71f754",
+      "candidate_sha256": "d9682a9e07b56f91292864b89193faa01a27e7f3f8bd16629fe26bf13e71f754"
+    }
+  },
+  "candidate_lib_tree_sha256": "148d8ea6fec3c648e9c13b061289c182c3cfe6e6cd1995b05f9572df057d4f16",
+  "protected_workspaces_unchanged_since_inventory": true
+}

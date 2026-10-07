@@ -185,6 +185,8 @@ void main() {
       final pending = Completer<void>();
       harness.transport.pendingSend = pending;
       await tester.tap(find.byKey(_send));
+      // Web pointer activation can settle button focus after onPressed.
+      tester.widget<IconButton>(find.byKey(_send)).focusNode?.requestFocus();
       await _pumpUntil(
         tester,
         () => harness.transport.operations('send').isNotEmpty,
@@ -393,10 +395,9 @@ void main() {
         );
         await tester.pump();
         expect(focus.canRequestFocus, isFalse);
-        if (!queued) {
+        if (!queued)
           storage.failKind =
               ApplicationChatStorageRecordKind.queuedDraftIntents;
-        }
         gate.complete();
         await _pumpUntil(
           tester,
@@ -421,7 +422,7 @@ void main() {
   }
 
   testWidgets(
-    'delayed explicit retry restores focus and preserves submitted content',
+    'delayed retry restores focus without changing uncertain send identity',
     (tester) async {
       final harness = _Harness(sendFailuresRemaining: 1);
       addTearDown(() => _disposeHarness(tester, harness));
@@ -466,8 +467,8 @@ void main() {
       await tester.pump();
       expect(focus.hasFocus, isTrue);
       final sends = harness.transport.operations('send');
-      expect(sends[1]['content'], sends[0]['content']);
-      expect(sends[1]['conversationId'], sends[0]['conversationId']);
+      expect(sends[1]['clientMessageId'], sends[0]['clientMessageId']);
+      expect(sends[1]['idempotencyKey'], sends[0]['idempotencyKey']);
       expect(harness.transport.sentSequence, 11);
     },
   );

@@ -1,0 +1,5 @@
+00:00 [32m+0[0m: [1m[90mloading test/core_import_boundary_test.dart[0m[0m
+00:00 [32m+0[0m: public package version matches the canonical manifest before generation[0m
+00:00 [32m+1[0m: native version mirror targets the exported Dart constant[0m
+00:00 [32m+2[0m: core.dart has a pure-Dart import graph[0m
+00:00 [32m+3[0m: All tests passed![0m

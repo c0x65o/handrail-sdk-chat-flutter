@@ -1,0 +1,68 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/candidate/test/handrail_message_composer_test.dart
+00:00 +0: disabled send frame restores accepted input (success=true)
+00:01 +1: disabled send frame restores accepted input (success=false)
+00:02 +2: send focus restoration respects focus movement
+00:02 +3: send focus restoration respects channel
+00:03 +4: send focus restoration respects thread
+00:03 +5: send focus restoration respects enabled cycle
+00:03 +6: send focus restoration respects focus replacement
+00:03 +7: send focus restoration respects controller replacement
+00:04 +8: send focus restoration respects account cycle
+00:04 +9: send focus restoration respects logout
+00:04 +10: send focus restoration respects hide return
+00:04 +11: send focus restoration respects teardown
+00:05 +12: send focus restoration respects new draft
+00:05 +13: onSent focus navigation wins over deferred restoration
+00:05 +14: local draft persistence failure restores input after disabled frame
+00:05 +15: send focus survives local clear failure
+00:05 +16: send focus survives queued local completion
+00:06 +17: composer exposes one labeled actionable editable semantic node
+00:06 +18: delayed draft echo preserves editing state (rich=false, ime=false)
+00:06 +19: delayed draft echo preserves editing state (rich=false, ime=true)
+00:06 +20: delayed draft echo preserves editing state (rich=true, ime=false)
+00:07 +21: delayed draft echo preserves editing state (rich=true, ime=true)
+00:07 +22: older draft acknowledgement preserves newer accepted edits
+00:07 +23: remote replacements still update text and same-text formatting
+00:07 +24: equal drafts across channels reset editing state
+00:07 +25: equal drafts across thread/main reset editing state
+00:08 +26: equal draft after account turnover cannot retain previous IME
+00:08 +27: logout and new client with equal draft reset editing state
+00:08 +28: offline Send persists one reply intent before reconnect (retries=0)
+00:08 +29: offline Send persists one reply intent before reconnect (retries=1)
+00:09 +30: offline Send retains editable reply on storage failure ApplicationChatStorageRecordKind.queuedDraftIntents
+00:09 +31: offline Send retains editable reply on storage failure ApplicationChatStorageRecordKind.queuedSendMessageIntents
+00:09 +32: local persistence pending keeps content and freezes binding across style changes
+00:09 +33: deferred online draft cleanup preserves the next composition
+00:10 +34: pending local persistence guards identity change
+00:10 +35: pending local persistence guards disposal
+00:10 +36: no-storage Send retains the legacy remote draft boundary
+00:10 +37: reply target-only and ping-only drafts restore false ping
+00:10 +38: cancel reply retains restored text and attachments across style rebuilds
+00:10 +39: same-thread failed send and retry freeze destination and reference
+00:11 +40: pending send rebind preserves new draft (success=true)
+00:11 +41: pending send rebind preserves new draft (success=false)
+00:11 +42: source errors deletion revocation and identity changes redact preview with recovery
+00:11 +43: typed reply builder exposes live context and keyboard cancellation
+00:11 +44: new host edits survive an original send completion (success=true)
+00:12 +45: new host edits survive an original send completion (success=false)
+00:12 +46: unavailable source send rejection retains reference and attachments for retry
+00:12 +47: late source lookup cannot restore a revoked preview
+00:12 +48: successful send retains a newer remote composition draft
+00:12 +49: restores markdown draft, debounces changes, and clears on send
+00:12 +50: formats delimiter-free text and serializes the supported Markdown subset
+00:13 +51: plain unformatted entry keeps the plain payload contract
+00:13 +52: toolbar stays bounded at compact width and honors chat theme
+00:13 +53: retains failed content and retries a failed send
+00:13 +54: emits typing lifecycle and submits from the keyboard action
+00:13 +55: uploads a host-selected source and includes its attachment
+00:14 +56: cancels an active upload through its public handle
+00:14 +57: delegate cancellation is inert and does not choose a picker
+00:14 +58: enforces UTF-8 and attachment limits
+00:14 +59: renders loading, disabled, access-revoked, and error states
+00:14 +60: filters active members and keyboard selection sends one canonical mention
+00:15 +61: Escape preserves text and token edits remove stale metadata
+00:15 +62: restores only a resolved active mention into draft and send
+00:15 +63: email, mid-word, selection, IME, disabled, and absent directory stay inert
+00:15 +64: stale directory results cannot replace a newer query
+00:16 +65: disposal stops typing and cancels pending local work
+00:16 +66: All tests passed!

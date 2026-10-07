@@ -1142,19 +1142,20 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
     final focusGeneration = ++_sendFocusGeneration;
     final focusNode = _focusNode;
     final primaryFocus = FocusManager.instance.primaryFocus;
-    final focusScopes = focusNode.ancestors.whereType<FocusScopeNode>().toSet();
+    final focusScope = focusNode.enclosingScope;
     var focusMoved = false;
     void observeFocus() {
       final current = FocusManager.instance.primaryFocus;
       // A pointer-activated send/retry may acquire focus after its callback.
-      // Disabling the field can return focus to an ancestor scope. Any other target
+      // Disabling the field returns focus to its scope. A different target
       // belongs to the user/host and must not be undone when this send settles.
+      print('FOCUS_EVENT ${current == focusNode} ${current == primaryFocus} ${current == focusScope} ${current == _sendButtonFocusNode} ${current == _retryButtonFocusNode} ${_sending}');
       final activatingSend = _sending &&
           (current == _sendButtonFocusNode || current == _retryButtonFocusNode);
       if (!activatingSend &&
           current != focusNode &&
           current != primaryFocus &&
-          !focusScopes.contains(current)) {
+          current != focusScope) {
         focusMoved = true;
       }
     }
@@ -1172,6 +1173,7 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
       // Keep the captured actor subscriptions alive through that frame too.
       await WidgetsBinding.instance.endOfFrame;
       FocusManager.instance.removeListener(observeFocus);
+      print('FOCUS_RESTORE mounted=$mounted current=${isCurrent()} generation=${focusGeneration == _sendFocusGeneration} client=${identical(_client, submission.client)} node=${identical(_focusNode, focusNode)} interact=$_canInteract sending=$_sending moved=$focusMoved can=${focusNode.canRequestFocus}');
       if (mounted &&
           isCurrent() &&
           focusGeneration == _sendFocusGeneration &&

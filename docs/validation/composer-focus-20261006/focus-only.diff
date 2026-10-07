@@ -1,0 +1,161 @@
+--- a/lib/src/handrail_message_composer.dart
++++ b/lib/src/handrail_message_composer.dart
+@@ -163,6 +163,8 @@
+   TextEditingController? _hostTextController;
+   late FocusNode _focusNode;
+   late bool _ownsFocusNode;
++  final _sendButtonFocusNode = FocusNode();
++  final _retryButtonFocusNode = FocusNode();
+   late MessageContentFormat _format;
+ 
+   HandrailChatClient? _client;
+@@ -268,6 +270,7 @@
+         _client?.replyStyles.state.identity?.userId,
+       );
+   var _bindingGeneration = 0;
++  var _sendFocusGeneration = 0;
+   var _draftGeneration = 0;
+   var _programmaticTextChange = false;
+   var _synchronizingHostController = false;
+@@ -319,6 +322,11 @@
+   @override
+   void didUpdateWidget(covariant HandrailMessageComposer oldWidget) {
+     super.didUpdateWidget(oldWidget);
++    if (oldWidget.enabled != widget.enabled ||
++        oldWidget.controller != widget.controller ||
++        oldWidget.focusNode != widget.focusNode) {
++      ++_sendFocusGeneration;
++    }
+     if (oldWidget.controller != widget.controller) {
+       _hostTextController?.removeListener(_handleHostControllerChanged);
+       _hostTextController = widget.controller;
+@@ -1131,6 +1139,26 @@
+           ),
+           draft: _currentDraftContent(),
+         );
++    final focusGeneration = ++_sendFocusGeneration;
++    final focusNode = _focusNode;
++    final primaryFocus = FocusManager.instance.primaryFocus;
++    final focusScopes = focusNode.ancestors.whereType<FocusScopeNode>().toSet();
++    var focusMoved = false;
++    void observeFocus() {
++      final current = FocusManager.instance.primaryFocus;
++      // A pointer-activated send/retry may acquire focus after its callback.
++      // Disabling the field can return focus to an ancestor scope. Any other target
++      // belongs to the user/host and must not be undone when this send settles.
++      final activatingSend = _sending &&
++          (current == _sendButtonFocusNode || current == _retryButtonFocusNode);
++      if (!activatingSend &&
++          current != focusNode &&
++          current != primaryFocus &&
++          !focusScopes.contains(current)) {
++        focusMoved = true;
++      }
++    }
++
+     final binding = _bindingGeneration;
+     final composition = _compositionGeneration;
+     bool isCurrent() =>
+@@ -1139,6 +1167,25 @@
+         composition == _compositionGeneration &&
+         !submission.identityChanged &&
+         submission.hasCurrentActor;
++    Future<void> restoreFocus() async {
++      // TextField updates canRequestFocus only when the enabled frame builds.
++      // Keep the captured actor subscriptions alive through that frame too.
++      await WidgetsBinding.instance.endOfFrame;
++      FocusManager.instance.removeListener(observeFocus);
++      if (mounted &&
++          isCurrent() &&
++          focusGeneration == _sendFocusGeneration &&
++          identical(_client, submission.client) &&
++          widget.conversationId == submission.input.conversationId &&
++          identical(_focusNode, focusNode) &&
++          _canInteract &&
++          !_sending &&
++          !focusMoved &&
++          focusNode.canRequestFocus) {
++        focusNode.requestFocus();
++      }
++    }
++
+     void releaseSupersededSend() {
+       if (!_disposed && binding == _bindingGeneration) {
+         setState(() => _sending = false);
+@@ -1159,6 +1206,7 @@
+ 
+     // Watch the captured actor even when this widget is rebound while storage
+     // is completing. A retry must never move the composition to another actor.
++    FocusManager.instance.addListener(observeFocus);
+     final identityReady = Completer<void>();
+     final identitySubscription =
+         submission.client.queuedSendMessageStates.listen((state) {
+@@ -1206,6 +1254,7 @@
+             _sendError =
+                 'Draft could not be saved locally. Retry or revise your message.';
+           });
++          await restoreFocus();
+         } else {
+           releaseSupersededSend();
+         }
+@@ -1239,7 +1288,7 @@
+           _sendError =
+               'Message could not be sent. Retry or revise your message.';
+         });
+-        _focusNode.requestFocus();
++        await restoreFocus();
+         return;
+       }
+       if (result is! ChatCommandSuccess<SendMessageResult> &&
+@@ -1256,7 +1305,7 @@
+               ? result.message
+               : 'Message could not be sent.';
+         });
+-        _focusNode.requestFocus();
++        await restoreFocus();
+         return;
+       }
+ 
+@@ -1311,8 +1360,8 @@
+             _localDraftDirty = true;
+           }
+         });
+-        _focusNode.requestFocus();
+         widget.onSent?.call();
++        await restoreFocus();
+       } else {
+         releaseSupersededSend();
+       }
+@@ -1337,6 +1386,7 @@
+         }
+       }
+     } finally {
++      FocusManager.instance.removeListener(observeFocus);
+       await identitySubscription.cancel();
+       await actorSubscription.cancel();
+     }
+@@ -1823,6 +1873,7 @@
+                   if (_failedContent != null)
+                     TextButton.icon(
+                       key: const ValueKey('handrail-message-composer-retry'),
++                      focusNode: _retryButtonFocusNode,
+                       onPressed: interactive
+                           ? () => unawaited(_submit(_failedContent))
+                           : null,
+@@ -1831,6 +1882,7 @@
+                     ),
+                   IconButton.filled(
+                     key: const ValueKey('handrail-message-composer-send'),
++                    focusNode: _sendButtonFocusNode,
+                     tooltip: 'Send message',
+                     onPressed: _canSend ? () => unawaited(_submit()) : null,
+                     icon: _sending
+@@ -2022,6 +2074,8 @@
+     _focusNode.removeListener(_handleFocusChanged);
+     _textController.dispose();
+     if (_ownsFocusNode) _focusNode.dispose();
++    _sendButtonFocusNode.dispose();
++    _retryButtonFocusNode.dispose();
+     super.dispose();
+   }
+ }

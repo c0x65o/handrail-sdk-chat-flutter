@@ -1,0 +1,154 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart
+00:00 +0: disabled send frame restores accepted input (success=true)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+completion must wait for the enabled TextField frame
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:95:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 95
+The test description was:
+  disabled send frame restores accepted input (success=true)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -1: disabled send frame restores accepted input (success=true) [E]
+  Test failed. See exception logs above.
+  The test description was: disabled send frame restores accepted input (success=true)
+  
+00:02 +0 -1: disabled send frame restores accepted input (success=false)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+completion must wait for the enabled TextField frame
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:95:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 95
+The test description was:
+  disabled send frame restores accepted input (success=false)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -2: disabled send frame restores accepted input (success=false) [E]
+  Test failed. See exception logs above.
+  The test description was: disabled send frame restores accepted input (success=false)
+  
+00:02 +0 -2: local draft persistence failure restores input after disabled frame
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:349:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 349
+The test description was:
+  local draft persistence failure restores input after disabled frame
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -3: local draft persistence failure restores input after disabled frame [E]
+  Test failed. See exception logs above.
+  The test description was: local draft persistence failure restores input after disabled frame
+  
+00:03 +0 -3: send focus survives local clear failure
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:406:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 406
+The test description was:
+  send focus survives local clear failure
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:03 +0 -4: send focus survives local clear failure [E]
+  Test failed. See exception logs above.
+  The test description was: send focus survives local clear failure
+  
+00:03 +0 -4: send focus survives queued local completion
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:406:9)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 406
+The test description was:
+  send focus survives queued local completion
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -5: send focus survives queued local completion [E]
+  Test failed. See exception logs above.
+  The test description was: send focus survives queued local completion
+  
+00:04 +0 -5: delayed explicit retry restores focus and preserves submitted content
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:445:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 445
+The test description was:
+  delayed explicit retry restores focus and preserves submitted content
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:04 +0 -6: delayed explicit retry restores focus and preserves submitted content [E]
+  Test failed. See exception logs above.
+  The test description was: delayed explicit retry restores focus and preserves submitted content
+  
+00:04 +0 -6: Some tests failed.

@@ -1,0 +1,60 @@
+00:00 +0: loading /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart
+00:00 +0: delayed draft echo preserves selection and IME (rich=false)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: TextEditingValue:<TextEditingValue(text: ┤Draft editing├, selection:
+TextSelection(baseOffset: 4, extentOffset: 6, isDirectional: false), composing: TextRange(start: 3,
+end: 8))>
+  Actual: TextEditingValue:<TextEditingValue(text: ┤Draft editing├, selection:
+TextSelection.collapsed(offset: 13, affinity: TextAffinity.downstream, isDirectional: false),
+composing: TextRange(start: -1, end: -1))>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart:130:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart line 130
+The test description was:
+  delayed draft echo preserves selection and IME (rich=false)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: delayed draft echo preserves selection and IME (rich=false) [E]
+  Test failed. See exception logs above.
+  The test description was: delayed draft echo preserves selection and IME (rich=false)
+  
+00:01 +0 -1: delayed draft echo preserves selection and IME (rich=true)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: TextEditingValue:<TextEditingValue(text: ┤Draft editing├, selection:
+TextSelection(baseOffset: 4, extentOffset: 6, isDirectional: false), composing: TextRange(start: 3,
+end: 8))>
+  Actual: TextEditingValue:<TextEditingValue(text: ┤Draft editing├, selection:
+TextSelection.collapsed(offset: 13, affinity: TextAffinity.downstream, isDirectional: false),
+composing: TextRange(start: -1, end: -1))>
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart:130:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/test/handrail_message_composer_test.dart line 130
+The test description was:
+  delayed draft echo preserves selection and IME (rich=true)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -2: delayed draft echo preserves selection and IME (rich=true) [E]
+  Test failed. See exception logs above.
+  The test description was: delayed draft echo preserves selection and IME (rich=true)
+  
+00:02 +0 -2: Some tests failed.

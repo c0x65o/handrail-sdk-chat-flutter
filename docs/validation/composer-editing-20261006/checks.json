@@ -1,0 +1,129 @@
+{
+  "work_request": "534714b2-2ffb-4771-a1ff-db609a365f14",
+  "run": "a2fa9fd9-c25b-4895-85c2-eab322a096ae",
+  "baseline": {
+    "version": "0.1.31",
+    "commit": "51cf4d55ea147fd71267787b774585278ed1f55a"
+  },
+  "verdict": "Both targeted SDK defects corrected; finish-line qualification remains limited by the separately reproduced native Flutter browser focus behavior and native browser IME verification.",
+  "checks": [
+    {
+      "name": "baseline regressions",
+      "result": "expected_failure",
+      "text_fields": 2,
+      "selection_before": [
+        4,
+        6
+      ],
+      "selection_after": [
+        13,
+        13
+      ],
+      "artifacts": [
+        "before-semantics.txt",
+        "before-draft.txt",
+        "before-rendered-refocus-browser.json"
+      ]
+    },
+    {
+      "name": "current focused tests",
+      "result": "passed",
+      "count": 193,
+      "composer_tests": 49,
+      "toolchain": "Flutter 3.41.7 / Dart 3.11.5",
+      "artifact": "current-tests-final.txt"
+    },
+    {
+      "name": "minimum focused tests",
+      "result": "passed",
+      "count": 193,
+      "composer_tests": 49,
+      "toolchain": "Flutter 3.19.0 / Dart 3.3.0",
+      "artifact": "minimum-tests-final.txt"
+    },
+    {
+      "name": "scoped analysis both toolchains",
+      "result": "passed",
+      "artifacts": [
+        "current-scoped-analyze.txt",
+        "minimum-scoped-analyze.txt"
+      ]
+    },
+    {
+      "name": "full lib/test analysis both toolchains",
+      "result": "failed_baseline",
+      "issues": 13,
+      "unchanged_from_recorded_baseline": true,
+      "artifacts": [
+        "current-analyze-final.txt",
+        "minimum-analyze-final.txt"
+      ]
+    },
+    {
+      "name": "full SDK suite",
+      "result": "failed_baseline",
+      "passed": 2471,
+      "failed": 7,
+      "duration_seconds": 123,
+      "timeout_seconds": 300,
+      "artifacts": [
+        "full-sdk-run.txt",
+        "baseline-existing-failures.txt"
+      ]
+    },
+    {
+      "name": "pure Dart package guards",
+      "result": "passed",
+      "count_each": 3,
+      "current_compiler": "source (default kernel runner requires an absent frontend snapshot with the unchanged lock)",
+      "artifacts": [
+        "pure-dart-source-guard.txt",
+        "minimum-pure-dart-guard.txt"
+      ]
+    },
+    {
+      "name": "CanvasKit public widget/controller fixture",
+      "result": "passed_with_explicit_focus_navigation",
+      "text_fields": 1,
+      "native_keyboard_range_preserved": [
+        4,
+        6
+      ],
+      "public_host_composing_preserved": [
+        3,
+        8
+      ],
+      "send_count": 1,
+      "artifact": "after-qualified-refocus-browser.json"
+    },
+    {
+      "name": "native Flutter control after-send focus",
+      "result": "failed",
+      "note": "One native TextField also accepts DOM text without updating its controller until focus leaves and returns. Not counted as accepted input.",
+      "artifact": "native-rendered-control-browser.json"
+    },
+    {
+      "name": "native browser IME",
+      "result": "unverified",
+      "note": "CDP attempt did not establish a valid accepted composing precondition. Widget platform IME and CanvasKit public-controller composing are verified separately.",
+      "artifact": "attempts/after-final-refocus-browser.json"
+    },
+    {
+      "name": "protected workspaces",
+      "result": "passed",
+      "artifact": "protected-published-evidence-check.json"
+    }
+  ],
+  "publication": {
+    "commit": false,
+    "push": false,
+    "deploy": false,
+    "version_bump": false,
+    "public_fixed_sha": null,
+    "parent_owned": true
+  },
+  "unrelated_work_not_claimed": [
+    "first-window 120/min budget diagnosis",
+    "AssistantSDK .40 adoption"
+  ]
+}

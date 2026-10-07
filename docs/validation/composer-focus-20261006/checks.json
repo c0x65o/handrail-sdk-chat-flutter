@@ -1,0 +1,68 @@
+{
+  "work_request": "8f66ba80-8700-4449-b37e-974923852b90",
+  "verdict": "bounded send-focus fix qualified; separate toolbar and native browser IME gates remain",
+  "production_composer_sha256": "0ce967b86b4b1914c2eb3da4e8be3bc7be6f16819cacf91cdc7c6b0982cf36c6",
+  "incremental_production_diff": {
+    "added": 57,
+    "removed": 3,
+    "files": 1
+  },
+  "baseline_widget_paths": {
+    "expected_failures": 6,
+    "exit": 1
+  },
+  "focused_tests": {
+    "current": 212,
+    "minimum": 212,
+    "composer": 68,
+    "prior_regressions": 193,
+    "new_regressions": 19
+  },
+  "scoped_analysis": "clean on both",
+  "full_analysis": {
+    "status": "failed_baseline",
+    "count_each": 13,
+    "exact_prior_findings_match": true
+  },
+  "full_suite": {
+    "status": "not_rerun",
+    "retained_prior_passed": 2471,
+    "retained_prior_failed": 7,
+    "five_minute_policy_unchanged": true
+  },
+  "rendered": {
+    "toolchain": "Flutter 3.41.7 / CanvasKit",
+    "browser": "151.0.7922.34",
+    "baseline_controls": 3,
+    "baseline_rejected_first_input": 3,
+    "candidate_controls": 3,
+    "candidate_accepted_first_input": 3,
+    "candidate_accepted_repeated_input": 3,
+    "actual_sdk_canonical_counts": [
+      2,
+      1,
+      2
+    ],
+    "lifecycle_controls_passed": 6,
+    "toolbar_formatting": "passed",
+    "ordinary_typing_after_enabled_toolbar": "failed, separately retained",
+    "browser_unicode_via_cdp": "accepted into controller and draft",
+    "native_browser_composing_range": "unverified: remained [-1,-1]",
+    "native_device": "not_tested"
+  },
+  "source_custody": {
+    "source_archives_rebuilt": true,
+    "source_tree_differences": [
+      "lib/src/handrail_message_composer.dart"
+    ],
+    "production_and_archived_test_sources_match": true
+  },
+  "publication": {
+    "commit": false,
+    "push": false,
+    "deploy": false,
+    "version_bump": false,
+    "parent_owned": true,
+    "recommendation": "independent review and bounded Flutter-only publication, retaining separate toolbar/IME gates and later exact Git consumer checks"
+  }
+}

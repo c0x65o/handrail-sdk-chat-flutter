@@ -53,104 +53,55 @@ const _outsider = HandrailMemberDirectoryRow(
 
 void main() {
   for (final succeeds in [true, false]) {
-    testWidgets(
-      'disabled send frame restores accepted input (success=$succeeds)',
-      (tester) async {
-        final storage = InMemoryApplicationChatStorage();
-        final harness = _Harness(
-          storage: storage,
-          sendFailuresRemaining: succeeds ? 0 : 1,
-        );
-        harness.transport.sendFailureStatus = 400;
-        addTearDown(() => _disposeHarness(tester, harness));
-        final focus = FocusNode();
-        final host = TextEditingController();
-        addTearDown(focus.dispose);
-        addTearDown(host.dispose);
-        await _pumpComposer(
-          tester,
-          harness,
-          focusNode: focus,
-          controller: host,
-        );
-        await tester.enterText(find.byKey(_input), 'Original');
-        await tester.pump();
-        final pending = Completer<void>();
-        harness.transport.pendingSend = pending;
-        await tester.tap(find.byKey(_send));
-        await _pumpUntil(
-          tester,
-          () => harness.transport.operations('send').isNotEmpty,
-        );
-        await tester.pump();
-        expect(tester.widget<TextField>(find.byKey(_input)).enabled, isFalse);
-        expect(focus.canRequestFocus, isFalse);
-        expect(focus.hasFocus, isFalse);
-        pending.complete();
-        await _pumpUntil(
-          tester,
-          () => tester.widget<TextField>(find.byKey(_input)).enabled!,
-        );
-        await tester.pump();
-        expect(
-          focus.hasFocus,
-          isTrue,
-          reason: 'completion must wait for the enabled TextField frame',
-        );
-        expect(tester.testTextInput.hasAnyClients, isTrue);
-        final draftGate = Completer<void>();
-        harness.transport.pendingDraft = draftGate;
-        final next = succeeds ? 'X' : 'OriginalX';
-        // Platform input on the existing connection: no enterText/showKeyboard/refocus.
-        tester.testTextInput.updateEditingValue(
-          TextEditingValue(
-            text: next,
-            selection: TextSelection.collapsed(offset: next.length),
-            composing: TextRange(start: next.length - 1, end: next.length),
-          ),
-        );
-        await tester.pump(const Duration(milliseconds: 100));
-        expect(host.text, next);
-        expect(
-          host.value.composing,
-          TextRange(start: next.length - 1, end: next.length),
-        );
-        expect(_text(tester), next);
-        await _pumpUntil(
-          tester,
-          () =>
-              (harness.client.draftFor(_conversationId)?.draft
-                      as CanonicalReplacedDraft?)
-                  ?.content
-                  .text ==
-              next,
-        );
-        final stored = await storage.read(
-          _storageIdentity,
-          ApplicationChatStorageRecordKind.queuedDraftIntents,
-        );
-        expect(jsonEncode(stored?.toJson()), contains(next));
-        expect(harness.transport.operations('send'), hasLength(1));
-        draftGate.complete();
-        await tester.pump(const Duration(milliseconds: 100));
-      },
-    );
+    testWidgets('disabled send frame restores accepted input (success=$succeeds)',
+        (tester) async {
+      final storage = InMemoryApplicationChatStorage();
+      final harness = _Harness(storage: storage,
+          sendFailuresRemaining: succeeds ? 0 : 1);
+      harness.transport.sendFailureStatus = 400;
+      addTearDown(() => _disposeHarness(tester, harness));
+      final focus = FocusNode();
+      final host = TextEditingController();
+      addTearDown(focus.dispose);
+      addTearDown(host.dispose);
+      await _pumpComposer(tester, harness, focusNode: focus, controller: host);
+      await tester.enterText(find.byKey(_input), 'Original');
+      await tester.pump();
+      final pending = Completer<void>();
+      harness.transport.pendingSend = pending;
+      await tester.tap(find.byKey(_send));
+      await _pumpUntil(tester, () => harness.transport.operations('send').isNotEmpty);
+      await tester.pump();
+      expect(tester.widget<TextField>(find.byKey(_input)).enabled, isFalse);
+      expect(focus.canRequestFocus, isFalse);
+      expect(focus.hasFocus, isFalse);
+      pending.complete();
+      await _pumpUntil(tester, () => tester.widget<TextField>(find.byKey(_input)).enabled!);
+      await tester.pump();
+      expect(focus.hasFocus, isTrue, reason: 'completion must wait for the enabled TextField frame');
+      expect(tester.testTextInput.hasAnyClients, isTrue);
+      final draftGate = Completer<void>();
+      harness.transport.pendingDraft = draftGate;
+      final next = succeeds ? 'X' : 'OriginalX';
+      // Platform input on the existing connection: no enterText/showKeyboard/refocus.
+      tester.testTextInput.updateEditingValue(TextEditingValue(text: next,
+          selection: TextSelection.collapsed(offset: next.length)));
+      await tester.pump(const Duration(milliseconds: 100));
+      expect(host.text, next);
+      expect(_text(tester), next);
+      await _pumpUntil(tester, () =>
+          (harness.client.draftFor(_conversationId)?.draft as CanonicalReplacedDraft?)?.content.text == next);
+      final stored = await storage.read(_storageIdentity,
+          ApplicationChatStorageRecordKind.queuedDraftIntents);
+      expect(jsonEncode(stored?.toJson()), contains(next));
+      expect(harness.transport.operations('send'), hasLength(1));
+      draftGate.complete();
+      await tester.pump(const Duration(milliseconds: 100));
+    });
   }
 
-  for (final boundary in [
-    'focus movement',
-    'channel',
-    'thread',
-    'enabled cycle',
-    'focus replacement',
-    'controller replacement',
-    'account cycle',
-    'client replacement',
-    'logout',
-    'hide return',
-    'teardown',
-    'new draft',
-  ]) {
+  for (final boundary in ['focus movement', 'channel', 'thread', 'enabled cycle',
+    'focus replacement', 'controller replacement', 'account cycle', 'logout', 'hide return', 'teardown', 'new draft']) {
     testWidgets('send focus restoration respects $boundary', (tester) async {
       final harness = _Harness(storage: InMemoryApplicationChatStorage());
       addTearDown(() => _disposeHarness(tester, harness));
@@ -163,32 +114,18 @@ void main() {
       addTearDown(host.dispose);
       addTearDown(replacement.dispose);
       final key = GlobalKey<HandrailMessageComposerState>();
-      Future<void> pump({
-        bool enabled = true,
-        FocusNode? node,
-        TextEditingController? controller,
-        ConversationId id = _conversationId,
-      }) => _pumpComposer(
-        tester,
-        harness,
-        composerKey: key,
-        focusNode: node ?? focus,
-        controller: controller ?? host,
-        conversationId: id,
-        enabled: enabled,
-        waitUntilReady: enabled,
-        outsideFocus: boundary == 'focus movement' ? other : null,
-      );
+      Future<void> pump({bool enabled = true, FocusNode? node,
+          TextEditingController? controller, ConversationId id = _conversationId}) =>
+          _pumpComposer(tester, harness, composerKey: key, focusNode: node ?? focus,
+            controller: controller ?? host, conversationId: id, enabled: enabled,
+            waitUntilReady: enabled, outsideFocus: boundary == 'focus movement' ? other : null);
       await pump();
       await tester.enterText(find.byKey(_input), 'Original');
       await tester.pump();
       final pending = Completer<void>();
       harness.transport.pendingSend = pending;
       await tester.tap(find.byKey(_send));
-      await _pumpUntil(
-        tester,
-        () => harness.transport.operations('send').isNotEmpty,
-      );
+      await _pumpUntil(tester, () => harness.transport.operations('send').isNotEmpty);
       await tester.pump();
       expect(focus.canRequestFocus, isFalse);
       switch (boundary) {
@@ -203,58 +140,22 @@ void main() {
         case 'enabled cycle':
           await pump(enabled: false);
           // Readiness cannot settle until the pending send finishes.
-          await _pumpComposer(
-            tester,
-            harness,
-            composerKey: key,
-            controller: host,
-            focusNode: focus,
-            waitUntilReady: false,
-          );
+          await _pumpComposer(tester, harness, composerKey: key,
+              controller: host, focusNode: focus, waitUntilReady: false);
         case 'focus replacement':
-          await _pumpComposer(
-            tester,
-            harness,
-            composerKey: key,
-            controller: host,
-            focusNode: other,
-            waitUntilReady: false,
-          );
+          await _pumpComposer(tester, harness, composerKey: key,
+              controller: host, focusNode: other, waitUntilReady: false);
         case 'controller replacement':
-          await _pumpComposer(
-            tester,
-            harness,
-            composerKey: key,
-            controller: replacement,
-            focusNode: focus,
-            waitUntilReady: false,
-          );
-        case 'client replacement':
-          final next = _Harness(storage: InMemoryApplicationChatStorage());
-          addTearDown(() => _disposeHarness(tester, next));
-          await _pumpComposer(
-            tester,
-            next,
-            composerKey: key,
-            controller: host,
-            focusNode: focus,
-          );
+          await _pumpComposer(tester, harness, composerKey: key,
+              controller: replacement, focusNode: focus, waitUntilReady: false);
         case 'account cycle':
           var done = false;
-          harness.client
-              .activateStorageIdentity(
-                ApplicationChatStorageIdentity(
-                  tenantId: _storageIdentity.tenantId,
-                  userId: const UserId('another-actor'),
-                  deviceId: _storageIdentity.deviceId,
-                ),
-              )
-              .then((_) => done = true);
+          harness.client.activateStorageIdentity(ApplicationChatStorageIdentity(
+            tenantId: _storageIdentity.tenantId, userId: const UserId('another-actor'),
+            deviceId: _storageIdentity.deviceId)).then((_) => done = true);
           await _pumpUntil(tester, () => done);
           done = false;
-          harness.client
-              .activateStorageIdentity(_storageIdentity)
-              .then((_) => done = true);
+          harness.client.activateStorageIdentity(_storageIdentity).then((_) => done = true);
           await _pumpUntil(tester, () => done);
         case 'logout':
           var done = false;
@@ -265,10 +166,8 @@ void main() {
           await tester.pumpWidget(const SizedBox());
           if (boundary == 'hide return') await pump();
         case 'new draft':
-          host.value = const TextEditingValue(
-            text: 'New draft',
-            selection: TextSelection.collapsed(offset: 3),
-          );
+          host.value = const TextEditingValue(text: 'New draft',
+            selection: TextSelection.collapsed(offset: 3), composing: TextRange(start: 0, end: 3));
       }
       pending.complete();
       await tester.pump(const Duration(milliseconds: 100));
@@ -278,37 +177,27 @@ void main() {
       if (boundary == 'new draft') {
         expect(host.text, 'New draft');
         expect(host.selection, const TextSelection.collapsed(offset: 3));
-        expect(host.value.composing, TextRange.empty);
+        expect(host.value.composing, const TextRange(start: 0, end: 3));
       }
       expect(tester.takeException(), isNull);
     });
   }
 
-  testWidgets('onSent focus navigation wins over deferred restoration', (
-    tester,
-  ) async {
+  testWidgets('onSent focus navigation wins over deferred restoration', (tester) async {
     final harness = _Harness();
     addTearDown(() => _disposeHarness(tester, harness));
     final focus = FocusNode();
     final other = FocusNode();
     addTearDown(focus.dispose);
     addTearDown(other.dispose);
-    await _pumpComposer(
-      tester,
-      harness,
-      focusNode: focus,
-      outsideFocus: other,
-      onSent: other.requestFocus,
-    );
+    await _pumpComposer(tester, harness, focusNode: focus, outsideFocus: other,
+        onSent: other.requestFocus);
     await tester.enterText(find.byKey(_input), 'Original');
     await tester.pump();
     final gate = Completer<void>();
     harness.transport.pendingSend = gate;
     await tester.tap(find.byKey(_send));
-    await _pumpUntil(
-      tester,
-      () => harness.transport.operations('send').isNotEmpty,
-    );
+    await _pumpUntil(tester, () => harness.transport.operations('send').isNotEmpty);
     expect(focus.canRequestFocus, isFalse);
     gate.complete();
     await _pumpUntil(tester, () => other.hasFocus);
@@ -317,160 +206,31 @@ void main() {
     expect(focus.hasFocus, isFalse);
   });
 
-  testWidgets(
-    'local draft persistence failure restores input after disabled frame',
-    (tester) async {
-      final storage = _ControlledStorage();
-      final harness = _Harness(storage: storage);
-      addTearDown(() => _disposeHarness(tester, harness));
-      final focus = FocusNode();
-      addTearDown(focus.dispose);
-      await _pumpComposer(
-        tester,
-        harness,
-        focusNode: focus,
-        draftDebounce: const Duration(seconds: 10),
-      );
-      await tester.enterText(find.byKey(_input), 'Original');
-      await tester.pump();
-      final gate = Completer<void>();
-      storage.pendingWrite = gate;
-      await tester.tap(find.byKey(_send));
-      await _pumpUntil(tester, () => storage.waiting);
-      await tester.pump();
-      expect(focus.canRequestFocus, isFalse);
-      storage.failKind = ApplicationChatStorageRecordKind.queuedDraftIntents;
-      gate.complete();
-      await _pumpUntil(
-        tester,
-        () => tester.widget<TextField>(find.byKey(_input)).enabled!,
-      );
-      await tester.pump();
-      expect(focus.hasFocus, isTrue);
-      expect(harness.transport.operations('send'), isEmpty);
-      expect(
-        find.text(
-          'Draft could not be saved locally. Retry or revise your message.',
-        ),
-        findsOneWidget,
-      );
-      storage.failKind = null;
-    },
-  );
-
-  for (final queued in [false, true]) {
-    testWidgets(
-      'send focus survives ${queued ? 'queued local completion' : 'local clear failure'}',
-      (tester) async {
-        final storage = _ControlledStorage();
-        final harness = _Harness(storage: storage, realtime: queued);
-        addTearDown(() => _disposeHarness(tester, harness));
-        if (queued) await _connectStoredComposer(tester, harness);
-        final focus = FocusNode();
-        addTearDown(focus.dispose);
-        await _pumpComposer(
-          tester,
-          harness,
-          focusNode: focus,
-          draftDebounce: const Duration(seconds: 10),
-        );
-        await tester.enterText(find.byKey(_input), 'Original');
-        await tester.pump();
-        final gate = Completer<void>();
-        if (queued) {
-          harness.network.setOnline(false);
-          storage.pendingWrite = gate;
-          await tester.pump();
-        } else {
-          harness.transport.pendingSend = gate;
-        }
-        await tester.tap(find.byKey(_send));
-        await _pumpUntil(
-          tester,
-          () => queued
-              ? storage.waiting
-              : harness.transport.operations('send').isNotEmpty,
-        );
-        await tester.pump();
-        expect(focus.canRequestFocus, isFalse);
-        if (!queued) {
-          storage.failKind =
-              ApplicationChatStorageRecordKind.queuedDraftIntents;
-        }
-        gate.complete();
-        await _pumpUntil(
-          tester,
-          () => tester.widget<TextField>(find.byKey(_input)).enabled!,
-        );
-        await tester.pump();
-        expect(focus.hasFocus, isTrue);
-        expect(_text(tester), isEmpty);
-        if (queued) {
-          expect(harness.client.queuedSendMessages, hasLength(1));
-          expect(harness.transport.operations('send'), isEmpty);
-        } else {
-          expect(harness.transport.operations('send'), hasLength(1));
-          expect(
-            find.text('Message sent, but its draft could not be cleared.'),
-            findsOneWidget,
-          );
-        }
-        storage.failKind = null;
-      },
-    );
-  }
-
-  testWidgets(
-    'delayed explicit retry restores focus and preserves submitted content',
-    (tester) async {
-      final harness = _Harness(sendFailuresRemaining: 1);
-      addTearDown(() => _disposeHarness(tester, harness));
-      final focus = FocusNode();
-      addTearDown(focus.dispose);
-      await _pumpComposer(tester, harness, focusNode: focus);
-      await tester.enterText(find.byKey(_input), 'Original');
-      await tester.pump();
-      final first = Completer<void>();
-      harness.transport.pendingSend = first;
-      await tester.tap(find.byKey(_send));
-      await _pumpUntil(
-        tester,
-        () => harness.transport.operations('send').length == 1,
-      );
-      await tester.pump();
-      expect(focus.canRequestFocus, isFalse);
-      first.complete();
-      await _pumpUntil(tester, () => find.text('Retry').evaluate().isNotEmpty);
-      await tester.pump();
-      expect(focus.hasFocus, isTrue);
-      final retry = Completer<void>();
-      harness.transport.pendingSend = retry;
-      await tester.tap(find.text('Retry'));
-      tester
-          .widget<TextButton>(
-            find.byKey(const ValueKey('handrail-message-composer-retry')),
-          )
-          .focusNode!
-          .requestFocus();
-      await _pumpUntil(
-        tester,
-        () => harness.transport.operations('send').length == 2,
-      );
-      await tester.pump();
-      expect(focus.canRequestFocus, isFalse);
-      retry.complete();
-      await _pumpUntil(
-        tester,
-        () => tester.widget<TextField>(find.byKey(_input)).enabled!,
-      );
-      await tester.pump();
-      expect(focus.hasFocus, isTrue);
-      final sends = harness.transport.operations('send');
-      expect(sends[1]['content'], sends[0]['content']);
-      expect(sends[1]['conversationId'], sends[0]['conversationId']);
-      expect(harness.transport.sentSequence, 11);
-    },
-  );
+  testWidgets('local draft persistence failure restores input after disabled frame', (tester) async {
+    final storage = _ControlledStorage();
+    final harness = _Harness(storage: storage);
+    addTearDown(() => _disposeHarness(tester, harness));
+    final focus = FocusNode();
+    addTearDown(focus.dispose);
+    await _pumpComposer(tester, harness, focusNode: focus,
+        draftDebounce: const Duration(seconds: 10));
+    await tester.enterText(find.byKey(_input), 'Original');
+    await tester.pump();
+    final gate = Completer<void>();
+    storage.pendingWrite = gate;
+    await tester.tap(find.byKey(_send));
+    await _pumpUntil(tester, () => storage.waiting);
+    await tester.pump();
+    expect(focus.canRequestFocus, isFalse);
+    storage.failKind = ApplicationChatStorageRecordKind.queuedDraftIntents;
+    gate.complete();
+    await _pumpUntil(tester, () => tester.widget<TextField>(find.byKey(_input)).enabled!);
+    await tester.pump();
+    expect(focus.hasFocus, isTrue);
+    expect(harness.transport.operations('send'), isEmpty);
+    expect(find.text('Draft could not be saved locally. Retry or revise your message.'), findsOneWidget);
+    storage.failKind = null;
+  });
 
   testWidgets(
     'composer exposes one labeled actionable editable semantic node',

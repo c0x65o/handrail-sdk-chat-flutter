@@ -1,0 +1,5 @@
+00:00 +0: loading /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/test/core_import_boundary_test.dart
+00:00 +0: public package version matches the canonical manifest before generation
+00:00 +1: native version mirror targets the exported Dart constant
+00:00 +2: core.dart has a pure-Dart import graph
+00:00 +3: All tests passed!

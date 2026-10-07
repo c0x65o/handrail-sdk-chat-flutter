@@ -1,0 +1,54 @@
+00:00 +0: loading /opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart
+00:00 +0: disabled send frame restores accepted input (success=true)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+completion must wait for the enabled TextField frame
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:81:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 81
+The test description was:
+  disabled send frame restores accepted input (success=true)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:01 +0 -1: disabled send frame restores accepted input (success=true) [E]
+  Test failed. See exception logs above.
+  The test description was: disabled send frame restores accepted input (success=true)
+  
+00:01 +0 -1: disabled send frame restores accepted input (success=false)
+══╡ EXCEPTION CAUGHT BY FLUTTER TEST FRAMEWORK ╞════════════════════════════════════════════════════
+The following TestFailure was thrown running a test:
+Expected: true
+  Actual: <false>
+completion must wait for the enabled TextField frame
+
+When the exception was thrown, this was the stack:
+#4      main.<anonymous closure> (file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart:81:7)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1682:5)
+<asynchronous suspension>
+<asynchronous suspension>
+(elided one frame from package:stack_trace)
+
+This was caught by the test expectation on the following line:
+  file:///opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/baseline/test/handrail_message_composer_test.dart line 81
+The test description was:
+  disabled send frame restores accepted input (success=false)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+00:02 +0 -2: disabled send frame restores accepted input (success=false) [E]
+  Test failed. See exception logs above.
+  The test description was: disabled send frame restores accepted input (success=false)
+  
+00:02 +0 -2: Some tests failed.

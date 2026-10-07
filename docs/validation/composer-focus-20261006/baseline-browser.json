@@ -1,0 +1,1494 @@
+{
+  "phase": "baseline",
+  "browser": "151.0.7922.34",
+  "cases": [
+    {
+      "failure": false,
+      "width": 1050,
+      "errors": [],
+      "canvasKitResources": [
+        "http://127.0.0.1:38961/canvaskit/chromium/canvaskit.wasm",
+        "http://127.0.0.1:38961/canvaskit/chromium/canvaskit.js"
+      ],
+      "disabled": {
+        "accepted": {
+          "text": "Original",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            8,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": false,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": true,
+          "draft": "Original",
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": true
+          }
+        ]
+      },
+      "enabled": {
+        "accepted": {
+          "text": "",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            0,
+            0
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            }
+          ],
+          "acceptedCanonicalMessages": [
+            {
+              "id": "sent-2",
+              "tenantId": "tenant-composer",
+              "conversationId": "conversation-composer",
+              "author": {
+                "type": "user",
+                "userId": "user-composer"
+              },
+              "sequence": 10,
+              "createdAt": "2026-08-26T22:00:00.000Z",
+              "updatedAt": "2026-08-26T22:00:00.000Z",
+              "revision": {
+                "revision": 1
+              },
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ],
+          "sending": false,
+          "draft": null,
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "clear",
+              "conversationId": "conversation-composer",
+              "baseRevision": 1,
+              "deviceMutationId": "probe-draft-5",
+              "idempotencyKey": "probe-key-6"
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "firstCharacter": {
+        "accepted": {
+          "text": "",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            0,
+            0
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            }
+          ],
+          "acceptedCanonicalMessages": [
+            {
+              "id": "sent-2",
+              "tenantId": "tenant-composer",
+              "conversationId": "conversation-composer",
+              "author": {
+                "type": "user",
+                "userId": "user-composer"
+              },
+              "sequence": 10,
+              "createdAt": "2026-08-26T22:00:00.000Z",
+              "updatedAt": "2026-08-26T22:00:00.000Z",
+              "revision": {
+                "revision": 1
+              },
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ],
+          "sending": false,
+          "draft": null,
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "clear",
+              "conversationId": "conversation-composer",
+              "baseRevision": 1,
+              "deviceMutationId": "probe-draft-5",
+              "idempotencyKey": "probe-key-6"
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "nextDraft": {
+        "accepted": {
+          "text": "",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            0,
+            0
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            }
+          ],
+          "acceptedCanonicalMessages": [
+            {
+              "id": "sent-2",
+              "tenantId": "tenant-composer",
+              "conversationId": "conversation-composer",
+              "author": {
+                "type": "user",
+                "userId": "user-composer"
+              },
+              "sequence": 10,
+              "createdAt": "2026-08-26T22:00:00.000Z",
+              "updatedAt": "2026-08-26T22:00:00.000Z",
+              "revision": {
+                "revision": 1
+              },
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ],
+          "sending": false,
+          "draft": null,
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "clear",
+              "conversationId": "conversation-composer",
+              "baseRevision": 1,
+              "deviceMutationId": "probe-draft-5",
+              "idempotencyKey": "probe-key-6"
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "accepted": false
+    },
+    {
+      "failure": true,
+      "width": 1050,
+      "errors": [],
+      "canvasKitResources": [
+        "http://127.0.0.1:38961/canvaskit/chromium/canvaskit.wasm",
+        "http://127.0.0.1:38961/canvaskit/chromium/canvaskit.js"
+      ],
+      "disabled": {
+        "accepted": {
+          "text": "Original",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            8,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": false,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": true,
+          "draft": "Original",
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": true
+          }
+        ]
+      },
+      "enabled": {
+        "accepted": {
+          "text": "Original",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            8,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": "Original",
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "firstCharacter": {
+        "accepted": {
+          "text": "Original",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            8,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": "Original",
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "nextDraft": {
+        "accepted": {
+          "text": "Original",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            8,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": false,
+          "draft": "Original",
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "accepted": false
+    },
+    {
+      "failure": false,
+      "width": 390,
+      "errors": [],
+      "canvasKitResources": [
+        "http://127.0.0.1:38961/canvaskit/chromium/canvaskit.wasm",
+        "http://127.0.0.1:38961/canvaskit/chromium/canvaskit.js"
+      ],
+      "disabled": {
+        "accepted": {
+          "text": "Original",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            8,
+            8
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": false,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [],
+          "acceptedCanonicalMessages": [],
+          "sending": true,
+          "draft": "Original",
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": true
+          }
+        ]
+      },
+      "enabled": {
+        "accepted": {
+          "text": "",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            0,
+            0
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            }
+          ],
+          "acceptedCanonicalMessages": [
+            {
+              "id": "sent-2",
+              "tenantId": "tenant-composer",
+              "conversationId": "conversation-composer",
+              "author": {
+                "type": "user",
+                "userId": "user-composer"
+              },
+              "sequence": 10,
+              "createdAt": "2026-08-26T22:00:00.000Z",
+              "updatedAt": "2026-08-26T22:00:00.000Z",
+              "revision": {
+                "revision": 1
+              },
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ],
+          "sending": false,
+          "draft": null,
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "clear",
+              "conversationId": "conversation-composer",
+              "baseRevision": 1,
+              "deviceMutationId": "probe-draft-5",
+              "idempotencyKey": "probe-key-6"
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "firstCharacter": {
+        "accepted": {
+          "text": "",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            0,
+            0
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            }
+          ],
+          "acceptedCanonicalMessages": [
+            {
+              "id": "sent-2",
+              "tenantId": "tenant-composer",
+              "conversationId": "conversation-composer",
+              "author": {
+                "type": "user",
+                "userId": "user-composer"
+              },
+              "sequence": 10,
+              "createdAt": "2026-08-26T22:00:00.000Z",
+              "updatedAt": "2026-08-26T22:00:00.000Z",
+              "revision": {
+                "revision": 1
+              },
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ],
+          "sending": false,
+          "draft": null,
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "clear",
+              "conversationId": "conversation-composer",
+              "baseRevision": 1,
+              "deviceMutationId": "probe-draft-5",
+              "idempotencyKey": "probe-key-6"
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "nextDraft": {
+        "accepted": {
+          "text": "",
+          "conversation": "conversation-composer",
+          "visible": true,
+          "account": 0,
+          "outsideFocus": false,
+          "focusChanges": [
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": true,
+              "outside": false,
+              "scope": false,
+              "button": null,
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": false,
+              "button": "Send message",
+              "canRequestFocus": true
+            },
+            {
+              "editor": false,
+              "outside": false,
+              "scope": true,
+              "button": null,
+              "canRequestFocus": false
+            }
+          ],
+          "selection": [
+            0,
+            0
+          ],
+          "composing": [
+            -1,
+            -1
+          ],
+          "focus": false,
+          "canRequestFocus": true,
+          "disabledObserved": true,
+          "durable": "{}",
+          "canonical": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            }
+          ],
+          "acceptedCanonicalMessages": [
+            {
+              "id": "sent-2",
+              "tenantId": "tenant-composer",
+              "conversationId": "conversation-composer",
+              "author": {
+                "type": "user",
+                "userId": "user-composer"
+              },
+              "sequence": 10,
+              "createdAt": "2026-08-26T22:00:00.000Z",
+              "updatedAt": "2026-08-26T22:00:00.000Z",
+              "revision": {
+                "revision": 1
+              },
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            }
+          ],
+          "sending": false,
+          "draft": null,
+          "pending": false,
+          "requests": [
+            {
+              "operation": "send",
+              "conversationId": "conversation-composer",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              },
+              "clientMessageId": "probe-message-3",
+              "idempotencyKey": "probe-key-4"
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "replace",
+              "conversationId": "conversation-composer",
+              "baseRevision": 0,
+              "deviceMutationId": "probe-draft-1",
+              "idempotencyKey": "probe-key-2",
+              "content": {
+                "format": "plain",
+                "text": "Original",
+                "attachments": []
+              }
+            },
+            {
+              "operation": "synchronize_draft",
+              "intent": "clear",
+              "conversationId": "conversation-composer",
+              "baseRevision": 1,
+              "deviceMutationId": "probe-draft-5",
+              "idempotencyKey": "probe-key-6"
+            }
+          ]
+        },
+        "dom": [
+          {
+            "value": "",
+            "focused": false,
+            "disabled": false
+          },
+          {
+            "value": "Original",
+            "focused": false,
+            "disabled": false
+          }
+        ]
+      },
+      "accepted": false
+    }
+  ]
+}

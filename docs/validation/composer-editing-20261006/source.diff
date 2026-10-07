@@ -1,0 +1,523 @@
+diff --git a/lib/src/handrail_message_composer.dart b/lib/src/handrail_message_composer.dart
+index 9d1f422..71d7b51 100644
+--- a/lib/src/handrail_message_composer.dart
++++ b/lib/src/handrail_message_composer.dart
+@@ -262,6 +262,11 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+   String? _draftError;
+   String? _validationError;
+   int? _lastAppliedDraftRevision;
++  (TenantId?, UserId?)? _draftEditingActor;
++  (TenantId?, UserId?) get _currentDraftActor => (
++        _client?.replyStyles.state.identity?.tenantId,
++        _client?.replyStyles.state.identity?.userId,
++      );
+   var _bindingGeneration = 0;
+   var _draftGeneration = 0;
+   var _programmaticTextChange = false;
+@@ -419,8 +424,11 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+     ChatConversationControllerState state, {
+     required bool allowInitialClear,
+   }) {
+-    if (_localDraftDirty || _sending) return;
+     final projection = state.draft;
++    // A cleared identity projection must not carry editing state into a later
++    // account session, even if its draft happens to contain the same text.
++    if (projection == null) _draftEditingActor = null;
++    if (_localDraftDirty || _sending) return;
+     if (projection == null) {
+       if (_initialDraftRestored || !allowInitialClear) return;
+       _initialDraftRestored = true;
+@@ -433,6 +441,7 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+       return;
+     }
+     if (_initialDraftRestored &&
++        _draftEditingActor == _currentDraftActor &&
+         projection.revision == _lastAppliedDraftRevision) {
+       return;
+     }
+@@ -440,6 +449,14 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+     _lastAppliedDraftRevision = projection.revision;
+     switch (projection.draft) {
+       case CanonicalReplacedDraft(:final content):
++        // A matching echo acknowledges this composition; it is not an edit.
++        // Keep the native selection, IME range and rich-text editing metadata.
++        // Rebinding still clears the controller, and changed content/actors
++        // still take the normal replacement path.
++        if (_draftEditingActor == _currentDraftActor &&
++            _sameDraft(content, _currentDraftContent())) {
++          return;
++        }
+         _replaceAuthoredContent(
+           text: content.text,
+           format: _messageFormat(content.format),
+@@ -466,6 +483,7 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+     MessageReplyReference? replyTo,
+   }) {
+     _draftTimer?.cancel();
++    _draftEditingActor = _currentDraftActor;
+     _setReplyReference(replyTo);
+     _clearMentionState();
+     _programmaticTextChange = true;
+@@ -883,6 +901,7 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+   }
+ 
+   void _authoredContentChanged() {
++    _draftEditingActor = _currentDraftActor;
+     ++_compositionGeneration;
+     _localDraftDirty = true;
+     _failedContent = null;
+@@ -1643,8 +1662,6 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
+                       onKeyEvent: _handleComposerKey,
+                       child: Semantics(
+                         label: 'Message input',
+-                        textField: true,
+-                        enabled: interactive,
+                         child: TextField(
+                           key:
+                               const ValueKey('handrail-message-composer-input'),
+diff --git a/test/handrail_message_composer_test.dart b/test/handrail_message_composer_test.dart
+index 0e29fb7..d02a661 100644
+--- a/test/handrail_message_composer_test.dart
++++ b/test/handrail_message_composer_test.dart
+@@ -3,22 +3,20 @@ import 'dart:convert';
+ 
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
++import 'package:flutter/semantics.dart';
+ import 'package:flutter_test/flutter_test.dart';
+-import 'package:handrail_chat/flutter.dart';
++import 'package:handrail_chat/ui.dart';
+ import 'package:handrail_chat/testing.dart'
+     show FakeChatRealtimeNetwork, InMemoryApplicationChatStorage;
+-import 'package:handrail_chat/src/chat_application_delegates.dart';
+-import 'package:handrail_chat/src/handrail_chat_theme.dart';
+-import 'package:handrail_chat/src/handrail_member_picker.dart';
+-import 'package:handrail_chat/src/handrail_message_composer.dart';
+ 
+ import 'fixtures/conversation_membership_fixtures.dart';
+ import 'fixtures/draft_mutation_fixtures.dart';
+ 
+ final _storageIdentity = ApplicationChatStorageIdentity(
+-    tenantId: const TenantId(_tenantId),
+-    userId: const UserId(_userId),
+-    deviceId: const DeviceId('device-composer'));
++  tenantId: const TenantId(_tenantId),
++  userId: const UserId(_userId),
++  deviceId: const DeviceId('device-composer'),
++);
+ 
+ const _conversationId = ConversationId('conversation-composer');
+ const _tenantId = 'tenant-composer';
+@@ -38,10 +36,7 @@ const _grace = HandrailMemberDirectoryRow(
+   displayName: 'Grace',
+   subtitle: 'Engineering',
+ );
+-const _gina = HandrailMemberDirectoryRow(
+-  userId: _ginaId,
+-  displayName: 'Gina',
+-);
++const _gina = HandrailMemberDirectoryRow(userId: _ginaId, displayName: 'Gina');
+ const _disabled = HandrailMemberDirectoryRow(
+   userId: _disabledId,
+   displayName: 'Disabled Dana',
+@@ -57,6 +52,364 @@ const _outsider = HandrailMemberDirectoryRow(
+ );
+ 
+ void main() {
++  testWidgets(
++    'composer exposes one labeled actionable editable semantic node',
++    (tester) async {
++      final semantics = tester.ensureSemantics();
++      final harness = _Harness();
++      addTearDown(() => _disposeHarness(tester, harness));
++      final focus = FocusNode();
++      addTearDown(focus.dispose);
++      await _pumpComposer(tester, harness, focusNode: focus);
++      List<SemanticsNode> textFields() {
++        final nodes = <SemanticsNode>[];
++        void visit(SemanticsNode node) {
++          // ignore: deprecated_member_use
++          if (node.getSemanticsData().hasFlag(SemanticsFlag.isTextField)) {
++            nodes.add(node);
++          }
++          node.visitChildren((child) {
++            visit(child);
++            return true;
++          });
++        }
++
++        // ignore: deprecated_member_use
++        visit(tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!);
++        return nodes;
++      }
++
++      expect(textFields(), hasLength(1));
++      var node = textFields().single;
++      expect(node.getSemanticsData().label, contains('Message input'));
++      expect(node.getSemanticsData().hasAction(SemanticsAction.tap), isTrue);
++      // ignore: deprecated_member_use
++      tester.binding.pipelineOwner.semanticsOwner!.performAction(
++        node.id,
++        SemanticsAction.tap,
++      );
++      await tester.pump();
++      expect(focus.hasFocus, isTrue);
++      node = textFields().single;
++      // ignore: deprecated_member_use
++      expect(node.getSemanticsData().hasFlag(SemanticsFlag.isFocused), isTrue);
++      expect(
++        node.getSemanticsData().hasAction(SemanticsAction.setText),
++        isTrue,
++      );
++      // ignore: deprecated_member_use
++      tester.binding.pipelineOwner.semanticsOwner!.performAction(
++        node.id,
++        SemanticsAction.setText,
++        'Accessible edit',
++      );
++      await tester.pump();
++      expect(_text(tester), 'Accessible edit');
++      await _pumpUntil(
++        tester,
++        () => harness.transport.operations('synchronize_draft').isNotEmpty,
++      );
++      expect(
++        harness.transport.operations('synchronize_draft').last['content'],
++        containsPair('text', 'Accessible edit'),
++      );
++      semantics.dispose();
++    },
++  );
++
++  for (final rich in [false, true]) {
++    for (final ime in [false, true]) {
++      testWidgets(
++        'delayed draft echo preserves editing state (rich=$rich, ime=$ime)',
++        (tester) async {
++          final harness = _Harness(storage: InMemoryApplicationChatStorage());
++          addTearDown(() => _disposeHarness(tester, harness));
++          final host = TextEditingController();
++          addTearDown(host.dispose);
++          final pending = Completer<void>();
++          harness.transport.pendingDraft = pending;
++          await _pumpComposer(
++            tester,
++            harness,
++            controller: host,
++            draftDebounce: const Duration(milliseconds: 100),
++          );
++          await tester.enterText(find.byKey(_input), 'Draft editing');
++          if (rich) {
++            await _selectText(tester, 'Draft');
++            await tester.tap(
++              find.byKey(
++                const ValueKey('handrail-message-composer-format-bold'),
++              ),
++            );
++            await tester.pump();
++          }
++          await _pumpUntil(
++            tester,
++            () => harness.transport.operations('synchronize_draft').isNotEmpty,
++          );
++          final editing = TextEditingValue(
++            text: 'Draft editing',
++            selection: ime
++                ? const TextSelection.collapsed(offset: 6)
++                : const TextSelection(baseOffset: 4, extentOffset: 6),
++            composing: ime
++                ? const TextRange(start: 3, end: 8)
++                : TextRange.empty,
++          );
++          tester.testTextInput.updateEditingValue(editing);
++          await tester.pump();
++          expect(host.value, editing);
++          pending.complete();
++          await _pumpUntil(
++            tester,
++            () => harness.client.draftFor(_conversationId)?.isPending == false,
++          );
++          await tester.pump();
++          expect(host.value, editing);
++          expect(
++            tester.widget<TextField>(find.byKey(_input)).controller!.value,
++            editing,
++          );
++          final draft =
++              harness.client.draftFor(_conversationId)!.draft
++                  as CanonicalReplacedDraft;
++          expect(
++            draft.content.text,
++            rich ? '**Draft** editing' : 'Draft editing',
++          );
++          expect(harness.transport.operations('send'), isEmpty);
++        },
++      );
++    }
++  }
++
++  testWidgets('older draft acknowledgement preserves newer accepted edits', (
++    tester,
++  ) async {
++    final harness = _Harness(storage: InMemoryApplicationChatStorage());
++    addTearDown(() => _disposeHarness(tester, harness));
++    final host = TextEditingController();
++    addTearDown(host.dispose);
++    final gate = Completer<void>();
++    harness.transport.pendingDraft = gate;
++    await _pumpComposer(
++      tester,
++      harness,
++      controller: host,
++      draftDebounce: Duration.zero,
++    );
++    await tester.enterText(find.byKey(_input), 'Old draft');
++    await _pumpUntil(
++      tester,
++      () => harness.transport.operations('synchronize_draft').isNotEmpty,
++    );
++    await tester.enterText(find.byKey(_input), 'New accepted draft');
++    const editing = TextEditingValue(
++      text: 'New accepted draft',
++      selection: TextSelection(baseOffset: 4, extentOffset: 6),
++      composing: TextRange.empty,
++    );
++    tester.testTextInput.updateEditingValue(editing);
++    await tester.pump();
++    gate.complete();
++    await _pumpUntil(
++      tester,
++      () => harness.client.draftFor(_conversationId)?.isPending == false,
++    );
++    expect(host.value, editing);
++    expect(
++      (harness.client.draftFor(_conversationId)!.draft
++              as CanonicalReplacedDraft)
++          .content
++          .text,
++      editing.text,
++    );
++    expect(harness.transport.operations('send'), isEmpty);
++  });
++
++  testWidgets(
++    'remote replacements still update text and same-text formatting',
++    (tester) async {
++      final harness = _Harness();
++      addTearDown(() => _disposeHarness(tester, harness));
++      final host = TextEditingController();
++      addTearDown(host.dispose);
++      await _pumpComposer(tester, harness, controller: host);
++      harness.client.reconcileDraftEvent(
++        _draftEvent('Draft editing', format: 'plain'),
++      );
++      await tester.pump();
++      host.value = const TextEditingValue(
++        text: 'Draft editing',
++        selection: TextSelection(baseOffset: 4, extentOffset: 6),
++        composing: TextRange(start: 3, end: 8),
++      );
++      await tester.pump();
++      harness.client.reconcileDraftEvent(
++        _draftEvent('**Draft** editing', baseRevision: 1),
++      );
++      await tester.pump();
++      expect(host.text, 'Draft editing');
++      expect(_styleForText(tester, 'Draft').fontWeight, FontWeight.bold);
++      expect(host.selection, const TextSelection.collapsed(offset: 13));
++      expect(host.value.composing, TextRange.empty);
++      harness.client.reconcileDraftEvent(
++        _draftEvent('Changed remotely', baseRevision: 2),
++      );
++      await tester.pump();
++      expect(host.text, 'Changed remotely');
++    },
++  );
++
++  for (final thread in [false, true]) {
++    testWidgets(
++      'equal drafts across ${thread ? 'thread/main' : 'channels'} reset editing state',
++      (tester) async {
++        final harness = _Harness(storage: InMemoryApplicationChatStorage());
++        addTearDown(() => _disposeHarness(tester, harness));
++        const other = ConversationId('conversation-other');
++        if (thread) harness.transport.threads.add(other.value);
++        final key = GlobalKey<HandrailMessageComposerState>();
++        final host = TextEditingController();
++        addTearDown(host.dispose);
++        final gate = Completer<void>();
++        harness.transport.pendingDraft = gate;
++        await _pumpComposer(
++          tester,
++          harness,
++          composerKey: key,
++          controller: host,
++          draftDebounce: Duration.zero,
++        );
++        await tester.enterText(find.byKey(_input), 'Same text');
++        await _pumpUntil(
++          tester,
++          () => harness.transport.operations('synchronize_draft').isNotEmpty,
++        );
++        host.value = const TextEditingValue(
++          text: 'Same text',
++          selection: TextSelection(baseOffset: 1, extentOffset: 4),
++          composing: TextRange(start: 0, end: 4),
++        );
++        harness.client.reconcileDraftEvent(
++          _draftEvent('Same text', conversationId: other, format: 'plain'),
++        );
++        await _pumpComposer(
++          tester,
++          harness,
++          composerKey: key,
++          controller: host,
++          conversationId: other,
++        );
++        expect(host.text, 'Same text');
++        expect(host.selection, const TextSelection.collapsed(offset: 9));
++        expect(host.value.composing, TextRange.empty);
++        gate.complete();
++        await tester.pump(const Duration(milliseconds: 50));
++        expect(host.text, 'Same text');
++        expect(host.selection, const TextSelection.collapsed(offset: 9));
++        await _pumpComposer(
++          tester,
++          harness,
++          composerKey: key,
++          controller: host,
++        );
++        expect(host.text, 'Same text');
++        expect(host.selection, const TextSelection.collapsed(offset: 9));
++        expect(harness.transport.operations('send'), isEmpty);
++      },
++    );
++  }
++
++  testWidgets('equal draft after account turnover cannot retain previous IME', (
++    tester,
++  ) async {
++    final harness = _Harness(storage: InMemoryApplicationChatStorage());
++    addTearDown(() => _disposeHarness(tester, harness));
++    final host = TextEditingController();
++    addTearDown(host.dispose);
++    await _pumpComposer(
++      tester,
++      harness,
++      controller: host,
++      draftDebounce: Duration.zero,
++    );
++    await tester.enterText(find.byKey(_input), 'Same text');
++    await _pumpUntil(
++      tester,
++      () => harness.client.draftFor(_conversationId)?.isPending == false,
++    );
++    host.value = const TextEditingValue(
++      text: 'Same text',
++      selection: TextSelection(baseOffset: 1, extentOffset: 4),
++      composing: TextRange(start: 0, end: 4),
++    );
++    var activated = false;
++    harness.client
++        .activateStorageIdentity(
++          ApplicationChatStorageIdentity(
++            tenantId: _storageIdentity.tenantId,
++            userId: const UserId('another-user'),
++            deviceId: _storageIdentity.deviceId,
++          ),
++        )
++        .then((_) => activated = true);
++    await _pumpUntil(tester, () => activated);
++    await tester.pump();
++    harness.client.reconcileDraftEvent(
++      _draftEvent('Same text', format: 'plain', actorUserId: 'another-user'),
++    );
++    await tester.pump();
++    expect(host.text, 'Same text');
++    expect(host.selection, const TextSelection.collapsed(offset: 9));
++    expect(host.value.composing, TextRange.empty);
++    expect(harness.transport.operations('send'), isEmpty);
++  });
++
++  testWidgets('logout and new client with equal draft reset editing state', (
++    tester,
++  ) async {
++    final old = _Harness(storage: InMemoryApplicationChatStorage());
++    final next = _Harness(storage: InMemoryApplicationChatStorage());
++    addTearDown(() => _disposeHarness(tester, old));
++    addTearDown(() => _disposeHarness(tester, next));
++    final key = GlobalKey<HandrailMessageComposerState>();
++    final host = TextEditingController();
++    addTearDown(host.dispose);
++    final gate = Completer<void>();
++    old.transport.pendingDraft = gate;
++    await _pumpComposer(
++      tester,
++      old,
++      composerKey: key,
++      controller: host,
++      draftDebounce: Duration.zero,
++    );
++    await tester.enterText(find.byKey(_input), 'Same text');
++    await _pumpUntil(
++      tester,
++      () => old.transport.operations('synchronize_draft').isNotEmpty,
++    );
++    host.value = const TextEditingValue(
++      text: 'Same text',
++      selection: TextSelection(baseOffset: 1, extentOffset: 4),
++      composing: TextRange(start: 0, end: 4),
++    );
++    await tester.pumpWidget(const SizedBox());
++    var disposed = false;
++    old.client.dispose().then((_) => disposed = true);
++    await _pumpUntil(tester, () => disposed);
++    next.client.reconcileDraftEvent(_draftEvent('Same text', format: 'plain'));
++    await _pumpComposer(tester, next, composerKey: key, controller: host);
++    gate.complete();
++    await tester.pump(const Duration(milliseconds: 50));
++    expect(host.text, 'Same text');
++    expect(host.selection, const TextSelection.collapsed(offset: 9));
++    expect(host.value.composing, TextRange.empty);
++    expect(next.transport.operations('send'), isEmpty);
++  });
++
+   for (final retryCount in [0, 1]) {
+     testWidgets(
+         'offline Send persists one reply intent before reconnect (retries=$retryCount)',
+@@ -2323,16 +2676,19 @@ ConversationDraftUpdatedEvent _draftEvent(
+   MessageReplyReference? replyTo,
+   List<String> attachments = const [],
+   int baseRevision = 0,
++  String format = 'markdown',
++  ConversationId conversationId = _conversationId,
++  String actorUserId = _userId,
+ }) {
+   final input = <String, Object?>{
+     'operation': 'synchronize_draft',
+     'intent': 'replace',
+-    'conversationId': _conversationId.value,
++    'conversationId': conversationId.value,
+     'baseRevision': baseRevision,
+     'deviceMutationId': 'composer-seed-device',
+     'idempotencyKey': 'composer-seed-key',
+     'content': <String, Object?>{
+-      'format': 'markdown',
++      'format': format,
+       'text': text,
+       if (mentions != null)
+         'mentions': [for (final mention in mentions) mention.toJson()],
+@@ -2348,11 +2704,11 @@ ConversationDraftUpdatedEvent _draftEvent(
+       'eventId': 'composer-seed-event',
+       'protocolVersion': 4,
+       'tenantId': _tenantId,
+-      'streamId': 'user:$_userId',
++      'streamId': 'user:$actorUserId',
+       'type': draftUpdatedEventType,
+       'occurredAt': canonicalDraftUpdatedAtFixture,
+       'payload': {
+-        'actorUserId': _userId,
++        'actorUserId': actorUserId,
+         'input': input,
+         'result': result,
+       },

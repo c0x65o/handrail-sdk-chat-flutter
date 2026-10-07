@@ -1,0 +1,54 @@
+{
+  "toolchain": {
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+      "--version"
+    ],
+    "exit": 0,
+    "seconds": 0.22,
+    "timeout_seconds": 300
+  },
+  "tests": {
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+      "test",
+      "--no-pub",
+      "--concurrency=2",
+      "--reporter=expanded",
+      "test/core_import_boundary_test.dart",
+      "test/handrail_message_composer_test.dart",
+      "test/durable_resource_event_reducer_test.dart",
+      "test/realtime_session_transport_test.dart",
+      "test/draft_runtime_test.dart",
+      "test/offline_send_message_queue_test.dart",
+      "test/offline_send_message_queue_pump_test.dart"
+    ],
+    "exit": 0,
+    "seconds": 20.07,
+    "timeout_seconds": 300
+  },
+  "scoped-analyze": {
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+      "analyze",
+      "--no-pub",
+      "lib/src/handrail_message_composer.dart",
+      "test/handrail_message_composer_test.dart"
+    ],
+    "exit": 0,
+    "seconds": 16.96,
+    "timeout_seconds": 300
+  },
+  "analyze": {
+    "command": [
+      "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+      "analyze",
+      "--no-pub",
+      "lib",
+      "test"
+    ],
+    "exit": 1,
+    "seconds": 25.78,
+    "timeout_seconds": 300
+  }
+}

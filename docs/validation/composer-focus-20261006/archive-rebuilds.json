@@ -1,0 +1,62 @@
+{
+  "baseline": {
+    "source_archive_sha256": "ce7cdba97ed2ec47e50f0bed4903f663bd0e1f4c739a50fad2fa7a2fe9e749cc",
+    "commands": [
+      [
+        "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+        "pub",
+        "get",
+        "--no-example"
+      ],
+      [
+        "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--no-web-resources-cdn",
+        "--target",
+        "tool/focus_probe.dart"
+      ]
+    ],
+    "custody-pub-get": {
+      "exit": 0,
+      "seconds": 0.52
+    },
+    "build": {
+      "exit": 0,
+      "seconds": 38.25
+    },
+    "main_dart_js_sha256": "36f43e9da81a49765fc346ff1de4b0ba46f23c3608c0a7b88786ccb265067bcb"
+  },
+  "candidate": {
+    "source_archive_sha256": "c7dd2adde9af6e63b5e5fd8efd17d412d2f81a958a23a7b98e6f759bfff613b5",
+    "commands": [
+      [
+        "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+        "pub",
+        "get",
+        "--no-example"
+      ],
+      [
+        "/opt/handrail/.handrail/codex-runs/ba07ef3d-747f-4b52-b9c5-74a37462feed/tmp/flutter-current/bin/flutter",
+        "build",
+        "web",
+        "--release",
+        "--no-pub",
+        "--no-web-resources-cdn",
+        "--target",
+        "tool/focus_probe.dart"
+      ]
+    ],
+    "custody-pub-get": {
+      "exit": 0,
+      "seconds": 0.47
+    },
+    "build": {
+      "exit": 0,
+      "seconds": 37.87
+    },
+    "main_dart_js_sha256": "f81088e590706209385a087647d46862f3090197144482e4ab52971dead35d05"
+  }
+}

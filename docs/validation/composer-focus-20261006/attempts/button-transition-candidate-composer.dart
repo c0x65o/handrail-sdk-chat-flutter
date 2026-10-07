@@ -163,8 +163,6 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
   TextEditingController? _hostTextController;
   late FocusNode _focusNode;
   late bool _ownsFocusNode;
-  final _sendButtonFocusNode = FocusNode();
-  final _retryButtonFocusNode = FocusNode();
   late MessageContentFormat _format;
 
   HandrailChatClient? _client;
@@ -1142,19 +1140,15 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
     final focusGeneration = ++_sendFocusGeneration;
     final focusNode = _focusNode;
     final primaryFocus = FocusManager.instance.primaryFocus;
-    final focusScopes = focusNode.ancestors.whereType<FocusScopeNode>().toSet();
+    final focusScope = focusNode.enclosingScope;
     var focusMoved = false;
     void observeFocus() {
       final current = FocusManager.instance.primaryFocus;
-      // A pointer-activated send/retry may acquire focus after its callback.
-      // Disabling the field can return focus to an ancestor scope. Any other target
+      // Disabling the field returns focus to its scope. A different target
       // belongs to the user/host and must not be undone when this send settles.
-      final activatingSend = _sending &&
-          (current == _sendButtonFocusNode || current == _retryButtonFocusNode);
-      if (!activatingSend &&
-          current != focusNode &&
+      if (current != focusNode &&
           current != primaryFocus &&
-          !focusScopes.contains(current)) {
+          current != focusScope) {
         focusMoved = true;
       }
     }
@@ -1873,7 +1867,6 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
                   if (_failedContent != null)
                     TextButton.icon(
                       key: const ValueKey('handrail-message-composer-retry'),
-                      focusNode: _retryButtonFocusNode,
                       onPressed: interactive
                           ? () => unawaited(_submit(_failedContent))
                           : null,
@@ -1882,7 +1875,6 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
                     ),
                   IconButton.filled(
                     key: const ValueKey('handrail-message-composer-send'),
-                    focusNode: _sendButtonFocusNode,
                     tooltip: 'Send message',
                     onPressed: _canSend ? () => unawaited(_submit()) : null,
                     icon: _sending
@@ -2074,8 +2066,6 @@ class HandrailMessageComposerState extends State<HandrailMessageComposer> {
     _focusNode.removeListener(_handleFocusChanged);
     _textController.dispose();
     if (_ownsFocusNode) _focusNode.dispose();
-    _sendButtonFocusNode.dispose();
-    _retryButtonFocusNode.dispose();
     super.dispose();
   }
 }
