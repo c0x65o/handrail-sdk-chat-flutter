@@ -1,0 +1,184 @@
+Rendered Link input investigation — 2026-10-07
+Work request ba5a4395-623e-4eec-85d6-8e7e6f736d22
+
+Verdict: repair the browser fixture; no bounded SDK component defect established.
+The unchanged public Flutter .34 passes the scoped installed-consumer Link gate
+on current and minimum Flutter with real Chromium keyboard and pointer input.
+This does not retrospectively qualify the exact Preview host/driver, native IME,
+or other toolbar interactions. No release or production source change is needed
+for the demonstrated harness failures.
+
+Root cause and reproduction
+
+1. Browser focus is earlier than Flutter input readiness. In the retained
+   current-qualified-browser.json, semantics on / 320, the destination DOM input
+   receives Control+A and has selection [0,14] on keyup. The later snapshot has
+   [13,13] in BOTH the DOM and Flutter controller. The protocol records a new
+   TextInput.setClient and setEditingState with the pointer-selected [13,13],
+   without an incoming accepted [0,14] update. The shortcut was delivered during
+   the pointer-to-Flutter focus/input-connection handoff. This reproduces the
+   selection-loss prerequisite for Preview's insertion into javascript:bad;
+   that run stops on the failed assertion before typing the replacement.
+   It is not evidence that the valid URL was rejected.
+
+   The same rapid pointer/Control+A sequence in the existing plain Flutter
+   TextField control (control=sync, no SDK composer/dialog) fails 1/12 attempts:
+   javascript:badhttps://example.test/safe. All 12 attempts that wait for the
+   field's actual Flutter/DOM readiness pass. See plain-field-control-browser.json
+   and plain-field-control-320-false-1.png. This is a common Flutter/browser
+   asynchronous input handoff, not Link-specific lifetime or sanitization code.
+   The exact Preview concatenation was supplied by the owner, not recreated
+   byte-for-byte here; original-preview-observation.txt preserves it explicitly.
+
+2. After invalid Apply, the field loses Flutter focus and sends clearClient.
+   Sending replacement keys without a normal field click leaves javascript:bad
+   unchanged (legacy-keys-browser.json). The completed DOM focus transition alone
+   cannot certify a Flutter connection. The final driver makes an ordinary
+   pointer click and waits for matching controller/DOM selection and an active
+   text-input client before sending keys. It never requests focus in Dart, calls
+   DOM focus(), injects a controller value, or remounts the composer.
+
+3. At 320px, keyboard traversal can horizontally scroll the toolbar so Link's
+   full RenderBox starts at x=48 while the toolbar clip starts farther right.
+   Clicking the un-clipped box center x=68 hits Add attachment. The retained
+   current-connected failure includes Flutter's Attach focus and the rendered
+   attachment-unavailable message. Final geometry includes the toolbar clip;
+   ordinary wheel input exposes Link before clicking, and the dialog-open
+   assertion must pass before any dismissal assertion. No product change or
+   assertion suppression was used.
+
+4. A generic input.last() synthetic-fill diagnostic selects a hidden submit
+   input with semantics off and times out. Semantics-on synthetic fill did
+   replace the URL and Apply successfully; that run later failed its unqualified
+   selection/route assumptions. Do not report all synthetic fill as unsupported,
+   or promote its false Escape success when no route opened. Final acceptance
+   uses pointer + sequential key input, ControlOrMeta+A, Escape, Tab and Enter.
+
+Implementation and custody
+
+Only this NEW validation directory is changed. probe.dart derives from the
+retained public composer editing probe with read-only EditableText value,
+selection/composition/controller identity and toolbar-clip telemetry added.
+Its existing binding delegates the text-input protocol unchanged. browser.mjs
+provides reusable strict input, selection, route, draft and traversal assertions.
+The fixture retains its existing plain-field diagnostic mode; it is never the
+acceptance path. Browser snapshots contain DOM editable identities, FocusManager
+ancestor keys, controller state, input messages, and final-run browser time origin.
+Protocol connection IDs establish observed CanvasKit client attach/clear state,
+not a physical operating-system IME connection.
+
+SDK source, security/safe-link policy, State-owned dialog controller, one-shot
+completion, late-result generations/authority checks and qualified read-ack repair
+are unchanged. All 128 library files match the public installed Git dependency
+and both source snapshots exactly. Old Link/ack review evidence is untouched.
+No Preview/JS/Assistant source, credentials, access, shared database/cache deletion,
+queue state, commit, push, PR or deployment was changed. Preview's scoped report
+was not accessed through an alternative path. Handrail context and dev-service
+status were read successfully; both configured services were stopped.
+
+Fresh checks
+
+                                    Flutter 3.41.7       Flutter 3.19.0
+Public HTTPS full-SHA install/lock   PASS                 PASS
+Release CanvasKit compile           PASS                 PASS
+Scoped composer/parent/Link analysis PASS                 PASS
+Link-filtered widget tests          35 PASS              35 PASS
+Reducer/import/version/realtime     66 PASS              66 PASS
+Strict installed browser matrix     4/4 PASS             4/4 PASS
+
+Authoritative browser traces: current-accepted-browser.json and
+minimum-accepted-browser.json; receipts: current-accepted.run.json and
+minimum-accepted.run.json. Chromium 151.0.7922.34; viewport 320x780 and 1280x780;
+semantics explicitly ON and OFF on each runtime. Each final case verifies:
+- unsafe URL rejected and complete error wraps;
+- real Ctrl+A accepted as [0,14], exact safe destination accepted;
+- Apply preserves [0,8], the original composer controller, and markdown draft;
+- synchronize_draft carries that markdown and the client reaches pending=false;
+- ArrowRight and sequential typing continue naturally after Apply, without click
+  or focus injection after dismissal;
+- real Escape dismisses an actually open dialog; natural Tab reaches Flutter's
+  Link button, Enter reopens, and Escape dismisses again;
+- repeated Cancel/barrier openings really occur and preserve text/draft.
+
+The 35 existing Link-filtered cases also cover disposal during reverse transition,
+Apply/done/semantics, Remove, repeated/double actions, original selection, host
+controller/text replacement, newer remote draft, account cycle, conversation and
+timeline authority revocation/restoration. These are fresh tests, not new tests
+invented for an unchanged production component. Each runtime's 66 checks includes
+the configured 45-case durable reducer and 21 import/version/realtime cases.
+Source snapshots retain .handrail; frozen source locks resolve offline unchanged.
+No source generation precedes the import/version guard. JS syntax, Python source
+compilation, fixture preparation and git diff --check also pass.
+
+Failed attempts retained
+
+- baseline.txt: Chromium socket-path-too-long launch failure; fixed solely by a
+  shorter permitted browser temp path. baseline-input subsequently passes 4/4,
+  but lacks later strict route preconditions and is not the final acceptance.
+- legacy-keys: 0/4 passing, keys sent while Apply/scope owns focus; 320 follow-on
+  route/selection failures remain failures.
+- dom-fill: 0/4 complete cases, although both semantics-on Apply/typing portions
+  pass. Hidden-submit selector timeout and false route assumption as above.
+- current-qualified: 3/4, real [13,13] select-all race assertion failure retained.
+- plain-field-control: 23/24 overall; immediate mode 11/12, ready mode 12/12.
+- current-connected: 3/4, clipped Link pointer hit Attach at 320 with semantics on.
+- current-final/minimum-final: command output/screenshots pass, but each trace
+  filename collided with its receipt and was replaced by it. These receipts/logs
+  remain; complete traces are unavailable for those two runs. run.py now writes
+  .run.json receipts, and separate accepted runs renew all eight cases with full
+  traces plus controller-identity and draft-acknowledgement assertions. No earlier
+  task evidence was affected by this new-file naming error.
+
+Exact source identities
+
+Flutter .34: a5552865b89b1e9698e8c70e9a4de6508312b873
+Frozen companion JS 1.0.55: 9df3276e4e1983b094345ae74151f1ea8f144d09
+Unchanged composer SHA-256:
+6a56f0b06e576ac1ebb906d7255ac83f7a474c6dc230721772e61d41dcc29ebf
+Final probe SHA-256:
+d8f12390100820bec14ad2387443989132e6adc38fcdace083c356d42c323b00
+Final browser driver SHA-256:
+69ab7ee1ff931d22b07e3180272c5a8f63775ce4311267d895afd915302ba7b8
+Current compiled main.dart.js SHA-256:
+20641b6fba43434d042e45e50ab359bcfcfe7e3c8433b29f18f25b34bd35b68a
+Minimum compiled main.dart.js SHA-256:
+3ab9202c938daa3fdd69542641d83c39a6435da7a2ce7dfde6401a8c88d4bf48
+source-hashes.json contains all library, manifest, lock, package-config, build and
+toolchain identities. evidence-sha256.json records the retained evidence.
+
+Pixels actually opened
+
+All paths below are relative to this report's directory:
+current-accepted-on-320-invalid.png
+current-accepted-on-1280-continued.png
+minimum-accepted-on-320-invalid.png
+minimum-accepted-on-1280-applied.png
+Also inspected prior final-run 320 invalid/continued, desktop Apply/continued,
+the clipped-toolbar failure, and the plain TextField negative control. The final
+32 screenshots include applied, invalid, continued and dismissed at both widths
+and semantics modes on both runtimes. images-inspected.json identifies the exact
+opened files/hashes; it does not imply every saved screenshot was opened.
+
+Execution limits and remaining qualification
+
+Reused current Flutter/Dart 3.41.7/3.11.5 via the existing symlinked toolchain and
+official minimum 3.19.0/3.3.0 at .huddle-tmp/ack-review-toolchains/flutter. No Flutter
+download or duplicate full toolchain copy. Public Handrail SDK dependency uses
+HTTPS Git full SHA and normal pub resolution with matching per-runtime locks.
+All heavy commands ran sequentially in the native delegated leaf with a native
+slot lock, 300-second bounds and tests at --concurrency=2. Peak leaf memory
+2,755,641,344 bytes during the compiler/browser/test sequence, no high/max/OOM
+events. No full CI was attempted; no five-minute auto-skip is claimed or disabled.
+
+The original Preview observations remain failed/unqualified in their original
+scope. Exact Preview key delivery, its full consumer environment, live draft
+persistence, screen-reader operation, software keyboards/composition, physical
+iOS/Android and native IME acceptance are UNVERIFIED. Normal tested composition
+ranges are [-1,-1]; no real IME composition was simulated or claimed. This does
+not clear the separate semantics-enabled Bold/toolbar history, broader historical
+analysis/suite failures or Assistant 125/120 diagnosis. No unrelated checks reran.
+
+Parent handoff: use handoff.txt to reproduce the public fixture, then apply the
+same observable input/selection and clipped-target checks to the exact Preview
+host through its authorized validation path. No owner product decision is missing.
+Completion of this work request reports these findings, not blanket acceptance.

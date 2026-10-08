@@ -1,0 +1,40 @@
+on 320 {"invalidRejected":true,"errorWraps":true,"validApply":true,"continuedTyping":true,"escapeDismissed":true,"tabReachesLink":false} TypeError: undefined is not iterable (cannot read property Symbol(Symbol.iterator))
+on 1280 {"invalidRejected":true,"errorWraps":true,"validApply":true,"continuedTyping":true,"escapeDismissed":true,"tabReachesLink":false} TypeError: undefined is not iterable (cannot read property Symbol(Symbol.iterator))
+off 320 {} TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('input').last()[22m
+[2m    - locator resolved to <input tabindex="-1" type="submit" class="submitBtn"/>[22m
+[2m    - fill("javascript:bad")[22m
+[2m  - attempting fill action[22m
+[2m    2 × waiting for element to be visible, enabled and editable[22m
+[2m      - element is not visible[22m
+[2m    - retrying fill action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and editable[22m
+[2m      - element is not visible[22m
+[2m    - retrying fill action[22m
+[2m      - waiting 100ms[22m
+[2m    10 × waiting for element to be visible, enabled and editable[22m
+[2m       - element is not visible[22m
+[2m     - retrying fill action[22m
+[2m       - waiting 500ms[22m
+
+off 1280 {} TimeoutError: locator.fill: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('input').last()[22m
+[2m    - locator resolved to <input tabindex="-1" type="submit" class="submitBtn"/>[22m
+[2m    - fill("javascript:bad")[22m
+[2m  - attempting fill action[22m
+[2m    2 × waiting for element to be visible, enabled and editable[22m
+[2m      - element is not visible[22m
+[2m    - retrying fill action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and editable[22m
+[2m      - element is not visible[22m
+[2m    - retrying fill action[22m
+[2m      - waiting 100ms[22m
+[2m    10 × waiting for element to be visible, enabled and editable[22m
+[2m       - element is not visible[22m
+[2m     - retrying fill action[22m
+[2m       - waiting 500ms[22m
+

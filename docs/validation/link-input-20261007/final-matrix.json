@@ -1,0 +1,234 @@
+[
+  {
+    "runtime": "current",
+    "width": 320,
+    "semantics": "on",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/current-accepted-browser.json"
+  },
+  {
+    "runtime": "current",
+    "width": 1280,
+    "semantics": "on",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/current-accepted-browser.json"
+  },
+  {
+    "runtime": "current",
+    "width": 320,
+    "semantics": "off",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/current-accepted-browser.json"
+  },
+  {
+    "runtime": "current",
+    "width": 1280,
+    "semantics": "off",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/current-accepted-browser.json"
+  },
+  {
+    "runtime": "minimum",
+    "width": 320,
+    "semantics": "on",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/minimum-accepted-browser.json"
+  },
+  {
+    "runtime": "minimum",
+    "width": 1280,
+    "semantics": "on",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/minimum-accepted-browser.json"
+  },
+  {
+    "runtime": "minimum",
+    "width": 320,
+    "semantics": "off",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/minimum-accepted-browser.json"
+  },
+  {
+    "runtime": "minimum",
+    "width": 1280,
+    "semantics": "off",
+    "checks": {
+      "invalidRejected": true,
+      "errorWraps": true,
+      "applySelection": true,
+      "sameComposerController": true,
+      "validApply": true,
+      "acknowledgedDraft": true,
+      "continuedTyping": true,
+      "escapeDismissed": true,
+      "tabReachesLink": true,
+      "keyboardReopens": true,
+      "keyboardEscape": true,
+      "repeatedDismissalPreservesDraft": true
+    },
+    "continued_draft": "[Original](https://example.test/safe) next",
+    "continued_selection": [
+      13,
+      13
+    ],
+    "continued_composing": [
+      -1,
+      -1
+    ],
+    "trace": "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/minimum-accepted-browser.json"
+  }
+]

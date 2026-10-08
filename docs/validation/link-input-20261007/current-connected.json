@@ -1,0 +1,14 @@
+{
+  "exit": 1,
+  "seconds": 51.2,
+  "command": [
+    "node",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/browser.mjs",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/link-input/current-consumer/build/web",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007",
+    "current-connected",
+    "pointer-uppercase"
+  ],
+  "fixture": "current-consumer",
+  "timeout_seconds": 300
+}

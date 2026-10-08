@@ -1,0 +1,131 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/link-input/tmp/playwright_chromiumdev_profile-83qzVl --remote-debugging-pipe --no-startup-window
+<launched> pid=15
+[pid=15][err] [15:15:1007/113241.618856:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/link-input/org.chromium.Chromium.2j58zv/SingletonSocket.
+[pid=15][err] [1007/113241.620249:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/online: No such file or directory (2)
+[pid=15][err] [1007/113241.623745:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[pid=15][err] [1007/113241.623763:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+[pid=15][err] Received signal 6
+[pid=15][err] #0 0x55ea9fff26f3 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x69f56f2)
+[pid=15][err] #1 0x55eaa4a6a0e4 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb46d0e3)
+[pid=15][err] #2 0x7fd0634f4050 (/lib/x86_64-linux-gnu/libc.so.6+0x3c04f)
+[pid=15][err] #3 0x7fd063542eec (/lib/x86_64-linux-gnu/libc.so.6+0x8aeeb)
+[pid=15][err] #4 0x1af0f1c29384df00 <unknown>
+[pid=15][err] #5 0x55ea9cfdc507 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x39df506)
+[pid=15][err] #6 0x55eaa4a61ea5 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb464ea4)
+[pid=15][err] #7 0x55eaa4a24e3d (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb427e3c)
+[pid=15][err] #8 0x55eaa4a24dce (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb427dcd)
+[pid=15][err] #9 0x55ea9fc832a8 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66862a7)
+[pid=15][err] #10 0x55ea9f298eb9 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x5c9beb8)
+[pid=15][err] #11 0x55ea9ec9c496 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x569f495)
+[pid=15][err] #12 0x55ea9fcfae33 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66fde32)
+[pid=15][err] #13 0x55ea9fcfade4 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66fdde3)
+[pid=15][err] #14 0x55ea9f71478b (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x611778a)
+[pid=15][err] #15 0x55ea9f713aa3 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x6116aa2)
+[pid=15][err] #16 0x55ea9f70fba6 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x6112ba5)
+[pid=15][err] #17 0x55ea9f70f1ce (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x61121cd)
+[pid=15][err] #18 0x55ea9f70e8a5 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x61118a4)
+[pid=15][err] #19 0x7fd0634df24a (/lib/x86_64-linux-gnu/libc.so.6+0x27249)
+[pid=15][err]   r8: 00001848000f81b4  r9: 0000000000000001 r10: 0000000000000008 r11: 0000000000000246
+[pid=15][err]  r12: 0000000000000006 r13: 00000000000000d5 r14: 00000000000000d4 r15: 00007fffda8574d0
+[pid=15][err]   di: 000000000000000f  si: 000000000000000f  bp: 00007fd06215d2c0  bx: 000000000000000f
+[pid=15][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007fd063542eec  sp: 00007fffda856e30
+[pid=15][err]   ip: 00007fd063542eec efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000
+[pid=15][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000
+[pid=15][err] [end of stack trace]
+Call log:
+[2m  - <launching> /opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/link-input/tmp/playwright_chromiumdev_profile-83qzVl --remote-debugging-pipe --no-startup-window[22m
+[2m  - <launched> pid=15[22m
+[2m  - [pid=15][err] [15:15:1007/113241.618856:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/link-input/org.chromium.Chromium.2j58zv/SingletonSocket.[22m
+[2m  - [pid=15][err] [1007/113241.620249:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/online: No such file or directory (2)[22m
+[2m  - [pid=15][err] [1007/113241.623745:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)[22m
+[2m  - [pid=15][err] [1007/113241.623763:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)[22m
+[2m  - [pid=15][err] Received signal 6[22m
+[2m  - [pid=15][err] #0 0x55ea9fff26f3 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x69f56f2)[22m
+[2m  - [pid=15][err] #1 0x55eaa4a6a0e4 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb46d0e3)[22m
+[2m  - [pid=15][err] #2 0x7fd0634f4050 (/lib/x86_64-linux-gnu/libc.so.6+0x3c04f)[22m
+[2m  - [pid=15][err] #3 0x7fd063542eec (/lib/x86_64-linux-gnu/libc.so.6+0x8aeeb)[22m
+[2m  - [pid=15][err] #4 0x1af0f1c29384df00 <unknown>[22m
+[2m  - [pid=15][err] #5 0x55ea9cfdc507 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x39df506)[22m
+[2m  - [pid=15][err] #6 0x55eaa4a61ea5 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb464ea4)[22m
+[2m  - [pid=15][err] #7 0x55eaa4a24e3d (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb427e3c)[22m
+[2m  - [pid=15][err] #8 0x55eaa4a24dce (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb427dcd)[22m
+[2m  - [pid=15][err] #9 0x55ea9fc832a8 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66862a7)[22m
+[2m  - [pid=15][err] #10 0x55ea9f298eb9 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x5c9beb8)[22m
+[2m  - [pid=15][err] #11 0x55ea9ec9c496 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x569f495)[22m
+[2m  - [pid=15][err] #12 0x55ea9fcfae33 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66fde32)[22m
+[2m  - [pid=15][err] #13 0x55ea9fcfade4 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66fdde3)[22m
+[2m  - [pid=15][err] #14 0x55ea9f71478b (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x611778a)[22m
+[2m  - [pid=15][err] #15 0x55ea9f713aa3 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x6116aa2)[22m
+[2m  - [pid=15][err] #16 0x55ea9f70fba6 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x6112ba5)[22m
+[2m  - [pid=15][err] #17 0x55ea9f70f1ce (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x61121cd)[22m
+[2m  - [pid=15][err] #18 0x55ea9f70e8a5 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x61118a4)[22m
+[2m  - [pid=15][err] #19 0x7fd0634df24a (/lib/x86_64-linux-gnu/libc.so.6+0x27249)[22m
+[2m  - [pid=15][err]   r8: 00001848000f81b4  r9: 0000000000000001 r10: 0000000000000008 r11: 0000000000000246[22m
+[2m  - [pid=15][err]  r12: 0000000000000006 r13: 00000000000000d5 r14: 00000000000000d4 r15: 00007fffda8574d0[22m
+[2m  - [pid=15][err]   di: 000000000000000f  si: 000000000000000f  bp: 00007fd06215d2c0  bx: 000000000000000f[22m
+[2m  - [pid=15][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007fd063542eec  sp: 00007fffda856e30[22m
+[2m  - [pid=15][err]   ip: 00007fd063542eec efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000[22m
+[2m  - [pid=15][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000[22m
+[2m  - [pid=15][err] [end of stack trace][22m
+[2m  - [pid=15] <gracefully close start>[22m
+[2m  - [pid=15] <kill>[22m
+[2m  - [pid=15] <will force kill>[22m
+[2m  - [pid=15] <process did exit: exitCode=null, signal=SIGABRT>[22m
+[2m  - [pid=15] starting temporary directories cleanup[22m
+[2m  - [pid=15] finished temporary directories cleanup[22m
+[2m  - [pid=15] <gracefully close end>[22m
+
+    at /opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007/browser.mjs:17:32 {
+  log: [
+    '  - <launching> /opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --no-sandbox --disable-dev-shm-usage --user-data-dir=/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/link-input/tmp/playwright_chromiumdev_profile-83qzVl --remote-debugging-pipe --no-startup-window',
+    '  - <launched> pid=15',
+    '  - [pid=15][err] [15:15:1007/113241.618856:FATAL:chrome/browser/process_singleton_posix.cc:313] Socket path too long: /opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/link-input/org.chromium.Chromium.2j58zv/SingletonSocket.',
+    '  - [pid=15][err] [1007/113241.620249:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/online: No such file or directory (2)',
+    '  - [pid=15][err] [1007/113241.623745:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)',
+    '  - [pid=15][err] [1007/113241.623763:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)',
+    '  - [pid=15][err] Received signal 6',
+    '  - [pid=15][err] #0 0x55ea9fff26f3 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x69f56f2)',
+    '  - [pid=15][err] #1 0x55eaa4a6a0e4 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb46d0e3)',
+    '  - [pid=15][err] #2 0x7fd0634f4050 (/lib/x86_64-linux-gnu/libc.so.6+0x3c04f)',
+    '  - [pid=15][err] #3 0x7fd063542eec (/lib/x86_64-linux-gnu/libc.so.6+0x8aeeb)',
+    '  - [pid=15][err] #4 0x1af0f1c29384df00 <unknown>',
+    '  - [pid=15][err] #5 0x55ea9cfdc507 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x39df506)',
+    '  - [pid=15][err] #6 0x55eaa4a61ea5 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb464ea4)',
+    '  - [pid=15][err] #7 0x55eaa4a24e3d (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb427e3c)',
+    '  - [pid=15][err] #8 0x55eaa4a24dce (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0xb427dcd)',
+    '  - [pid=15][err] #9 0x55ea9fc832a8 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66862a7)',
+    '  - [pid=15][err] #10 0x55ea9f298eb9 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x5c9beb8)',
+    '  - [pid=15][err] #11 0x55ea9ec9c496 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x569f495)',
+    '  - [pid=15][err] #12 0x55ea9fcfae33 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66fde32)',
+    '  - [pid=15][err] #13 0x55ea9fcfade4 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x66fdde3)',
+    '  - [pid=15][err] #14 0x55ea9f71478b (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x611778a)',
+    '  - [pid=15][err] #15 0x55ea9f713aa3 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x6116aa2)',
+    '  - [pid=15][err] #16 0x55ea9f70fba6 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x6112ba5)',
+    '  - [pid=15][err] #17 0x55ea9f70f1ce (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x61121cd)',
+    '  - [pid=15][err] #18 0x55ea9f70e8a5 (/opt/handrail/.handrail/flutter-sdk/bin/cache/mock-authority-playwright/chromium-1234/chrome-linux64/chrome+0x61118a4)',
+    '  - [pid=15][err] #19 0x7fd0634df24a (/lib/x86_64-linux-gnu/libc.so.6+0x27249)',
+    '  - [pid=15][err]   r8: 00001848000f81b4  r9: 0000000000000001 r10: 0000000000000008 r11: 0000000000000246',
+    '  - [pid=15][err]  r12: 0000000000000006 r13: 00000000000000d5 r14: 00000000000000d4 r15: 00007fffda8574d0',
+    '  - [pid=15][err]   di: 000000000000000f  si: 000000000000000f  bp: 00007fd06215d2c0  bx: 000000000000000f',
+    '  - [pid=15][err]   dx: 0000000000000006  ax: 0000000000000000  cx: 00007fd063542eec  sp: 00007fffda856e30',
+    '  - [pid=15][err]   ip: 00007fd063542eec efl: 0000000000000246 cgf: 002b000000000033 erf: 0000000000000000',
+    '  - [pid=15][err]  trp: 0000000000000000 msk: 0000000000000000 cr2: 0000000000000000',
+    '  - [pid=15][err] [end of stack trace]',
+    '  - [pid=15] <gracefully close start>',
+    '  - [pid=15] <kill>',
+    '  - [pid=15] <will force kill>',
+    '  - [pid=15] <process did exit: exitCode=null, signal=SIGABRT>',
+    '  - [pid=15] starting temporary directories cleanup',
+    '  - [pid=15] finished temporary directories cleanup',
+    '  - [pid=15] <gracefully close end>'
+  ]
+}
+
+Node.js v22.23.1

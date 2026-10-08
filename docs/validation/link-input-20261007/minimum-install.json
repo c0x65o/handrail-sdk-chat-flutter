@@ -1,0 +1,13 @@
+{
+  "exit": 0,
+  "seconds": 1.3,
+  "command": [
+    "/opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/ack-review-toolchains/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/ack-review-toolchains/flutter/bin/cache/flutter_tools.snapshot",
+    "pub",
+    "get",
+    "--no-example"
+  ],
+  "fixture": "minimum-consumer",
+  "timeout_seconds": 300
+}

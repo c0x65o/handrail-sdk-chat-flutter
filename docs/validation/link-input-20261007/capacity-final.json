@@ -1,0 +1,10 @@
+{
+  "available_bytes": 29185220608,
+  "available_inodes": 67361851,
+  "memory_peak": 2755641344,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "allocations": {
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/link-input": 249470976,
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/docs/validation/link-input-20261007": 38178816
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "exit": 0,
+  "seconds": 1.51,
+  "command": [
+    "/opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/ack-review-toolchains/flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/repos/handrail/handrail-chat/.huddle-tmp/ack-review-toolchains/flutter/bin/cache/flutter_tools.snapshot",
+    "pub",
+    "get",
+    "--no-example",
+    "--offline",
+    "--enforce-lockfile"
+  ],
+  "fixture": "minimum-source",
+  "timeout_seconds": 300
+}

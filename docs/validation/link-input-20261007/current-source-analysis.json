@@ -1,0 +1,15 @@
+{
+  "exit": 0,
+  "seconds": 16.76,
+  "command": [
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/current-flutter/bin/cache/dart-sdk/bin/dart",
+    "/opt/handrail/repos/handrail/handrail-chat/handrail-sdk-chat-flutter/build/ack-release-review/current-flutter/bin/cache/flutter_tools.snapshot",
+    "analyze",
+    "--no-pub",
+    "lib/src/handrail_message_composer.dart",
+    "test/handrail_message_composer_test.dart",
+    "test/handrail_link_dialog_cases.dart"
+  ],
+  "fixture": "current-source",
+  "timeout_seconds": 300
+}

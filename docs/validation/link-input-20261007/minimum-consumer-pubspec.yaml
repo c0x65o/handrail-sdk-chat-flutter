@@ -1,0 +1,13 @@
+name: link_input_consumer
+publish_to: none
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  handrail_chat:
+    git:
+      url: https://github.com/c0x65o/handrail-sdk-chat-flutter.git
+      ref: a5552865b89b1e9698e8c70e9a4de6508312b873
+flutter:
+  uses-material-design: true

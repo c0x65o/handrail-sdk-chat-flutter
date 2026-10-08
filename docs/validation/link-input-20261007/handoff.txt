@@ -1,0 +1,65 @@
+Public installed-consumer Link reproduction
+
+Run from handrail-sdk-chat-flutter. Existing permitted current/minimum toolchains,
+the retained ack-review pub cache, Chromium, and sibling Playwright installation
+are reused by run.py. Do not download/copy a Flutter SDK or modify Preview.
+
+The consumer manifests pin the public HTTPS Git repository to full .34 SHA
+a5552865b89b1e9698e8c70e9a4de6508312b873. Separate exact current/minimum locks are
+retained next to this file. No path/workspace override is used. prepare.py creates
+only small probe/source fixtures and keeps existing source snapshots intact.
+
+1. Set convenient non-system shell variables and materialize the fixtures:
+
+   link_evidence="$PWD/docs/validation/link-input-20261007"
+   link_build="$PWD/build/link-input"
+   python3 "$link_evidence/prepare.py"
+
+2. Resolve the public dependency using the frozen lock (choose fresh phase names
+   for every rerun so existing evidence remains unchanged):
+
+   python3 "$link_evidence/run.py" handoff-current-resolve current current-consumer pub get --no-example --enforce-lockfile
+   python3 "$link_evidence/run.py" handoff-minimum-resolve minimum minimum-consumer pub get --no-example --enforce-lockfile
+
+3. Compile sequentially through the normal consumer build:
+
+   python3 "$link_evidence/run.py" handoff-current-build current current-consumer build web --no-pub --release --no-web-resources-cdn
+   python3 "$link_evidence/run.py" handoff-minimum-build minimum minimum-consumer build web --no-pub --release --web-renderer canvaskit --no-web-resources-cdn
+
+   prepare.py uses current-index.html and the official minimum-style
+   loadEntrypoint bootstrap in minimum-index.html. The minimum adapter changes
+   only bootstrap markup, not compiled SDK/engine bytes.
+
+4. Run the real browser sequence on each build (ephemeral loopback server only):
+
+   python3 "$link_evidence/run.py" handoff-current browser current-consumer "$link_evidence/browser.mjs" "$link_build/current-consumer/build/web" "$link_evidence" handoff-current pointer-uppercase
+   python3 "$link_evidence/run.py" handoff-minimum browser minimum-consumer "$link_evidence/browser.mjs" "$link_build/minimum-consumer/build/web" "$link_evidence" handoff-minimum pointer-uppercase
+
+   Receipts use .run.json, traces use -browser.json, screenshots carry the phase,
+   semantics mode, viewport width and step. Each process is bounded to 300s and
+   participates in native heavy-worker limits. verify.py lists the exact affected
+   source checks; its fixed phase names belong to the retained run, so choose new
+   names with run.py if repeating them. Do not rerun broad/full CI for this fixture.
+
+Use default/pointer-uppercase for acceptance. Other mode arguments and preserved
+*-driver.mjs files exist only to retain diagnostic history. plain-field-control.mjs
+compares immediate and input-ready shortcuts in a plain Flutter TextField; a
+nonzero exit means at least one attempted replacement failed, not an SDK finding.
+
+Exact-host continuation (parent's authorized Preview scope):
+
+- Use actual pointer events to a visible, unclipped Link/field hit target. A DOM
+  element or full RenderBox rectangle may extend outside its toolbar clip.
+- After a normal field click, observe Flutter primary field focus and its input
+  client as well as native active editable value/selection. Await that transition
+  before Ctrl+A. Do not focus again after Apply/Cancel to manufacture a pass.
+- Confirm [0,length] in the Flutter controller AND DOM before replacement. Confirm
+  the exact resulting safe URL before testing Apply. Keep any failure as failure;
+  javascript:bahttps://example.test/safed is correctly invalid.
+- Assert the dialog is actually open before Escape/Cancel/barrier, and absent
+  afterwards. Use FocusManager ancestor/key evidence for Tab return-to-Link;
+  DOM focus alone does not prove Flutter focus. Enter must reopen the real route.
+- After Apply, type naturally and verify selection, saved draft and composition.
+  Repeat at 320 and desktop with accessibility enabled as well as ordinary mode.
+- Preserve the original Preview qualification. This fixture is evidence for the
+  frozen installed SDK, not a substitute for the exact Preview host or native IME.

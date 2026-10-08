@@ -1,0 +1,5 @@
+Supplied owner observation; exact Preview driver unavailable in this SDK scope.
+Qualification 37b5d8dc-688e-4f55-a8b0-5bc5d63f75c5, frozen Flutter .34 a5552865b89b1e9698e8c70e9a4de6508312b873 / JS 1.0.55 9df3276e4e1983b094345ae74151f1ea8f144d09.
+320px: invalid URL wraps; Apply retains selection and natural continued typing passes; repeated Cancel/outside preserve draft. Escape did not dismiss; Tab return-to-Link observation false.
+1280px: Ctrl+A replacement produced javascript:bahttps://example.test/safed; validation correctly rejected this actual invalid value. Valid Apply and keyboard return unqualified.
+Preserved as FAILED/UNQUALIFIED observations, not reclassified by this fixture's passes. No scoped Preview reader denial bypass or Preview file access attempted. New fixture traces are separate reproductions, not the original driver.

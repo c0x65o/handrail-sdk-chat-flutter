@@ -1,0 +1,4 @@
+on 320 {"invalidRejected":true,"errorWraps":true,"validApply":true,"continuedTyping":true,"escapeDismissed":true,"tabReachesLink":true,"keyboardReopens":true,"keyboardEscape":true,"repeatedDismissalPreservesDraft":true} 
+on 1280 {"invalidRejected":true,"errorWraps":true,"validApply":true,"continuedTyping":true,"escapeDismissed":true,"tabReachesLink":true,"keyboardReopens":true,"keyboardEscape":true,"repeatedDismissalPreservesDraft":true} 
+off 320 {"invalidRejected":true,"errorWraps":true,"validApply":true,"continuedTyping":true,"escapeDismissed":true,"tabReachesLink":true,"keyboardReopens":true,"keyboardEscape":true,"repeatedDismissalPreservesDraft":true} 
+off 1280 {"invalidRejected":true,"errorWraps":true,"validApply":true,"continuedTyping":true,"escapeDismissed":true,"tabReachesLink":true,"keyboardReopens":true,"keyboardEscape":true,"repeatedDismissalPreservesDraft":true} 
