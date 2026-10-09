@@ -13,7 +13,7 @@ dependencies:
   handrail_chat:
     git:
       url: https://github.com/c0x65o/handrail-sdk-chat-flutter.git
-      ref: dc377a84f09033d532c455c6891e0085f67ebe23
+      ref: 6bd7912b7ac9fcc30bd572b85588983a75cbec4d
 
 dev_dependencies:
   flutter_test:
